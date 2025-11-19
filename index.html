@@ -4,264 +4,192 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yashwanth K S – Portfolio</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Root variables for color and fonts */
     :root {
-      --primary-color: #126e82;
-      --secondary-color: #f77f00;
-      --bg-gradient-start: #a1c4fd;
-      --bg-gradient-end: #c2e9fb;
-      --font-primary: 'Montserrat', sans-serif;
-      --font-secondary: 'Source Sans Pro', sans-serif;
-      --text-color-dark: #222;
-      --text-color-light: #555;
-      --border-radius: 22px;
-      --transition-speed: 0.3s;
+      --primary: #126e82;
+      --accent: #f77f00;
+      --bg1: #a1c4fd;
+      --bg2: #c2e9fb;
+      --radius: 22px;
+      --shadow: 0 8px 32px rgba(34,94,186,0.07);
     }
-
-    /* Body and container setup */
     body {
-      background: linear-gradient(
-        135deg,
-        var(--bg-gradient-start) 0%,
-        var(--bg-gradient-end) 100%
-      );
-      color: var(--text-color-dark);
-      font-family: var(--font-secondary);
-      margin: 0;
-      padding: 0 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+      font-family: 'Source Sans Pro', Arial, sans-serif;
+      color: #222;
+      padding: 0 12px;
     }
-
     .container {
-      max-width: 700px;
-      background: rgba(255, 255, 255, 0.95);
-      margin: 48px auto 32px auto;
-      border-radius: var(--border-radius);
-      box-shadow: 0 6px 24px rgba(60, 100, 180, 0.12);
-      padding: 40px 36px;
-      backdrop-filter: blur(8px);
-      animation: fadeInUp 1.2s ease forwards;
+      max-width: 750px;
+      margin: 50px auto 30px auto;
+      background: rgba(255,255,255,0.98);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 44px 36px;
+      backdrop-filter: blur(7px);
     }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Header with branding */
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
+    header { text-align: center; }
     header h1 {
-      font-family: var(--font-primary);
-      font-weight: 700;
-      font-size: 2.6rem;
-      color: var(--primary-color);
-      margin-bottom: 4px;
-      letter-spacing: 0.6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin: 0 0 5px 0;
     }
-
-    header p {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--text-color-light);
-      margin: 0;
-    }
-
-    /* Profile image with subtle shadow and border */
+    header p { color: #20719e; font-weight: 600; font-size: 1.14rem; }
     .profile-img {
-      display: block;
-      width: 140px;
-      height: 140px;
-      margin: 24px auto 32px auto;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--secondary-color);
-      box-shadow: 0 6px 20px rgba(255, 127, 0, 0.3);
-      transition: transform var(--transition-speed);
+      display: block; margin: 28px auto 20px auto;
+      width: 140px; height: 140px; object-fit: cover;
+      border-radius: 50%; border: 4px solid var(--accent);
+      box-shadow: 0 4px 24px rgba(247,127,0,0.19);
+      transition: transform 0.25s;
       cursor: pointer;
     }
-
-    .profile-img:hover,
-    .profile-img:focus {
-      outline: none;
-      transform: scale(1.05);
-      box-shadow: 0 8px 32px rgba(255, 127, 0, 0.6);
-    }
-
-    /* Section styling */
-    section {
-      margin-bottom: 32px;
-    }
-
+    .profile-img:hover { transform: scale(1.045);}
+    section { margin-bottom: 32px;}
     section h2 {
-      font-family: var(--font-primary);
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--secondary-color);
-      padding-bottom: 6px;
-      margin-bottom: 14px;
-      letter-spacing: 0.05em;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.28rem; color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px; margin-bottom: 13px;
     }
-
-    section p,
-    section ul {
-      font-size: 1.07rem;
-      color: var(--text-color-dark);
+    ul { padding-left: 22px; margin-top: 4px;}
+    li, section p { font-size: 1.07rem; }
+    .projects { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:14px;}
+    .project-card {
+      background: #f1f8ff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(34,94,186,0.07);
+      padding: 16px;
+      text-align: center;
+      transition: box-shadow 0.2s;
     }
-
-    ul {
-      padding-left: 20px;
-      margin-top: 0;
-      list-style-type: disc;
-    }
-
-    /* Links with hover and focus */
-    a {
-      color: var(--secondary-color);
+    .project-card:hover { box-shadow: 0 2px 18px var(--accent);}
+    .project-title { font-weight: 600; color: var(--primary); margin-bottom: 7px;}
+    .project-desc { font-size: 0.99rem; color: #444;}
+    .download-resume {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 13px;
       text-decoration: none;
       font-weight: 600;
-      transition: color var(--transition-speed);
+      transition: background 0.22s;
     }
-
-    a:hover,
-    a:focus {
-      color: var(--primary-color);
-      outline: none;
-      text-decoration: underline;
+    .download-resume:hover { background: var(--primary);}
+    .social-links {
+      text-align:center;
+      margin: 18px auto 0 auto;
     }
-
-    /* Contact info spacing */
-    .contact-list p {
-      margin: 6px 0;
+    .social-links a {
+      display: inline-block;
+      margin: 0 9px;
+      font-size: 1.5rem;
+      color: var(--primary);
+      transition: color 0.16s;
     }
-
-    /* Footer styling */
-    footer {
-      text-align: center;
-      font-size: 0.95rem;
-      color: var(--text-color-light);
-      margin-bottom: 24px;
-      letter-spacing: 0.05em;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 480px) {
-      .container {
-        padding: 24px 20px;
-        margin: 32px 8px 24px 8px;
-      }
-
-      header h1 {
-        font-size: 1.9rem;
-      }
-
-      .profile-img {
-        width: 110px;
-        height: 110px;
-      }
+    .social-links a:hover { color: var(--accent);}
+    footer { text-align:center; color:#277da1; font-size:0.98rem; margin-bottom:18px; opacity:0.85;}
+    @media(max-width:550px) {
+      .container{ padding:18px 8px;}
+      header h1{ font-size:1.5rem;}
+      .profile-img{ width:90px; height:90px;}
+      .projects{grid-template-columns:1fr;}
     }
   </style>
+  <!-- For social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-  <div class="container" role="main" aria-label="Portfolio of Yashwanth K S">
-    <!-- Branding & photo -->
+  <div class="container" role="main" aria-label="Advanced Portfolio of Yashwanth K S">
     <header>
       <h1 tabindex="0">Yashwanth K S</h1>
       <p tabindex="0">Library & Information Science Professional</p>
     </header>
-
-   <img
-  src="SRP02019.jpg"
-  alt="Yashwanth K S profile photo"
-  class="profile-img"
-  tabindex="0"
-  aria-describedby="profileDesc"
-/>
-
-    <p id="profileDesc" class="sr-only">
-      Profile photo of Yashwanth K S, a Library and Information Science Professional.
-    </p>
-
+    <img
+      src="SRP02019.jpg"
+      alt="Yashwanth K S profile photo"
+      class="profile-img"
+      tabindex="0"
+    />
     <!-- About Me -->
     <section aria-labelledby="aboutTitle">
       <h2 id="aboutTitle">About Me</h2>
       <p>
-        I am a Library & Information Science professional with experience in
-        library operations, cataloging, digital platforms, and user support.
+        Dedicated Library & Information Science expert skilled in cataloging, user support, and digital resource management. Passionate about leveraging modern tools to deliver seamless access and engaging library experiences.
       </p>
     </section>
-
     <!-- Experience -->
     <section aria-labelledby="experienceTitle">
       <h2 id="experienceTitle">Experience</h2>
       <p><strong>Library Assistant – K S School of Engineering & Management</strong></p>
-      <p>Cataloging · Circulation · Digital Library Services · User Support</p>
-    </section>
-
-    <!-- Skills -->
-    <section aria-labelledby="skillsTitle">
-      <h2 id="skillsTitle">Skills</h2>
       <ul>
-        <li>Koha &amp; Libsoft</li>
-        <li>Cataloging &amp; Metadata</li>
-        <li>DSpace · EPrints</li>
-        <li>Information Retrieval</li>
+        <li>Managed cataloging and metadata for 20,000+ resources</li>
+        <li>Supported faculty and student research requests</li>
+        <li>Maintained digital library platforms and optimized user workflows</li>
+        <li>Organized workshops for digital literacy</li>
       </ul>
     </section>
-
+    <!-- Skills -->
+    <section aria-labelledby="skillsTitle">
+      <h2 id="skillsTitle">Key Skills</h2>
+      <ul>
+        <li>Koha &amp; Libsoft – Library management software</li>
+        <li>Cataloging &amp; Metadata standards</li>
+        <li>DSpace, EPrints – Digital repositories</li>
+        <li>Information retrieval and search optimization</li>
+        <li>User education and digital literacy</li>
+      </ul>
+    </section>
+    <!-- Projects -->
+    <section aria-labelledby="projectsTitle">
+      <h2 id="projectsTitle">Projects & Initiatives</h2>
+      <div class="projects">
+        <div class="project-card">
+          <span class="project-title">Koha Catalog Migration</span>
+          <p class="project-desc">Led the transition from Libsoft to Koha, streamlining automations and digital asset tracking.</p>
+        </div>
+        <div class="project-card">
+          <span class="project-title">EPrints Digital Archive</span>
+          <p class="project-desc">Established a searchable repository of academic papers for KSIT faculty and students.</p>
+        </div>
+        <div class="project-card">
+          <span class="project-title">User Support Portal</span>
+          <p class="project-desc">Built an FAQ and helpdesk system to guide users in navigating digital resources.</p>
+        </div>
+      </div>
+    </section>
     <!-- Education -->
     <section aria-labelledby="educationTitle">
       <h2 id="educationTitle">Education</h2>
       <p>M.L.I.Sc — Bangalore University</p>
     </section>
-
     <!-- Contact -->
     <section aria-labelledby="contactTitle">
       <h2 id="contactTitle">Contact</h2>
-      <div class="contact-list">
-        <p>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
-        <p>Phone: <a href="tel:+917760144157">7760144157</a></p>
-        <p>Location: Bengaluru, India</p>
-        <p>
-          GitHub:
-          <a href="https://github.com/Yashu2370" target="_blank" rel="noopener noreferrer">
-            github.com/Yashu2370
-          </a>
-        </p>
+      <ul>
+        <li>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></li>
+        <li>Phone: <a href="tel:+917760144157">7760144157</a></li>
+        <li>Location: Bengaluru, India</li>
+        <li>GitHub: <a href="https://github.com/Yashu2370" target="_blank">github.com/Yashu2370</a></li>
+      </ul>
+      <a
+        href="Yashwanth-K.-S.-Library-2025.docx"
+        class="download-resume"
+        download
+        >Download Resume</a
+      >
+      <div class="social-links">
+        <a href="https://github.com/Yashu2370" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/yashwanthks/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:yashu2370@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
       </div>
     </section>
   </div>
-
   <footer>
     &copy; 2025 Yashwanth K S. All rights reserved.
   </footer>
-
-  <style>
-    .sr-only {
-      position: absolute;
-      left: -9999px;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-  </style>
 </body>
 </html>
