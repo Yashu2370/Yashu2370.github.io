@@ -1,134 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yashwanth K S – Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-            color: #222;
-            font-family: 'Source Sans Pro', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .glass {
-            background: rgba(255,255,255,0.9);
-            border-radius: 22px;
-            box-shadow: 0 6px 24px rgba(60,100,180,0.12);
-            max-width: 600px;
-            margin: 44px auto 24px auto;
-            padding: 36px 28px;
-            backdrop-filter: blur(6px);
-            animation: fadeIn 1.4s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-        .profile-img {
-            display: block;
-            width: 130px;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #8ecae6;
-            margin: 0 auto 18px auto;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-        }
-        h1 {
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-size: 2.3rem;
-            color: #126e82;
-            text-align: center;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-        h2 {
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-size: 1.25rem;
-            color: #126e82;
-            margin-top: 26px;
-            margin-bottom: 10px;
-        }
-        p, li {
-            font-size: 1.08rem;
-            margin: 0 0 8px 0;
-        }
-        ul {
-            margin: 0 0 0 18px;
-            padding: 0;
-        }
-        a {
-            color: #277da1;
-            text-decoration: none;
-            transition: color 0.18s;
-        }
-        a:hover {
-            color: #f77f00;
-        }
-        .contact-list p {
-            margin-bottom: 3px;
-        }
-        footer {
-            text-align: center;
-            color: #277da1;
-            font-size: 1.03rem;
-            margin-bottom: 16px;
-            opacity: 0.8;
-        }
-        @media (max-width: 650px) {
-            .glass {
-                padding: 18px 10px;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yashwanth K S – Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Root variables for color and fonts */
+    :root {
+      --primary-color: #126e82;
+      --secondary-color: #f77f00;
+      --bg-gradient-start: #a1c4fd;
+      --bg-gradient-end: #c2e9fb;
+      --font-primary: 'Montserrat', sans-serif;
+      --font-secondary: 'Source Sans Pro', sans-serif;
+      --text-color-dark: #222;
+      --text-color-light: #555;
+      --border-radius: 22px;
+      --transition-speed: 0.3s;
+    }
+
+    /* Body and container setup */
+    body {
+      background: linear-gradient(
+        135deg,
+        var(--bg-gradient-start) 0%,
+        var(--bg-gradient-end) 100%
+      );
+      color: var(--text-color-dark);
+      font-family: var(--font-secondary);
+      margin: 0;
+      padding: 0 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.95);
+      margin: 48px auto 32px auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 6px 24px rgba(60, 100, 180, 0.12);
+      padding: 40px 36px;
+      backdrop-filter: blur(8px);
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header with branding */
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: 2.6rem;
+      color: var(--primary-color);
+      margin-bottom: 4px;
+      letter-spacing: 0.6px;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-color-light);
+      margin: 0;
+    }
+
+    /* Profile image with subtle shadow and border */
+    .profile-img {
+      display: block;
+      width: 140px;
+      height: 140px;
+      margin: 24px auto 32px auto;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--secondary-color);
+      box-shadow: 0 6px 20px rgba(255, 127, 0, 0.3);
+      transition: transform var(--transition-speed);
+      cursor: pointer;
+    }
+
+    .profile-img:hover,
+    .profile-img:focus {
+      outline: none;
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(255, 127, 0, 0.6);
+    }
+
+    /* Section styling */
+    section {
+      margin-bottom: 32px;
+    }
+
+    section h2 {
+      font-family: var(--font-primary);
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      letter-spacing: 0.05em;
+    }
+
+    section p,
+    section ul {
+      font-size: 1.07rem;
+      color: var(--text-color-dark);
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 0;
+      list-style-type: disc;
+    }
+
+    /* Links with hover and focus */
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition-speed);
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--primary-color);
+      outline: none;
+      text-decoration: underline;
+    }
+
+    /* Contact info spacing */
+    .contact-list p {
+      margin: 6px 0;
+    }
+
+    /* Footer styling */
+    footer {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-color-light);
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .container {
+        padding: 24px 20px;
+        margin: 32px 8px 24px 8px;
+      }
+
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      .profile-img {
+        width: 110px;
+        height: 110px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="glass">
-        <img src="profile.jpg" alt="Profile Photo" class="profile-img">
-        <h1>Yashwanth K S</h1>
-        <p style="text-align:center; color:#20719e;">Library & Information Science Professional</p>
-        <section>
-            <h2>About Me</h2>
-            <p>
-                I am a Library & Information Science professional with experience in library operations, cataloging, digital platforms, and user support.
-            </p>
-        </section>
-        <section>
-            <h2>Experience</h2>
-            <p><strong>Library Assistant – K S School of Engineering & Management</strong></p>
-            <p>Cataloging · Circulation · Digital Library Services · User Support</p>
-        </section>
-        <section>
-            <h2>Skills</h2>
-            <ul>
-                <li>Koha &amp; Libsoft</li>
-                <li>Cataloging &amp; Metadata</li>
-                <li>DSpace · EPrints</li>
-                <li>Information Retrieval</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Education</h2>
-            <p>M.L.I.Sc — Bangalore University</p>
-        </section>
-        <section>
-            <h2>Contact</h2>
-            <div class="contact-list">
-                <p>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
-                <p>Phone: 7760144157</p>
-                <p>Location: Bengaluru, India</p>
-                <p>GitHub: <a href="https://github.com/Yashu2370">github.com/Yashu2370</a></p>
-            </div>
-        </section>
-    </div>
-    <footer>
-        &copy; 2025 Yashwanth K S. All rights reserved.
-    </footer>
+  <div class="container" role="main" aria-label="Portfolio of Yashwanth K S">
+    <!-- Branding & photo -->
+    <header>
+      <h1 tabindex="0">Yashwanth K S</h1>
+      <p tabindex="0">Library & Information Science Professional</p>
+    </header>
+
+    <img
+      src="profile.jpg"
+      alt="Yashwanth K S profile photo"
+      class="profile-img"
+      tabindex="0"
+      aria-describedby="profileDesc"
+    />
+    <p id="profileDesc" class="sr-only">
+      Profile photo of Yashwanth K S, a Library and Information Science Professional.
+    </p>
+
+    <!-- About Me -->
+    <section aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle">About Me</h2>
+      <p>
+        I am a Library & Information Science professional with experience in
+        library operations, cataloging, digital platforms, and user support.
+      </p>
+    </section>
+
+    <!-- Experience -->
+    <section aria-labelledby="experienceTitle">
+      <h2 id="experienceTitle">Experience</h2>
+      <p><strong>Library Assistant – K S School of Engineering & Management</strong></p>
+      <p>Cataloging · Circulation · Digital Library Services · User Support</p>
+    </section>
+
+    <!-- Skills -->
+    <section aria-labelledby="skillsTitle">
+      <h2 id="skillsTitle">Skills</h2>
+      <ul>
+        <li>Koha &amp; Libsoft</li>
+        <li>Cataloging &amp; Metadata</li>
+        <li>DSpace · EPrints</li>
+        <li>Information Retrieval</li>
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section aria-labelledby="educationTitle">
+      <h2 id="educationTitle">Education</h2>
+      <p>M.L.I.Sc — Bangalore University</p>
+    </section>
+
+    <!-- Contact -->
+    <section aria-labelledby="contactTitle">
+      <h2 id="contactTitle">Contact</h2>
+      <div class="contact-list">
+        <p>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
+        <p>Phone: <a href="tel:+917760144157">7760144157</a></p>
+        <p>Location: Bengaluru, India</p>
+        <p>
+          GitHub:
+          <a href="https://github.com/Yashu2370" target="_blank" rel="noopener noreferrer">
+            github.com/Yashu2370
+          </a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Yashwanth K S. All rights reserved.
+  </footer>
+
+  <style>
+    .sr-only {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+  </style>
 </body>
 </html>
