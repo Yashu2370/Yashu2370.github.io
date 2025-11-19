@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Name — Personal Website</title>
-  <meta name="description" content="Personal website / portfolio" />
+  <title>Yashwanth K S — Personal Website</title>
+  <meta name="description" content="Portfolio and professional profile of Yashwanth K S, Library & Information Science professional." />
+
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#f6f8fb;
@@ -32,39 +34,23 @@
       font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
       background:linear-gradient(180deg,var(--bg), #e9eef9);
       color: #0f1724;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
       padding:32px 20px;
     }
     header{
-      max-width:1100px;
-      margin:0 auto 28px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
+      max-width:1100px;margin:0 auto 28px;
+      display:flex;align-items:center;justify-content:space-between;
     }
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
+    .brand{display:flex;gap:12px;align-items:center}
     .avatar{
-      width:56px;height:56px;border-radius:12px;flex-shrink:0;
-      background:linear-gradient(135deg,var(--accent),#a78bfa);
-      display:grid;place-items:center;color:white;font-weight:700;
-      box-shadow:var(--shadow);
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#a78bfa);
+      display:grid;place-items:center;color:white;font-weight:700;box-shadow:var(--shadow);
     }
-    .brand h1{margin:0;font-size:18px;letter-spacing:-0.2px}
-    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
     nav{display:flex;gap:10px;align-items:center}
     .btn{
-      padding:8px 12px;border-radius:10px;background:var(--card);border:1px solid rgba(0,0,0,0.04);
-      box-shadow:var(--shadow);cursor:pointer;font-weight:600;font-size:13px;
-    }
-    .link{
-      background:transparent;border:0;color:var(--muted);cursor:pointer;padding:8px 10px;border-radius:8px;
+      padding:8px 12px;border-radius:10px;background:var(--card);
+      border:1px solid rgba(0,0,0,0.04);cursor:pointer;font-weight:600;
     }
 
     main{
@@ -73,326 +59,187 @@
     }
 
     .hero{
-      display:grid;grid-template-columns:1fr;gap:18px;padding:22px;border-radius:var(--radius);background:var(--card);
-      box-shadow:var(--shadow);align-items:center;
+      padding:22px;border-radius:var(--radius);background:var(--card);
+      box-shadow:var(--shadow);
     }
-    .hero-inner{display:flex;gap:18px;align-items:center}
-    .hero-text h2{margin:0;font-size:28px}
-    .hero-text p{margin:8px 0 0;color:var(--muted)}
-    .cta{
-      margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;
-    }
-    .primary{
-      background:linear-gradient(90deg,var(--accent), #8b5cf6);
-      color:white;border:0;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700;
-      box-shadow:0 8px 24px rgba(37,99,235,0.12);
-    }
+    .hero h2{margin:0;font-size:28px}
+    .muted{color:var(--muted)}
 
-    /* Two-column layout for larger screens */
+    .card{padding:18px;border-radius:12px;background:var(--card);box-shadow:var(--shadow)}
+
     @media(min-width:880px){
-      main{grid-template-columns: 1fr 380px;}
-      .hero{grid-column:1 / span 2;}
+      main{grid-template-columns:1fr 380px;}
+      .hero{grid-column:1/span 2}
     }
 
-    /* Right column card */
-    .card{
-      padding:18px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);
-    }
-
-    /* About */
-    .about{display:flex;gap:18px;align-items:flex-start}
-    .about .picture{
-      width:120px;height:120px;border-radius:14px;background:var(--glass);display:grid;place-items:center;font-weight:700;
-      flex-shrink:0;border:1px solid rgba(0,0,0,0.02);
-    }
-    .about p{margin:0;color:var(--muted)}
-
-    /* Skills */
-    .skill{margin-bottom:12px}
-    .skill h4{margin:0 0 6px;font-size:14px}
-    .bar{
-      height:10px;border-radius:10px;background:linear-gradient(90deg,#e6eefb,#f3f7ff);overflow:hidden;
-      border:1px solid rgba(0,0,0,0.03)
-    }
-    [data-theme="dark"] .bar{background:linear-gradient(90deg,#071021,#091428)}
-    .bar > i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--accent),#8b5cf6);}
-
-    /* Projects */
     .projects-grid{display:grid;grid-template-columns:1fr;gap:12px}
-    @media(min-width:700px){ .projects-grid{grid-template-columns:1fr 1fr} }
-    .proj{
-      padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.6),var(--card));
-      border:1px solid rgba(0,0,0,0.03);
-    }
-    .proj h3{margin:0 0 6px;font-size:16px}
-    .proj p{margin:0;color:var(--muted);font-size:14px}
-    .proj .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-    .tag{padding:6px 8px;border-radius:8px;font-size:12px;background:rgba(0,0,0,0.04)}
+    @media(min-width:700px){.projects-grid{grid-template-columns:1fr 1fr}}
+    .proj{padding:14px;border-radius:12px;background:var(--card);border:1px solid rgba(0,0,0,0.03)}
 
-    /* Contact */
-    .contact-row{display:flex;gap:12px;flex-direction:column}
-    @media(min-width:700px){ .contact-row{flex-direction:row} }
-    .input, textarea{
-      padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;font-size:14px;
-      color:inherit;min-width:0;
+    .input,textarea{
+      padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);
+      background:transparent;font-size:14px;width:100%;
     }
     textarea{min-height:120px;resize:vertical}
 
-    footer{max-width:1100px;margin:22px auto 60px;color:var(--muted);font-size:13px;text-align:center}
+    footer{text-align:center;margin-top:30px;color:var(--muted);font-size:13px}
 
-    /* small helpers */
-    .muted{color:var(--muted)}
-    a{color:inherit}
-    .small{font-size:13px;color:var(--muted)}
-    .flex{display:flex;gap:12px;align-items:center}
-    .spacer{flex:1}
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="brand">
-      <div class="avatar" aria-hidden="true">YN</div>
-      <div>
-        <h1>Your Name</h1>
-        <p class="small muted">Developer · Catalog Assistant · Open to opportunities</p>
-      </div>
+<header>
+  <div class="brand">
+    <div class="avatar">YS</div>
+    <div>
+      <h1 style="margin:0;font-size:18px">Yashwanth K S</h1>
+      <p class="muted" style="margin:0;font-size:13px">Library & Information Science Professional</p>
     </div>
+  </div>
 
-    <nav>
-      <button class="link" onclick="scrollToSection('about')">About</button>
-      <button class="link" onclick="scrollToSection('projects')">Projects</button>
-      <button class="link" onclick="scrollToSection('contact')">Contact</button>
-      <div style="width:10px"></div>
-      <button class="btn" id="themeToggle" title="Toggle dark mode">🌙</button>
-    </nav>
-  </header>
+  <nav>
+    <button class="btn" onclick="scrollToSection('about')">About</button>
+    <button class="btn" onclick="scrollToSection('projects')">Projects</button>
+    <button class="btn" onclick="scrollToSection('contact')">Contact</button>
+    <button class="btn" id="themeToggle">🌙</button>
+  </nav>
+</header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero card" id="hero">
-      <div class="hero-inner">
-        <div style="flex:1" class="hero-text">
-          <h2>Hi — I'm <span style="color:var(--accent)">Your Name</span></h2>
-          <p class="muted">Catalog Assistant & Web Developer. I build clean, accessible web projects and dashboards. Currently available for freelance and part-time roles.</p>
+<main>
 
-          <div class="cta">
-            <a class="primary" href="#contact">Hire / Contact</a>
-            <a class="btn" href="#projects">View Projects</a>
-            <a class="btn" href="https://github.com/Yashu2370" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <h2>Hi — I'm <span style="color:var(--accent)">Yashwanth K S</span></h2>
+    <p class="muted">
+      Library & Information Science professional skilled in Koha, Libsoft, digital library platforms, 
+      cataloging, circulation, and user support. Passionate about digital tools, automation, 
+      and accessible library services.
+    </p>
+  </section>
 
-        <div style="width:240px">
-          <div class="card" style="text-align:center">
-            <h4 style="margin:6px 0 10px">Quick Info</h4>
-            <p class="small muted">Location: Your City</p>
-            <p class="small muted">Email: your.email@example.com</p>
-            <p class="small muted">Open to: Remote / Hybrid</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- LEFT COLUMN (ABOUT + SKILLS) -->
+  <section class="card" id="about">
+    <h3>About Me</h3>
 
-    <!-- About + Right column -->
-    <section style="display:contents">
-      <div class="card">
-        <h3>About</h3>
-        <div class="about" style="margin-top:12px">
-          <div class="picture">Photo</div>
-          <div>
-            <p class="muted">
-              Hello! I'm <strong>Your Name</strong>, a detail-oriented Catalog Assistant and web developer. I enjoy organizing metadata, building user-friendly dashboards, and automating repetitive tasks using JavaScript and lightweight tools.
-            </p>
-            <p class="muted" style="margin-top:10px">
-              Replace this paragraph with your real bio: years of experience, tools you use (e.g., Excel, SQL, JS, Chart.js), and the type of roles you want.
-            </p>
+    <p class="muted">
+      I am a Library & Information Science professional with experience in library operations, 
+      digital resource management, and user support. I currently work as a Library Assistant at 
+      K S School of Engineering and Management, where I manage cataloging, circulation, 
+      digital access, and user services.
+    </p>
 
-            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" href="#projects">See my work</a>
-              <a class="btn" href="mailto:your.email@example.com">Email me</a>
-            </div>
-          </div>
-        </div>
+    <p class="muted">
+      I specialize in Koha, Libsoft, and digital library platforms like DSpace, EPrints, and Greenstone. 
+      I regularly assist users with OPAC navigation, e-resource access, information retrieval, 
+      and research support while conducting orientation and training sessions for students and faculty.
+    </p>
 
-        <hr style="margin:18px 0;border:none;border-top:1px solid rgba(0,0,0,0.04)">
+    <p class="muted">
+      I also organize book exhibitions, reading promotion events, and awareness campaigns. 
+      With technical skills in HTML, MS Office, and basic Python, I support automation, 
+      reporting, and workflow improvements.
+    </p>
 
-        <h3 style="margin-bottom:12px">Skills</h3>
-        <div class="skill">
-          <h4>HTML & CSS <span class="small muted" style="float:right">90%</span></h4>
-          <div class="bar" aria-hidden="true"><i style="width:90%"></i></div>
-        </div>
-        <div class="skill">
-          <h4>JavaScript (vanilla) <span class="small muted" style="float:right">80%</span></h4>
-          <div class="bar" aria-hidden="true"><i style="width:80%"></i></div>
-        </div>
-        <div class="skill">
-          <h4>Data organization / Cataloging <span class="small muted" style="float:right">85%</span></h4>
-          <div class="bar" aria-hidden="true"><i style="width:85%"></i></div>
-        </div>
+    <p class="muted">
+      I hold an M.L.I.Sc from Bangalore University and certifications in IT Applications, 
+      Web Design, Data Analytics, and Programming. I am detail-oriented, service-focused, 
+      and committed to building modern, user-friendly information services.
+    </p>
 
-        <div style="margin-top:12px" class="small muted">
-          Tools: Excel · Google Sheets · Git · GitHub Pages · Chart.js · Basic SQL
-        </div>
-      </div>
+    <hr>
 
-      <!-- Right column -->
-      <aside class="card" id="right-col" aria-labelledby="right-heading" style="height:fit-content">
-        <h3 id="right-heading">Contact & Quick Links</h3>
-        <p class="small muted">Want to work together? Send an email or check my GitHub.</p>
+    <h3>Skills</h3>
+    <ul class="muted">
+      <li>Koha, Libsoft, LMS platforms</li>
+      <li>Cataloging, Classification, Metadata</li>
+      <li>OPAC, E-resources, User Support</li>
+      <li>DSpace, EPrints, Greenstone</li>
+      <li>MS Office, HTML, Basics of Python</li>
+      <li>Library Automation & Digital Services</li>
+    </ul>
+  </section>
 
-        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
-          <a class="btn" href="mailto:your.email@example.com">Email: your.email@example.com</a>
-          <a class="btn" href="https://github.com/Yashu2370" target="_blank" rel="noopener">GitHub Profile</a>
-          <a class="btn" href="#" onclick="downloadResume()">Download Resume (PDF)</a>
-        </div>
+  <!-- RIGHT COLUMN (INFO) -->
+  <aside class="card">
+    <h3>Quick Info</h3>
+    <p class="muted">📍 Bengaluru, India</p>
+    <p class="muted">📧 yashu2370@gmail.com</p>
+    <p class="muted">📞 7760144157</p>
+    <p class="muted">🎓 M.L.I.Sc — Bangalore University</p>
+    <p class="muted">💼 Library Assistant (2023–Present)</p>
+  </aside>
 
-        <hr style="margin:14px 0;border:none;border-top:1px solid rgba(0,0,0,0.04)">
+  <!-- PROJECTS -->
+  <section class="card" id="projects" style="grid-column:1/span 2">
+    <h3>Projects</h3>
 
-        <h4 style="margin:0 0 10px">Availability</h4>
-        <p class="small muted">Open to part-time and freelance roles. Prefer remote or hybrid.</p>
-      </aside>
-    </section>
+    <div class="projects-grid">
 
-    <!-- Projects (full width on small, left column on big screens) -->
-    <section class="card" id="projects" style="grid-column:1 / span 1">
-      <h3>Projects</h3>
-      <div class="projects-grid" style="margin-top:12px">
-        <!-- Project 1 -->
-        <div class="proj">
-          <h3>Library Collection Dashboard</h3>
-          <p class="muted">Interactive Chart.js dashboard that shows e-journal counts, provider stats, and export features. Built as a single-file HTML + JS dashboard ready for GitHub Pages.</p>
-          <div class="tags">
-            <span class="tag">HTML</span>
-            <span class="tag">Chart.js</span>
-            <span class="tag">GitHub Pages</span>
-            <a href="#" class="small muted" style="margin-left:auto">View →</a>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="proj">
-          <h3>Cataloging Automation Script</h3>
-          <p class="muted">A lightweight JavaScript script to normalize metadata and export CSV for bulk uploads.</p>
-          <div class="tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">CSV</span>
-            <span class="tag">Automation</span>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="proj">
-          <h3>Personal Portfolio</h3>
-          <p class="muted">This personal website (single-page) — responsive and easy to update.</p>
-          <div class="tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Responsive</span>
-          </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="proj">
-          <h3>Sample Data Visuals</h3>
-          <p class="muted">Small examples showing bar/line charts for reports — useful for quick presentations.</p>
-          <div class="tags">
-            <span class="tag">Charts</span>
-            <span class="tag">Reports</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="card" id="contact" style="grid-column:1 / span 2">
-      <h3>Contact</h3>
-      <p class="muted">Fill the form and it will open your email client with the message prepared.</p>
-
-      <div style="margin-top:12px" class="contact-row">
-        <input class="input" id="name" placeholder="Your name" />
-        <input class="input" id="email" placeholder="Your email" />
+      <div class="proj">
+        <h4>Library Collection Dashboard</h4>
+        <p class="muted">
+          Interactive dashboard using Chart.js to visualize e-journal and resource data.
+        </p>
       </div>
 
-      <div style="margin-top:12px">
-        <textarea id="message" placeholder="Your message"></textarea>
+      <div class="proj">
+        <h4>Cataloging Automation Script</h4>
+        <p class="muted">A lightweight JavaScript tool for metadata normalization and CSV export.</p>
       </div>
 
-      <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
-        <button class="primary" onclick="sendEmail()">Send message</button>
-        <button class="btn" onclick="clearForm()">Clear</button>
-        <div class="spacer"></div>
-        <div class="small muted">Or email me directly: <a href="mailto:your.email@example.com">your.email@example.com</a></div>
+      <div class="proj">
+        <h4>Digital Library Setup</h4>
+        <p class="muted">Configured DSpace and EPrints for institutional repository management.</p>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    © <span id="year"></span> Your Name · Built with care · Hosted on GitHub Pages
-  </footer>
+      <div class="proj">
+        <h4>Personal Portfolio Website</h4>
+        <p class="muted">This responsive website built using HTML, CSS, and vanilla JS.</p>
+      </div>
 
-  <script>
-    // Set year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    </div>
+  </section>
 
-    // Theme toggle: persists in localStorage
-    const themeToggle = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    const saved = localStorage.getItem('theme');
-    if (saved) root.setAttribute('data-theme', saved);
-    updateThemeButton();
+  <!-- CONTACT -->
+  <section class="card" id="contact" style="grid-column:1/span 2">
+    <h3>Contact Me</h3>
 
-    themeToggle.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', current === 'dark' ? 'dark' : 'light');
-      localStorage.setItem('theme', current === 'dark' ? 'dark' : 'light');
-      updateThemeButton();
-    });
+    <input class="input" id="name" placeholder="Your name">
+    <input class="input" id="email" placeholder="Your email">
+    <textarea id="message" placeholder="Your message"></textarea>
 
-    function updateThemeButton(){
-      const isDark = root.getAttribute('data-theme') === 'dark';
-      themeToggle.textContent = isDark ? '☀️' : '🌙';
-    }
+    <button class="btn" onclick="sendEmail()">Send Message</button>
+  </section>
 
-    // Smooth scroll helper
-    function scrollToSection(id){
-      const el = document.getElementById(id);
-      if(!el) return;
-      el.scrollIntoView({behavior:'smooth', block:'start'});
-    }
+</main>
 
-    // Contact form: open email client with subject/body
-    function sendEmail(){
-      const name = encodeURIComponent(document.getElementById('name').value.trim());
-      const from = encodeURIComponent(document.getElementById('email').value.trim());
-      const message = encodeURIComponent(document.getElementById('message').value.trim());
-      const to = 'your.email@example.com'; // <-- change this to your email
-      const subject = encodeURIComponent('Contact from site: ' + (name || 'Website visitor'));
-      let body = '';
-      if(name) body += 'Name: ' + name + '%0D%0A';
-      if(from) body += 'Email: ' + from + '%0D%0A%0D%0A';
-      if(message) body += 'Message:%0D%0A' + message + '%0D%0A';
-      const mailto = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
-      window.location.href = mailto;
-    }
+<footer>
+  © <span id="year"></span> Yashwanth K S — Hosted on GitHub Pages
+</footer>
 
-    function clearForm(){
-      document.getElementById('name').value='';
-      document.getElementById('email').value='';
-      document.getElementById('message').value='';
-    }
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Resume download helper (replace with actual file path in your repo)
-    function downloadResume(){
-      // If you add resume.pdf to your repo root, use:
-      // window.location.href = './resume.pdf';
-      alert('To enable resume download: add resume.pdf to your repo and replace the downloadResume() URL.');
-    }
+  function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:"smooth"});
+  }
 
-    // Optimize: prefer dark mode when user OS is dark (first visit)
-    if(!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-      root.setAttribute('data-theme','dark');
-      updateThemeButton();
-    }
-  </script>
+  function sendEmail(){
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const msg = document.getElementById("message").value;
+
+    const link = `mailto:yashu2370@gmail.com?subject=Message from ${name}&body=Email: ${email}%0D%0A%0D%0A${msg}`;
+    window.location.href = link;
+  }
+
+  const toggle = document.getElementById("themeToggle");
+  toggle.onclick = () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    toggle.textContent = current === "dark" ? "🌙" : "☀️";
+  };
+</script>
+
 </body>
 </html>
