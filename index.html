@@ -1,391 +1,157 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>YASHWANTH K S — Library & Information Professional</title>
-  <meta name="description" content="Resume & portfolio of Yashwanth K S — librarian, information professional. Experience, skills, projects, contact." />
-  <meta name="author" content="Yashwanth K S" />
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Yashwanth K S — Librarian & Information Professional" />
-  <meta property="og:description" content="Resume and portfolio of a library professional based in Bengaluru." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourusername.github.io/your-repo" />
-  <meta property="og:image" content="https://yourdomain.com/og-image.png" />
-  <!-- Structured data (JSON-LD) for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Yashwanth K S",
-    "jobTitle": "Librarian / Information Professional",
-    "email": "mailto:youremail@example.com",
-    "url": "https://yourusername.github.io/your-repo",
-    "sameAs": [
-      "https://www.linkedin.com/in/yourprofile",
-      "https://github.com/yourusername"
-    ]
-  }
-  </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yashwanth K S - Portfolio</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+            line-height: 1.6;
+        }
 
-  <style>
-    :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --accent:#7c3aed; /* change to your brand color */
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      --maxw:1000px;
-      --transition: 200ms ease;
-    }
-    /* Reset & base */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(180deg,#071025 0%, #071430 100%);
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      padding:32px;
-      display:flex;
-      justify-content:center;
-    }
-    .wrap{
-      width:100%;
-      max-width:var(--maxw);
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:320px 1fr;
-      gap:24px;
-      align-items:start;
-    }
+        header {
+            background: #1e293b;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-    /* Sidebar card */
-    .sidebar{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
-      position:sticky;
-      top:32px;
-      height:fit-content;
-    }
-    .photo{
-      width:100%;
-      height:180px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--accent), #4f46e5);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:700;
-      font-size:28px;
-      letter-spacing:1px;
-      margin-bottom:18px;
-    }
-    h1{
-      margin:0 0 4px 0;
-      font-size:20px;
-      line-height:1.1;
-    }
-    .muted{color:var(--muted); font-size:13px;}
-    .pill{display:inline-block;background:var(--glass);padding:6px 10px;border-radius:999px;font-weight:600;margin:6px 6px 0 0;font-size:13px}
-    .contact-list{margin-top:14px; font-size:14px;}
-    .contact-list a{color:inherit;text-decoration:none}
-    .skills{display:flex;flex-wrap:wrap;margin-top:14px;gap:8px}
-    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;font-size:13px}
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
 
-    /* Main content */
-    .main{
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
-      border-radius:var(--radius);
-      padding:26px 26px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.5);
-      min-height:300px;
-    }
-    .section{margin-bottom:20px}
-    .section h2{margin:0 0 10px 0;font-size:16px}
-    .job{
-      display:flex;
-      gap:12px;
-      margin-bottom:12px;
-      padding:12px;
-      border-radius:10px;
-      background:linear-gradient(90deg, rgba(255,255,255,0.012), transparent);
-    }
-    .job .meta{min-width:160px;font-size:13px;color:var(--muted)}
-    .job .details h3{margin:0;font-size:15px}
-    .job .details p{margin:6px 0;color:var(--muted);font-size:14px}
-    .proj-list{display:grid;gap:12px}
-    .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent), #4f46e5);color:white;text-decoration:none;font-weight:600;
-      box-shadow: 0 6px 18px rgba(124,58,237,0.18);
-      transition:transform var(--transition), box-shadow var(--transition);
-    }
-    .btn:active{transform:translateY(1px)}
-    .secondary{
-      background:transparent;border:1px solid rgba(255,255,255,0.06); color:var(--muted); font-weight:600;
-    }
+        header p {
+            margin-top: 8px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
 
-    /* Responsive */
-    @media (max-width:920px){
-      .wrap{grid-template-columns:1fr; padding:0 12px}
-      .sidebar{position:relative; top:0}
-    }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
 
-    /* Print rules: show the main content and hide the glassy background */
-    @media print{
-      body{background:white;color:black;padding:0}
-      .wrap{max-width:100%;grid-template-columns:1fr}
-      .sidebar{display:none}
-      .main{box-shadow:none;background:transparent;padding:0}
-      .btn-row, .photo {display:none}
-    }
+        h2 {
+            border-left: 4px solid #1e293b;
+            padding-left: 10px;
+            margin-top: 40px;
+            font-size: 22px;
+        }
 
-    /* small utilities */
-    .muted-small{color:var(--muted);font-size:13px}
-    .tagline{margin-top:6px;color:var(--muted)}
-    footer{margin-top:18px;color:var(--muted);font-size:13px}
-    .socials{display:flex;gap:8px;margin-top:12px}
-    .icon{width:38px;height:38px;border-radius:8px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.02);text-decoration:none;color:inherit}
-    .download-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
-  </style>
+        .section {
+            background: white;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background: #f1f5f9;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .contact a {
+            color: #1e293b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
-  <main class="wrap" role="main" aria-labelledby="name-heading">
-    <!-- SIDEBAR -->
-    <aside class="sidebar" aria-label="Profile">
-      <div class="photo" aria-hidden="true">
-        YK
-        <!-- Replace with <img src="path/to/photo.jpg" alt="Yashwanth K S" style="width:100%;height:100%;object-fit:cover;border-radius:12px"> if you have a photo -->
-      </div>
 
-      <h1 id="name-heading">Yashwanth K S</h1>
-      <div class="muted">Librarian | Information Specialist | Academic Library Professional</div>
-      <div class="tagline">Bengaluru · High-paying library roles · Library automation · Research support</div>
+<header>
+    <h1>Yashwanth K S</h1>
+    <p>Librarian • Information Specialist • Academic Library Professional</p>
+</header>
 
-      <div class="contact-list" style="margin-top:14px">
-        <!-- >>> REPLACE HERE: contact details >>> -->
-        <div class="muted-small">Email</div>
-        <div><a href="mailto:youremail@example.com">youremail@example.com</a></div>
+<div class="container">
 
-        <div class="muted-small" style="margin-top:8px">Phone</div>
-        <div><a href="tel:+919000000000">+91 90000 00000</a></div>
+    <!-- Profile -->
+    <h2>Profile</h2>
+    <div class="section">
+        <p>
+            <!-- Replace this text with your real profile -->
+            Motivated library and information professional with experience in academic libraries, 
+            library automation, Koha, DSpace, cataloguing (AACR2 / RDA), and user services. 
+            Seeking high-paying library roles in Bengaluru.
+        </p>
+    </div>
 
-        <div class="muted-small" style="margin-top:8px">Location</div>
-        <div>Bengaluru, India</div>
+    <!-- Experience -->
+    <h2>Experience</h2>
 
-        <div class="muted-small" style="margin-top:8px">Links</div>
-        <div class="socials">
-          <a class="icon" href="https://linkedin.com/in/yourprofile" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
-            <!-- LinkedIn SVG -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h4v16H4zM8 8h.1M14 8v2.8a3.2 3.2 0 101.6 0V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a class="icon" href="https://github.com/yourusername" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C7 2 3.6 5.5 3.6 9.9c0 3.6 2.3 6.6 5.5 7.7.4.1.6-.2.6-.5v-1.9c-2.2.5-2.7-1-2.7-1-.4-1.1-1-1.4-1-1.4-.8-.6.1-.6.1-.6.9.1 1.3.9 1.3.9.8 1.3 2.1.9 2.6.7.1-.6.3-1 .6-1.2-1.7-.2-3.5-.9-3.5-4 0-.9.3-1.7.9-2.4-.1-.2-.4-1.1.1-2.4 0 0 .8-.2 2.6.9a8.9 8.9 0 015 0c1.8-1.1 2.6-.9 2.6-.9.5 1.3.2 2.2.1 2.4.6.7.9 1.5.9 2.4 0 3.1-1.8 3.8-3.5 4 .4.4.7 1.1.7 2.3v3.3c0 .3.2.6.6.5 3.2-1 5.5-4.1 5.5-7.7C20.4 5.5 17 2 12 2z" stroke="currentColor" stroke-width="0.4"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div style="margin-top:16px">
-        <div class="muted-small">Core skills</div>
-        <div class="skills" aria-hidden="true">
-          <span class="skill">Library Management</span>
-          <span class="skill">Koha / DSpace</span>
-          <span class="skill">Research Support</span>
-          <span class="skill">Cataloguing (AACR2, RDA)</span>
-          <span class="skill">Information Literacy</span>
-        </div>
-      </div>
-
-      <div style="margin-top:16px">
-        <a class="btn download-link" href="resume.pdf" download>
-          <!-- Download icon -->
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          Download Resume
-        </a>
-      </div>
-
-      <footer>
-        <div class="muted-small">Available for: <strong>Full-time / Contract</strong></div>
-        <div style="margin-top:8px" class="muted-small">Last updated: <time datetime="2025-11-19">Nov 19, 2025</time></div>
-      </footer>
-    </aside>
-
-    <!-- MAIN -->
-    <section class="main" aria-label="Main content">
-      <!-- SUMMARY / HERO -->
-      <div class="section" id="summary">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-          <div>
-            <h2>Profile</h2>
-            <p class="muted">A concise, targeted summary you should replace with 2–3 sentences from your resume. Example: "Librarian with 5+ years' experience in academic libraries, specializing in library automation, digital repositories, user services and research support. Experienced with Koha, DSpace, metadata standards and leading library teams to improve access and user experience."</p>
-          </div>
-
-          <div style="text-align:right">
-            <div class="muted-small">Location</div>
-            <div>Bengaluru, India</div>
-            <div class="muted-small" style="margin-top:8px">Open to</div>
-            <div>Relocate / Remote / Bengaluru-based roles</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- EXPERIENCE -->
-      <div class="section" id="experience">
-        <h2>Experience</h2>
-
-        <!-- >>> REPLACE/ADD JOBS: Copy this job block for each role and update details >>> -->
-        <article class="job" aria-labelledby="job1-title">
-          <div class="meta" role="group" aria-label="Dates and employer">
-            <div id="job1-title"><strong>Assistant Librarian</strong></div>
-            <div class="muted-small">XYZ College of Engineering</div>
-            <div class="muted-small">Jun 2021 — Present</div>
-            <div class="muted-small">Bengaluru, India</div>
-          </div>
-
-          <div class="details">
-            <h3>Assistant Librarian — XYZ College of Engineering</h3>
-            <p class="muted">Lead library automation project (Koha); redesigned circulation and reference services; trained staff in cataloguing & digital repository management. Key achievements:</p>
-            <ul class="muted-small">
-              <li>Implemented Koha and migrated 20k+ records, improving circulation efficiency by 40%.</li>
-              <li>Established institutional repository (DSpace) and digitized 500+ theses & departmental reports.</li>
-              <li>Delivered information literacy workshops to 1,200 students over 2 years.</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- another example job -->
-        <article class="job" aria-labelledby="job2-title">
-          <div class="meta">
-            <div id="job2-title"><strong>Library Assistant</strong></div>
-            <div class="muted-small">ABC Institute of Management</div>
-            <div class="muted-small">2018 — 2021</div>
-          </div>
-          <div class="details">
-            <h3>Library Assistant — ABC Institute of Management</h3>
-            <p class="muted">Managed serials, acquisitions, and implemented circulation policies.</p>
-          </div>
-        </article>
-      </div>
-
-      <!-- EDUCATION -->
-      <div class="section" id="education">
-        <h2>Education</h2>
-        <div class="job" style="align-items:center">
-          <div class="meta">
-            <div><strong>MLISc</strong></div>
-            <div class="muted-small">University Name — 2017</div>
-          </div>
-          <div class="details">
-            <p class="muted">Master of Library & Information Science — Specialization / Thesis: "XXXXX"</p>
-          </div>
-        </div>
-        <!-- Add Bachelors, diplomas, certifications -->
-      </div>
-
-      <!-- PROJECTS / REPOSITORY -->
-      <div class="section" id="projects">
-        <h2>Projects & Contributions</h2>
-        <div class="proj-list">
-          <div class="job" aria-labelledby="proj1">
-            <div class="meta">2024</div>
-            <div class="details">
-              <h3 id="proj1">Koha Migration & Training</h3>
-              <p class="muted">Migrated legacy records to Koha, wrote SOPs, and delivered staff training sessions. <a href="https://github.com/yourusername/koha-migration" target="_blank" rel="noopener">Repo / docs</a></p>
-            </div>
-          </div>
-
-          <div class="job" aria-labelledby="proj2">
-            <div class="meta">2023</div>
-            <div class="details">
-              <h3 id="proj2">Institutional Repository (DSpace)</h3>
-              <p class="muted">Set up DSpace, managed metadata mapping (MARC21 → Dublin Core), and led digitization.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SKILLS & TOOLS -->
-      <div class="section" id="skills">
-        <h2>Skills & Tools</h2>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span class="pill">Koha</span>
-          <span class="pill">DSpace</span>
-          <span class="pill">MARC21</span>
-          <span class="pill">RDA / AACR2</span>
-          <span class="pill">Library Automation</span>
-          <span class="pill">Information Literacy</span>
-          <span class="pill">Cataloguing</span>
-          <span class="pill">SQL / Basic scripting</span>
-        </div>
-      </div>
-
-      <!-- PUBLICATIONS / CERTIFICATIONS -->
-      <div class="section" id="certifications">
-        <h2>Certifications & Publications</h2>
-        <ul class="muted-small">
-          <li>Certificate in Library Automation — Institute Name, 2022</li>
-          <li>"Improving Access in College Libraries", Journal of Library Science, 2023</li>
+    <div class="section">
+        <h3>Assistant Librarian — XYZ Engineering College</h3>
+        <p><strong>2021 — Present</strong></p>
+        <ul>
+            <li>Implemented Koha and migrated 20,000+ records.</li>
+            <li>Managed circulation, serials, digital repository and cataloguing.</li>
+            <li>Trained staff and conducted information literacy sessions.</li>
         </ul>
-      </div>
+    </div>
 
-      <!-- CONTACT -->
-      <div class="section" id="contact">
-        <h2>Contact</h2>
-        <p class="muted">Interested in collaborating or hiring? Send me an email or use the contact form below.</p>
+    <div class="section">
+        <h3>Library Assistant — ABC Management Institute</h3>
+        <p><strong>2018 — 2021</strong></p>
+        <ul>
+            <li>Handled acquisitions, serials and reference support.</li>
+            <li>Maintained databases and student services.</li>
+        </ul>
+    </div>
 
-        <!-- Simple contact form using mailto fallback; requires manual email handler or server integration -->
-        <form id="contactForm" onsubmit="submitForm(event)" aria-label="Contact form">
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <input name="name" required placeholder="Your name" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-            <input name="email" required placeholder="Your email" type="email" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
-          </div>
-          <textarea name="message" required placeholder="Message" rows="4" style="width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+    <!-- Skills -->
+    <h2>Skills</h2>
+    <div class="section">
+        <ul>
+            <li>Koha (Library Automation)</li>
+            <li>DSpace (Digital Repository)</li>
+            <li>MARC21, RDA, AACR2 Cataloguing</li>
+            <li>Information Literacy Training</li>
+            <li>Library Management & User Services</li>
+        </ul>
+    </div>
 
-          <div class="btn-row">
-            <button class="btn" type="submit">Send message</button>
-            <a class="btn secondary" href="mailto:youremail@example.com?subject=Hiring%20Request&body=Hello%20Yashwanth%2C%0A%0AI%20would%20like%20to%20discuss%20...">Email directly</a>
-          </div>
-        </form>
-      </div>
+    <!-- Education -->
+    <h2>Education</h2>
+    <div class="section">
+        <p><strong>MLISc – University Name (Year)</strong></p>
+        <p>Bachelor’s Degree – University Name (Year)</p>
+    </div>
 
-      <footer style="margin-top:18px">
-        <div class="muted-small">Want a printable resume? Click <a href="resume.pdf" class="download-link">Download Resume</a> or use your browser's Print (Ctrl/Cmd+P).</div>
-      </footer>
-    </section>
-  </main>
+    <!-- Contact -->
+    <h2>Contact</h2>
+    <div class="section contact">
+        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p>Phone: <a href="tel:+919000000000">+91 90000 00000</a></p>
+        <p>Location: Bengaluru, India</p>
+    </div>
 
-  <script>
-    // Simple form handler: opens user's mail app with prefilled subject and body.
-    // If you want a server-backed contact form, replace this with an API call (e.g., use Netlify forms, Formspree, or your backend).
-    function submitForm(e){
-      e.preventDefault();
-      const f = e.target;
-      const name = encodeURIComponent(f.name.value.trim());
-      const email = encodeURIComponent(f.email.value.trim());
-      const message = encodeURIComponent(f.message.value.trim());
-      const subject = encodeURIComponent("Website contact from " + (name||email));
-      const body = encodeURIComponent("Name: " + f.name.value + "\\nEmail: " + f.email.value + "\\n\\nMessage:\\n" + f.message.value);
-      // open mail client as fallback
-      window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
-    }
+</div>
 
-    // Small accessibility enhancement: focus outline for keyboard users
-    (function(){
-      document.body.addEventListener('keydown', function(ev){
-        if(ev.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
-      });
-    })();
-  </script>
+<footer>
+    © 2025 Yashwanth K S — All Rights Reserved
+</footer>
+
 </body>
 </html>
