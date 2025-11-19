@@ -1,234 +1,391 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yashwanth K S – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {
-      font-family:'Poppins', sans-serif;
-      background:#0a0f24;
-      color:#fff;
-      line-height:1.7;
-    }
-    header {
-      text-align:center;
-      padding:80px 20px;
-      background:linear-gradient(135deg,#ff512f,#dd2476);
-      border-bottom-left-radius:40px;
-      border-bottom-right-radius:40px;
-    }
-    header h1 {
-      font-size:3rem;
-      font-weight:700;
-      margin-bottom:10px;
-    }
-    header p {font-size:1.2rem; opacity:0.9;}
-    .container {
-      width:90%;
-      max-width:1000px;
-      margin:40px auto;
-      display:flex;
-      flex-direction:column;
-      gap:35px;
-    }
-    section {
-      background:#111831;
-      padding:25px 30px;
-      border-radius:20px;
-      border:1px solid #ffffff22;
-      box-shadow:0 5px 20px #00000055;
-      transition:0.3s;
-    }
-    section:hover {transform:translateY(-4px); box-shadow:0 10px 25px #00000088;}
-    h2 {
-      font-size:1.6rem;
-      margin-bottom:12px;
-      color:#ff4c67;
-      font-weight:700;
-    }
-    ul {margin-left:20px;}
-    ul li {margin-bottom:8px;}
-    .contact a {color:#ff6188; text-decoration:none;}
-    footer {
-      text-align:center;
-      padding:30px;
-      color:#bbb;
-      margin-top:40px;
-    }
-    :root {
-    --bg: #0f0c29;
-    --card-bg: #1b1734;
-    --text: #e8e8ff;
-    --accent: #2ecc71; /* fresh green */
-    --accent2: #27ae60; /* deep green */
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YASHWANTH K S — Library & Information Professional</title>
+  <meta name="description" content="Resume & portfolio of Yashwanth K S — librarian, information professional. Experience, skills, projects, contact." />
+  <meta name="author" content="Yashwanth K S" />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Yashwanth K S — Librarian & Information Professional" />
+  <meta property="og:description" content="Resume and portfolio of a library professional based in Bengaluru." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourusername.github.io/your-repo" />
+  <meta property="og:image" content="https://yourdomain.com/og-image.png" />
+  <!-- Structured data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yashwanth K S",
+    "jobTitle": "Librarian / Information Professional",
+    "email": "mailto:youremail@example.com",
+    "url": "https://yourusername.github.io/your-repo",
+    "sameAs": [
+      "https://www.linkedin.com/in/yourprofile",
+      "https://github.com/yourusername"
+    ]
   }
-</style>
+  </script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed; /* change to your brand color */
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --maxw:1000px;
+      --transition: 200ms ease;
+    }
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#071025 0%, #071430 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    /* Sidebar card */
+    .sidebar{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      position:sticky;
+      top:32px;
+      height:fit-content;
+    }
+    .photo{
+      width:100%;
+      height:180px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent), #4f46e5);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:28px;
+      letter-spacing:1px;
+      margin-bottom:18px;
+    }
+    h1{
+      margin:0 0 4px 0;
+      font-size:20px;
+      line-height:1.1;
+    }
+    .muted{color:var(--muted); font-size:13px;}
+    .pill{display:inline-block;background:var(--glass);padding:6px 10px;border-radius:999px;font-weight:600;margin:6px 6px 0 0;font-size:13px}
+    .contact-list{margin-top:14px; font-size:14px;}
+    .contact-list a{color:inherit;text-decoration:none}
+    .skills{display:flex;flex-wrap:wrap;margin-top:14px;gap:8px}
+    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;font-size:13px}
+
+    /* Main content */
+    .main{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border-radius:var(--radius);
+      padding:26px 26px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.5);
+      min-height:300px;
+    }
+    .section{margin-bottom:20px}
+    .section h2{margin:0 0 10px 0;font-size:16px}
+    .job{
+      display:flex;
+      gap:12px;
+      margin-bottom:12px;
+      padding:12px;
+      border-radius:10px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.012), transparent);
+    }
+    .job .meta{min-width:160px;font-size:13px;color:var(--muted)}
+    .job .details h3{margin:0;font-size:15px}
+    .job .details p{margin:6px 0;color:var(--muted);font-size:14px}
+    .proj-list{display:grid;gap:12px}
+    .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent), #4f46e5);color:white;text-decoration:none;font-weight:600;
+      box-shadow: 0 6px 18px rgba(124,58,237,0.18);
+      transition:transform var(--transition), box-shadow var(--transition);
+    }
+    .btn:active{transform:translateY(1px)}
+    .secondary{
+      background:transparent;border:1px solid rgba(255,255,255,0.06); color:var(--muted); font-weight:600;
+    }
+
+    /* Responsive */
+    @media (max-width:920px){
+      .wrap{grid-template-columns:1fr; padding:0 12px}
+      .sidebar{position:relative; top:0}
+    }
+
+    /* Print rules: show the main content and hide the glassy background */
+    @media print{
+      body{background:white;color:black;padding:0}
+      .wrap{max-width:100%;grid-template-columns:1fr}
+      .sidebar{display:none}
+      .main{box-shadow:none;background:transparent;padding:0}
+      .btn-row, .photo {display:none}
+    }
+
+    /* small utilities */
+    .muted-small{color:var(--muted);font-size:13px}
+    .tagline{margin-top:6px;color:var(--muted)}
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+    .socials{display:flex;gap:8px;margin-top:12px}
+    .icon{width:38px;height:38px;border-radius:8px;display:inline-grid;place-items:center;background:rgba(255,255,255,0.02);text-decoration:none;color:inherit}
+    .download-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+  </style>
 </head>
 <body>
+  <main class="wrap" role="main" aria-labelledby="name-heading">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Profile">
+      <div class="photo" aria-hidden="true">
+        YK
+        <!-- Replace with <img src="path/to/photo.jpg" alt="Yashwanth K S" style="width:100%;height:100%;object-fit:cover;border-radius:12px"> if you have a photo -->
+      </div>
 
-<header>
-  <h1>Yashwanth K S</h1>
-  <p>Library & Information Science Professional</p>
-</header>
+      <h1 id="name-heading">Yashwanth K S</h1>
+      <div class="muted">Librarian | Information Specialist | Academic Library Professional</div>
+      <div class="tagline">Bengaluru · High-paying library roles · Library automation · Research support</div>
 
-<div class="container">
+      <div class="contact-list" style="margin-top:14px">
+        <!-- >>> REPLACE HERE: contact details >>> -->
+        <div class="muted-small">Email</div>
+        <div><a href="mailto:youremail@example.com">youremail@example.com</a></div>
 
-  <section>
-    <h2>Employment History</h2>
-    <p><strong>Library Assistant – K S School of Engineering and Management, Bangalore</strong> (April 2023 – Present)</p>
-    <ul>
-      <li>Oversee daily library operations.</li>
-      <li>User assistance, research consultations.</li>
-      <li>Koha & Libsoft management.</li>
-      <li>Orientation sessions & faculty support.</li>
-      <li>IRC desk operations.</li>
-      <li>Outreach activities: exhibitions & promotions.</li>
-      <li>Train users on OPAC & digital tools.</li>
-    </ul>
-  </section>
+        <div class="muted-small" style="margin-top:8px">Phone</div>
+        <div><a href="tel:+919000000000">+91 90000 00000</a></div>
 
-  <section class="contact">
-    <h2>Contact</h2>
-    <ul>
-      <li>Phone: <a href="tel:+917760144157">7760144157</a></li>
-      <li>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></li>
-      <li>Address: No.15, Mallasandra, Kanakapura Road, Bengaluru - 560109</li>
-      <li>GitHub: <a href="https://github.com/Yashu2370">github.com/Yashu2370</a></li>
-    </ul>
-  </section>
+        <div class="muted-small" style="margin-top:8px">Location</div>
+        <div>Bengaluru, India</div>
 
-  <section>
-    <h2>Personal Details</h2>
-    <ul>
-      <li>Date of Birth: 18th December 1998</li>
-      <li>Gender: Male</li>
-      <li>Languages: Kannada, English, Hindi, Telugu</li>
-      <li>Nationality: Indian</li>
-      <li>Permanent Address: Koppa Hobali, Madduru Taluku, Mandya District</li>
-    </ul>
-  </section>
+        <div class="muted-small" style="margin-top:8px">Links</div>
+        <div class="socials">
+          <a class="icon" href="https://linkedin.com/in/yourprofile" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
+            <!-- LinkedIn SVG -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h4v16H4zM8 8h.1M14 8v2.8a3.2 3.2 0 101.6 0V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="icon" href="https://github.com/yourusername" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C7 2 3.6 5.5 3.6 9.9c0 3.6 2.3 6.6 5.5 7.7.4.1.6-.2.6-.5v-1.9c-2.2.5-2.7-1-2.7-1-.4-1.1-1-1.4-1-1.4-.8-.6.1-.6.1-.6.9.1 1.3.9 1.3.9.8 1.3 2.1.9 2.6.7.1-.6.3-1 .6-1.2-1.7-.2-3.5-.9-3.5-4 0-.9.3-1.7.9-2.4-.1-.2-.4-1.1.1-2.4 0 0 .8-.2 2.6.9a8.9 8.9 0 015 0c1.8-1.1 2.6-.9 2.6-.9.5 1.3.2 2.2.1 2.4.6.7.9 1.5.9 2.4 0 3.1-1.8 3.8-3.5 4 .4.4.7 1.1.7 2.3v3.3c0 .3.2.6.6.5 3.2-1 5.5-4.1 5.5-7.7C20.4 5.5 17 2 12 2z" stroke="currentColor" stroke-width="0.4"/></svg>
+          </a>
+        </div>
+      </div>
 
-  <section>
-    <h2>Educational Qualifications</h2>
-    <ul>
-      <li><strong>M.L.I.Sc</strong> – Bangalore University, 2022 (67.35%)</li>
-      <li><strong>B.A.</strong> – Belture Government College, 2020 (62.71%)</li>
-      <li><strong>PUC</strong> – Belture Government College, 2017 (53.33%)</li>
-      <li><strong>SSLC</strong> – Ghandi High School, 2014 (72%)</li>
-    </ul>
-  </section>
+      <div style="margin-top:16px">
+        <div class="muted-small">Core skills</div>
+        <div class="skills" aria-hidden="true">
+          <span class="skill">Library Management</span>
+          <span class="skill">Koha / DSpace</span>
+          <span class="skill">Research Support</span>
+          <span class="skill">Cataloguing (AACR2, RDA)</span>
+          <span class="skill">Information Literacy</span>
+        </div>
+      </div>
 
-  <section>
-    <h2>Job Profile</h2>
-    <ul>
-      <li>Acquisition & Cataloging (DDC, MARC).</li>
-      <li>Circulation & Access Management.</li>
-      <li>Reading Promotion Activities.</li>
-      <li>Digital Services & e‑Resource Access.</li>
-      <li>Reference Assistance & Research Support.</li>
-      <li>LMS Automation & Technical Support.</li>
-      <li>Information Service Promotion.</li>
-      <li>Data Reports & Policy Implementation.</li>
-    </ul>
-  </section>
+      <div style="margin-top:16px">
+        <a class="btn download-link" href="resume.pdf" download>
+          <!-- Download icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Download Resume
+        </a>
+      </div>
 
-  <section>
-    <h2>Skills & Competencies</h2>
-    <ul>
-      <li>Koha, Libsoft, OPAC, LMS.</li>
-      <li>MS Office, HTML, Python.</li>
-      <li>Digital Resource Handling.</li>
-      <li>User Support & Coordination.</li>
-      <li>Outreach & Engagement.</li>
-      <li>Professional, Adaptive, Service‑Oriented.</li>
-    </ul>
-  </section>
+      <footer>
+        <div class="muted-small">Available for: <strong>Full-time / Contract</strong></div>
+        <div style="margin-top:8px" class="muted-small">Last updated: <time datetime="2025-11-19">Nov 19, 2025</time></div>
+      </footer>
+    </aside>
 
-  <section>
-    <h2>Professional IT Expertise</h2>
-    <ul>
-      <li>Windows & Linux.</li>
-      <li>MS Word, Excel, PowerPoint.</li>
-      <li>Koha, Libsoft, NewGenLib, Barcode LMS.</li>
-      <li>DSpace, Greenstone, EPrints.</li>
-      <li>HTML, CSS, Python, Java.</li>
-      <li>Drupal, Joomla CMS.</li>
-    </ul>
-  </section>
+    <!-- MAIN -->
+    <section class="main" aria-label="Main content">
+      <!-- SUMMARY / HERO -->
+      <div class="section" id="summary">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div>
+            <h2>Profile</h2>
+            <p class="muted">A concise, targeted summary you should replace with 2–3 sentences from your resume. Example: "Librarian with 5+ years' experience in academic libraries, specializing in library automation, digital repositories, user services and research support. Experienced with Koha, DSpace, metadata standards and leading library teams to improve access and user experience."</p>
+          </div>
 
-  <section>
-    <h2>Courses & Certifications</h2>
-    <ul>
-      <li>O’Level Computer – NIELIT</li>
-      <li>Science Communication – NPTEL</li>
-      <li>Advanced R Programming – NPTEL</li>
-      <li>IT Applications in Libraries – NPTEL</li>
-    </ul>
-  </section>
+          <div style="text-align:right">
+            <div class="muted-small">Location</div>
+            <div>Bengaluru, India</div>
+            <div class="muted-small" style="margin-top:8px">Open to</div>
+            <div>Relocate / Remote / Bengaluru-based roles</div>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <!-- EXPERIENCE -->
+      <div class="section" id="experience">
+        <h2>Experience</h2>
 
-<footer>&copy; 2025 Yashwanth K S</footer>
+        <!-- >>> REPLACE/ADD JOBS: Copy this job block for each role and update details >>> -->
+        <article class="job" aria-labelledby="job1-title">
+          <div class="meta" role="group" aria-label="Dates and employer">
+            <div id="job1-title"><strong>Assistant Librarian</strong></div>
+            <div class="muted-small">XYZ College of Engineering</div>
+            <div class="muted-small">Jun 2021 — Present</div>
+            <div class="muted-small">Bengaluru, India</div>
+          </div>
 
-    <section class="about mt-12">
-      <h2>About Me</h2>
-      <p>
-        I am an experienced library professional currently working in a BE and Management college in Bengaluru. I assist students and faculties with circulation services, cataloguing, digital resources, and library automation. I am passionate about modern learning technologies, digital libraries, KOHA, and resource management.
-      </p>
+          <div class="details">
+            <h3>Assistant Librarian — XYZ College of Engineering</h3>
+            <p class="muted">Lead library automation project (Koha); redesigned circulation and reference services; trained staff in cataloguing & digital repository management. Key achievements:</p>
+            <ul class="muted-small">
+              <li>Implemented Koha and migrated 20k+ records, improving circulation efficiency by 40%.</li>
+              <li>Established institutional repository (DSpace) and digitized 500+ theses & departmental reports.</li>
+              <li>Delivered information literacy workshops to 1,200 students over 2 years.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- another example job -->
+        <article class="job" aria-labelledby="job2-title">
+          <div class="meta">
+            <div id="job2-title"><strong>Library Assistant</strong></div>
+            <div class="muted-small">ABC Institute of Management</div>
+            <div class="muted-small">2018 — 2021</div>
+          </div>
+          <div class="details">
+            <h3>Library Assistant — ABC Institute of Management</h3>
+            <p class="muted">Managed serials, acquisitions, and implemented circulation policies.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section" id="education">
+        <h2>Education</h2>
+        <div class="job" style="align-items:center">
+          <div class="meta">
+            <div><strong>MLISc</strong></div>
+            <div class="muted-small">University Name — 2017</div>
+          </div>
+          <div class="details">
+            <p class="muted">Master of Library & Information Science — Specialization / Thesis: "XXXXX"</p>
+          </div>
+        </div>
+        <!-- Add Bachelors, diplomas, certifications -->
+      </div>
+
+      <!-- PROJECTS / REPOSITORY -->
+      <div class="section" id="projects">
+        <h2>Projects & Contributions</h2>
+        <div class="proj-list">
+          <div class="job" aria-labelledby="proj1">
+            <div class="meta">2024</div>
+            <div class="details">
+              <h3 id="proj1">Koha Migration & Training</h3>
+              <p class="muted">Migrated legacy records to Koha, wrote SOPs, and delivered staff training sessions. <a href="https://github.com/yourusername/koha-migration" target="_blank" rel="noopener">Repo / docs</a></p>
+            </div>
+          </div>
+
+          <div class="job" aria-labelledby="proj2">
+            <div class="meta">2023</div>
+            <div class="details">
+              <h3 id="proj2">Institutional Repository (DSpace)</h3>
+              <p class="muted">Set up DSpace, managed metadata mapping (MARC21 → Dublin Core), and led digitization.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS & TOOLS -->
+      <div class="section" id="skills">
+        <h2>Skills & Tools</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span class="pill">Koha</span>
+          <span class="pill">DSpace</span>
+          <span class="pill">MARC21</span>
+          <span class="pill">RDA / AACR2</span>
+          <span class="pill">Library Automation</span>
+          <span class="pill">Information Literacy</span>
+          <span class="pill">Cataloguing</span>
+          <span class="pill">SQL / Basic scripting</span>
+        </div>
+      </div>
+
+      <!-- PUBLICATIONS / CERTIFICATIONS -->
+      <div class="section" id="certifications">
+        <h2>Certifications & Publications</h2>
+        <ul class="muted-small">
+          <li>Certificate in Library Automation — Institute Name, 2022</li>
+          <li>"Improving Access in College Libraries", Journal of Library Science, 2023</li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="section" id="contact">
+        <h2>Contact</h2>
+        <p class="muted">Interested in collaborating or hiring? Send me an email or use the contact form below.</p>
+
+        <!-- Simple contact form using mailto fallback; requires manual email handler or server integration -->
+        <form id="contactForm" onsubmit="submitForm(event)" aria-label="Contact form">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <input name="name" required placeholder="Your name" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+            <input name="email" required placeholder="Your email" type="email" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit">
+          </div>
+          <textarea name="message" required placeholder="Message" rows="4" style="width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+
+          <div class="btn-row">
+            <button class="btn" type="submit">Send message</button>
+            <a class="btn secondary" href="mailto:youremail@example.com?subject=Hiring%20Request&body=Hello%20Yashwanth%2C%0A%0AI%20would%20like%20to%20discuss%20...">Email directly</a>
+          </div>
+        </form>
+      </div>
+
+      <footer style="margin-top:18px">
+        <div class="muted-small">Want a printable resume? Click <a href="resume.pdf" class="download-link">Download Resume</a> or use your browser's Print (Ctrl/Cmd+P).</div>
+      </footer>
     </section>
+  </main>
 
-    <section class="skills mt-12">
-      <h2>Core Skills</h2>
-      <ul>
-        <li>Library Management & Circulation</li>
-        <li>Cataloguing & Classification (DDC, AACR2, MARC21)</li>
-        <li>Digital Library Tools (DSpace, E-Resources)</li>
-        <li>Library Automation Support (KOHA Operations)</li>
-        <li>User Support & Information Services</li>
-        <li>Record Maintenance & Documentation</li>
-      </ul>
-    </section>
+  <script>
+    // Simple form handler: opens user's mail app with prefilled subject and body.
+    // If you want a server-backed contact form, replace this with an API call (e.g., use Netlify forms, Formspree, or your backend).
+    function submitForm(e){
+      e.preventDefault();
+      const f = e.target;
+      const name = encodeURIComponent(f.name.value.trim());
+      const email = encodeURIComponent(f.email.value.trim());
+      const message = encodeURIComponent(f.message.value.trim());
+      const subject = encodeURIComponent("Website contact from " + (name||email));
+      const body = encodeURIComponent("Name: " + f.name.value + "\\nEmail: " + f.email.value + "\\n\\nMessage:\\n" + f.message.value);
+      // open mail client as fallback
+      window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
+    }
 
-    <section class="tools mt-12">
-      <h2>Tools & Technologies</h2>
-      <ul>
-        <li>KOHA</li>
-        <li>DSpace</li>
-        <li>MS Office Tools</li>
-        <li>OPAC Systems</li>
-        <li>Google Workspace</li>
-        <li>E-Learning Portals (NPTEL, SWAYAM)</li>
-      </ul>
-    </section>
-
-    <section class="achievements mt-12">
-      <h2>Achievements</h2>
-      <ul>
-        <li>Improved circulation efficiency and user support in the college library.</li>
-        <li>Helped implement digital library access and e-resource training for students.</li>
-        <li>Assisted in restructuring library sections for better accessibility.</li>
-      </ul>
-    </section>
-
-    <section class="services mt-12">
-      <h2>Services I Offer</h2>
-      <ul>
-        <li>Library Setup & Arrangement</li>
-        <li>Digital Resource Management</li>
-        <li>Student & Faculty Information Support</li>
-        <li>Data Entry, Documentation & Record Handling</li>
-      </ul>
-    </section>
-
-    <section class="contact mt-12">
-      <h2>Contact Details</h2>
-      <p>Email: yashwanth.ks@example.com</p>
-      <p>Location: Bengaluru, Karnataka</p>
-      <p>Preferred Roles: Library Assistant, Library Executive, Digital Library Support</p>
-    </section>
-
+    // Small accessibility enhancement: focus outline for keyboard users
+    (function(){
+      document.body.addEventListener('keydown', function(ev){
+        if(ev.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
+      });
+    })();
+  </script>
 </body>
 </html>
