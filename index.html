@@ -1,357 +1,439 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yashwanth K S | Professional Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YASHWANTH K S — Assistant Librarian | Portfolio</title>
+  <meta name="description" content="Professional portfolio of Yashwanth K S — Assistant Librarian. Koha, DSpace, Cataloguing, Digital Libraries, IRC services.">
+  <style>
+    /* ----------------------
+       Reset & base
+       ---------------------- */
+    :root{
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --accent:#0b5cff;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.7);
+      --accent-2: #ff7a59;
+      --accent-3: #06b6d4;
+      --success: #10b981;
+      --shadow: 0 6px 20px rgba(15,23,42,0.08);
+      --radius: 14px;
+      --mono: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:var(--mono);background:linear-gradient(180deg,var(--bg),#eef6ff);color:#0f172a}
+    a{color:var(--accent);text-decoration:none}
+    img{max-width:100%;height:auto}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
 
-<style>
+    /* ----------------------
+       Header / Nav
+       ---------------------- */
+    header{position:sticky;top:12px;z-index:40}
+    .nav-wrap{backdrop-filter: blur(6px);background:linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.55));border-radius:18px;padding:10px;box-shadow:var(--shadow)}
+    nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px;box-shadow:0 6px 18px rgba(11,92,255,0.15)}
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    ul.menu{display:flex;gap:18px;align-items:center;list-style:none;margin:0;padding:0}
+    ul.menu li{padding:8px 12px;border-radius:10px}
+    ul.menu li a{font-size:14px}
+    .cta{padding:8px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-3));color:white;font-weight:600}
+    .mobile-toggle{display:none}
 
-/* ------------------------------
-GLOBAL COLORS & VARIABLES
------------------------------- */
-:root {
-    --bg: #0d0d0d;
-    --text: #ffffff;
-    --accent: #ff7b00;
-    --secondary: #8e2de2;
-    --card-bg: #1c1c1c;
-    --border: #333;
-    --shadow: rgba(0,0,0,0.5);
-}
+    /* ----------------------
+       Hero
+       ---------------------- */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:26px;align-items:center;padding:46px 0}
+    .intro{background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0.6));padding:32px;border-radius:18px;box-shadow:var(--shadow)}
+    .intro h2{margin:0 0 6px;font-size:28px}
+    .intro p.lead{margin:0 0 12px;color:var(--muted)}
+    .badges{display:flex;gap:12px;flex-wrap:wrap}
+    .badge{background:#f3f7ff;padding:8px 10px;border-radius:999px;font-size:13px;color:#0b4acc;border:1px solid rgba(11,92,204,0.06)}
 
-/* ------------------------------
-GLOBAL PAGE SETTINGS
------------------------------- */
-* {
-    margin: 0; padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
+    .card{background:var(--card);padding:18px;border-radius:14px}
+    .profile-photo{border-radius:12px;overflow:hidden;border:6px solid rgba(255,255,255,0.6);box-shadow:0 12px 30px rgba(11,92,204,0.08)}
+    .profile-meta{display:flex;flex-direction:column;gap:8px}
+    .meta-row{display:flex;gap:10px;align-items:center}
+    .meta-row strong{min-width:110px;color:var(--muted);font-size:13px}
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    animation: fadeIn 1.2s ease-in-out;
-}
+    /* ----------------------
+       Sections
+       ---------------------- */
+    section{margin:26px 0}
+    h3.section-title{font-size:18px;margin:0 0 12px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 
-/* Smooth scroll */
-html { scroll-behavior: smooth; }
+    /* Resume / Experience */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .timeline-item{display:flex;gap:12px;padding:12px;background:linear-gradient(180deg,#ffffff,#fbfdff);border-radius:12px;border:1px solid rgba(7,16,33,0.03)}
+    .timeline-item .left{min-width:90px;font-size:13px;color:var(--muted)}
+    .timeline-item .right{flex:1}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
 
-/* ------------------------------
-NAVBAR
------------------------------- */
-nav {
-    width: 100%;
-    background: #111;
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 0 10px var(--shadow);
-}
+    /* Portfolio */
+    .portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .project{padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#f8fbff);box-shadow:var(--shadow)}
+    .project h4{margin:0 0 6px}
+    .project p{margin:0;color:var(--muted);font-size:14px}
 
-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    list-style: none;
-}
+    /* Blog */
+    .blog-list{display:flex;flex-direction:column;gap:10px}
+    .post{display:flex;gap:12px;padding:12px;border-radius:12px;background:#fff}
+    .post .thumb{width:110px;height:72px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent-2));flex-shrink:0}
 
-nav ul li a {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.3s;
-}
+    /* Contact form */
+    form.contact{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    input,textarea,select{padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);font-size:14px}
+    textarea{grid-column:1/-1;min-height:120px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-3));color:white;font-weight:600}
 
-nav ul li a:hover {
-    color: var(--accent);
-    transform: scale(1.2);
-}
+    /* Footer */
+    footer{padding:18px 0;color:var(--muted);font-size:14px}
 
-/* ------------------------------
-HEADER SECTION
------------------------------- */
-header {
-    padding: 150px 20px 100px;
-    text-align: center;
-    background: linear-gradient(135deg, #8e2de2, #ff7b00);
-    animation: slideUp 1.5s ease-in-out;
-}
+    /* Animations */
+    @keyframes floaty{0%{transform:translateY(0px)}50%{transform:translateY(-8px)}100%{transform:translateY(0px)}}
+    .float{animation:floaty 6s ease-in-out infinite}
 
-header h1 {
-    font-size: 50px;
-    font-weight: 800;
-}
+    /* Responsive */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      ul.menu{display:none}
+      .mobile-toggle{display:block}
+    }
+    @media (max-width:520px){
+      .grid-3{grid-template-columns:1fr}
+      .profile-meta{align-items:flex-start}
+      header{padding:0 10px}
+      .container{padding:16px}
+      form.contact{grid-template-columns:1fr}
+    }
 
-header p {
-    font-size: 20px;
-    margin-top: 10px;
-}
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .pill{padding:6px 10px;border-radius:999px;background:#fff;border:1px solid rgba(15,23,42,0.03)}
+    .shadow-sm{box-shadow:0 8px 24px rgba(11,92,204,0.06)}
 
-.btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 14px 28px;
-    background: var(--accent);
-    color: #000;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 5px 15px rgba(255,140,0,0.5);
-}
-
-/* ------------------------------
-SECTIONS
------------------------------- */
-section {
-    padding: 80px 20px;
-    max-width: 1200px;
-    margin: auto;
-    animation: slideUp 1s ease-in-out;
-}
-
-.section-title {
-    font-size: 35px;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: var(--accent);
-}
-
-/* ------------------------------
-CARD STYLING
------------------------------- */
-.card {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 25px;
-    border: 1px solid var(--border);
-    transition: 0.3s;
-}
-
-.card:hover {
-    animation: glowPulse 1.5s infinite;
-}
-
-/* ------------------------------
-ABOUT
------------------------------- */
-.about-text {
-    font-size: 18px;
-    padding: 20px;
-    line-height: 1.8;
-}
-
-/* ------------------------------
-TIMELINE (EDUCATION + EXPERIENCE)
------------------------------- */
-.timeline {
-    border-left: 3px solid var(--accent);
-    padding-left: 25px;
-}
-
-.timeline-item {
-    margin-bottom: 30px;
-    opacity: 0;
-    animation: fadeIn 1.2s ease forwards;
-}
-
-.timeline-item:nth-child(1) { animation-delay: 0.2s; }
-.timeline-item:nth-child(2) { animation-delay: 0.4s; }
-.timeline-item:nth-child(3) { animation-delay: 0.6s; }
-
-.timeline-title {
-    font-size: 22px;
-    font-weight: bold;
-    color: var(--secondary);
-}
-
-.timeline-duration {
-    font-size: 16px;
-    opacity: 0.7;
-}
-
-/* ------------------------------
-SKILLS
------------------------------- */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-    gap: 20px;
-}
-
-.skill-box {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    font-size: 18px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.skill-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px var(--shadow);
-}
-
-/* ------------------------------
-CERTIFICATES
------------------------------- */
-.certificate {
-    background: var(--card-bg);
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    font-size: 16px;
-    margin-bottom: 10px;
-    transition: 0.3s;
-}
-
-.certificate:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px rgba(255,255,255,0.2);
-}
-
-/* ------------------------------
-FOOTER
------------------------------- */
-footer {
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
-    background: #111;
-    color: #aaa;
-    border-top: 1px solid var(--border);
-}
-
-/* ------------------------------
-ANIMATIONS
------------------------------- */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp {
-    0% { opacity: 0; transform: translateY(50px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes glowPulse {
-    0% { box-shadow: 0 0 5px rgba(142,45,226,0.3); }
-    50% { box-shadow: 0 0 15px rgba(142,45,226,0.7); }
-    100% { box-shadow: 0 0 5px rgba(142,45,226,0.3); }
-}
-
-</style>
+  </style>
 </head>
-
 <body>
-
-<!-- NAVBAR -->
-<nav>
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certificates">Certificates</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- HEADER -->
-<header>
-    <h1>Yashwanth K S</h1>
-    <p>Librarian | Data Organizer | Academic Resource Specialist</p>
-    <a href="#contact" class="btn">Contact Me</a>
-</header>
-
-<!-- ABOUT SECTION -->
-<section id="about">
-    <h2 class="section-title">About Me</h2>
-    <div class="card about-text">
-        Passionate librarian with experience in cataloguing, digital library management,
-        academic resource support, and handling student research queries.
-        Skilled in managing institutional libraries and digital platforms.
+  <header class="container">
+    <div class="nav-wrap">
+      <nav>
+        <div class="brand">
+          <div class="logo">YK</div>
+          <div>
+            <h1>YASHWANTH K S</h1>
+            <p class="muted">Assistant Librarian • Koha • DSpace • Cataloguing</p>
+          </div>
+        </div>
+        <ul class="menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="cta" href="#contact">Hire / Contact</a></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+      </nav>
     </div>
-</section>
+  </header>
 
-<!-- EDUCATION -->
-<section id="education">
-    <h2 class="section-title">Education</h2>
-    <div class="timeline">
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="intro card">
+        <h2>Assistant Librarian • Digital Library Specialist</h2>
+        <p class="lead">I manage library operations, implement Koha & DSpace, catalog resources using MARC & DDC, and train students in digital research tools. Based in Bengaluru — available for full-time and freelance library automation & digital repository projects.</p>
+        <div class="badges">
+          <div class="badge">Koha</div>
+          <div class="badge">DSpace</div>
+          <div class="badge">Cataloguing (DDC/MARC21)</div>
+          <div class="badge">OPAC</div>
+          <div class="badge">Python (Basics)</div>
+          <div class="badge">HTML & CSS</div>
+        </div>
 
+        <div style="margin-top:16px;display:flex;gap:12px;align-items:center">
+          <a class="btn" href="/YASHWANTH 2025.pdf" download>Download Resume (PDF)</a>
+          <a class="pill" href="#portfolio">View Portfolio</a>
+        </div>
+
+        <hr style="opacity:0.06;margin:18px 0">
+
+        <div class="grid">
+          <div>
+            <h4 class="muted">Location</h4>
+            <p>No.15, Mallasandra, Off. Kanakapura Road, Bengaluru - 560109</p>
+          </div>
+          <div>
+            <h4 class="muted">Contact</h4>
+            <p>📞 7760144157<br>✉️ yashu2370@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card profile-photo float">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='520'><rect width='100%' height='100%' fill='%230b5cff' rx='14'/><text x='50%' y='50%' font-family='Segoe UI' font-size='36' fill='white' text-anchor='middle' alignment-baseline='middle'>YASHWANTH</text></svg>" alt="Profile">
+        <div style="padding:10px" class="profile-meta">
+          <div class="meta-row"><strong>Current:</strong> <span>Library Assistant - K S School of Engineering & Management (Apr 2023 - Present)</span></div>
+          <div class="meta-row"><strong>Salary:</strong> <span>₹2,76,000 (p.a.)</span></div>
+          <div class="meta-row"><strong>DOB:</strong> <span>18 Dec 1998</span></div>
+          <div class="meta-row"><strong>Languages:</strong> <span>Kannada, English, Hindi, Telugu</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h3 class="section-title">About Me</h3>
+      <div class="grid">
+        <div class="card">
+          <p>I am an Information Resource Centre professional with experience in circulation, cataloguing, OPAC training, digital repository management and outreach. I focus on making library resources easy to find and use for students and faculty. I enjoy integrating open-source tools like Koha and DSpace into academic libraries.</p>
+
+          <h4 style="margin-top:12px">Core Strengths</h4>
+          <div class="skills">
+            <div class="badge">Library Automation</div>
+            <div class="badge">Cataloguing (DDC/MARC)</div>
+            <div class="badge">Digital Repositories</div>
+            <div class="badge">OPAC & User Training</div>
+            <div class="badge">Research Support</div>
+            <div class="badge">Outreach & Events</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>Professional Tools</h4>
+          <ul style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>Koha, Libsoft, Library Manager, NewGenLib</li>
+            <li>DSpace, Greenstone, EPrints</li>
+            <li>MS Office, Zotero, Mendeley, EndNote</li>
+            <li>Drupal, Joomla (CMS)</li>
+            <li>HTML, CSS, basic Python</li>
+          </ul>
+
+          <h4 style="margin-top:12px">Education</h4>
+          <p class="muted" style="margin:0">M.L.I.Sc — Bangalore University (2022), B.A. — Belture Government College (2020)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume">
+      <h3 class="section-title">Resume — Experience & Education</h3>
+      <div class="timeline">
         <div class="timeline-item">
-            <h3 class="timeline-title">Master of Library & Information Science</h3>
-            <p class="timeline-duration">2023 – 2025</p>
-            <p>University specialization in library systems, digital archiving, etc.</p>
+          <div class="left">Apr 2023 — Present</div>
+          <div class="right">
+            <strong>Library Assistant</strong> — K S School of Engineering & Management, Bangalore
+            <p class="muted">Oversee circulation, classification, OPAC training, Koha/Libsoft administration, outreach events, and digital services.</p>
+            <ul style="margin:8px 0 0;padding-left:18px;color:var(--muted)">
+              <li>Implemented Koha workflows with barcode integration and borrower management.</li>
+              <li>Conducted orientation sessions and OPAC training for students and faculty.</li>
+              <li>Managed digital resources and supported institutional repository tasks.</li>
+            </ul>
+          </div>
         </div>
 
         <div class="timeline-item">
-            <h3 class="timeline-title">Bachelor Degree</h3>
-            <p class="timeline-duration">Completed</p>
+          <div class="left">2022</div>
+          <div class="right">
+            <strong>M.L.I.Sc</strong> — Bangalore University
+            <p class="muted">First Class — 67.35%</p>
+          </div>
         </div>
 
         <div class="timeline-item">
-            <h3 class="timeline-title">PUC / SSLC</h3>
-            <p class="timeline-duration">Completed</p>
+          <div class="left">2020</div>
+          <div class="right">
+            <strong>B.A</strong> — Belture Government College
+            <p class="muted">First Class — 62.71%</p>
+          </div>
         </div>
 
+      </div>
+
+      <hr style="opacity:0.06;margin:16px 0">
+
+      <div class="grid">
+        <div class="card">
+          <h4>Skills & Competencies</h4>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div><strong>Library Systems:</strong> Koha, Libsoft, Library Manager, NewGenLib</div>
+            <div><strong>Digital Repositories:</strong> DSpace, Greenstone, EPrints</div>
+            <div><strong>Tech:</strong> HTML, CSS, Python (basics), MS Office</div>
+            <div><strong>Other:</strong> Zotero, Mendeley, EndNote, Drupal, Joomla</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>Courses & Certifications</h4>
+          <ul style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>O-Level Computer Certification (NIELIT) — HTML, CSS, Java, Python</li>
+            <li>NPTEL: Science Communication — Research Productivity & Data Analytics</li>
+            <li>NPTEL: Advanced R Programming for Data Analytics</li>
+            <li>NPTEL: IT Applications in Libraries</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <h3 class="section-title">Portfolio — Projects & Work Samples</h3>
+      <div class="portfolio-grid">
+        <div class="project">
+          <h4>Koha Implementation</h4>
+          <p class="muted">Implemented Koha LMS for circulation, borrower management and barcode integration. Configured circulation rules and patron categories to match institutional requirements.</p>
+        </div>
+        <div class="project">
+          <h4>DSpace Institutional Repository</h4>
+          <p class="muted">Setup and supported DSpace repository for research outputs, managed metadata entry and access control for faculty submissions.</p>
+        </div>
+        <div class="project">
+          <h4>Cataloguing Samples (DDC & MARC)</h4>
+          <p class="muted">Standardized cataloguing for new acquisitions using DDC and MARC21 fields. Created sample bibliographic records for departmental collections.</p>
+        </div>
+        <div class="project">
+          <h4>Reading Promotion & Events</h4>
+          <p class="muted">Led book exhibitions, orientation sessions and IRC awareness drives to boost circulation and student engagement.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:12px">
+        <a class="pill" href="#contact">Request a Project Quote</a>
+        <a class="pill" href="/YASHWANTH 2025.pdf" download>Download Resume</a>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog">
+      <h3 class="section-title">Blog & Articles (Drafts)</h3>
+      <div class="blog-list">
+        <div class="post">
+          <div class="thumb"></div>
+          <div>
+            <h4 style="margin:0">How to set up Koha for a small college</h4>
+            <p class="muted" style="margin:6px 0 0">Step-by-step guide for installation, basic configuration, and OPAC customization for small academic libraries.</p>
+          </div>
+        </div>
+
+        <div class="post">
+          <div class="thumb"></div>
+          <div>
+            <h4 style="margin:0">Best free e-resources for engineering students</h4>
+            <p class="muted" style="margin:6px 0 0">Curated list of open access journals, repositories, and database shortcuts tailored for engineering projects and assignments.</p>
+          </div>
+        </div>
+
+        <div class="post">
+          <div class="thumb"></div>
+          <div>
+            <h4 style="margin:0">Preparing for UGC NET / KSET in Library Science</h4>
+            <p class="muted" style="margin:6px 0 0">Study plan, recommended books, and time management tips (draft — expand into full post).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h3 class="section-title">Contact & Services</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Services I Offer</h4>
+          <ul style="margin:8px 0 0;padding-left:18px;color:var(--muted)">
+            <li>Library automation (Koha, Libsoft) — implementation & training</li>
+            <li>Cataloguing & Classification (DDC + MARC21)</li>
+            <li>Digital repository setup (DSpace) & metadata entry</li>
+            <li>OPAC customization & user orientation</li>
+            <li>Freelance consultation for small institutional libraries</li>
+          </ul>
+
+          <hr style="opacity:0.06;margin:12px 0">
+          <div class="muted">Contact me for rates, timelines, and a project quote.</div>
+          <div style="margin-top:12px"><strong>Phone:</strong> 7760144157<br><strong>Email:</strong> <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></div>
+        </div>
+
+        <div class="card">
+          <h4>Send a message</h4>
+          <form class="contact" onsubmit="handleForm(event)">
+            <input type="text" id="name" placeholder="Your name" required>
+            <input type="email" id="email" placeholder="Your email" required>
+            <input type="text" id="subject" placeholder="Subject" required>
+            <input type="text" id="phone" placeholder="Phone (optional)">
+            <textarea id="message" placeholder="Message / project details" required></textarea>
+            <button class="btn" type="submit" style="grid-column:1/-1">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES / DOWNLOADS -->
+    <section>
+      <h3 class="section-title">Certificates & Courses</h3>
+      <div class="grid-3">
+        <div class="card">
+          <h4>O-Level (NIELIT)</h4>
+          <p class="muted">HTML, CSS, Java, Python, MS Office — fundamental web & programming skills relevant to small library tool customization.</p>
+        </div>
+        <div class="card">
+          <h4>NPTEL — Research Productivity</h4>
+          <p class="muted">Science Communication: Research Productivity & Data Analytics</p>
+        </div>
+        <div class="card">
+          <h4>NPTEL — Advanced R</h4>
+          <p class="muted">Advanced R Programming for Data Analytics in Business.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div>© <strong>YASHWANTH K S</strong> — Assistant Librarian • Bengaluru</div>
+      <div class="muted">Built with ❤️ • Resume: <a href="/YASHWANTH 2025.pdf" download>YASHWANTH 2025.pdf</a></div>
     </div>
-</section>
+  </footer>
 
-<!-- SKILLS -->
-<section id="skills">
-    <h2 class="section-title">Professional Skills</h2>
-    <div class="skills-grid">
+  <script>
+    function toggleMenu(){
+      const menu = document.querySelector('ul.menu');
+      if(menu.style.display === 'flex') menu.style.display = 'none'; else menu.style.display = 'flex';
+    }
 
-        <div class="skill-box">Library Management</div>
-        <div class="skill-box">Cataloguing & Classification</div>
-        <div class="skill-box">Digital Library Tools</div>
-        <div class="skill-box">Research Support</div>
-        <div class="skill-box">MS Office</div>
-        <div class="skill-box">Communication Skills</div>
+    function handleForm(e){
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        phone: document.getElementById('phone').value,
+        message: document.getElementById('message').value
+      };
+      // For local preview the form will not actually send. Show a success card.
+      alert('Thanks, ' + data.name + '! Your message has been noted. (Local demo — integrate with email or server to receive messages)');
+      document.querySelector('form.contact').reset();
+    }
 
-    </div>
-</section>
-
-<!-- CERTIFICATES -->
-<section id="certificates">
-    <h2 class="section-title">Certificates</h2>
-
-    <div class="certificate">Library Automation Workshop</div>
-    <div class="certificate">Digital Catalogue Training</div>
-    <div class="certificate">Research Methodology Course</div>
-    <div class="certificate">Computer Basics Certification</div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-    <h2 class="section-title">Contact</h2>
-
-    <div class="card">
-        <p><b>Email:</b> yashwanthks@gmail.com</p>
-        <p><b>Location:</b> Bengaluru, Karnataka</p>
-        <p><b>Portfolio:</b> yashu2370.github.io</p>
-    </div>
-</section>
-
-<footer>
-    © 2025 Yashwanth K S – All Rights Reserved.
-</footer>
-
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',function(e){
+        const href=this.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+  </script>
 </body>
 </html>
