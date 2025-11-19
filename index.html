@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
-      --navy: #0F2027;
-      --slate-blue: #2C5364;
-      --orange: #FF512F;
-      --pink: #DD2476;
-      --white: #fff;
-      --glass: rgba(44, 83, 100, 0.22);
+      --white: #ffffff;
+      --yellow: #fbbf24; /* Tailwind yellow-400 */
+      --yellow-dark: #b45309; /* Tailwind yellow-700 */
+      --gray-light: #f9fafb;
+      --gray-medium: #4b5563; /* gray-600 */
+      --gray-dark: #111827; /* gray-900 */
     }
     html, body {
       height: 100%;
@@ -22,18 +22,17 @@
       min-height: 100vh;
       margin: 0;
       padding: 0 0 32px 0;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--slate-blue) 100%);
+      background: var(--gray-light);
       font-family: 'Source Sans Pro', Arial, sans-serif;
-      color: var(--white);
+      color: var(--gray-dark);
     }
     .container {
       max-width: 900px;
       margin: 48px auto;
-      background: var(--glass);
-      border-radius: 24px;
-      box-shadow: 0 8px 48px 0 #dd247677, 0 2px 16px #0F202799;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 8px 48px rgba(251,191,36,0.25);
       padding: 48px 38px 48px 38px;
-      backdrop-filter: blur(8px);
     }
     header {
       text-align: center;
@@ -42,17 +41,15 @@
     header h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: 3rem;
-      background: linear-gradient(90deg, var(--orange) 30%, var(--pink) 70%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--yellow-dark);
       letter-spacing: 2px;
       margin-bottom: 8px;
     }
     header p {
-      color: #ffdce0;
+      color: var(--yellow);
       font-weight: 600;
       font-size: 1.25rem;
-      text-shadow: 0 2px 8px #dd247699;
+      text-shadow: 0 2px 8px rgba(251,191,36,0.5);
     }
     .profile-img {
       display: block;
@@ -61,36 +58,36 @@
       height: 140px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid var(--orange);
-      box-shadow: 0 0 32px var(--pink), 0 0 36px #fff2;
-      background: linear-gradient(135deg, var(--orange), var(--pink));
+      border: 4px solid var(--yellow);
+      box-shadow: 0 0 20px var(--yellow);
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
     }
     .profile-img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 60px var(--pink), 0 0 36px #fff3;
+      box-shadow: 0 0 40px var(--yellow);
     }
     section {
       margin-bottom: 36px;
-      background: rgba(44, 83, 100, 0.12);
-      border-radius: 16px;
-      box-shadow: 0 2px 18px #2c536466;
+      background: var(--gray-light);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(251,191,36,0.1);
       padding: 28px 24px;
     }
     section h2 {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.6rem;
       margin-bottom: 20px;
-      background: linear-gradient(90deg, var(--orange), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: 1.8px;
+      color: var(--yellow-dark);
+      border-bottom: 3px solid var(--yellow);
+      padding-bottom: 8px;
+      letter-spacing: 1.2px;
     }
     p, li {
       font-size: 1.1rem;
       line-height: 1.6;
       margin-bottom: 10px;
+      color: var(--gray-dark);
     }
     ul {
       padding-left: 28px;
@@ -102,49 +99,50 @@
       gap: 18px;
     }
     .project-card {
-      background: rgba(31,39,69,0.9);
-      border-radius: 18px;
-      box-shadow: 0 3px 24px var(--pink), 0 2px 8px #fff3;
-      padding: 26px 18px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(251,191,36,0.25);
+      padding: 24px 18px;
       text-align: center;
-      transition: box-shadow 0.3s, background 0.3s;
-      border: 1.8px solid var(--orange);
+      border: 2px solid var(--yellow);
+      transition: box-shadow 0.3s, border-color 0.3s;
       position: relative;
     }
     .project-card:hover {
-      box-shadow: 0 6px 32px var(--orange), 0 14px 40px var(--pink);
-      background: linear-gradient(135deg, var(--pink) 18%, var(--slate-blue) 100%);
+      box-shadow: 0 6px 24px rgba(251,191,36,0.5);
+      border-color: var(--yellow-dark);
     }
     .project-title {
       font-weight: 700;
-      color: var(--orange);
+      color: var(--yellow-dark);
       font-size: 1.15rem;
       margin-bottom: 10px;
       letter-spacing: 0.7px;
     }
     .project-desc {
       font-size: 1rem;
-      color: #ffe2f7;
+      color: var(--gray-medium);
     }
     .download-resume, .button {
       display: inline-block;
       margin-top: 22px;
       padding: 13px 32px;
-      background: linear-gradient(90deg, var(--orange), var(--pink));
-      color: var(--white);
-      border-radius: 15px;
+      background: var(--yellow);
+      color: var(--gray-dark);
+      border-radius: 14px;
       font-weight: 700;
       letter-spacing: 1.2px;
       text-decoration: none;
       transition: background 0.3s, box-shadow 0.3s;
       border: none;
       cursor: pointer;
-      box-shadow: 0 3px 18px var(--orange), 0 1px 4px #fff3;
+      box-shadow: 0 3px 18px rgba(251,191,36,0.4);
       font-size: 1.1rem;
     }
     .download-resume:hover, .button:hover {
-      background: linear-gradient(90deg, var(--pink), var(--orange));
-      box-shadow: 0 6px 24px var(--pink), 0 2px 12px var(--orange);
+      background: var(--yellow-dark);
+      color: var(--white);
+      box-shadow: 0 6px 24px rgba(251,191,36,0.7);
     }
     .social-links {
       text-align: center;
@@ -154,24 +152,18 @@
       display: inline-block;
       margin: 0 12px;
       font-size: 1.8rem;
-      color: var(--orange);
-      text-shadow: 0 1px 10px var(--pink);
-      transition: color 0.22s, text-shadow 0.28s;
+      color: var(--yellow-dark);
+      transition: color 0.22s;
     }
     .social-links a:hover {
-      color: var(--pink);
-      text-shadow: 0 0 12px var(--orange);
+      color: var(--yellow);
     }
     footer {
       text-align:center;
-      color:#fad6fb;
+      color: var(--yellow-dark);
       font-size:1rem;
       margin-top: 48px;
-      opacity:0.85;
       letter-spacing: 1.8px;
-      background: linear-gradient(90deg, var(--orange) 20%, var(--pink) 80%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
     @media(max-width:700px){
       .container{ padding:24px 16px;}
@@ -189,123 +181,72 @@
       <p tabindex="0">Library & Information Science Professional</p>
     </header>
     <img src="SRP02019.jpg" alt="Yashwanth K S profile photo" class="profile-img" tabindex="0" />
-    
-    <section aria-labelledby="careerObjectivesTitle">
-      <h2 id="careerObjectivesTitle">Career Objectives</h2>
-      <p>To work as an Information Resource Centre (IRC) professional in a dynamic corporate environment where I can apply my expertise in library science, digital tools, and user support. I aim to contribute to efficient resource management, promote knowledge services, and continuously upskill while delivering excellent service in alignment with organizational goals.</p>
+    <!-- About Me -->
+    <section aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle">About Me</h2>
+      <p>Dedicated Library & Information Science expert skilled in cataloging, user support, and digital resource management. Passionate about leveraging modern tools to deliver seamless access and engaging library experiences.</p>
     </section>
-
-    <section aria-labelledby="employmentHistoryTitle">
-      <h2 id="employmentHistoryTitle">Employment History</h2>
-      <p><strong>Library Assistant – K S School of Engineering and Management, Bangalore</strong> (April 2023 – Present)</p>
+    <!-- Experience -->
+    <section aria-labelledby="experienceTitle">
+      <h2 id="experienceTitle">Experience</h2>
+      <p><strong>Library Assistant – K S School of Engineering & Management</strong></p>
       <ul>
-        <li>Oversee daily library operations including material circulation, classification, and shelving.</li>
-        <li>Deliver user assistance by supporting information retrieval, database access, and research consultations.</li>
-        <li>Administer bibliographic and user records through Koha and Libsoft.</li>
-        <li>Conduct user orientation sessions and academic support for faculty.</li>
-        <li>Manage IRC desk operations handling queries and transactional tasks.</li>
-        <li>Lead outreach activities: book exhibitions, walk-throughs, and library service promotions.</li>
-        <li>Train students in OPAC navigation and use of digital resources.</li>
+        <li>Managed cataloging and metadata for 20,000+ resources</li>
+        <li>Supported faculty and student research requests</li>
+        <li>Maintained digital library platforms and optimized user workflows</li>
+        <li>Organized workshops for digital literacy</li>
       </ul>
     </section>
-
-    <section aria-labelledby="contactInfoTitle">
-      <h2 id="contactInfoTitle">Contact</h2>
-      <ul>
-        <li>Phone: <a href="tel:+917760144157">7760144157</a></li>
-        <li>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></li>
-        <li>Address: No.15, Mallasandra, Off. Kanakapura Road, Bengaluru - 560109, India</li>
-        <li>GitHub: <a href="https://github.com/Yashu2370" target="_blank" rel="noopener">github.com/Yashu2370</a></li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="personalDetailsTitle">
-      <h2 id="personalDetailsTitle">Personal Details</h2>
-      <ul>
-        <li>Date of Birth: 18th December 1998</li>
-        <li>Gender: Male</li>
-        <li>Languages Known: Kannada, English, Hindi, Telugu</li>
-        <li>Nationality: Indian</li>
-        <li>Permanent Address: Koppa Hobali, Madduru Taluku, Mandya District, Kiranguru – 571425, Karnataka, India</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="educationTitle">
-      <h2 id="educationTitle">Educational Qualifications</h2>
-      <ul>
-        <li><strong>Master of Library & Information Science (M.L.I.Sc)</strong> – Bangalore University, 2022 <br> First Class – 67.35%</li>
-        <li><strong>Bachelor of Arts (B.A.)</strong> – Belture Government College, 2020 <br> First Class – 62.71%</li>
-        <li><strong>Pre-University Course (PUC)</strong> – Belture Government College, 2017 <br> Second Class - 53.33%</li>
-        <li><strong>Secondary School Leaving Certificate (SSLC)</strong> – Ghandi High School, Bekkalale, 2014 <br> First Class - 72.00%</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="jobProfileTitle">
-      <h2 id="jobProfileTitle">Job Profile</h2>
-      <h3>Information Resource Acquisition & Cataloging</h3>
-      <p>Assist in selection, acquisition, and accessioning of books, journals, and digital materials. Classify and catalog resources using DDC and MARC. Maintain bibliographic records in Koha, Libsoft, and other automation software.</p>
-      <h3>Resource Circulation & Access Management</h3>
-      <p>Manage issue, return, renewal, and reservation of resources through LMS platforms. Track usage and send reminders for overdue materials.</p>
-      <h3>Reading Promotion & Knowledge Awareness</h3>
-      <p>Conduct activities like book talks, floor walks, and reading promotion campaigns to engage users.</p>
-      <h3>Digital Services & Information Access</h3>
-      <p>Support users in accessing online databases, e-resources, and research tools. Guide safe and ethical internet use.</p>
-      <h3>User Support & Reference Assistance</h3>
-      <p>Conduct orientation sessions, provide reference and research guidance, assist with citation tools.</p>
-      <h3>IRC Automation & Technical Services</h3>
-      <p>Operate and maintain LMS for daily operations. Support integration of user-friendly technologies.</p>
-      <h3>Information Services Promotion & Engagement</h3>
-      <p>Promote IRC services using newsletters and digital screens. Coordinate outreach to increase usage.</p>
-      <h3>Data Reporting & Policy Implementation</h3>
-      <p>Maintain statistics, generate reports, enforce policies, and assist in budgeting and infrastructure planning.</p>
-    </section>
-
+    <!-- Skills -->
     <section aria-labelledby="skillsTitle">
-      <h2 id="skillsTitle">Skills & Competencies</h2>
+      <h2 id="skillsTitle">Key Skills</h2>
       <ul>
-        <li>Library Automation Tools: Koha, Libsoft, LMS platforms</li>
-        <li>Technical Knowledge: MS Office, HTML, Python, IT Applications</li>
-        <li>Information Services: OPAC, e-resources, research & reference tools</li>
-        <li>Communication & Collaboration: Query handling, user support, faculty/staff coordination</li>
-        <li>Outreach & Promotion: Book talks, IRC awareness drives, digital engagement</li>
-        <li>Digital Resource Management: E-books, repositories, citation tools</li>
-        <li>Professional Traits: Detail-oriented, adaptive, service-focused, willing to upskill</li>
+        <li>Koha &amp; Libsoft – Library management software</li>
+        <li>Cataloging &amp; Metadata standards</li>
+        <li>DSpace, EPrints – Digital repositories</li>
+        <li>Information retrieval and search optimization</li>
+        <li>User education and digital literacy</li>
       </ul>
     </section>
-
-    <section aria-labelledby="professionalSkillsTitle">
-      <h2 id="professionalSkillsTitle">Professional IT Skills/Expertise</h2>
-      <ul>
-        <li><strong>Operating Systems:</strong> Proficient in Windows and Linux environments for system and server tasks.</li>
-        <li><strong>Application Software:</strong> Skilled in Microsoft Word, Excel, PowerPoint, MS Access.</li>
-        <li><strong>Library Automation Software:</strong> Expertise in Koha, Libsoft, Library Manager, NewGenLib; implemented barcode LMS.</li>
-        <li><strong>Digital Library Platforms:</strong> Hands-on with DSpace, Greenstone, EPrints for repositories and digital content management.</li>
-        <li><strong>Programming & Web Technologies:</strong> Basic HTML, CSS, Python, Java certifications.</li>
-        <li><strong>Content Management Systems:</strong> Experience with Drupal, Joomla for digital knowledge content.</li>
-        <li><strong>Library Management Expertise:</strong> End-to-end LMS implementation, budgeting, acquisition, reporting, and policy.</li>
-      </ul>
+    <!-- Projects -->
+    <section aria-labelledby="projectsTitle">
+      <h2 id="projectsTitle">Projects & Initiatives</h2>
+      <div class="projects">
+        <div class="project-card">
+          <span class="project-title">Koha Catalog Migration</span>
+          <p class="project-desc">Led the transition from Libsoft to Koha, streamlining automations and digital asset tracking.</p>
+        </div>
+        <div class="project-card">
+          <span class="project-title">EPrints Digital Archive</span>
+          <p class="project-desc">Established a searchable repository of academic papers for KSIT faculty and students.</p>
+        </div>
+        <div class="project-card">
+          <span class="project-title">User Support Portal</span>
+          <p class="project-desc">Built an FAQ and helpdesk system to guide users in navigating digital resources.</p>
+        </div>
+      </div>
     </section>
-
-    <section aria-labelledby="coursesTitle">
-      <h2 id="coursesTitle">Courses & Certifications</h2>
-      <ul>
-        <li><strong>O’Level Computer Certification Course</strong> – NIELIT: HTML, CSS, Java, Python, IT Apps, Office & Web Design basics</li>
-        <li><strong>Science Communication: Research Productivity & Data Analytics</strong> – NPTEL Online</li>
-        <li><strong>Advanced R Programming for Data Analytics</strong> – NPTEL Online</li>
-        <li><strong>IT Applications in Libraries</strong> – NPTEL Online: Library automation & emerging info technologies</li>
-      </ul>
+    <!-- Education -->
+    <section aria-labelledby="educationTitle">
+      <h2 id="educationTitle">Education</h2>
+      <p>M.L.I.Sc — Bangalore University</p>
     </section>
-
-    <section aria-labelledby="downloadTitle">
+    <!-- Contact -->
+    <section aria-labelledby="contactTitle">
+      <h2 id="contactTitle">Contact</h2>
+      <ul>
+        <li>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></li>
+        <li>Phone: <a href="tel:+917760144157">7760144157</a></li>
+        <li>Location: Bengaluru, India</li>
+        <li>GitHub: <a href="https://github.com/Yashu2370" target="_blank">github.com/Yashu2370</a></li>
+      </ul>
       <a href="Yashwanth-K.-S.-Library-2025.docx" class="download-resume" download>Download Resume</a>
+      <div class="social-links">
+        <a href="https://github.com/Yashu2370" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/yashwanthks/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:yashu2370@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
     </section>
-
-    <section aria-labelledby="socialTitle" class="social-links">
-      <a href="https://github.com/Yashu2370" aria-label="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/yashwanthks/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:yashu2370@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    </section>
-
   </div>
   <footer>&copy; 2025 Yashwanth K S. All rights reserved.</footer>
 </body>
