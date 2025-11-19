@@ -4,308 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yashwanth K S – Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --accent: #e74c3c;
-        }
-        * {
+        body {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            color: #222;
+            font-family: 'Source Sans Pro', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--dark);
-            line-height: 1.6;
-            padding: 20px;
+        .glass {
+            background: rgba(255,255,255,0.9);
+            border-radius: 22px;
+            box-shadow: 0 6px 24px rgba(60,100,180,0.12);
+            max-width: 600px;
+            margin: 44px auto 24px auto;
+            padding: 36px 28px;
+            backdrop-filter: blur(6px);
+            animation: fadeIn 1.4s;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        header {
-            background: var(--primary);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-            position: relative;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
         }
         .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.3);
-            object-fit: cover;
-            margin: 0 auto 20px;
             display: block;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #8ecae6;
+            margin: 0 auto 18px auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
         }
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        nav {
-            margin-top: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        nav a:hover {
-            color: var(--secondary);
-        }
-        main {
-            padding: 40px;
-        }
-        section {
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 2.3rem;
+            color: #126e82;
+            text-align: center;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
         }
         h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            position: relative;
-            padding-bottom: 10px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.25rem;
+            color: #126e82;
+            margin-top: 26px;
+            margin-bottom: 10px;
         }
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--secondary);
-        }
-        p {
-            margin-bottom: 15px;
-        }
-        .job-title {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        .job-details {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+        p, li {
+            font-size: 1.08rem;
+            margin: 0 0 8px 0;
         }
         ul {
-            list-style: none;
-            padding-left: 0;
+            margin: 0 0 0 18px;
+            padding: 0;
         }
-        ul li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 25px;
+        a {
+            color: #277da1;
+            text-decoration: none;
+            transition: color 0.18s;
         }
-        ul li::before {
-            content: '•';
-            color: var(--secondary);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
+        a:hover {
+            color: #f77f00;
         }
-        .skill-item {
-            display: inline-block;
-            background: var(--light);
-            padding: 8px 15px;
-            margin: 5px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid #ddd;
-        }
-        .education-item {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            position: relative;
-        }
-        .education-item::before {
-            content: '🎓';
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .contact-item {
-            flex: 1;
-            min-width: 200px;
-        }
-        .contact-item i {
-            color: var(--secondary);
-            margin-right: 10px;
+        .contact-list p {
+            margin-bottom: 3px;
         }
         footer {
             text-align: center;
-            padding: 20px;
-            background: var(--light);
-            color: var(--dark);
-            font-size: 0.9rem;
+            color: #277da1;
+            font-size: 1.03rem;
+            margin-bottom: 16px;
+            opacity: 0.8;
         }
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 10px;
+        @media (max-width: 650px) {
+            .glass {
+                padding: 18px 10px;
             }
-            header {
-                padding: 30px 20px;
-            }
-            main {
-                padding: 20px;
-            }
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            nav a {
-                margin: 5px 10px;
+            h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="profile.jpg" alt="Profile Photo" class="profile-img">
-            <h1>Yashwanth K S</h1>
-            <div class="subtitle">Library & Information Science Professional</div>
-            <nav>
-                <a href="#about"><i class="fas fa-user"></i> About</a>
-                <a href="#experience"><i class="fas fa-briefcase"></i> Experience</a>
-                <a href="#skills"><i class="fas fa-cogs"></i> Skills</a>
-                <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
-                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-            </nav>
-        </header>
-
-        <main>
-            <section id="about">
-                <h2>About Me</h2>
-                <p>
-                    I am a Library & Information Science professional with extensive experience in library operations, cataloging, digital platforms, and user support. My expertise spans library management systems, digital repositories, and information services promotion.
-                </p>
-                <p>
-                    <strong>Career Objective:</strong> To work as an Information Resource Centre (IRC) professional in a dynamic corporate environment where I can apply my expertise in library science, digital tools, and user support. I aim to contribute to efficient resource management, promote knowledge services, and continuously upskill while delivering excellent service in alignment with organizational goals.
-                </p>
-            </section>
-
-            <section id="experience">
-                <h2>Experience</h2>
-                <div class="job-title">Assistant Librarian – K S School of Engineering & Management</div>
-                <div class="job-details">April 2023 – Present | Bengaluru, India</div>
-                <ul>
-                    <li>Oversee daily library operations including material circulation, classification, and resource shelving</li>
-                    <li>Deliver user assistance for information retrieval, digital database access, and research consultations</li>
-                    <li>Administer and maintain bibliographic and user records through Koha and Libsoft</li>
-                    <li>Conduct orientation sessions to familiarize users with library services</li>
-                    <li>Lead outreach activities including book exhibitions and library service promotions</li>
-                    <li>Train students in navigating OPAC and using e-resources for academic research</li>
-                    <li>Support digital transformation by integrating interactive technologies</li>
-                    <li>Maintain IRC statistics and generate monthly reports</li>
-                </ul>
-            </section>
-
-            <section id="skills">
-                <h2>Skills & Competencies</h2>
-                <div>
-                    <span class="skill-item">Koha & Libsoft</span>
-                    <span class="skill-item">Cataloging & Metadata</span>
-                    <span class="skill-item">DSpace & EPrints</span>
-                    <span class="skill-item">Information Retrieval</span>
-                    <span class="skill-item">OPAC Management</span>
-                    <span class="skill-item">Digital Repositories</span>
-                    <span class="skill-item">User Support</span>
-                    <span class="skill-item">Research Guidance</span>
-                    <span class="skill-item">HTML/CSS</span>
-                    <span class="skill-item">Python</span>
-                    <span class="skill-item">MS Office</span>
-                    <span class="skill-item">Zotero/Mendeley</span>
-                </div>
-                <h3 style="margin-top: 20px;">Professional IT Skills</h3>
-                <ul>
-                    <li>Library Automation: Koha, Libsoft, NewGenLib</li>
-                    <li>Digital Platforms: DSpace, Greenstone, EPrints</li>
-                    <li>Programming: HTML, CSS, Python, Java</li>
-                    <li>Content Management: Drupal, Joomla</li>
-                    <li>Operating Systems: Windows, Linux</li>
-                </ul>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <div class="education-item">
-                    <strong>Master of Library & Information Science (M.L.I.Sc)</strong><br>
-                    Bangalore University, Bangalore – 2022<br>
-                    First Class – 67.35%
-                </div>
-                <div class="education-item">
-                    <strong>Bachelor of Arts (B.A.)</strong><br>
-                    Belture Government College, Bangalore – 2020<br>
-                    First Class – 62.71%
-                </div>
-                <div class="education-item">
-                    <strong>Pre-University Course (PUC)</strong><br>
-                    Belture Government College, Bangalore – 2017<br>
-                    Second Class – 53.33%
-                </div>
-                <div class="education-item">
-                    <strong>Secondary School Leaving Certificate (SSLC)</strong><br>
-                    Ghandi High School, Bekkalale, Maddur – 2014<br>
-                    First Class – 72.00%
-                </div>
-            </section>
-
-            <section id="contact">
-                <h2>Contact</h2>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        7760144157
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Bengaluru, India
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <a href="https://github.com/Yashu2370">github.com/Yashu2370</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2025 Yashwanth K S. All rights reserved.</p>
-        </footer>
+    <div class="glass">
+        <img src="profile.jpg" alt="Profile Photo" class="profile-img">
+        <h1>Yashwanth K S</h1>
+        <p style="text-align:center; color:#20719e;">Library & Information Science Professional</p>
+        <section>
+            <h2>About Me</h2>
+            <p>
+                I am a Library & Information Science professional with experience in library operations, cataloging, digital platforms, and user support.
+            </p>
+        </section>
+        <section>
+            <h2>Experience</h2>
+            <p><strong>Library Assistant – K S School of Engineering & Management</strong></p>
+            <p>Cataloging · Circulation · Digital Library Services · User Support</p>
+        </section>
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li>Koha &amp; Libsoft</li>
+                <li>Cataloging &amp; Metadata</li>
+                <li>DSpace · EPrints</li>
+                <li>Information Retrieval</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Education</h2>
+            <p>M.L.I.Sc — Bangalore University</p>
+        </section>
+        <section>
+            <h2>Contact</h2>
+            <div class="contact-list">
+                <p>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
+                <p>Phone: 7760144157</p>
+                <p>Location: Bengaluru, India</p>
+                <p>GitHub: <a href="https://github.com/Yashu2370">github.com/Yashu2370</a></p>
+            </div>
+        </section>
     </div>
+    <footer>
+        &copy; 2025 Yashwanth K S. All rights reserved.
+    </footer>
 </body>
 </html>
