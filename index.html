@@ -4,339 +4,223 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yashwanth K S – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --deep-blue: #0a1a2f;
-      --navy: #0d2a45;
-      --sky: #1fb7ff;
-      --cyan: #4cd3ff;
-      --white: #ffffff;
-      --card-bg: rgba(255, 255, 255, 0.05);
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family:'Poppins', sans-serif;
+      background:#0a0f24;
+      color:#fff;
+      line-height:1.7;
     }
-
-    html, body {
-      padding: 0;
-      margin: 0;
-      font-family: 'Source Sans Pro', sans-serif;
-      background: linear-gradient(135deg, var(--deep-blue), var(--navy));
-      color: var(--white);
-      min-height: 100vh;
+    header {
+      text-align:center;
+      padding:80px 20px;
+      background:linear-gradient(135deg,#ff512f,#dd2476);
+      border-bottom-left-radius:40px;
+      border-bottom-right-radius:40px;
     }
-
-    .container {
-      max-width: 900px;
-      margin: 48px auto;
-      background: var(--card-bg);
-      padding: 48px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-    }
-
     header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.8rem;
-      background: linear-gradient(90deg, var(--sky), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
-      margin-bottom: 10px;
+      font-size:3rem;
+      font-weight:700;
+      margin-bottom:10px;
     }
-
-    header p {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #c9f3ff;
+    header p {font-size:1.2rem; opacity:0.9;}
+    .container {
+      width:90%;
+      max-width:1000px;
+      margin:40px auto;
+      display:flex;
+      flex-direction:column;
+      gap:35px;
     }
-
-    .profile-img {
-      display: block;
-      margin: 30px auto;
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--cyan);
-      box-shadow: 0 0 22px var(--sky);
-    }
-
     section {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 24px;
-      border-radius: 14px;
-      margin-bottom: 32px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      background:#111831;
+      padding:25px 30px;
+      border-radius:20px;
+      border:1px solid #ffffff22;
+      box-shadow:0 5px 20px #00000055;
+      transition:0.3s;
     }
-
-    section h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.6rem;
-      background: linear-gradient(90deg, var(--cyan), var(--sky));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 16px;
+    section:hover {transform:translateY(-4px); box-shadow:0 10px 25px #00000088;}
+    h2 {
+      font-size:1.6rem;
+      margin-bottom:12px;
+      color:#ff4c67;
+      font-weight:700;
     }
-
-    ul li, p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    .download-resume {
-      display: inline-block;
-      padding: 14px 32px;
-      background: linear-gradient(90deg, var(--sky), var(--cyan));
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: 700;
-      box-shadow: 0 8px 22px rgba(31, 183, 255, 0.4);
-      transition: 0.3s;
-    }
-
-    .download-resume:hover {
-      box-shadow: 0 12px 32px rgba(76, 211, 255, 0.6);
-      transform: translateY(-3px);
-    }
-
-    .social-links {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .social-links a {
-      font-size: 1.8rem;
-      margin: 0 12px;
-      color: var(--cyan);
-      transition: 0.25s;
-    }
-
-    .social-links a:hover {
-      color: var(--sky);
-      text-shadow: 0 0 12px var(--cyan);
-    }
-
+    ul {margin-left:20px;}
+    ul li {margin-bottom:8px;}
+    .contact a {color:#ff6188; text-decoration:none;}
     footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 1rem;
-      opacity: 0.8;
-      background: linear-gradient(90deg, var(--sky), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        padding: 22px;
-      }
-      header h1 {
-        font-size: 2rem;
-      }
+      text-align:center;
+      padding:30px;
+      color:#bbb;
+      margin-top:40px;
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <header>
-      <h1>Yashwanth K S</h1>
-      <p>Library & Information Science Professional</p>
-    </header>
 
-    <img src="SRP02019.jpg" class="profile-img" alt="Profile">
+<header>
+  <h1>Yashwanth K S</h1>
+  <p>Library & Information Science Professional</p>
+</header>
 
-    <section>
-      <h2>Career Objectives</h2>
-      <p>To work as an Information Resource Centre (IRC) professional in a dynamic corporate environment where I can apply my expertise in library science, digital tools, and user support...</p>
+<div class="container">
+
+  <section>
+    <h2>Employment History</h2>
+    <p><strong>Library Assistant – K S School of Engineering and Management, Bangalore</strong> (April 2023 – Present)</p>
+    <ul>
+      <li>Oversee daily library operations.</li>
+      <li>User assistance, research consultations.</li>
+      <li>Koha & Libsoft management.</li>
+      <li>Orientation sessions & faculty support.</li>
+      <li>IRC desk operations.</li>
+      <li>Outreach activities: exhibitions & promotions.</li>
+      <li>Train users on OPAC & digital tools.</li>
+    </ul>
+  </section>
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <ul>
+      <li>Phone: <a href="tel:+917760144157">7760144157</a></li>
+      <li>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></li>
+      <li>Address: No.15, Mallasandra, Kanakapura Road, Bengaluru - 560109</li>
+      <li>GitHub: <a href="https://github.com/Yashu2370">github.com/Yashu2370</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Personal Details</h2>
+    <ul>
+      <li>Date of Birth: 18th December 1998</li>
+      <li>Gender: Male</li>
+      <li>Languages: Kannada, English, Hindi, Telugu</li>
+      <li>Nationality: Indian</li>
+      <li>Permanent Address: Koppa Hobali, Madduru Taluku, Mandya District</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Educational Qualifications</h2>
+    <ul>
+      <li><strong>M.L.I.Sc</strong> – Bangalore University, 2022 (67.35%)</li>
+      <li><strong>B.A.</strong> – Belture Government College, 2020 (62.71%)</li>
+      <li><strong>PUC</strong> – Belture Government College, 2017 (53.33%)</li>
+      <li><strong>SSLC</strong> – Ghandi High School, 2014 (72%)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Job Profile</h2>
+    <ul>
+      <li>Acquisition & Cataloging (DDC, MARC).</li>
+      <li>Circulation & Access Management.</li>
+      <li>Reading Promotion Activities.</li>
+      <li>Digital Services & e‑Resource Access.</li>
+      <li>Reference Assistance & Research Support.</li>
+      <li>LMS Automation & Technical Support.</li>
+      <li>Information Service Promotion.</li>
+      <li>Data Reports & Policy Implementation.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Skills & Competencies</h2>
+    <ul>
+      <li>Koha, Libsoft, OPAC, LMS.</li>
+      <li>MS Office, HTML, Python.</li>
+      <li>Digital Resource Handling.</li>
+      <li>User Support & Coordination.</li>
+      <li>Outreach & Engagement.</li>
+      <li>Professional, Adaptive, Service‑Oriented.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Professional IT Expertise</h2>
+    <ul>
+      <li>Windows & Linux.</li>
+      <li>MS Word, Excel, PowerPoint.</li>
+      <li>Koha, Libsoft, NewGenLib, Barcode LMS.</li>
+      <li>DSpace, Greenstone, EPrints.</li>
+      <li>HTML, CSS, Python, Java.</li>
+      <li>Drupal, Joomla CMS.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Courses & Certifications</h2>
+    <ul>
+      <li>O’Level Computer – NIELIT</li>
+      <li>Science Communication – NPTEL</li>
+      <li>Advanced R Programming – NPTEL</li>
+      <li>IT Applications in Libraries – NPTEL</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>&copy; 2025 Yashwanth K S</footer>
+
+    <section class="about mt-12">
+      <h2>About Me</h2>
+      <p>
+        I am an experienced library professional currently working in a BE and Management college in Bengaluru. I assist students and faculties with circulation services, cataloguing, digital resources, and library automation. I am passionate about modern learning technologies, digital libraries, KOHA, and resource management.
+      </p>
     </section>
 
-    <section>
-      <h2>Employment History</h2>
-      <p><strong>Library Assistant – K S School of Engineering and Management, Bangalore</strong> (April 2023 – Present)</p>
+    <section class="skills mt-12">
+      <h2>Core Skills</h2>
       <ul>
-        <li>Oversee daily library operations including material circulation...</li>
-        <li>Deliver user assistance and research support...</li>
-        <li>Manage Koha, Libsoft, and user databases...</li>
+        <li>Library Management & Circulation</li>
+        <li>Cataloguing & Classification (DDC, AACR2, MARC21)</li>
+        <li>Digital Library Tools (DSpace, E-Resources)</li>
+        <li>Library Automation Support (KOHA Operations)</li>
+        <li>User Support & Information Services</li>
+        <li>Record Maintenance & Documentation</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Contact</h2>
+    <section class="tools mt-12">
+      <h2>Tools & Technologies</h2>
       <ul>
-        <li>Phone: 7760144157</li>
-        <li>Email: yashu2370@gmail.com</li>
-        <li>Address: Bengaluru – 560109</li>
-        <li>GitHub: github.com/Yashu2370</li>
+        <li>KOHA</li>
+        <li>DSpace</li>
+        <li>MS Office Tools</li>
+        <li>OPAC Systems</li>
+        <li>Google Workspace</li>
+        <li>E-Learning Portals (NPTEL, SWAYAM)</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Education</h2>
+    <section class="achievements mt-12">
+      <h2>Achievements</h2>
       <ul>
-        <li>M.L.I.Sc – Bangalore University – 67.35%</li>
-        <li>B.A – Belture Government College – 62.71%</li>
-        <li>PUC – 53.33%</li>
-        <li>SSLC – 72%</li>
+        <li>Improved circulation efficiency and user support in the college library.</li>
+        <li>Helped implement digital library access and e-resource training for students.</li>
+        <li>Assisted in restructuring library sections for better accessibility.</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Skills & Competencies</h2>
+    <section class="services mt-12">
+      <h2>Services I Offer</h2>
       <ul>
-        <li>Koha, Libsoft, LMS platforms</li>
-        <li>MS Office, HTML, Python</li>
-        <li>Research & Reference Services</li>
-        <li>Digital Library Tools</li>
+        <li>Library Setup & Arrangement</li>
+        <li>Digital Resource Management</li>
+        <li>Student & Faculty Information Support</li>
+        <li>Data Entry, Documentation & Record Handling</li>
       </ul>
     </section>
 
-    <section>
-      <a href="Yashwanth-K.-S.-Library-2025.docx" class="download-resume" download>Download Resume</a>
-    </section>
-
-    <div class="social-links">
-      <a href="https://github.com/Yashu2370"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/yashwanthks"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:yashu2370@gmail.com"><i class="fas fa-envelope"></i></a>
-    </div>
-  </div>
-
-  <footer>© 2025 Yashwanth K S. All rights reserved.</footer>
-    <section class="experience">
-        <h2>Experience</h2>
-        <ul>
-            <li><strong>Library Assistant</strong> – BE & Management College, Bengaluru<br>Managing catalogues, issuing books, digital library systems.</li>
-        </ul>
-    </section>
-
-    <section class="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Digital Library System Setup</strong> – Implemented e‑resource access & OPAC improvements.</li>
-            <li><strong>Library Automation Support</strong> – Assisted in Koha & DSpace workflows.</li>
-        </ul>
-    </section>
-
-    <section class="certifications">
-        <h2>Certifications</h2>
-        <ul>
-            <li>KSET / NET Preparation</li>
-            <li>Library Science Workshops & Seminars</li>
-        </ul>
-    </section>
-
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>Email: yashwanth.ks@example.com</p>
-        <p>Location: Bengaluru, Karnataka</p>
-    </section>
-
-    
-    <!-- Added Full Sections -->
-
-    <section aria-labelledby="employmentHistoryTitle">
-      <h2 id="employmentHistoryTitle">Employment History</h2>
-      <p><strong>Library Assistant – K S School of Engineering and Management, Bangalore</strong> (April 2023 – Present)</p>
-      <ul>
-        <li>Oversee daily library operations including material circulation, classification, and shelving.</li>
-        <li>Deliver user assistance by supporting information retrieval, database access, and research consultations.</li>
-        <li>Administer bibliographic and user records through Koha and Libsoft.</li>
-        <li>Conduct user orientation sessions and academic support for faculty.</li>
-        <li>Manage IRC desk operations handling queries and transactional tasks.</li>
-        <li>Lead outreach activities: book exhibitions, walk-throughs, and library service promotions.</li>
-        <li>Train students in OPAC navigation and use of digital resources.</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="contactInfoTitle">
-      <h2 id="contactInfoTitle">Contact</h2>
-      <ul>
-        <li>Phone: <a href="tel:+917760144157">7760144157</a></li>
-        <li>Email: <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></li>
-        <li>Address: No.15, Mallasandra, Off. Kanakapura Road, Bengaluru - 560109, India</li>
-        <li>GitHub: <a href="https://github.com/Yashu2370" target="_blank" rel="noopener">github.com/Yashu2370</a></li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="personalDetailsTitle">
-      <h2 id="personalDetailsTitle">Personal Details</h2>
-      <ul>
-        <li>Date of Birth: 18th December 1998</li>
-        <li>Gender: Male</li>
-        <li>Languages Known: Kannada, English, Hindi, Telugu</li>
-        <li>Nationality: Indian</li>
-        <li>Permanent Address: Koppa Hobali, Madduru Taluku, Mandya District, Kiranguru – 571425, Karnataka, India</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="educationTitle">
-      <h2 id="educationTitle">Educational Qualifications</h2>
-      <ul>
-        <li><strong>Master of Library & Information Science (M.L.I.Sc)</strong> – Bangalore University, 2022 <br> First Class – 67.35%</li>
-        <li><strong>Bachelor of Arts (B.A.)</strong> – Belture Government College, 2020 <br> First Class – 62.71%</li>
-        <li><strong>Pre-University Course (PUC)</strong> – Belture Government College, 2017 <br> Second Class - 53.33%</li>
-        <li><strong>Secondary School Leaving Certificate (SSLC)</strong> – Ghandi High School, Bekkalale, 2014 <br> First Class - 72.00%</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="jobProfileTitle">
-      <h2 id="jobProfileTitle">Job Profile</h2>
-      <h3>Information Resource Acquisition & Cataloging</h3>
-      <p>Assist in selection, acquisition, and accessioning of books, journals, and digital materials. Classify and catalog resources using DDC and MARC. Maintain bibliographic records in Koha, Libsoft, and other automation software.</p>
-      <h3>Resource Circulation & Access Management</h3>
-      <p>Manage issue, return, renewal, and reservation of resources through LMS platforms. Track usage and send reminders for overdue materials.</p>
-      <h3>Reading Promotion & Knowledge Awareness</h3>
-      <p>Conduct activities like book talks, floor walks, and reading promotion campaigns to engage users.</p>
-      <h3>Digital Services & Information Access</h3>
-      <p>Support users in accessing online databases, e-resources, and research tools. Guide safe and ethical internet use.</p>
-      <h3>User Support & Reference Assistance</h3>
-      <p>Conduct orientation sessions, provide reference and research guidance, assist with citation tools.</p>
-      <h3>IRC Automation & Technical Services</h3>
-      <p>Operate and maintain LMS for daily operations. Support integration of user-friendly technologies.</p>
-      <h3>Information Services Promotion & Engagement</h3>
-      <p>Promote IRC services using newsletters and digital screens. Coordinate outreach to increase usage.</p>
-      <h3>Data Reporting & Policy Implementation</h3>
-      <p>Maintain statistics, generate reports, enforce policies, and assist in budgeting and infrastructure planning.</p>
-    </section>
-
-    <section aria-labelledby="skillsTitle">
-      <h2 id="skillsTitle">Skills & Competencies</h2>
-      <ul>
-        <li>Library Automation Tools: Koha, Libsoft, LMS platforms</li>
-        <li>Technical Knowledge: MS Office, HTML, Python, IT Applications</li>
-        <li>Information Services: OPAC, e-resources, research & reference tools</li>
-        <li>Communication & Collaboration: Query handling, user support, faculty/staff coordination</li>
-        <li>Outreach & Promotion: Book talks, IRC awareness drives, digital engagement</li>
-        <li>Digital Resource Management: E-books, repositories, citation tools</li>
-        <li>Professional Traits: Detail-oriented, adaptive, service-focused, willing to upskill</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="professionalSkillsTitle">
-      <h2 id="professionalSkillsTitle">Professional IT Skills/Expertise</h2>
-      <ul>
-        <li><strong>Operating Systems:</strong> Proficient in Windows and Linux environments for system and server tasks.</li>
-        <li><strong>Application Software:</strong> Skilled in Microsoft Word, Excel, PowerPoint, MS Access.</li>
-        <li><strong>Library Automation Software:</strong> Expertise in Koha, Libsoft, Library Manager, NewGenLib; implemented barcode LMS.</li>
-        <li><strong>Digital Library Platforms:</strong> Hands-on with DSpace, Greenstone, EPrints for repositories and digital content management.</li>
-        <li><strong>Programming & Web Technologies:</strong> Basic HTML, CSS, Python, Java certifications.</li>
-        <li><strong>Content Management Systems:</strong> Experience with Drupal, Joomla for digital knowledge content.</li>
-        <li><strong>Library Management Expertise:</strong> End-to-end LMS implementation, budgeting, acquisition, reporting, and policy.</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="coursesTitle">
-      <h2 id="coursesTitle">Courses & Certifications</h2>
-      <ul>
-        <li><strong>O’Level Computer Certification Course</strong> – NIELIT: HTML, CSS, Java, Python, IT Apps, Office & Web Design basics</li>
-        <li><strong>Science Communication: Research Productivity & Data Analytics</strong> – NPTEL Online</li>
-        <li><strong>Advanced R Programming for Data Analytics</strong> – NPTEL Online</li>
-        <li><strong>IT Applications in Libraries</strong> – NPTEL Online: Library automation & emerging info technologies</li>
-      </ul>
+    <section class="contact mt-12">
+      <h2>Contact Details</h2>
+      <p>Email: yashwanth.ks@example.com</p>
+      <p>Location: Bengaluru, Karnataka</p>
+      <p>Preferred Roles: Library Assistant, Library Executive, Digital Library Support</p>
     </section>
 
 </body>
