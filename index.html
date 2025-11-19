@@ -42,7 +42,6 @@
     transition:background 400ms ease,color 300ms ease;
   }
 
-  /* Container */
   .wrap{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:20px}
 
   header{
@@ -67,12 +66,10 @@
 
   main{display:grid;gap:24px;margin-top:6px}
 
-  /* Hero */
   .hero{
     display:grid;grid-template-columns:1fr;gap:18px;padding:26px;border-radius:20px;background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);box-shadow:0 12px 40px rgba(2,6,23,0.45);
     position:relative;overflow:hidden;
   }
-  /* subtle moving background shapes */
   .bg-shape{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.65;mix-blend-mode:screen}
   .shape-a{width:360px;height:360px;left:-80px;top:-120px;background:linear-gradient(135deg,#60a5fa,#8b5cf6)}
   .shape-b{width:260px;height:260px;right:-60px;bottom:-100px;background:linear-gradient(135deg,#f97316,#f43f5e)}
@@ -82,7 +79,6 @@
   .hero p{margin:10px 0 0;color:var(--muted);max-width:70ch}
   .hero-cta{display:flex;gap:10px;margin-top:14px}
 
-  /* Photo card */
   .photo-card{
     margin-top:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
     border-radius:14px;padding:12px;display:flex;gap:12px;align-items:center;border:1px solid rgba(255,255,255,0.04);
@@ -95,7 +91,6 @@
   }
   .profile img{width:100%;height:100%;object-fit:cover;display:block}
 
-  /* Two-col layout */
   @media(min-width:980px){
     main{grid-template-columns:1fr 360px}
     .hero{grid-column:1 / span 2}
@@ -103,11 +98,9 @@
     .hero-left{max-width:640px}
   }
 
-  /* Cards */
   .card{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04)}
   .muted{color:var(--muted)}
 
-  /* Projects grid */
   .projects{display:grid;grid-template-columns:1fr;gap:12px}
   @media(min-width:700px){.projects{grid-template-columns:1fr 1fr}}
   .proj{
@@ -116,25 +109,20 @@
   }
   .proj:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(2,6,23,0.6)}
 
-  /* Skill bars */
   .skill{margin-bottom:12px}
   .bar{height:10px;border-radius:999px;background:rgba(255,255,255,0.06);overflow:hidden}
   .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px;transition:width 900ms cubic-bezier(.2,.9,.2,1)}
   .small{font-size:13px;color:var(--muted)}
 
-  /* Footer */
   footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
 
-  /* Animations: reveal on scroll */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
   .reveal.show{opacity:1;transform:translateY(0)}
 
-  /* micro interactions */
   a{color:inherit;text-decoration:none}
   .socials{display:flex;gap:8px;align-items:center}
   .socials a{padding:8px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
-  
-  /* light mode adjustments (toggle by applying data-theme="light" on html) */
+
   [data-theme="light"] body{color:#07143a}
   [data-theme="light"] .muted{color:#475569}
   [data-theme="light"] .card{box-shadow:0 8px 30px rgba(2,6,23,0.04)}
@@ -143,12 +131,7 @@
 </style>
 </head>
 <body>
-  <!--
-    NOTE: Replace "./profile.jpg" with:
-      1) a file named profile.jpg uploaded to your repo root,
-      OR 2) your direct image URL (must be a public direct link ending .jpg/.png)
-    If you upload the image to your repo, the path './profile.jpg' will work.
-  -->
+
   <div class="wrap">
 
     <header class="reveal">
@@ -169,10 +152,9 @@
       </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
-      <div class="bg-shape shape-a" aria-hidden="true"></div>
-      <div class="bg-shape shape-b" aria-hidden="true"></div>
+      <div class="bg-shape shape-a"></div>
+      <div class="bg-shape shape-b"></div>
 
       <div class="hero-inner">
         <div class="hero-left">
@@ -184,15 +166,15 @@
 
           <div class="hero-cta reveal" style="margin-top:12px">
             <a class="primary" href="#contact">Contact Me</a>
-            <a class="nav-btn" href="https://github.com/Yashu2370" target="_blank" rel="noopener">GitHub</a>
+            <a class="nav-btn" href="https://github.com/Yashu2370" target="_blank">GitHub</a>
             <a class="nav-btn" href="#projects">Projects</a>
           </div>
 
           <div style="margin-top:18px" class="reveal">
             <div class="card photo-card" style="max-width:680px">
               <div class="profile" id="profileWrap">
-                <!-- placeholder image: replace with your image -->
-                <img id="profileImg" src="./profile.jpg" alt="Yashwanth K S — Profile photo" onerror="this.style.display='none'"/>
+                <!-- Your image -->
+                <img id="profileImg" src="./profile.jpg" alt="Yashwanth K S — Profile photo"/>
               </div>
               <div>
                 <div style="font-weight:700">Library Assistant — K S School of Engineering & Management</div>
@@ -200,10 +182,8 @@
               </div>
             </div>
           </div>
-
         </div>
 
-        <!-- sidebar quick info -->
         <aside style="min-width:260px">
           <div class="card reveal" style="text-align:left">
             <h3 style="margin-top:0">Quick Info</h3>
@@ -212,18 +192,16 @@
             <p class="small muted">📞 7760144157</p>
             <p class="small muted">🎓 M.L.I.Sc — Bangalore University</p>
             <div style="margin-top:12px" class="socials">
-              <a href="https://github.com/Yashu2370" target="_blank" rel="noopener">GitHub</a>
-              <a href="#" onclick="alert('Replace with LinkedIn URL')" >LinkedIn</a>
+              <a href="https://github.com/Yashu2370" target="_blank">GitHub</a>
+              <a href="#">LinkedIn</a>
             </div>
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- About & Skills -->
     <section class="card reveal" id="about">
       <h3 style="margin-top:0">About</h3>
-
       <p class="muted">
         I am a Library & Information Science professional with experience in library operations, digital resource management,
         and user support. I currently work as a Library Assistant at K S School of Engineering and Management, where I manage
@@ -258,7 +236,6 @@
       </div>
     </section>
 
-    <!-- Projects -->
     <section class="card reveal" id="projects">
       <h3 style="margin-top:0">Projects & Work</h3>
 
@@ -285,7 +262,6 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section class="card reveal" id="contact">
       <h3 style="margin-top:0">Get in touch</h3>
       <p class="muted">Send a quick message or email me directly at <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
@@ -309,39 +285,32 @@
   </div>
 
 <script>
-  // Set year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // IntersectionObserver-based reveal
   const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) e.target.classList.add('show');
-    });
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
   }, {threshold: 0.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // Animate skill bars once visible
   function animateSkillBars(){
     document.querySelectorAll('.bar > i').forEach(el=>{
       const w = el.getAttribute('data-width') || '60%';
       setTimeout(()=> el.style.width = w, 250);
     });
   }
-  // run animation when about section shows
+
   const aboutEl = document.getElementById('about');
   const aboutObserver = new IntersectionObserver((ents)=>{
     ents.forEach(e=>{ if(e.isIntersecting){ animateSkillBars(); aboutObserver.disconnect(); }});
   }, {threshold:0.2});
   if(aboutEl) aboutObserver.observe(aboutEl);
 
-  // Smooth scroll helper
   function scrollToSection(id){
     const el = document.getElementById(id);
     if(!el) return;
     el.scrollIntoView({behavior:'smooth', block:'start'});
   }
 
-  // Contact form (opens email client)
   function sendContact(){
     const name = encodeURIComponent(document.getElementById('cname').value.trim());
     const email = encodeURIComponent(document.getElementById('cemail').value.trim());
@@ -354,9 +323,12 @@
     if(msg) body += 'Message:%0D%0A' + msg + '%0D%0A';
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
   }
-  function clearContact(){ document.getElementById('cname').value='';document.getElementById('cemail').value='';document.getElementById('cmsg').value=''; }
+  function clearContact(){ 
+    document.getElementById('cname').value='';
+    document.getElementById('cemail').value='';
+    document.getElementById('cmsg').value='';
+  }
 
-  // Theme toggle with persistence
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
   const saved = localStorage.getItem('site-theme') || 'dark';
@@ -369,34 +341,10 @@
     localStorage.setItem('site-theme', current);
     setThemeIcon();
   });
-  function setThemeIcon(){ themeToggle.textContent = root.getAttribute('data-theme') === 'light' ? '☀️' : '🌙'; }
 
-  // Resume (replace with real path if you upload resume.pdf)
-  function downloadResume(){ 
-    // if you upload resume.pdf at repo root, uncomment:
-    // window.location.href = './resume.pdf';
-    alert('To enable resume download: add resume.pdf to your repo and replace the downloadResume() function URL.');
+  function setThemeIcon(){ 
+    themeToggle.textContent = root.getAttribute('data-theme') === 'light' ? '☀️' : '🌙'; 
   }
-
-  // If profile image fails to load, replace with gradient avatar
-  const img = document.getElementById('profileImg');
-  img.onerror = function(){
-    const wrap = document.getElementById('profileWrap');
-    wrap.innerHTML = '<div style="width:100%;height:100%;display:grid;place-items:center;font-weight:700;color:white;background:linear-gradient(135deg,var(--accent),var(--accent-2))">YS</div>';
-  };
-
-  // small tilt/parallax for hero shapes
-  document.addEventListener('mousemove', (e)=>{
-    const a = document.querySelector('.shape-a');
-    const b = document.querySelector('.shape-b');
-    if(a && b){
-      const cx = window.innerWidth/2, cy = window.innerHeight/2;
-      const dx = (e.clientX - cx)/cx;
-      const dy = (e.clientY - cy)/cy;
-      a.style.transform = `translate(${dx*8}px, ${dy*8}px)`;
-      b.style.transform = `translate(${dx*-6}px, ${dy*-6}px)`;
-    }
-  });
 
 </script>
 </body>
