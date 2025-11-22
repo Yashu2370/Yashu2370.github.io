@@ -1,244 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Yashwanth K S — Portfolio</title>
-
+<meta name="description" content="Portfolio of Yashwanth K S — Assistant Librarian, Digital Resource Specialist" />
+<link rel="icon" href="" />
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f5f7fb;
-    }
+  /* =========================
+     Variables & Base Reset
+     ========================= */
+  :root{
+    --bg:#0f1724;           /* dark background for hero */
+    --panel:#ffffff;
+    --muted:#6b7280;
+    --accent-1:#00b7a8;
+    --accent-2:#0081ff;
+    --glass: rgba(255,255,255,0.08);
+    --radius-lg:20px;
+    --radius-md:12px;
+    --shadow-lg: 0 20px 50px rgba(2,6,23,0.5);
+    --text:#0b1220;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#f3f7fb 0%, #eef4fb 100%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+  a{color:inherit}
 
-    /* Sidebar */
-    .sidebar {
-        position: fixed;
-        width: 230px;
-        height: 100vh;
-        background: white;
-        padding: 25px 20px;
-        border-right: 1px solid #eee;
-    }
+  /* =========================
+     Layout
+     ========================= */
+  .wrap {
+    min-height:100vh;
+    display:grid;
+    grid-template-columns: 300px 1fr;
+  }
 
-    .logo {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 40px;
-    }
+  /* -------------------------
+     Sidebar (left)
+     ------------------------- */
+  .sidebar{
+    background: linear-gradient(180deg, #ffffff, #fbfeff);
+    padding:28px 22px;
+    border-right: 1px solid rgba(12,18,26,0.04);
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    position:relative;
+  }
+  .brand {
+    display:flex;gap:12px;align-items:center;
+  }
+  .logo {
+    width:56px;height:56px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent-1), var(--accent-2));
+    display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;
+    box-shadow: 0 10px 28px rgba(3,100,120,0.12);
+  }
+  .brand h1{font-size:16px;margin:0}
+  .brand p{margin:0;font-size:12px;color:var(--muted)}
 
-    .logo-circle {
-        width: 50px;
-        height: 50px;
-        background: #00c19a;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 20px;
-    }
+  nav{margin-top:8px}
+  nav ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding:0}
+  nav a{
+    text-decoration:none;padding:10px 10px;border-radius:10px;color:var(--text);
+    display:flex;align-items:center;gap:10px;font-weight:600;
+  }
+  nav a small{font-size:12px;color:var(--muted);font-weight:500}
+  nav a.active{background:linear-gradient(90deg,rgba(0,183,168,0.08), rgba(0,129,255,0.06));color:var(--accent-1)}
+  nav a:hover{background:rgba(2,6,23,0.03)}
 
-    .sidebar a {
-        display: block;
-        padding: 12px 10px;
-        margin: 4px 0;
-        color: #111;
-        text-decoration: none;
-        font-size: 15px;
-        border-radius: 6px;
-    }
+  .side-footer{margin-top:auto;font-size:13px;color:var(--muted)}
 
-    .sidebar a:hover {
-        background: #eaf4ff;
-        color: #1a73e8;
-    }
+  /* -------------------------
+     Main
+     ------------------------- */
+  main{min-height:100vh;background:transparent}
 
-    .social {
-        position: absolute;
-        bottom: 30px;
-        left: 20px;
-    }
+  /* =========================
+     Hero Section
+     ========================= */
+  .hero {
+    display:flex;
+    gap:48px;
+    align-items:center;
+    padding:64px clamp(20px,6vw,80px);
+    background:linear-gradient(120deg,var(--panel) 0%, var(--panel) 50%, #eef9fa 50%);
+    min-height:72vh;
+  }
 
-    .social a {
-        margin-right: 15px;
-        color: #222;
-        text-decoration: none;
-        font-weight: bold;
-    }
+  .hero-left{
+    width:58%;
+    max-width:920px;
+  }
+  .eyebrow{color:var(--accent-1);font-weight:700;font-size:15px}
+  .title{
+    font-size:48px;font-weight:800;margin:8px 0;line-height:1.02;color: #071427;
+    letter-spacing: -0.02em;
+  }
+  .subtitle{font-size:18px;color:var(--muted);margin-bottom:16px}
+  .lead{font-size:16px;color:#374151;max-width:78%}
 
-    /* Main Content */
-    .main {
-        margin-left: 230px;
-        padding: 0;
-    }
+  /* Buttons row */
+  .row{display:flex;gap:12px;margin-top:22px;align-items:center}
+  /* Gradient button */
+  .btn {
+    padding:12px 22px;border-radius:12px;border:none;cursor:pointer;font-weight:700;font-size:15px;
+    transition:all .28s cubic-bezier(.2,.9,.2,1);
+    display:inline-flex;align-items:center;gap:10px;
+  }
 
-    /* Hero Section */
-    .hero {
-        background: linear-gradient(135deg, #4dabff, #3a82ff);
-        padding: 80px 60px;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-    }
+  /* Specific styles */
+  .btn-gradient{
+    background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+    color:white;box-shadow:0 10px 30px rgba(3,100,120,0.14);
+    transform:translateZ(0);
+  }
+  .btn-gradient:hover{transform:translateY(-4px) scale(1.02);filter:brightness(1.02)}
 
-    .hero-text {
-        max-width: 520px;
-        margin-top: 40px;
-    }
+  .btn-glass{
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+    border:1px solid rgba(255,255,255,0.12);
+    color:#071427;backdrop-filter: blur(6px);
+    box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+  }
+  .btn-outline{
+    background:transparent;border:2px solid var(--accent-1);color:var(--accent-1);
+  }
 
-    .hero-text h2 {
-        font-size: 18px;
-    }
+  .btn-glow{
+    background:var(--accent-1);color:white;border-radius:999px;padding:10px 24px;
+    box-shadow:0 6px 30px rgba(0,183,168,0.18), inset 0 -2px 0 rgba(0,0,0,0.05);
+  }
+  .btn-glow:hover{box-shadow:0 10px 40px rgba(0,183,168,0.28), 0 0 28px rgba(0,183,168,0.08)}
 
-    .hero-text h1 {
-        font-size: 45px;
-        font-weight: bold;
-        margin: 10px 0;
-    }
+  .btn-arrow{position:relative;overflow:hidden;background:var(--accent-2);color:white;padding:12px 26px;border-radius:12px}
+  .btn-arrow::after{content:'➜';position:absolute;right:14px;transform:translateX(12px);opacity:0;transition:all .28s}
+  .btn-arrow:hover::after{transform:translateX(0);opacity:1}
 
-    .hero-text p {
-        font-size: 15px;
-        line-height: 1.6;
-        margin-top: 10px;
-    }
+  /* Typing small */
+  .type-wrap{margin-top:12px;font-weight:700;color:#0b1220;display:flex;gap:8px;align-items:center}
+  .type-el{color:var(--accent-1);border-right:2px solid rgba(3,100,120,0.6);padding-right:6px}
 
-    .btn-box {
-        margin-top: 25px;
-    }
+  /* =========================
+     Photo Frame (hero-right)
+     ========================= */
+  .hero-right{width:42%;display:flex;justify-content:center;align-items:center}
+  .photo-frame{
+    width:380px;height:520px;border-radius:28px;
+    background:linear-gradient(180deg,#fff 0%, #fbfeff 100%);
+    box-shadow: var(--shadow-lg);
+    position:relative;overflow:hidden;border:1px solid rgba(2,6,23,0.06);
+    transform: translateY(4px);
+  }
+  .photo-frame .bg-accent{
+    position:absolute;left:-20%;top:-35%;width:200%;height:60%;
+    background:linear-gradient(90deg, rgba(0,183,168,0.12), rgba(0,129,255,0.08));
+    transform:rotate(-12deg);
+  }
+  .standing {
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .9s cubic-bezier(.2,.9,.2,1);
+    transform: translateY(6px);
+  }
+  .photo-frame:hover .standing{transform: translateY(0) scale(1.02)}
+  .frame-base{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:78%;height:52px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03))}
 
-    .btn {
-        padding: 10px 22px;
-        border-radius: 6px;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        margin-right: 12px;
-    }
+  /* =========================
+     Content sections
+     ========================= */
+  .content {
+    padding:48px clamp(20px,6vw,80px);
+    max-width:1100px;margin:0 auto 80px;
+  }
+  .card{
+    background:white;border-radius:16px;padding:22px;margin-bottom:20px;box-shadow:0 8px 30px rgba(2,6,23,0.04);
+  }
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .skills{display:flex;flex-wrap:wrap;gap:10px}
+  .pill{background:linear-gradient(90deg,#eefdfa,#e6fbf8);padding:8px 12px;border-radius:999px;font-weight:600;color:#065e54}
 
-    .hire {
-        background: black;
-        color: white;
-    }
+  footer{padding:26px;text-align:center;color:var(--muted);font-size:14px}
 
-    .cv {
-        background: white;
-        color: #333;
+  /* =========================
+     Responsive
+     ========================= */
+  @media (max-width:1000px){
+    .wrap{grid-template-columns:1fr}
+    .sidebar{
+      position:fixed;left:-100%;top:0;bottom:0;width:280px;z-index:40;transition:all .28s;box-shadow:0 20px 60px rgba(2,6,23,0.12)
     }
+    .sidebar.open{left:0}
+    .hero{flex-direction:column;min-height:60vh;padding:40px 20px}
+    .hero-left{width:100%}
+    .hero-right{width:100%;margin-top:22px;display:flex;justify-content:center}
+    .photo-frame{width:280px;height:380px}
+    .lead{max-width:100%}
+    .two-col{grid-template-columns:1fr; }
+  }
 
-    /* Standing Photo Frame */
-    .photo-frame {
-        width: 330px;
-        height: 460px;
-        background: white;
-        border-radius: 18px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        padding: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .photo-frame img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-    }
-
-    /* Sections */
-    .section {
-        margin: 50px auto;
-        width: 80%;
-        background: white;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
-
-    .section h2 {
-        margin-bottom: 10px;
-    }
-
-    /* Mobile */
-    @media (max-width: 900px) {
-        .sidebar {
-            display: none;
-        }
-        .main {
-            margin-left: 0;
-        }
-        .hero {
-            flex-direction: column;
-            text-align: center;
-        }
-        .photo-frame {
-            margin: 20px auto 0;
-        }
-    }
+  /* keyboard focus & accessibility */
+  .btn:focus{outline:3px solid rgba(0,183,168,0.16);outline-offset:3px}
 </style>
 </head>
-
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar">
-    <div class="logo">
-        <div class="logo-circle">YK</div>
-        <p>Assistant Librarian</p>
+<div class="wrap" id="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar" aria-label="Sidebar navigation">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">YK</div>
+        <div>
+          <h1 style="font-size:15px;margin-bottom:4px">Yashwanth K S</h1>
+          <p style="margin:0;font-size:12px;color:var(--muted)">Assistant Librarian</p>
+        </div>
+      </div>
+
+      <!-- mobile close button -->
+      <button id="closeSidebar" aria-label="Close menu" style="background:none;border:none;display:none">✕</button>
     </div>
 
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#home" class="active">Home <small>— intro</small></a></li>
+        <li><a href="#about">About <small>— background</small></a></li>
+        <li><a href="#services">Services <small>— expertise</small></a></li>
+        <li><a href="#projects">Projects <small>— portfolio</small></a></li>
+        <li><a href="#contact">Contact <small>— get in touch</small></a></li>
+      </ul>
+    </nav>
 
-    <div class="social">
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
+    <div style="display:flex;gap:10px;margin-top:8px">
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
     </div>
-</div>
 
-<!-- Main -->
-<div class="main">
+    <div class="side-footer">© 2025 Yashwanth K S</div>
+  </aside>
 
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-text">
-            <h2>Hello I'm</h2>
-            <h1>Yashwanth K S</h1>
-            <h3>Assistant Librarian | Academic Library Professional</h3>
+  <!-- MAIN -->
+  <main>
 
-            <p>
-                I help academic communities discover, access and use information efficiently — combining 
-                library science with practical digital tools to improve learning and research.
-            </p>
+    <!-- small top bar for mobile to open menu -->
+    <div id="topbar" style="display:none;position:sticky;top:12px;z-index:50;padding:12px 20px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-weight:700">Yashwanth K S</div>
+        <button id="openSidebar" aria-label="Open menu" style="background:var(--panel);border-radius:10px;border:none;padding:8px 10px;box-shadow:0 6px 16px rgba(2,6,23,0.06)">☰</button>
+      </div>
+    </div>
 
-            <div class="btn-box">
-                <button class="btn hire">Hire Me</button>
-                <button class="btn cv">Download CV</button>
-            </div>
+    <!-- HERO -->
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero-left">
+        <div class="eyebrow">Hello — I'm</div>
+        <h1 class="title" id="heroTitle">Yashwanth K S</h1>
+        <div class="subtitle">Assistant Librarian · Digital Resource Specialist</div>
+
+        <p class="lead">I help academic communities discover, access and use information efficiently — combining library science, metadata standards and web tools (Koha, DSpace) to power learning and research.</p>
+
+        <div class="row" role="toolbar" aria-label="Primary actions">
+          <button class="btn btn-glow" id="hireBtn" title="Hire Me">Hire Me</button>
+          <button class="btn btn-glass" id="downloadBtn" title="Download CV">Download CV</button>
+          <button class="btn btn-arrow" id="contactBtn" title="Contact">Contact</button>
         </div>
 
-        <div class="photo-frame">
-            <img src="standing-photo.jpg" alt="Your Standing Photo">
+        <div class="type-wrap" aria-hidden="false">
+          <span style="color:var(--muted)">I’m a</span>
+          <span class="type-el" id="type"></span>
         </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="false">
+        <div class="photo-frame" role="img" aria-label="Portrait of Yashwanth">
+          <div class="bg-accent" aria-hidden="true"></div>
+          <!-- LOCAL IMAGE PATH: developer-provided file -->
+          <img class="standing" src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Yashwanth standing portrait">
+          <div class="frame-base" aria-hidden="true"></div>
+        </div>
+      </div>
+
     </section>
 
-    <!-- About -->
-    <div class="section" id="about">
-        <h2>About Me</h2>
-        <p>
-            I am an Assistant Librarian based in Bengaluru — passionate about library automation, metadata,
-            digital archives and helping students & faculty get accurate, timely resources.
-        </p>
+    <!-- CONTENT -->
+    <div class="content">
+
+      <section class="card" id="about" aria-labelledby="aboutTitle">
+        <h3 id="aboutTitle">About</h3>
+        <p>I am an Assistant Librarian based in Bengaluru — passionate about metadata, cataloguing, digital repositories and user-focused services. I implement Koha for library automation, deploy DSpace repositories and run digitization & training programs.</p>
+      </section>
+
+      <section class="card" id="services" aria-labelledby="servicesTitle">
+        <h3 id="servicesTitle">Services</h3>
+        <div class="two-col">
+          <div>
+            <ul>
+              <li><strong>Library Automation</strong> — Koha setup, migration, OPAC customization.</li>
+              <li><strong>Digital Repositories</strong> — DSpace installation, metadata & workflows.</li>
+              <li><strong>Cataloguing & Metadata</strong> — MARC21, Dublin Core, classification.</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li><strong>Digitization Projects</strong> — scanning, OCR, metadata enrichment.</li>
+              <li><strong>Training & Workshops</strong> — user literacy, reference services.</li>
+              <li><strong>Data Curation</strong> — preservation, access control, licensing.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="projects" aria-labelledby="projectsTitle">
+        <h3 id="projectsTitle">Selected Projects</h3>
+        <ul>
+          <li>Institutional Repository — DSpace: metadata design & ingest pipeline.</li>
+          <li>Koha Migration — imported 18,000 records & customized OPAC features.</li>
+          <li>Digitization Workflow — created metadata templates for archival materials.</li>
+        </ul>
+      </section>
+
+      <section class="card" id="contact" aria-labelledby="contactTitle">
+        <h3 id="contactTitle">Contact</h3>
+        <p><strong>Email:</strong> <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+917760144157">+91 77601 44157</a></p>
+      </section>
+
     </div>
+
+    <footer>Made with care — © 2025 Yashwanth K S</footer>
+  </main>
 
 </div>
 
+<script>
+  /* =========================
+     Small utility & interactions
+     ========================= */
+
+  // Sidebar mobile behavior
+  const sidebar = document.getElementById('sidebar');
+  const openSidebarBtn = document.getElementById('openSidebar');
+  const closeSidebarBtn = document.getElementById('closeSidebar');
+  const topbar = document.getElementById('topbar');
+
+  function setMobileMode(){
+    if(window.innerWidth < 1000){
+      sidebar.classList.remove('open');
+      sidebar.style.left = '-100%';
+      topbar.style.display = 'block';
+      if(openSidebarBtn) openSidebarBtn.style.display = 'inline-block';
+      if(closeSidebarBtn) closeSidebarBtn.style.display = 'inline-block';
+    } else {
+      sidebar.style.left = '0';
+      topbar.style.display = 'none';
+      if(openSidebarBtn) openSidebarBtn.style.display = 'none';
+      if(closeSidebarBtn) closeSidebarBtn.style.display = 'none';
+    }
+  }
+  window.addEventListener('resize', setMobileMode);
+  setMobileMode();
+
+  if(openSidebarBtn) openSidebarBtn.addEventListener('click', ()=> {
+    sidebar.classList.add('open');
+    sidebar.style.left = '0';
+  });
+  if(closeSidebarBtn) closeSidebarBtn.addEventListener('click', ()=> {
+    sidebar.classList.remove('open');
+    sidebar.style.left = '-100%';
+  });
+
+  // Smooth scroll for nav
+  document.querySelectorAll('nav a').forEach(link=>{
+    link.addEventListener('click', (e)=>{
+      const href = link.getAttribute('href');
+      if(href && href.startsWith('#')){
+        e.preventDefault();
+        document.querySelector(href).scrollIntoView({behavior:'smooth', block:'start'});
+        // update active
+        document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+        link.classList.add('active');
+        if(window.innerWidth < 1000){
+          sidebar.classList.remove('open');
+          sidebar.style.left = '-100%';
+        }
+      }
+    });
+  });
+
+  // Typing animation (careful timing)
+  const words = ["Metadata Specialist","Digital Archivist","Library Automator","Reference Librarian"];
+  const typeEl = document.getElementById('type');
+  let wIndex=0, cIndex=0, deleting=false;
+  function typeTick(){
+    const word = words[wIndex];
+    if(!deleting){
+      cIndex++;
+      typeEl.textContent = word.slice(0,cIndex);
+      if(cIndex === word.length){
+        deleting = true;
+        setTimeout(typeTick, 1200);
+        return;
+      }
+    } else {
+      cIndex--;
+      typeEl.textContent = word.slice(0,cIndex);
+      if(cIndex === 0){
+        deleting = false;
+        wIndex = (wIndex+1) % words.length;
+      }
+    }
+    setTimeout(typeTick, deleting ? 50 : 120);
+  }
+  typeTick();
+
+  // Buttons behavior
+  document.getElementById('hireBtn').addEventListener('click', ()=> {
+    document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  document.getElementById('contactBtn').addEventListener('click', ()=> {
+    document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  document.getElementById('downloadBtn').addEventListener('click', (e)=> {
+    // Try to download resume.pdf from repo root. Replace path if necessary.
+    const href = '/resume.pdf';
+    const a = document.createElement('a');
+    a.href = href;
+    a.download = 'Yashwanth_KS_Resume.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    // fallback message if file missing
+    setTimeout(()=> {
+      // optional small UX toast (very lightweight)
+      const t = document.createElement('div');
+      t.textContent = 'If download does not start, upload resume.pdf to your site root.';
+      t.style.position = 'fixed';
+      t.style.right = '16px';
+      t.style.bottom = '16px';
+      t.style.padding = '12px 14px';
+      t.style.background = 'rgba(7,18,36,0.9)';
+      t.style.color = 'white';
+      t.style.borderRadius = '10px';
+      t.style.boxShadow = '0 8px 30px rgba(2,6,23,0.3)';
+      document.body.appendChild(t);
+      setTimeout(()=> t.remove(), 3800);
+    }, 800);
+  });
+
+  // Intersection observer to highlight nav on scroll
+  const sections = document.querySelectorAll('main section, .content .card');
+  const navLinks = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        navLinks.forEach(a=>{
+          const href = a.getAttribute('href');
+          if(href === '#' + entry.target.id){
+            a.classList.add('active');
+          } else {
+            if(a.classList.contains('active') && href !== '#' + entry.target.id) a.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, {root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0});
+  sections.forEach(s => { if(s.id) observer.observe(s) });
+
+  // Accessibility: allow keyboard nav for menu
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape' && window.innerWidth < 1000){
+      sidebar.classList.remove('open'); sidebar.style.left='-100%';
+    }
+  });
+
+  // small performance tip: preload image (if available)
+  (function preload(){
+    const p = document.createElement('link');
+    p.rel='preload';
+    p.as='image';
+    p.href='/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png';
+    document.head.appendChild(p);
+  })();
+
+  // optional: smooth initial fade-in
+  window.addEventListener('load', ()=> document.body.style.opacity = 1);
+  document.body.style.opacity = 0;
+  document.body.style.transition = 'opacity .7s ease';
+
+</script>
 </body>
 </html>
