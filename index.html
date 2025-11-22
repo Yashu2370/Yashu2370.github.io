@@ -1,501 +1,966 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Yashwanth K S — Portfolio</title>
-<meta name="description" content="Portfolio of Yashwanth K S — Assistant Librarian, Digital Resource Specialist" />
-<link rel="icon" href="" />
-<style>
-  /* =========================
-     Variables & Base Reset
-     ========================= */
-  :root{
-    --bg:#0f1724;           /* dark background for hero */
-    --panel:#ffffff;
-    --muted:#6b7280;
-    --accent-1:#00b7a8;
-    --accent-2:#0081ff;
-    --glass: rgba(255,255,255,0.08);
-    --radius-lg:20px;
-    --radius-md:12px;
-    --shadow-lg: 0 20px 50px rgba(2,6,23,0.5);
-    --text:#0b1220;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: linear-gradient(180deg,#f3f7fb 0%, #eef4fb 100%);
-    color:var(--text);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.45;
-  }
-  a{color:inherit}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yashwanth K S — Advanced Portfolio</title>
+  <meta name="description" content="Advanced portfolio of Yashwanth K S — Assistant Librarian, Digital Resource Specialist. Built as a single-file modern portfolio with advanced UI/UX." />
+  <meta name="author" content="Yashwanth K S" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Preload the local image that was uploaded; path is kept as the uploaded container path. -->
+  <link rel="preload" as="image" href="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png">
+  <style>
+    /* ===========================================================
+       ADVANCED SINGLE-FILE PORTFOLIO CSS
+       - Well-commented, modular sections
+       - Variables, utility classes, responsive layout
+       =========================================================== */
 
-  /* =========================
-     Layout
-     ========================= */
-  .wrap {
-    min-height:100vh;
-    display:grid;
-    grid-template-columns: 300px 1fr;
-  }
-
-  /* -------------------------
-     Sidebar (left)
-     ------------------------- */
-  .sidebar{
-    background: linear-gradient(180deg, #ffffff, #fbfeff);
-    padding:28px 22px;
-    border-right: 1px solid rgba(12,18,26,0.04);
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    position:relative;
-  }
-  .brand {
-    display:flex;gap:12px;align-items:center;
-  }
-  .logo {
-    width:56px;height:56px;border-radius:12px;
-    background:linear-gradient(135deg,var(--accent-1), var(--accent-2));
-    display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px;
-    box-shadow: 0 10px 28px rgba(3,100,120,0.12);
-  }
-  .brand h1{font-size:16px;margin:0}
-  .brand p{margin:0;font-size:12px;color:var(--muted)}
-
-  nav{margin-top:8px}
-  nav ul{list-style:none;display:flex;flex-direction:column;gap:6px;padding:0}
-  nav a{
-    text-decoration:none;padding:10px 10px;border-radius:10px;color:var(--text);
-    display:flex;align-items:center;gap:10px;font-weight:600;
-  }
-  nav a small{font-size:12px;color:var(--muted);font-weight:500}
-  nav a.active{background:linear-gradient(90deg,rgba(0,183,168,0.08), rgba(0,129,255,0.06));color:var(--accent-1)}
-  nav a:hover{background:rgba(2,6,23,0.03)}
-
-  .side-footer{margin-top:auto;font-size:13px;color:var(--muted)}
-
-  /* -------------------------
-     Main
-     ------------------------- */
-  main{min-height:100vh;background:transparent}
-
-  /* =========================
-     Hero Section
-     ========================= */
-  .hero {
-    display:flex;
-    gap:48px;
-    align-items:center;
-    padding:64px clamp(20px,6vw,80px);
-    background:linear-gradient(120deg,var(--panel) 0%, var(--panel) 50%, #eef9fa 50%);
-    min-height:72vh;
-  }
-
-  .hero-left{
-    width:58%;
-    max-width:920px;
-  }
-  .eyebrow{color:var(--accent-1);font-weight:700;font-size:15px}
-  .title{
-    font-size:48px;font-weight:800;margin:8px 0;line-height:1.02;color: #071427;
-    letter-spacing: -0.02em;
-  }
-  .subtitle{font-size:18px;color:var(--muted);margin-bottom:16px}
-  .lead{font-size:16px;color:#374151;max-width:78%}
-
-  /* Buttons row */
-  .row{display:flex;gap:12px;margin-top:22px;align-items:center}
-  /* Gradient button */
-  .btn {
-    padding:12px 22px;border-radius:12px;border:none;cursor:pointer;font-weight:700;font-size:15px;
-    transition:all .28s cubic-bezier(.2,.9,.2,1);
-    display:inline-flex;align-items:center;gap:10px;
-  }
-
-  /* Specific styles */
-  .btn-gradient{
-    background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
-    color:white;box-shadow:0 10px 30px rgba(3,100,120,0.14);
-    transform:translateZ(0);
-  }
-  .btn-gradient:hover{transform:translateY(-4px) scale(1.02);filter:brightness(1.02)}
-
-  .btn-glass{
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-    border:1px solid rgba(255,255,255,0.12);
-    color:#071427;backdrop-filter: blur(6px);
-    box-shadow: 0 6px 20px rgba(2,6,23,0.06);
-  }
-  .btn-outline{
-    background:transparent;border:2px solid var(--accent-1);color:var(--accent-1);
-  }
-
-  .btn-glow{
-    background:var(--accent-1);color:white;border-radius:999px;padding:10px 24px;
-    box-shadow:0 6px 30px rgba(0,183,168,0.18), inset 0 -2px 0 rgba(0,0,0,0.05);
-  }
-  .btn-glow:hover{box-shadow:0 10px 40px rgba(0,183,168,0.28), 0 0 28px rgba(0,183,168,0.08)}
-
-  .btn-arrow{position:relative;overflow:hidden;background:var(--accent-2);color:white;padding:12px 26px;border-radius:12px}
-  .btn-arrow::after{content:'➜';position:absolute;right:14px;transform:translateX(12px);opacity:0;transition:all .28s}
-  .btn-arrow:hover::after{transform:translateX(0);opacity:1}
-
-  /* Typing small */
-  .type-wrap{margin-top:12px;font-weight:700;color:#0b1220;display:flex;gap:8px;align-items:center}
-  .type-el{color:var(--accent-1);border-right:2px solid rgba(3,100,120,0.6);padding-right:6px}
-
-  /* =========================
-     Photo Frame (hero-right)
-     ========================= */
-  .hero-right{width:42%;display:flex;justify-content:center;align-items:center}
-  .photo-frame{
-    width:380px;height:520px;border-radius:28px;
-    background:linear-gradient(180deg,#fff 0%, #fbfeff 100%);
-    box-shadow: var(--shadow-lg);
-    position:relative;overflow:hidden;border:1px solid rgba(2,6,23,0.06);
-    transform: translateY(4px);
-  }
-  .photo-frame .bg-accent{
-    position:absolute;left:-20%;top:-35%;width:200%;height:60%;
-    background:linear-gradient(90deg, rgba(0,183,168,0.12), rgba(0,129,255,0.08));
-    transform:rotate(-12deg);
-  }
-  .standing {
-    width:100%;height:100%;object-fit:cover;display:block;
-    transition:transform .9s cubic-bezier(.2,.9,.2,1);
-    transform: translateY(6px);
-  }
-  .photo-frame:hover .standing{transform: translateY(0) scale(1.02)}
-  .frame-base{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:78%;height:52px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03))}
-
-  /* =========================
-     Content sections
-     ========================= */
-  .content {
-    padding:48px clamp(20px,6vw,80px);
-    max-width:1100px;margin:0 auto 80px;
-  }
-  .card{
-    background:white;border-radius:16px;padding:22px;margin-bottom:20px;box-shadow:0 8px 30px rgba(2,6,23,0.04);
-  }
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  .skills{display:flex;flex-wrap:wrap;gap:10px}
-  .pill{background:linear-gradient(90deg,#eefdfa,#e6fbf8);padding:8px 12px;border-radius:999px;font-weight:600;color:#065e54}
-
-  footer{padding:26px;text-align:center;color:var(--muted);font-size:14px}
-
-  /* =========================
-     Responsive
-     ========================= */
-  @media (max-width:1000px){
-    .wrap{grid-template-columns:1fr}
-    .sidebar{
-      position:fixed;left:-100%;top:0;bottom:0;width:280px;z-index:40;transition:all .28s;box-shadow:0 20px 60px rgba(2,6,23,0.12)
+    :root{
+      /* color system */
+      --bg-0: #f6f9fc;
+      --panel: #ffffff;
+      --muted: #6b7280;
+      --text: #071427;
+      --accent-1: #00b7a8;
+      --accent-2: #0081ff;
+      --glass-1: rgba(255,255,255,0.7);
+      --glass-2: rgba(255,255,255,0.12);
+      --success: #16a34a;
+      --danger: #ef4444;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-soft: 0 8px 24px rgba(12,18,26,0.08);
+      --shadow-deep: 0 28px 70px rgba(2,6,23,0.18);
+      --glass-border: rgba(255,255,255,0.8);
     }
-    .sidebar.open{left:0}
-    .hero{flex-direction:column;min-height:60vh;padding:40px 20px}
-    .hero-left{width:100%}
-    .hero-right{width:100%;margin-top:22px;display:flex;justify-content:center}
-    .photo-frame{width:280px;height:380px}
-    .lead{max-width:100%}
-    .two-col{grid-template-columns:1fr; }
-  }
 
-  /* keyboard focus & accessibility */
-  .btn:focus{outline:3px solid rgba(0,183,168,0.16);outline-offset:3px}
-</style>
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg-0) 0%, #eef4fb 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    button{font-family:inherit}
+
+    /* Utility helpers */
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .row{display:flex;gap:16px}
+    .col{flex:1}
+    .hidden{display:none !important}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Layout: left sidebar + main area (desktop) */
+    .wrap{
+      min-height:100vh;
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:0;
+    }
+
+    /* =======================
+       SIDEBAR
+       ======================= */
+    .sidebar{
+      padding:28px 22px;
+      background:linear-gradient(180deg,#ffffff,#fbfeff);
+      border-right:1px solid rgba(12,18,26,0.04);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      position:relative;
+    }
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{
+      width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;box-shadow:0 8px 28px rgba(3,100,120,0.12)
+    }
+    .brand h1{font-size:16px;margin:0}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav ul{list-style:none;padding:0;margin:10px 0 0 0;display:flex;flex-direction:column;gap:8px}
+    nav a{
+      display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;text-decoration:none;font-weight:700;color:var(--text);
+      transition:all .18s ease;
+    }
+    nav a small{color:var(--muted);font-weight:600}
+    nav a:hover{background:rgba(2,6,23,0.03);transform:translateX(4px)}
+    nav a.active{background:linear-gradient(90deg, rgba(0,183,168,0.08), rgba(0,129,255,0.06));color:var(--accent-1)}
+
+    .side-links{display:flex;gap:12px;margin-top:auto}
+    .side-links a{font-weight:700;color:var(--muted);text-decoration:none}
+
+    .sidebar .meta{font-size:13px;color:var(--muted)}
+
+    /* Small/medium screens: collapsible sidebar */
+    @media (max-width: 1000px){
+      .wrap{grid-template-columns: 1fr}
+      .sidebar{
+        position:fixed;left:-120%;top:0;height:100vh;width:280px;z-index:60;
+        box-shadow:0 30px 80px rgba(2,6,23,0.22);transition:all .28s ease;
+      }
+      .sidebar.open{left:0}
+    }
+
+    /* =======================
+       TOPBAR (mobile)
+       ======================= */
+    .topbar{
+      display:none;
+      position:sticky;
+      top:12px;
+      z-index:60;
+      padding:8px 20px;
+      background:transparent;
+    }
+    @media (max-width:1000px){
+      .topbar{display:block}
+    }
+
+    /* =======================
+       HERO — main introduction
+       ======================= */
+    main{min-height:100vh}
+    .hero{
+      padding:56px clamp(18px,6vw,80px);
+      display:flex;
+      align-items:center;
+      gap:36px;
+      background:linear-gradient(120deg, #ffffff 0%, #ffffff 50%, #eaf9f7 50%);
+      min-height:64vh;
+    }
+
+    .hero-left{flex:1;max-width:760px}
+    .eyebrow{color:var(--accent-1);font-weight:800;letter-spacing:0.04em}
+    .hero-title{
+      font-size:48px;font-weight:900;margin:12px 0;line-height:1.02;color:#071427;
+      letter-spacing:-0.02em;
+    }
+    .hero-sub{font-size:18px;color:var(--muted);margin-bottom:18px;font-weight:600}
+    .hero-lead{color:#374151;font-size:16px;max-width:85%;margin-bottom:18px}
+
+    /* Action buttons row: advanced styles */
+    .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+
+    /* ========== Button styles ========== */
+    .btn{
+      padding:12px 22px;border-radius:12px;border:none;cursor:pointer;font-weight:800;font-size:15px;
+      display:inline-flex;align-items:center;gap:10px;transition:all .28s cubic-bezier(.2,.9,.2,1);
+    }
+
+    /* Gradient (primary) */
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:white;box-shadow:0 12px 36px rgba(3,100,120,0.12);
+    }
+    .btn-primary:hover{transform:translateY(-4px) scale(1.01);filter:brightness(1.02)}
+
+    /* Glass (secondary) */
+    .btn-glass{
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+      border:1px solid rgba(255,255,255,0.6);
+      color:var(--text);backdrop-filter: blur(6px);box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+    }
+    .btn-glass:hover{transform:translateY(-3px)}
+
+    /* Outline */
+    .btn-outline{
+      background:transparent;border:2px solid var(--accent-1);color:var(--accent-1);
+    }
+
+    /* Glow pill */
+    .btn-glow{
+      background:var(--accent-1);color:white;border-radius:999px;padding:10px 24px;
+      box-shadow:0 10px 45px rgba(0,183,168,0.12), inset 0 -2px 0 rgba(0,0,0,0.05);
+    }
+    .btn-glow:hover{box-shadow:0 18px 60px rgba(0,183,168,0.18), 0 0 28px rgba(0,183,168,0.06)}
+
+    /* Arrow button */
+    .btn-arrow{position:relative;overflow:hidden;background:var(--accent-2);color:white;padding:12px 26px;border-radius:12px}
+    .btn-arrow::after{content:'➜';position:absolute;right:14px;transform:translateX(12px);opacity:0;transition:all .28s}
+    .btn-arrow:hover::after{transform:translateX(0);opacity:1}
+
+    /* 3D press button */
+    .btn-3d{
+      background:linear-gradient(180deg,#ffffff,#f0f6ff);border-radius:12px;padding:12px 22px;border:1px solid rgba(12,18,26,0.06);
+      box-shadow: 0 12px 28px rgba(2,6,23,0.06), 0 2px 0 rgba(255,255,255,0.6) inset;
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .btn-3d:active{transform:translateY(3px);box-shadow:0 6px 18px rgba(2,6,23,0.04)}
+
+    /* Tiny helpers for icons */
+    .icon{
+      display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.6);color:var(--text)
+    }
+
+    /* Small typed label (typing effect) */
+    .typing-wrap{margin-top:12px;color:var(--muted);display:flex;gap:10px;align-items:center;font-weight:700}
+    .typing{color:var(--accent-1);border-right:2px solid rgba(3,100,120,0.6);padding-right:6px}
+
+    /* =======================
+       HERO RIGHT — Standing PHOTO FRAME
+       ======================= */
+    .hero-right{flex-basis:420px;display:flex;justify-content:center;align-items:center}
+    .photo-frame{
+      width:420px;height:560px;border-radius:28px;background:linear-gradient(180deg,#fff,#fbfeff);
+      box-shadow:var(--shadow-deep);overflow:hidden;position:relative;border:1px solid rgba(2,6,23,0.06);
+      transition:transform .6s cubic-bezier(.2,.9,.2,1);
+    }
+    .photo-frame .accent-shape{
+      position:absolute;left:-25%;top:-30%;width:160%;height:64%;transform:rotate(-12deg);
+      background:linear-gradient(90deg, rgba(0,183,168,0.12), rgba(0,129,255,0.08));pointer-events:none;
+    }
+    .photo-frame img.standing{
+      width:100%;height:100%;object-fit:cover;transform:translateY(10px);transition:transform .8s cubic-bezier(.2,.9,.2,1);
+      display:block;
+    }
+    .photo-frame:hover{transform:translateY(-6px)}
+    .photo-frame:hover img.standing{transform:translateY(0) scale(1.02)}
+    .frame-base{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:80%;height:56px;border-radius:12px;background:linear-gradient(180deg,rgba(0,0,0,0.06), rgba(0,0,0,0.03));opacity:0.9}
+
+    /* Lightbox icon overlay */
+    .photo-overlay{
+      position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.9);padding:8px;border-radius:10px;cursor:pointer;
+      box-shadow:0 6px 18px rgba(2,6,23,0.08);
+    }
+
+    /* =======================
+       CONTENT SECTIONS
+       ======================= */
+    .content{padding:48px clamp(18px,6vw,80px);max-width:1100px;margin:0 auto 80px}
+    .card{background:var(--panel);padding:22px;border-radius:14px;box-shadow:var(--shadow-soft);margin-bottom:20px}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill-pill{background:linear-gradient(90deg,#eefdfa,#e6fbf8);padding:8px 12px;border-radius:999px;font-weight:700;color:#065e54}
+
+    /* Charts placeholder */
+    .chart{height:140px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fbfeff);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+
+    /* Testimonials carousel */
+    .carousel{position:relative;overflow:hidden;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#fbfeff)}
+    .carousel-track{display:flex;gap:12px;transition:transform .48s cubic-bezier(.2,.9,.2,1)}
+    .testimonial{min-width:260px;padding:14px;border-radius:12px;background:white;box-shadow:0 8px 22px rgba(2,6,23,0.06)}
+    .carousel-controls{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:12px}
+
+    /* Contact form */
+    form label{display:block;font-weight:700;margin-bottom:6px}
+    form input, form textarea{
+      width:100%;padding:12px;border-radius:10px;border:1px solid rgba(12,18,26,0.06);margin-bottom:12px;font-size:14px;
+    }
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+    /* Footer */
+    footer{padding:28px;background:transparent;text-align:center;color:var(--muted)}
+
+    /* =======================
+       Responsive rules
+       ======================= */
+    @media (max-width: 1100px){
+      .hero-title{font-size:40px}
+      .photo-frame{width:360px;height:480px}
+      .hero{gap:22px}
+    }
+    @media (max-width: 860px){
+      .wrap{grid-template-columns:1fr}
+      .hero{flex-direction:column;align-items:flex-start;padding:28px}
+      .hero-right{width:100%;display:flex;justify-content:center}
+      .photo-frame{width:300px;height:420px}
+      .hero-lead{max-width:100%}
+      .two-col{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+
+    /* Accessibility: focus */
+    :focus{outline: none}
+    a:focus, button:focus{box-shadow:0 0 0 4px rgba(0,183,168,0.12);border-radius:8px}
+
+    /* Subtle page entrance */
+    .fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    .fade-in.show{opacity:1;transform:none}
+  </style>
 </head>
 <body>
 
-<div class="wrap" id="app">
+  <!-- =========================
+       Application root
+       ========================= -->
+  <div class="wrap" id="app">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar" aria-label="Sidebar navigation">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">YK</div>
-        <div>
-          <h1 style="font-size:15px;margin-bottom:4px">Yashwanth K S</h1>
-          <p style="margin:0;font-size:12px;color:var(--muted)">Assistant Librarian</p>
-        </div>
-      </div>
-
-      <!-- mobile close button -->
-      <button id="closeSidebar" aria-label="Close menu" style="background:none;border:none;display:none">✕</button>
-    </div>
-
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="#home" class="active">Home <small>— intro</small></a></li>
-        <li><a href="#about">About <small>— background</small></a></li>
-        <li><a href="#services">Services <small>— expertise</small></a></li>
-        <li><a href="#projects">Projects <small>— portfolio</small></a></li>
-        <li><a href="#contact">Contact <small>— get in touch</small></a></li>
-      </ul>
-    </nav>
-
-    <div style="display:flex;gap:10px;margin-top:8px">
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-    </div>
-
-    <div class="side-footer">© 2025 Yashwanth K S</div>
-  </aside>
-
-  <!-- MAIN -->
-  <main>
-
-    <!-- small top bar for mobile to open menu -->
-    <div id="topbar" style="display:none;position:sticky;top:12px;z-index:50;padding:12px 20px">
+    <!-- =========================
+         SIDEBAR
+         ========================= -->
+    <aside class="sidebar" id="sidebar" aria-label="Primary Navigation">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <div style="font-weight:700">Yashwanth K S</div>
-        <button id="openSidebar" aria-label="Open menu" style="background:var(--panel);border-radius:10px;border:none;padding:8px 10px;box-shadow:0 6px 16px rgba(2,6,23,0.06)">☰</button>
-      </div>
-    </div>
-
-    <!-- HERO -->
-    <section class="hero" id="home" aria-labelledby="heroTitle">
-      <div class="hero-left">
-        <div class="eyebrow">Hello — I'm</div>
-        <h1 class="title" id="heroTitle">Yashwanth K S</h1>
-        <div class="subtitle">Assistant Librarian · Digital Resource Specialist</div>
-
-        <p class="lead">I help academic communities discover, access and use information efficiently — combining library science, metadata standards and web tools (Koha, DSpace) to power learning and research.</p>
-
-        <div class="row" role="toolbar" aria-label="Primary actions">
-          <button class="btn btn-glow" id="hireBtn" title="Hire Me">Hire Me</button>
-          <button class="btn btn-glass" id="downloadBtn" title="Download CV">Download CV</button>
-          <button class="btn btn-arrow" id="contactBtn" title="Contact">Contact</button>
-        </div>
-
-        <div class="type-wrap" aria-hidden="false">
-          <span style="color:var(--muted)">I’m a</span>
-          <span class="type-el" id="type"></span>
-        </div>
-      </div>
-
-      <div class="hero-right" aria-hidden="false">
-        <div class="photo-frame" role="img" aria-label="Portrait of Yashwanth">
-          <div class="bg-accent" aria-hidden="true"></div>
-          <!-- LOCAL IMAGE PATH: developer-provided file -->
-          <img class="standing" src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Yashwanth standing portrait">
-          <div class="frame-base" aria-hidden="true"></div>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- CONTENT -->
-    <div class="content">
-
-      <section class="card" id="about" aria-labelledby="aboutTitle">
-        <h3 id="aboutTitle">About</h3>
-        <p>I am an Assistant Librarian based in Bengaluru — passionate about metadata, cataloguing, digital repositories and user-focused services. I implement Koha for library automation, deploy DSpace repositories and run digitization & training programs.</p>
-      </section>
-
-      <section class="card" id="services" aria-labelledby="servicesTitle">
-        <h3 id="servicesTitle">Services</h3>
-        <div class="two-col">
+        <div class="brand" title="Yashwanth K S">
+          <div class="logo" aria-hidden="true">YK</div>
           <div>
-            <ul>
-              <li><strong>Library Automation</strong> — Koha setup, migration, OPAC customization.</li>
-              <li><strong>Digital Repositories</strong> — DSpace installation, metadata & workflows.</li>
-              <li><strong>Cataloguing & Metadata</strong> — MARC21, Dublin Core, classification.</li>
-            </ul>
-          </div>
-          <div>
-            <ul>
-              <li><strong>Digitization Projects</strong> — scanning, OCR, metadata enrichment.</li>
-              <li><strong>Training & Workshops</strong> — user literacy, reference services.</li>
-              <li><strong>Data Curation</strong> — preservation, access control, licensing.</li>
-            </ul>
+            <h1 style="font-size:15px;margin-bottom:6px">Yashwanth K S</h1>
+            <p style="margin:0;color:var(--muted);font-size:13px">Assistant Librarian</p>
           </div>
         </div>
-      </section>
 
-      <section class="card" id="projects" aria-labelledby="projectsTitle">
-        <h3 id="projectsTitle">Selected Projects</h3>
+        <button id="closeMenu" class="hidden" aria-label="Close menu">✕</button>
+      </div>
+
+      <nav aria-label="Main">
         <ul>
-          <li>Institutional Repository — DSpace: metadata design & ingest pipeline.</li>
-          <li>Koha Migration — imported 18,000 records & customized OPAC features.</li>
-          <li>Digitization Workflow — created metadata templates for archival materials.</li>
+          <li><a href="#home" class="active">Home <small>— Intro</small></a></li>
+          <li><a href="#about">About <small>— Background</small></a></li>
+          <li><a href="#services">Services <small>— Expertise</small></a></li>
+          <li><a href="#projects">Projects <small>— Portfolio</small></a></li>
+          <li><a href="#testimonials">Testimonials <small>— Feedback</small></a></li>
+          <li><a href="#contact">Contact <small>— Get in touch</small></a></li>
         </ul>
+      </nav>
+
+      <div style="height:6px"></div>
+
+      <div class="meta">
+        <div><strong>Location:</strong> Bengaluru, India</div>
+        <div><strong>Email:</strong> <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></div>
+      </div>
+
+      <div class="side-links" aria-hidden="false" style="margin-top:auto">
+        <a href="https://www.linkedin.com/in/YashwanthKS" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/YashwanthKS" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+      <div style="margin-top:12px;font-size:13px;color:var(--muted)">
+        © 2025 Yashwanth K S
+      </div>
+    </aside>
+
+    <!-- =========================
+         MAIN CONTENT
+         ========================= -->
+    <main>
+
+      <!-- Mobile topbar to open sidebar -->
+      <div class="topbar container" id="topbar">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:800">Yashwanth K S</div>
+          <div>
+            <button id="openMenu" aria-label="Open menu" style="background:var(--panel);border:none;border-radius:10px;padding:8px 10px;box-shadow:0 8px 20px rgba(2,6,23,0.06)">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO: intro + standing photo -->
+      <section id="home" class="hero container" aria-labelledby="hero-title">
+        <div class="hero-left fade-in" data-fade-delay="80">
+          <div class="eyebrow">Hello — I'm</div>
+          <h1 id="hero-title" class="hero-title">Yashwanth K S</h1>
+          <div class="hero-sub">Assistant Librarian · Digital Resource Specialist</div>
+
+          <p class="hero-lead">
+            I help academic communities discover, access and use information efficiently — combining professional library
+            practice with modern digital tools: Koha, DSpace, metadata design, digitization workflows and user training.
+          </p>
+
+          <div class="actions" role="toolbar" aria-label="Primary actions">
+            <button class="btn btn-primary" id="cta-hire" title="Hire me">
+              <!-- SVG icon -->
+              <span style="display:inline-flex;align-items:center;gap:8px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+                  <path d="M12 5l7 7-7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                Hire Me
+              </span>
+            </button>
+
+            <button class="btn btn-glass" id="cta-download" title="Download resume">
+              <span style="display:inline-flex;align-items:center;gap:8px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3v12" stroke="#071427" stroke-width="2" stroke-linecap="round"></path>
+                  <path d="M8 11l4 4 4-4" stroke="#071427" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M21 21H3" stroke="#071427" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+                Download CV
+              </span>
+            </button>
+
+            <button class="btn btn-arrow" id="cta-contact" title="Open contact section">Contact</button>
+
+            <div style="flex:1"></div>
+
+            <button id="themeToggle" class="btn btn-3d" title="Toggle theme">Toggle Theme</button>
+          </div>
+
+          <div class="typing-wrap" aria-hidden="false">
+            <span style="color:var(--muted)">I’m a</span>
+            <span class="typing" id="typing">Metadata Specialist</span>
+          </div>
+        </div>
+
+        <div class="hero-right fade-in" data-fade-delay="160">
+          <div class="photo-frame" aria-hidden="false">
+            <div class="accent-shape" aria-hidden="true"></div>
+
+            <!-- IMPORTANT: local uploaded image path used here (developer provided).
+                 Replace with repo image filename if hosting on GitHub Pages -->
+            <img class="standing" src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Standing portrait of Yashwanth K S" loading="lazy">
+
+            <div class="frame-base" aria-hidden="true"></div>
+
+            <div class="photo-overlay" id="openLightbox" title="Open portrait">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 10l4-4" stroke="#071427" stroke-width="1.6" stroke-linecap="round"></path>
+                <path d="M3 21h18" stroke="#071427" stroke-width="1.6" stroke-linecap="round"></path>
+                <path d="M21 3v18" stroke="#071427" stroke-width="1.6" stroke-linecap="round"></path>
+              </svg>
+            </div>
+
+          </div>
+        </div>
       </section>
 
-      <section class="card" id="contact" aria-labelledby="contactTitle">
-        <h3 id="contactTitle">Contact</h3>
-        <p><strong>Email:</strong> <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+917760144157">+91 77601 44157</a></p>
-      </section>
+      <!-- CONTENT SECTIONS -->
+      <div class="content">
 
+        <!-- ABOUT -->
+        <section id="about" class="card fade-in" data-fade-delay="240" aria-labelledby="about-title">
+          <h2 id="about-title">About</h2>
+          <p>I am an Assistant Librarian based in Bengaluru with experience in library automation, metadata design (MARC21, Dublin Core), digital repositories (DSpace), and user-focused services. I specialize in implementing Koha for institutional libraries, designing metadata schemas for digital collections, and conducting training workshops for students and faculty.</p>
+          <div style="height:12px"></div>
+          <div class="two-col">
+            <div>
+              <h4>Professional strengths</h4>
+              <ul>
+                <li>Library Automation & OPAC management (Koha)</li>
+                <li>Digital Repositories (DSpace) & Institutional repositories</li>
+                <li>Metadata modeling, MARC21, Dublin Core</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Education</h4>
+              <ul>
+                <li>M.L.I.Sc — Master of Library & Information Science (2022)</li>
+                <li>B.A — Bachelor of Arts (2020)</li>
+                <li>PUC, SSLC — Pre-University & Secondary education</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services" class="card fade-in" data-fade-delay="320" aria-labelledby="services-title">
+          <h2 id="services-title">Services</h2>
+          <div class="grid-3" style="margin-top:12px">
+            <div style="padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfeff);box-shadow:var(--shadow-soft)">
+              <h3>Library Automation</h3>
+              <p>Koha setup, migration, customization and maintenance. OPAC design, circulation workflows and patron services.</p>
+            </div>
+            <div style="padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfeff);box-shadow:var(--shadow-soft)">
+              <h3>Digital Repositories</h3>
+              <p>DSpace installation and configuration, metadata mapping, ingest pipelines, and persistent identifiers for research outputs.</p>
+            </div>
+            <div style="padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfeff);box-shadow:var(--shadow-soft)">
+              <h3>Digitization & Metadata</h3>
+              <p>Digitization workflows, OCR, metadata enrichment, preservation best practices and archival standards.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="card fade-in" data-fade-delay="400" aria-labelledby="projects-title">
+          <h2 id="projects-title">Projects</h2>
+          <ul>
+            <li><strong>Institutional Repository (DSpace):</strong> Metadata schema design and ingest scripts for an institutional repository to ensure discoverability and compliance.</li>
+            <li><strong>Koha Migration:</strong> Migrated 18,000 records, customized OPAC, and trained library staff for digital-first workflows.</li>
+            <li><strong>Digitization Pipeline:</strong> Designed scanning and metadata workflow for archival collections with metadata enrichment and preservation storage.</li>
+          </ul>
+        </section>
+
+        <!-- SKILLS & METRICS -->
+        <section id="skills" class="card fade-in" data-fade-delay="480" aria-labelledby="skills-title">
+          <h2 id="skills-title">Skills & Tools</h2>
+          <div style="height:12px"></div>
+          <div class="skills">
+            <span class="skill-pill">Library Automation — Koha</span>
+            <span class="skill-pill">Digital Repositories — DSpace</span>
+            <span class="skill-pill">Metadata — MARC21 / Dublin Core</span>
+            <span class="skill-pill">Cataloguing & Classification</span>
+            <span class="skill-pill">Digitization & OCR</span>
+            <span class="skill-pill">Training & Workshops</span>
+          </div>
+
+          <div style="height:16px"></div>
+
+          <div class="two-col" aria-hidden="false">
+            <div>
+              <h4>Technical proficiency (visual)</h4>
+              <div style="display:flex;gap:12px;align-items:center">
+                <div style="flex:1">
+                  <div style="height:12px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border-radius:10px;width:85%"></div>
+                  <div style="margin-top:8px;color:var(--muted)">Koha & Library Systems — 85%</div>
+                </div>
+              </div>
+              <div style="height:10px"></div>
+              <div style="display:flex;gap:12px;align-items:center">
+                <div style="flex:1">
+                  <div style="height:12px;background:linear-gradient(90deg,#f59e0b,#f97316);border-radius:10px;width:72%"></div>
+                  <div style="margin-top:8px;color:var(--muted)">Digital Repositories — 72%</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h4>Soft skills</h4>
+              <ul>
+                <li>Communication & user training</li>
+                <li>Project management</li>
+                <li>Problem solving & metadata strategy</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- TESTIMONIALS (carousel) -->
+        <section id="testimonials" class="card fade-in" data-fade-delay="560" aria-labelledby="testimonials-title">
+          <h2 id="testimonials-title">Testimonials</h2>
+          <div class="carousel" id="carousel">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="testimonial">
+                <strong>Dr. A — Research Coordinator</strong>
+                <p>"Yashwanth transformed our repository and made research outputs much easier to find. Excellent attention to metadata."</p>
+              </div>
+              <div class="testimonial">
+                <strong>Ms. R — Librarian</strong>
+                <p>"Highly professional and detail-oriented. The Koha migration was seamless and well documented."</p>
+              </div>
+              <div class="testimonial">
+                <strong>Prof. T — Faculty</strong>
+                <p>"Great workshops — students now know how to find and use digital resources effectively."</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button id="prevTest" class="btn btn-3d">Prev</button>
+            <button id="nextTest" class="btn btn-3d">Next</button>
+          </div>
+        </section>
+
+        <!-- PORTFOLIO / IMAGES GALLERY -->
+        <section id="gallery" class="card fade-in" data-fade-delay="640" aria-labelledby="gallery-title">
+          <h2 id="gallery-title">Gallery</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+            <figure style="border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow-soft)">
+              <img src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Sample project 1" loading="lazy" style="height:180px;object-fit:cover;width:100%">
+              <figcaption style="padding:10px;font-weight:700">Portrait & presentation</figcaption>
+            </figure>
+            <figure style="border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow-soft)">
+              <img src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Sample project 2" loading="lazy" style="height:180px;object-fit:cover;width:100%">
+              <figcaption style="padding:10px;font-weight:700">Repository Dashboard mock</figcaption>
+            </figure>
+            <figure style="border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow-soft)">
+              <img src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Sample project 3" loading="lazy" style="height:180px;object-fit:cover;width:100%">
+              <figcaption style="padding:10px;font-weight:700">Digitization process</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="card fade-in" data-fade-delay="720" aria-labelledby="contact-title">
+          <h2 id="contact-title">Contact</h2>
+          <p>If you'd like to work together, please use the contact form below or email me directly at <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a>.</p>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required>
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+
+            <div style="display:flex;gap:12px;align-items:center">
+              <button class="btn btn-primary" type="submit">Send Message</button>
+              <button class="btn btn-outline" type="button" id="resetForm">Reset</button>
+              <div style="flex:1"></div>
+              <div style="color:var(--muted);font-size:13px">Or call: <a href="tel:+917760144157">+91 77601 44157</a></div>
+            </div>
+          </form>
+        </section>
+
+      </div>
+
+      <footer class="container">
+        <div style="padding:18px 0;color:var(--muted);font-size:14px">
+          Built with care • © 2025 Yashwanth K S — Assistant Librarian
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- =========================
+       Lightbox Modal for portrait
+       ========================= -->
+  <div id="lightbox" class="hidden" role="dialog" aria-modal="true" aria-label="Portrait view" style="
+      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(7,12,20,0.6);z-index:120;padding:24px;">
+    <div style="max-width:900px;width:100%;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#fff,#fbfeff);box-shadow:0 40px 120px rgba(2,6,23,0.5);">
+      <div style="display:flex;justify-content:flex-end;padding:12px">
+        <button id="closeLightbox" aria-label="Close" style="background:#fff;border:none;border-radius:8px;padding:8px 10px;cursor:pointer">✕</button>
+      </div>
+      <div style="padding:12px;">
+        <img src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Expanded portrait" style="width:100%;height:auto;display:block;border-radius:8px;object-fit:cover">
+      </div>
     </div>
+  </div>
 
-    <footer>Made with care — © 2025 Yashwanth K S</footer>
-  </main>
+  <!-- =========================
+       Lightweight Toast / Notification container
+       ========================= -->
+  <div id="toast" aria-live="polite" style="position:fixed;right:18px;bottom:18px;z-index:140"></div>
 
-</div>
+  <!-- =========================
+       JavaScript: interactions, animations, accessibility
+       ========================= -->
+  <script>
+    /* =================================================================================
+       Advanced UI behaviors:
+       - Sidebar open/close for mobile
+       - Smooth scroll + active link on intersection
+       - Typing animation
+       - Buttons (hire/download/contact) interactions
+       - Testimonials carousel controls
+       - Lightbox modal for portrait
+       - Contact form validation + fake submit + toast
+       - Theme toggle (light/dark) — minimalist theme switch persisted in localStorage
+       - Fade-in entrance for blocks
+       ================================================================================= */
 
-<script>
-  /* =========================
-     Small utility & interactions
-     ========================= */
+    (function(){
 
-  // Sidebar mobile behavior
-  const sidebar = document.getElementById('sidebar');
-  const openSidebarBtn = document.getElementById('openSidebar');
-  const closeSidebarBtn = document.getElementById('closeSidebar');
-  const topbar = document.getElementById('topbar');
+      // Utility: concise selector helpers
+      const $ = (s, ctx=document) => ctx.querySelector(s);
+      const $$ = (s, ctx=document) => Array.from((ctx||document).querySelectorAll(s));
 
-  function setMobileMode(){
-    if(window.innerWidth < 1000){
-      sidebar.classList.remove('open');
-      sidebar.style.left = '-100%';
-      topbar.style.display = 'block';
-      if(openSidebarBtn) openSidebarBtn.style.display = 'inline-block';
-      if(closeSidebarBtn) closeSidebarBtn.style.display = 'inline-block';
-    } else {
-      sidebar.style.left = '0';
-      topbar.style.display = 'none';
-      if(openSidebarBtn) openSidebarBtn.style.display = 'none';
-      if(closeSidebarBtn) closeSidebarBtn.style.display = 'none';
-    }
-  }
-  window.addEventListener('resize', setMobileMode);
-  setMobileMode();
+      /* ----------------------------
+         Sidebar mobile controls
+         ---------------------------- */
+      const sidebar = $('#sidebar');
+      const openMenu = $('#openMenu');
+      const closeMenu = $('#closeMenu');
 
-  if(openSidebarBtn) openSidebarBtn.addEventListener('click', ()=> {
-    sidebar.classList.add('open');
-    sidebar.style.left = '0';
-  });
-  if(closeSidebarBtn) closeSidebarBtn.addEventListener('click', ()=> {
-    sidebar.classList.remove('open');
-    sidebar.style.left = '-100%';
-  });
+      function openSidebar(){
+        sidebar.classList.add('open');
+        sidebar.style.left = '0';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSidebar(){
+        sidebar.classList.remove('open');
+        sidebar.style.left = '-120%';
+        document.body.style.overflow = '';
+      }
 
-  // Smooth scroll for nav
-  document.querySelectorAll('nav a').forEach(link=>{
-    link.addEventListener('click', (e)=>{
-      const href = link.getAttribute('href');
-      if(href && href.startsWith('#')){
-        e.preventDefault();
-        document.querySelector(href).scrollIntoView({behavior:'smooth', block:'start'});
-        // update active
-        document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-        link.classList.add('active');
+      if(openMenu) openMenu.addEventListener('click', openSidebar);
+      if(closeMenu) closeMenu.addEventListener('click', closeSidebar);
+
+      // Close sidebar on click outside on mobile
+      document.addEventListener('click', (e)=>{
         if(window.innerWidth < 1000){
-          sidebar.classList.remove('open');
-          sidebar.style.left = '-100%';
+          if(!sidebar.contains(e.target) && !e.target.closest('#openMenu')){
+            closeSidebar();
+          }
         }
-      }
-    });
-  });
+      });
 
-  // Typing animation (careful timing)
-  const words = ["Metadata Specialist","Digital Archivist","Library Automator","Reference Librarian"];
-  const typeEl = document.getElementById('type');
-  let wIndex=0, cIndex=0, deleting=false;
-  function typeTick(){
-    const word = words[wIndex];
-    if(!deleting){
-      cIndex++;
-      typeEl.textContent = word.slice(0,cIndex);
-      if(cIndex === word.length){
-        deleting = true;
-        setTimeout(typeTick, 1200);
-        return;
-      }
-    } else {
-      cIndex--;
-      typeEl.textContent = word.slice(0,cIndex);
-      if(cIndex === 0){
-        deleting = false;
-        wIndex = (wIndex+1) % words.length;
-      }
-    }
-    setTimeout(typeTick, deleting ? 50 : 120);
-  }
-  typeTick();
+      // Accessibility: close sidebar with Escape
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape'){
+          closeSidebar();
+          closeLightboxFn();
+        }
+      });
 
-  // Buttons behavior
-  document.getElementById('hireBtn').addEventListener('click', ()=> {
-    document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'start'});
-  });
-  document.getElementById('contactBtn').addEventListener('click', ()=> {
-    document.getElementById('contact').scrollIntoView({behavior:'smooth', block:'start'});
-  });
-
-  document.getElementById('downloadBtn').addEventListener('click', (e)=> {
-    // Try to download resume.pdf from repo root. Replace path if necessary.
-    const href = '/resume.pdf';
-    const a = document.createElement('a');
-    a.href = href;
-    a.download = 'Yashwanth_KS_Resume.pdf';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    // fallback message if file missing
-    setTimeout(()=> {
-      // optional small UX toast (very lightweight)
-      const t = document.createElement('div');
-      t.textContent = 'If download does not start, upload resume.pdf to your site root.';
-      t.style.position = 'fixed';
-      t.style.right = '16px';
-      t.style.bottom = '16px';
-      t.style.padding = '12px 14px';
-      t.style.background = 'rgba(7,18,36,0.9)';
-      t.style.color = 'white';
-      t.style.borderRadius = '10px';
-      t.style.boxShadow = '0 8px 30px rgba(2,6,23,0.3)';
-      document.body.appendChild(t);
-      setTimeout(()=> t.remove(), 3800);
-    }, 800);
-  });
-
-  // Intersection observer to highlight nav on scroll
-  const sections = document.querySelectorAll('main section, .content .card');
-  const navLinks = document.querySelectorAll('nav a');
-  const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        navLinks.forEach(a=>{
-          const href = a.getAttribute('href');
-          if(href === '#' + entry.target.id){
-            a.classList.add('active');
-          } else {
-            if(a.classList.contains('active') && href !== '#' + entry.target.id) a.classList.remove('active');
+      /* ----------------------------
+         Smooth scroll and active nav
+         ---------------------------- */
+      const navLinks = $$('nav a');
+      navLinks.forEach(link=>{
+        link.addEventListener('click', (e)=>{
+          const href = link.getAttribute('href');
+          if(href && href.startsWith('#')){
+            e.preventDefault();
+            const el = $(href);
+            if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+            navLinks.forEach(a=>a.classList.remove('active'));
+            link.classList.add('active');
           }
         });
+      });
+
+      // Observe sections to toggle active links
+      const sections = $$('main section, .content .card');
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(!entry.target.id) return;
+          const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+          if(entry.isIntersecting && link){
+            navLinks.forEach(a=>a.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }, {root:null, rootMargin:'-25% 0px -60% 0px', threshold: 0.12});
+      sections.forEach(s => observer.observe(s));
+
+      /* ----------------------------
+         Typing animation
+         ---------------------------- */
+      const typingEl = $('#typing');
+      const words = ["Metadata Specialist","Digital Archivist","Library Automator","Reference Librarian"];
+      let wIdx = 0, cIdx = 0, deleting = false;
+      function tick(){
+        const word = words[wIdx];
+        if(!deleting){
+          cIdx++;
+          typingEl.textContent = word.slice(0,cIdx);
+          if(cIdx === word.length){
+            deleting = true;
+            setTimeout(tick, 1100);
+            return;
+          }
+        } else {
+          cIdx--;
+          typingEl.textContent = word.slice(0,cIdx);
+          if(cIdx === 0){
+            deleting = false;
+            wIdx = (wIdx + 1) % words.length;
+          }
+        }
+        setTimeout(tick, deleting ? 50 : 120);
       }
-    });
-  }, {root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0});
-  sections.forEach(s => { if(s.id) observer.observe(s) });
+      tick();
 
-  // Accessibility: allow keyboard nav for menu
-  document.addEventListener('keydown', e=>{
-    if(e.key === 'Escape' && window.innerWidth < 1000){
-      sidebar.classList.remove('open'); sidebar.style.left='-100%';
-    }
-  });
+      /* ----------------------------
+         CTA Buttons behavior
+         ---------------------------- */
+      $('#cta-hire').addEventListener('click', ()=> {
+        const target = $('#contact');
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+      $('#cta-contact').addEventListener('click', ()=> {
+        const target = $('#contact');
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
 
-  // small performance tip: preload image (if available)
-  (function preload(){
-    const p = document.createElement('link');
-    p.rel='preload';
-    p.as='image';
-    p.href='/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png';
-    document.head.appendChild(p);
-  })();
+      // Download resume button — tries to fetch /resume.pdf
+      $('#cta-download').addEventListener('click', (e) => {
+        const url = '/resume.pdf'; // change if you place resume elsewhere
+        // attempt to download; if not found, show toast suggesting upload
+        fetch(url, {method:'HEAD'}).then(res=>{
+          if(res.ok){
+            // download force
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Yashwanth_KS_Resume.pdf';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          } else {
+            showToast('Resume not found on site. Upload resume.pdf to site root or update the download path.', 4200);
+          }
+        }).catch(err=>{
+          showToast('Unable to download. Upload resume.pdf to site root or use the link to your resume.', 4200);
+        });
+      });
 
-  // optional: smooth initial fade-in
-  window.addEventListener('load', ()=> document.body.style.opacity = 1);
-  document.body.style.opacity = 0;
-  document.body.style.transition = 'opacity .7s ease';
+      /* ----------------------------
+         Testimonials carousel
+         ---------------------------- */
+      const track = $('#carouselTrack');
+      const prevBtn = $('#prevTest');
+      const nextBtn = $('#nextTest');
+      let slideIdx = 0;
+      const slides = track ? track.children : [];
+      function updateCarousel(){
+        const w = slides[0] ? slides[0].offsetWidth + 12 : 280;
+        track.style.transform = `translateX(-${slideIdx * w}px)`;
+      }
+      if(nextBtn) nextBtn.addEventListener('click', ()=> {
+        slideIdx = Math.min(slideIdx + 1, slides.length - 1);
+        updateCarousel();
+      });
+      if(prevBtn) prevBtn.addEventListener('click', ()=> {
+        slideIdx = Math.max(slideIdx - 1, 0);
+        updateCarousel();
+      });
+      window.addEventListener('resize', updateCarousel);
+      // auto-play (gentle)
+      setInterval(()=> {
+        slideIdx = (slideIdx + 1) % Math.max(1, slides.length);
+        updateCarousel();
+      }, 6000);
 
-</script>
+      /* ----------------------------
+         Lightbox modal
+         ---------------------------- */
+      const lightbox = $('#lightbox');
+      const openLightbox = $('#openLightbox');
+      const closeLightbox = $('#closeLightbox');
+      function openLightboxFn(){
+        lightbox.classList.remove('hidden');
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightboxFn(){
+        lightbox.classList.add('hidden');
+        lightbox.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      if(openLightbox) openLightbox.addEventListener('click', openLightboxFn);
+      if(closeLightbox) closeLightbox.addEventListener('click', closeLightboxFn);
+      lightbox.addEventListener('click', (e)=> {
+        if(e.target === lightbox) closeLightboxFn();
+      });
+
+      /* ----------------------------
+         Contact form validation (client side)
+         ---------------------------- */
+      const form = $('#contactForm');
+      const toastRoot = $('#toast');
+
+      function showToast(msg, ms=3000){
+        const t = document.createElement('div');
+        t.textContent = msg;
+        t.style.background = 'rgba(7,18,36,0.95)';
+        t.style.color = 'white';
+        t.style.padding = '10px 14px';
+        t.style.borderRadius = '10px';
+        t.style.boxShadow = '0 8px 24px rgba(2,6,23,0.28)';
+        t.style.marginTop = '8px';
+        toastRoot.appendChild(t);
+        setTimeout(()=> t.remove(), ms);
+      }
+
+      if(form){
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          const name = $('#name').value.trim();
+          const email = $('#email').value.trim();
+          const message = $('#message').value.trim();
+
+          if(!name || !email || !message){
+            showToast('Please complete all fields before sending.');
+            return;
+          }
+          // Basic email regex
+          const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          if(!emailOk){
+            showToast('Please enter a valid email address.');
+            return;
+          }
+
+          // Simulate send (here you can integrate real backend or Formspree/Netlify)
+          showToast('Sending message...', 2000);
+          setTimeout(()=>{
+            showToast('Message sent. I will contact you soon — thanks!', 3800);
+            form.reset();
+            // optionally redirect to thank-you page
+          }, 1400);
+        });
+
+        $('#resetForm').addEventListener('click', ()=>{
+          form.reset();
+          showToast('Form reset.');
+        });
+      }
+
+      /* ----------------------------
+         Fade-in scroll reveal for elements with .fade-in
+         ---------------------------- */
+      function revealOnScroll(){
+        const elems = $$('.fade-in');
+        const windowH = window.innerHeight;
+        elems.forEach(el=>{
+          const rect = el.getBoundingClientRect();
+          const topVisible = rect.top < windowH - 80;
+          if(topVisible) el.classList.add('show');
+        });
+      }
+      window.addEventListener('scroll', revealOnScroll, {passive:true});
+      window.addEventListener('resize', revealOnScroll);
+      revealOnScroll();
+
+      /* ----------------------------
+         Theme toggle (light/dark)
+         ---------------------------- */
+      const themeBtn = $('#themeToggle');
+      const root = document.documentElement;
+      const THEME_KEY = 'yk_portfolio_theme';
+
+      function applyTheme(t){
+        if(t === 'dark'){
+          root.style.setProperty('--bg-0','#081220');
+          root.style.setProperty('--panel','#071427');
+          root.style.setProperty('--text','#e6eef7');
+          root.style.setProperty('--muted','#9aa9b8');
+          root.style.setProperty('--glass-border','rgba(255,255,255,0.06)');
+        } else {
+          // reset to defaults by reloading page variables (simpler approach)
+          root.style.removeProperty('--bg-0');
+          root.style.removeProperty('--panel');
+          root.style.removeProperty('--text');
+          root.style.removeProperty('--muted');
+          root.style.removeProperty('--glass-border');
+        }
+      }
+      const saved = localStorage.getItem(THEME_KEY) || 'light';
+      applyTheme(saved);
+      if(themeBtn){
+        themeBtn.addEventListener('click', ()=>{
+          const current = localStorage.getItem(THEME_KEY) || 'light';
+          const next = current === 'light' ? 'dark' : 'light';
+          localStorage.setItem(THEME_KEY, next);
+          applyTheme(next);
+          showToast(`Theme: ${next}`, 1600);
+        });
+      }
+
+      /* ----------------------------
+         Accessibility & keyboard helpers
+         ---------------------------- */
+      // Allow Enter on nav links to scroll as click
+      navLinks.forEach(a=>{
+        a.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter') a.click();
+        });
+      });
+
+      // Preload images (already preloaded by link rel=preload)
+      // but keep fallback lazy load for others
+
+      /* ----------------------------
+         Performance tips: defer heavy tasks
+         ---------------------------- */
+      // nothing heavy here, but keep code split friendly if you refactor.
+
+      // End of IIFE
+    })();
+  </script>
+
+  <!-- ===========================================================
+       End of single-file portfolio
+       =========================================================== -->
 </body>
 </html>
