@@ -1,190 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Assistant Librarian Portfolio - Yashwanth K S</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashwanth K S — Portfolio</title>
 
-<style>
-    body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background: #eef3f8;
-        color: #2d2d2d;
-    }
-    header {
-        background: linear-gradient(135deg, #1e88e5, #42a5f5);
-        padding: 90px 20px;
-        text-align: center;
-        color: #fff;
-        animation: fadeIn 2s ease;
-    }
-    h1 {
-        margin: 0;
-        font-size: 52px;
-        font-weight: 800;
-    }
-    h2 {
-        margin-top: 40px;
-        font-size: 32px;
-        color: #1e3a5f;
-    }
-    p, li {
-        font-size: 17px;
-        line-height: 1.7;
-    }
-    section {
-        max-width: 1000px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 40px;
-        border-radius: 18px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-        animation: slideUp 1.5s ease;
-    }
-    ul {
-        padding-left: 25px;
-    }
-    footer {
-        text-align: center;
-        padding: 35px;
-        background: #1e2b45;
-        color: #fff;
-        margin-top: 50px;
-        font-size: 16px;
-    }
-    .profile-pic {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: contain;
-    background: #ffffff;
-    padding: 5px;
-    border: 4px solid rgba(255,255,255,0.8);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    margin-bottom: 15px;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+        }
 
-    .social-icons a {
-        margin: 0 10px;
-        text-decoration: none;
-        font-weight: 600;
-        color: #1e88e5;
-        transition: 0.3s;
-    }
-    .social-icons a:hover {
-        color: #0d47a1;
-    }
-    .contact-box {
-        background: #f4f9ff;
-        padding: 20px;
-        border-radius: 12px;
-        margin-top: 15px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .contact-box a {
-        color: #1e88e5;
-        text-decoration: none;
-        font-weight: 600;
-    }
-    .contact-box a:hover {
-        text-decoration: underline;
-    }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-</style>
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00a18f;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #333;
+        }
+
+        nav ul li a:hover {
+            color: #00a18f;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            padding: 60px 80px;
+            align-items: center;
+            justify-content: space-between;
+            height: 90vh;
+            background: linear-gradient(120deg, white 50%, #00b7a8 50%);
+        }
+
+        .hero-text {
+            width: 45%;
+        }
+
+        .hero-text h3 {
+            color: #00a18f;
+            font-weight: 600;
+            font-size: 24px;
+            margin-bottom: -10px;
+        }
+
+        .hero-text h1 {
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .hero-text h2 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        .hero-text p {
+            color: #555;
+            line-height: 1.7;
+            width: 90%;
+        }
+
+        .btn {
+            margin-top: 35px;
+            padding: 12px 28px;
+            background: #00a18f;
+            color: white;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #008675;
+        }
+
+        /* Standing Photo */
+        .hero img {
+            width: 380px;
+            height: auto;
+            object-fit: cover;
+            filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.25));
+        }
+
+        @media(max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                background: white;
+                height: auto;
+                padding: 40px;
+            }
+
+            .hero img {
+                margin-top: 40px;
+                width: 260px;
+            }
+
+            nav {
+                padding: 15px 25px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-    <!-- Correct profile image path --> 
-    <img src="SRP02019.JPG" alt="Profile Photo" class="profile-pic">
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Yashwanth KS</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
 
-    <h1>Yashwanth K S</h1>
-    <p>Assistant Librarian | Academic Library Professional | Digital Resource Specialist</p>
-</header>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- Text Content -->
+        <div class="hero-text">
+            <h3>Hello I'm</h3>
+            <h1>Yashwanth K S</h1>
+            <h2>Assistant Librarian | Academic Library Professional</h2>
+            <p>I am dedicated to delivering seamless information services and supporting academic learning through well-organized and technology-enabled library systems.</p>
+            <button class="btn">Hire Me</button>
+        </div>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        I am an Assistant Librarian based in Bengaluru, committed to delivering seamless information services and supporting
-        academic learning through well-organized and technology-enabled library systems...
-    </p>
-</section>
-
-<section>
-    <h2>Personal Details</h2>
-    <ul>
-        <li><strong>Name:</strong> Yashwanth K S</li>
-        <li><strong>Location:</strong> Bengaluru, Karnataka</li>
-        <li><strong>Designation:</strong> Assistant Librarian</li>
-        <li><strong>Email:</strong> yashu2370@gmail.com</li>
-        <li><strong>Phone:</strong> 7760144157</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Educational Background</h2>
-    <ul>
-        <li><strong>M.L.I.Sc – Master of Library & Information Science (2022)</strong></li>
-        <li><strong>B.A – Bachelor of Arts (2020)</strong></li>
-        <li><strong>PUC – Pre-University Course (2017)</strong></li>
-        <li><strong>SSLC – Secondary School Leaving Certificate (2014)</strong></li>
-    </ul>
-</section>
-
-<section>
-    <h2>Core Skills</h2>
-    <ul>
-        <li>Bibliographic Control & Metadata Standards</li>
-        <li>Cataloguing & Classification</li>
-        <li>Library Automation (Koha, Libsoft)</li>
-        <li>Digital Libraries (DSpace, EPrints)</li>
-        <li>Reference Services & Information Retrieval</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Work Experience</h2>
-    <h3>Library Assistant — K S School of Engineering and Management (2023 – Present)</h3>
-    <ul>
-        <li>Classification, cataloguing & OPAC management</li>
-        <li>Digital resource support</li>
-        <li>User training & workshops</li>
-        <li>Metadata management</li>
-    </ul>
-</section>
-
-<section>
-    <h2>Projects & Achievements</h2>
-    <ul>
-        <li>Digital Repository (DSpace)</li>
-        <li>Library Automation (Koha)</li>
-        <li>Digitization & Metadata Projects</li>
-    </ul>
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p>If you would like to get in touch, feel free to contact me using the details below.</p>
-
-    <div class="contact-box">
-        <p><strong>Phone:</strong> <a href="tel:+917760144157">+91 77601 44157</a></p>
-        <p><strong>Email:</strong> <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
-        <p><strong>Location:</strong> Bengaluru, Karnataka, India</p>
-    </div>
-
-    <div class="social-icons">
-        <h3>Connect with Me</h3>
-        <a href="https://www.linkedin.com/in/YashwanthKS" target="_blank">LinkedIn</a>
-        <a href="https://github.com/YashwanthKS" target="_blank">GitHub</a>
-    </div>
-</section>
-
-<footer>
-    © 2025 Yashwanth K S — Assistant Librarian Portfolio | All Rights Reserved
-</footer>
+        <!-- Standing Image -->
+        <img src="your-photo.png" alt="Standing Photo">
+    </section>
 
 </body>
 </html>
