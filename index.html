@@ -14,19 +14,19 @@
     }
     header {
         background: linear-gradient(135deg, #1e88e5, #42a5f5);
-        padding: 70px 20px;
+        padding: 90px 20px;
         text-align: center;
         color: #fff;
         animation: fadeIn 2s ease;
     }
     h1 {
         margin: 0;
-        font-size: 48px;
+        font-size: 52px;
         font-weight: 800;
     }
     h2 {
         margin-top: 40px;
-        font-size: 30px;
+        font-size: 32px;
         color: #1e3a5f;
     }
     p, li {
@@ -37,9 +37,9 @@
         max-width: 1000px;
         margin: 40px auto;
         background: #fff;
-        padding: 35px;
-        border-radius: 16px;
-        box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+        padding: 40px;
+        border-radius: 18px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
         animation: slideUp 1.5s ease;
     }
     ul {
@@ -47,23 +47,45 @@
     }
     footer {
         text-align: center;
-        padding: 30px;
+        padding: 35px;
         background: #1e2b45;
         color: #fff;
-        margin-top: 40px;
+        margin-top: 50px;
         font-size: 16px;
     }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid rgba(255,255,255,0.7);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        margin-bottom: 15px;
     }
-    .card {
+    .social-icons a {
+        margin: 0 10px;
+        text-decoration: none;
+        font-weight: 600;
+        color: #1e88e5;
+        transition: 0.3s;
+    }
+    .social-icons a:hover {
+        color: #0d47a1;
+    }
+    .contact-box {
         background: #f4f9ff;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        font-size: 16px;
+        margin-top: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .contact-box a {
+        color: #1e88e5;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .contact-box a:hover {
+        text-decoration: underline;
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -73,33 +95,19 @@
 <body>
 
 <header>
+    <img src="profile.jpg" alt="Profile Photo" class="profile-pic" />
     <h1>Yashwanth K S</h1>
     <p>Assistant Librarian | Academic Library Professional | Digital Resource Specialist</p>
 </header>
 
-<!-- ABOUT ME -->
 <section>
     <h2>About Me</h2>
     <p>
         I am an Assistant Librarian based in Bengaluru, committed to delivering seamless information services and supporting
-        academic learning through well-organized and technology-enabled library systems. With experience in engineering and 
-        management institutions, I specialize in cataloguing, circulation management, digital resource handling, metadata creation, 
-        and academic user support.
-        <br><br>
-        I believe libraries are dynamic knowledge hubs that foster research, creativity, and lifelong learning. I actively explore
-        new digital tools, information systems, and modern library practices to enhance user experience and operational efficiency.
-        <br><br>
-        My primary areas of interest include:
-        <br>• Library automation and integrated library systems  
-        <br>• Cataloguing, classification & bibliographic services  
-        <br>• Digital library management & repository development  
-        <br>• Information retrieval & reference services  
-        <br>• User education and library orientation  
-        <br>• Website design and digital portfolio creation  
+        academic learning through well-organized and technology-enabled library systems...
     </p>
 </section>
 
-<!-- PERSONAL DETAILS -->
 <section>
     <h2>Personal Details</h2>
     <ul>
@@ -109,139 +117,64 @@
         <li><strong>Email:</strong> yashu2370@gmail.com</li>
         <li><strong>Phone:</strong> 7760144157</li>
     </ul>
-
-    <h3>Professional Summary</h3>
-    <p>
-        Experienced in academic library operations with expertise in <strong>bibliographic control</strong>, <strong>DDC classification</strong>, 
-        <strong>MARC21 cataloguing</strong>, <strong>OPAC administration</strong>, <strong>circulation workflow management</strong>, 
-        and <strong>digital resource administration</strong>. Skilled in Koha, Libsoft, and other LMS platforms, with strong 
-        proficiency in supporting knowledge organization systems and maintaining user-centric library services.
-    </p>
 </section>
 
-<!-- EDUCATIONAL BACKGROUND -->
 <section>
     <h2>Educational Background</h2>
     <ul>
-        <li>
-            <strong>M.L.I.Sc – Master of Library & Information Science (2022)</strong><br>
-            Bangalore University, Bengaluru<br>
-            <em>First Class – 67.35%</em>
-        </li>
-
-        <li>
-            <strong>B.A – Bachelor of Arts (2020)</strong><br>
-            Belture Government College, Bengaluru<br>
-            <em>First Class – 62.71%</em>
-        </li>
-
-        <li>
-            <strong>PUC – Pre-University Course (2017)</strong><br>
-            Belture Government College, Bengaluru
-        </li>
-
-        <li>
-            <strong>SSLC – Secondary School Leaving Certificate (2014)</strong><br>
-            Gandhi High School, Bekkalale<br>
-            <em>First Class – 72%</em>
-        </li>
+        <li><strong>M.L.I.Sc – Master of Library & Information Science (2022)</strong></li>
+        <li><strong>B.A – Bachelor of Arts (2020)</strong></li>
+        <li><strong>PUC – Pre-University Course (2017)</strong></li>
+        <li><strong>SSLC – Secondary School Leaving Certificate (2014)</strong></li>
     </ul>
 </section>
 
-<!-- CORE SKILLS -->
 <section>
     <h2>Core Skills</h2>
     <ul>
-        <li>Bibliographic Control & Metadata Standards (MARC21, DDC)</li>
-        <li>Cataloguing & Classification (DDC, AACR2, Subject Indexing)</li>
-        <li>Library Automation & LMS Management (Koha, Libsoft, NewGenLib)</li>
-        <li>OPAC Administration & Resource Discovery Services</li>
-        <li>Digital Library Systems (DSpace, EPrints, Greenstone)</li>
-        <li>Circulation Management & Patron Services</li>
-        <li>E-Resources Access & Digital Content Administration</li>
-        <li>Information Retrieval & Reference Services</li>
-        <li>User Training (OPAC, E-Resources, Research Tools)</li>
-        <li>Technical Support for Library Systems & IT Tools</li>
-        <li>Research & Academic Support (Zotero, Mendeley, EndNote)</li>
-        <li>Outreach, Reading Promotion & Library Service Engagement</li>
-        <li>Data Reporting, Documentation & Policy Implementation</li>
-        <li>Basic Web Technologies (HTML, CSS)</li>
-        <li>MS Office Suite (Word, Excel, PowerPoint)</li>
+        <li>Bibliographic Control & Metadata Standards</li>
+        <li>Cataloguing & Classification</li>
+        <li>Library Automation (Koha, Libsoft)</li>
+        <li>Digital Libraries (DSpace, EPrints)</li>
+        <li>Reference Services & Information Retrieval</li>
     </ul>
 </section>
 
-<!-- WORK EXPERIENCE -->
 <section>
     <h2>Work Experience</h2>
-    <h3>Library Assistant — K S School of Engineering and Management, Bengaluru (April 2023 – Present)</h3>
+    <h3>Library Assistant — K S School of Engineering and Management (2023 – Present)</h3>
     <ul>
-        <li>Manage library operations including <strong>classification, cataloging, and circulation</strong> using <strong>Koha</strong> and <strong>Libsoft</strong>.</li>
-        <li>Support students and faculty in accessing <strong>digital resources, databases, and online research tools</strong>.</li>
-        <li>Conduct <strong>user training sessions and orientations</strong> to optimize e-resource usage.</li>
-        <li>Maintain <strong>metadata accuracy</strong> and bibliographic records across digital platforms.</li>
-        <li>Generate reports, enforce library policies, and assist in <strong>information service planning</strong>.</li>
-        <li>Lead <strong>library outreach programs, exhibitions, and promotional activities</strong> to enhance user engagement.</li>
+        <li>Classification, cataloguing & OPAC management</li>
+        <li>Digital resource support</li>
+        <li>User training & workshops</li>
+        <li>Metadata management</li>
     </ul>
 </section>
 
-<!-- PROJECTS & ACHIEVEMENTS -->
 <section>
     <h2>Projects & Achievements</h2>
-
-    <h3>Projects</h3>
     <ul>
-        <li><strong>Digital Repository Development:</strong> Created and managed a digital repository for academic projects and question papers using <strong>DSpace</strong>.</li>
-        <li><strong>Library Automation Project:</strong> Implemented <strong>Koha</strong> and <strong>Libsoft</strong> workflows for cataloging, circulation, and reporting.</li>
-        <li><strong>NAAC/NBA Documentation Support:</strong> Assisted in compiling library-related data for accreditation processes.</li>
-        <li><strong>Digitization & Metadata Project:</strong> Digitized old question papers and journals, ensuring proper metadata using <strong>Dublin Core</strong> standards.</li>
-    </ul>
-
-    <h3>Achievements</h3>
-    <ul>
-        <li>Successfully conducted multiple <strong>user training sessions</strong> to enhance e-resource usage.</li>
-        <li>Maintained high <strong>metadata accuracy</strong> across all digital platforms.</li>
-        <li>Recognized for leading <strong>library outreach programs and exhibitions</strong> to improve student engagement.</li>
-        <li>Completed professional certifications:
-            <ul>
-                <li><strong>O-Level Computer Certification (NIELIT)</strong> – HTML, CSS, Python, Java, MS Office</li>
-                <li><strong>NPTEL Courses:</strong> IT Applications in Libraries, Science Communication, Advanced R Programming</li>
-            </ul>
-        </li>
+        <li>Digital Repository (DSpace)</li>
+        <li>Library Automation (Koha)</li>
+        <li>Digitization & Metadata Projects</li>
     </ul>
 </section>
 
-
-<!-- SERVICES -->
-<section>
-    <h2>Services Offered</h2>
-    <ul>
-        <li><strong>Library Management:</strong> Cataloging, classification, circulation, acquisitions, and digital/print resource organization.</li>
-        <li><strong>Digital Resource Support:</strong> Assistance with e-books, journals, databases, and online research tools.</li>
-        <li><strong>Metadata & Repository Management:</strong> Creating and maintaining accurate metadata for digital libraries and project repositories.</li>
-        <li><strong>User Training & Support:</strong> Conducting orientations, workshops, and training sessions on library tools and e-resources.</li>
-        <li><strong>Digitization & Preservation:</strong> Digitizing old documents, journals, and question papers with proper archival standards.</li>
-        <li><strong>Library Reporting & Compliance:</strong> Preparing reports for NAAC/NBA and ensuring policy compliance.</li>
-        <li><strong>Outreach & Engagement:</strong> Organizing library exhibitions, awareness programs, and promotions.</li>
-    </ul>
-</section>
-
-<!-- CONTACT -->
 <section id="contact">
     <h2>Contact</h2>
-    <p>If you would like to get in touch, feel free to reach out via phone, email, or visit me at my location.</p>
+    <p>If you would like to get in touch, feel free to contact me using the details below.</p>
 
-    <ul>
-        <li><strong>Phone:</strong> <a href="tel:+917760144157">+91 77601 44157</a></li>
-        <li><strong>Email:</strong> <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></li>
-        <li><strong>Local Address:</strong> K S Boys Hostel, Off Kanakapura Road, Mallasandra, Bengaluru – 560109, Karnataka, India</li>
-        <li><strong>Permanent Address:</strong> Kiranguru, Madduru Taluk, Mandya District – 571425, Karnataka, India</li>
-    </ul>
+    <div class="contact-box">
+        <p><strong>Phone:</strong> <a href="tel:+917760144157">+91 77601 44157</a></p>
+        <p><strong>Email:</strong> <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
+        <p><strong>Location:</strong> Bengaluru, Karnataka, India</p>
+    </div>
 
-    <h3>Connect with Me</h3>
-    <p>
-        <a href="https://www.linkedin.com/in/YashwanthKS" target="_blank">LinkedIn</a> |
+    <div class="social-icons">
+        <h3>Connect with Me</h3>
+        <a href="https://www.linkedin.com/in/YashwanthKS" target="_blank">LinkedIn</a>
         <a href="https://github.com/YashwanthKS" target="_blank">GitHub</a>
-    </p>
+    </div>
 </section>
 
 <footer>
