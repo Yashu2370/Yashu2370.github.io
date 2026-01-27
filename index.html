@@ -1,546 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Yashwanth K S — Cyber-themed Advanced Portfolio</title>
-<meta name="description" content="Assistant Librarian & Digital Resource Specialist — Cyber themed advanced portfolio with projects, certificates, dark UI and enhanced features." />
-<style>
-  /* ===============================
-     Cyber palette + layout variables
-     =============================== */
-  :root{
-    --bg-900:#071232;   /* deep navy */
-    --bg-800:#0b2740;
-    --panel:#071827;    /* darker panels */
-    --muted:#9aa9b8;
-    --text:#e6f7f2;     /* pale cyan/white */
-    --neon:#00e676;     /* neon green (accent) */
-    --cyan:#00b7d8;     /* cyan accent */
-    --glass:rgba(255,255,255,0.04);
-    --radius:14px;
-    --shadow: 0 18px 60px rgba(2,6,23,0.6);
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
-  }
-  /* reset */
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{
-    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-    background:linear-gradient(180deg,var(--bg-900), #071232 40%, #041226 100%);
-    color:var(--text);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.5;
-  }
-  a{color:inherit}
-  img{max-width:100%;display:block;height:auto}
+    <meta charset="UTF-8">
+    <title>Library App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 20px;
+        }
 
-  /* container */
-  .wrap{max-width:1200px;margin:18px auto;padding:18px;position:relative}
+        h1 {
+            text-align: center;
+        }
 
-  /* Skip link for accessibility */
-  .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-  .skip:focus{left:16px;top:16px;width:auto;height:auto;padding:8px 12px;background:#00121a;color:var(--neon);border-radius:6px;z-index:9999}
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
 
-  /* header / nav */
-  header{position:sticky;top:12px;z-index:80;background:linear-gradient(180deg,rgba(3,10,22,0.65),rgba(3,10,22,0.4));backdrop-filter:blur(6px);border-radius:12px;padding:12px;border:1px solid rgba(0,0,0,0.14)}
-  .nav{display:flex;align-items:center;gap:12px;justify-content:space-between}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--neon),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:900;color:#052;box-shadow:0 12px 40px rgba(0,230,118,0.06)}
-  .brand h1{font-size:18px;margin:0;color:var(--text);font-weight:800}
-  .brand p{font-size:12px;color:var(--muted);margin:0}
+        form {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-  nav ul{display:flex;gap:10px;list-style:none;align-items:center}
-  nav a{padding:8px 12px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:700;transition:all .14s}
-  nav a:hover{background:linear-gradient(90deg,rgba(0,230,118,0.06),rgba(0,183,216,0.04));color:var(--text);transform:translateY(-2px)}
+        input, button {
+            padding: 10px;
+            font-size: 14px;
+        }
 
-  /* header right controls */
-  .controls{display:flex;gap:10px;align-items:center}
-  .search{padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);width:220px}
-  .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:800}
-  .btn.neon{background:linear-gradient(90deg,var(--neon),var(--cyan));color:#022}
-  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text)}
+        button {
+            grid-column: span 3;
+            background: #2c7be5;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-  /* top progress */
-  #progress{position:fixed;left:0;top:0;height:4px;background:linear-gradient(90deg,var(--neon),var(--cyan));width:0;z-index:9999}
+        button:hover {
+            background: #1a5fc4;
+        }
 
-  /* hero */
-  .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);box-shadow:var(--shadow);}
-  .eyebrow{color:var(--neon);font-weight:900;letter-spacing:0.06em}
-  .hero h2{font-size:40px;margin:10px 0;line-height:1.02}
-  .hero p{color:var(--muted);max-width:70%}
-  .hero .actions{margin-top:18px;display:flex;gap:10px;align-items:center}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-  .photo-frame{width:420px;height:520px;border-radius:12px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg,#061427, #08192f)}
-  .photo-frame .bg-decor{position:absolute;inset:0;background-image: url('/mnt/data/8f01aac9-dbf5-4b57-965f-bfec38f854f1.png'); background-size:cover;background-position:center;filter:grayscale(10%) contrast(0.9) saturate(0.9);opacity:0.32}
-  .photo-frame img{position:relative;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal}
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
 
-  /* sections */
-  section{margin-top:24px}
-  .card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(0,0,0,0.55)}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+        th {
+            background: #f0f0f0;
+        }
 
-  h3{color:var(--text);font-weight:800}
-  small{color:var(--muted)}
-
-  /* skill pills */
-  .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(0,230,118,0.06);color:var(--neon);font-weight:800;margin:6px 6px 0 0}
-
-  /* progress bars */
-  .progress{height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
-  .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--neon),var(--cyan));width:60%}
-
-  /* projects */
-  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-  .project{padding:14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03)}
-  .project button{margin-top:10px}
-
-  /* modal */
-  .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:400}
-  .modal{background:linear-gradient(180deg,#021220,#081831);padding:18px;border-radius:12px;max-width:900px;width:96%;color:var(--text);border:1px solid rgba(255,255,255,0.03)}
-
-  /* testimonials carousel */
-  .carousel{display:flex;overflow:hidden;gap:12px}
-  .test{min-width:280px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#021726,#051b2d);border:1px solid rgba(255,255,255,0.03)}
-
-  /* gallery lightbox */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
-  .thumb{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
-
-  /* contact */
-  form input, form textarea{width:100%;padding:10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text)}
-  .muted{color:var(--muted);font-size:13px}
-
-  /* footer */
-  footer{margin-top:20px;text-align:center;color:var(--muted);font-size:14px;padding:18px}
-
-  /* responsiveness */
-  @media (max-width:980px){ .hero{grid-template-columns:1fr;}.photo-frame{width:100%;height:360px} .search{width:160px} }
-  @media (max-width:560px){ .two{grid-template-columns:1fr} .grid-3{grid-template-columns:1fr} }
-</style>
+        .delete {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<!-- scroll progress -->
-<div id="progress" aria-hidden="true"></div>
+<div class="container">
+    <h1>📚 Library App</h1>
 
-<!-- skip -->
-<a href="#main" class="skip">Skip to main content</a>
-
-<div class="wrap" id="main">
-
-  <!-- header -->
-  <header role="banner" aria-label="Main header">
-    <nav class="nav" role="navigation" aria-label="Primary">
-      <div class="brand" title="Yashwanth K S">
-        <div class="logo" aria-hidden="true">YK</div>
-        <div>
-          <h1>Yashwanth K S</h1>
-          <p>Assistant Librarian</p>
-        </div>
-      </div>
-
-      <ul role="menubar" aria-label="Main menu">
-        <li><a href="#home" role="menuitem">Home</a></li>
-        <li><a href="#about" role="menuitem">About</a></li>
-        <li><a href="#services" role="menuitem">Services</a></li>
-        <li><a href="#projects" role="menuitem">Projects</a></li>
-        <li><a href="#contact" role="menuitem">Contact</a></li>
-      </ul>
-
-      <div class="controls" role="group" aria-label="Header controls">
-        <input class="search" id="search" placeholder="Search projects..." aria-label="Search projects" />
-        <button class="btn neon" id="themeToggle" aria-pressed="false">Theme</button>
-        <button class="btn ghost" id="openCV">Resume</button>
-      </div>
-    </nav>
-  </header>
-
-  <!-- HERO -->
-  <section id="home" class="hero" aria-labelledby="hero-title">
-    <div>
-      <div class="eyebrow">Hello — I'm</div>
-      <h2 id="hero-title">Yashwanth K S</h2>
-      <div style="font-weight:700;color:var(--muted)">Assistant Librarian · Digital Resource Specialist</div>
-
-      <p class="muted" style="margin-top:12px">
-        I help academic communities discover, access and preserve knowledge — combining library science with modern digital tools: Koha, DSpace, metadata design, digitization and user training.
-      </p>
-
-      <div class="actions" role="toolbar" aria-label="Primary actions">
-        <button class="btn neon" id="hire">Hire Me</button>
-        <button class="btn ghost" id="download">Download CV</button>
-        <button class="btn ghost" id="contactScroll">Contact</button>
-      </div>
-
-      <div style="margin-top:16px;color:var(--muted);font-weight:700">
-        I’m a <span style="color:var(--neon)" id="typing">Metadata Specialist</span>
-      </div>
-    </div>
-
-    <div class="photo-frame" aria-hidden="false">
-      <!-- decorative background uses your uploaded file -->
-      <div class="bg-decor" aria-hidden="true"></div>
-      <!-- foreground person/photo (fallback to uploaded path if needed) -->
-      <img src="yashwanth portfolio.JPG" alt="Yashwanth portrait" onerror="this.onerror=null;this.src='yashwanth portfolio.JPG'">
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="card" aria-labelledby="about-heading">
-    <h3 id="about-heading">About</h3>
-    <p class="muted">I am an Assistant Librarian based in Bengaluru with experience in library automation, metadata design (MARC21, Dublin Core), digital repositories (DSpace), and user-focused services. I specialize in implementing Koha for institutional libraries, designing metadata schemas for digital collections, and conducting training workshops for students and faculty.</p>
-    <div class="two" style="margin-top:12px">
-      <div>
-        <h4 style="color:var(--neon)">Professional strengths</h4>
-        <ul class="muted">
-          <li>Library Automation & OPAC management (Koha)</li>
-          <li>Digital Repositories (DSpace) & Institutional repositories</li>
-          <li>Metadata modeling — MARC21, Dublin Core</li>
-          <li>Digitization workflows & OCR</li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="color:var(--neon)">Education</h4>
-        <ul class="muted">
-          <li>M.L.I.Sc — Master of Library & Information Science (2022)</li>
-          <li>B.A — Bachelor of Arts (2020)</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="card" aria-labelledby="services-heading">
-    <h3 id="services-heading">Services</h3>
-    <div class="grid-3" style="margin-top:12px">
-      <div>
-        <h4>Library Automation</h4>
-        <p class="muted">Koha setup, migration, customization and maintenance. OPAC design, circulation workflows and patron services.</p>
-      </div>
-      <div>
-        <h4>Digital Repositories</h4>
-        <p class="muted">DSpace installation and configuration, metadata mapping, ingest pipelines, and persistent identifiers for research outputs.</p>
-      </div>
-      <div>
-        <h4>Digitization & Metadata</h4>
-        <p class="muted">Digitization workflows, OCR, metadata enrichment, preservation best practices and archival standards.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="card" aria-labelledby="projects-heading">
-    <h3 id="projects-heading">Projects</h3>
-    <div class="projects" style="margin-top:12px">
-      <article class="project" id="proj-1">
-        <strong>Institutional Repository (DSpace)</strong>
-        <p class="muted">Metadata schema design and ingest scripts for an institutional repository to ensure discoverability and compliance.</p>
-        <button class="btn ghost" data-proj="proj-detail-1">View details</button>
-      </article>
-
-      <article class="project" id="proj-2">
-        <strong>Koha Migration</strong>
-        <p class="muted">Migrated 18,000 bibliographic records, customized OPAC, and trained staff for digital-first workflows.</p>
-        <button class="btn ghost" data-proj="proj-detail-2">View details</button>
-      </article>
-
-      <article class="project" id="proj-3">
-        <strong>Digitization Pipeline</strong>
-        <p class="muted">Designed scanning and metadata workflow for archival collections with OCR and preservation storage.</p>
-        <button class="btn ghost" data-proj="proj-detail-3">View details</button>
-      </article>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="card" aria-labelledby="skills-heading">
-    <h3 id="skills-heading">Skills & Tools</h3>
-    <div style="margin-top:8px">
-      <span class="pill">Koha</span>
-      <span class="pill">DSpace</span>
-      <span class="pill">MARC21</span>
-      <span class="pill">Digitization</span>
-      <span class="pill">SQL</span>
-      <span class="pill">Metadata</span>
-    </div>
-
-    <div class="two" style="margin-top:12px">
-      <div>
-        <label style="font-weight:800">Koha & Library Systems</label>
-        <div class="progress" aria-hidden="true"><i style="width:86%"></i></div>
-        <div class="muted" style="margin-top:6px">Koha & Library Systems — 86%</div>
-
-        <div style="height:12px"></div>
-
-        <label style="font-weight:800">Digital Repositories</label>
-        <div class="progress" aria-hidden="true"><i style="width:74%"></i></div>
-        <div class="muted" style="margin-top:6px">Digital Repositories — 74%</div>
-      </div>
-
-      <div>
-        <h4 style="color:var(--neon)">Soft skills</h4>
-        <ul class="muted">
-          <li>Communication & training</li>
-          <li>Project management</li>
-          <li>Metadata strategy</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="card" aria-labelledby="testimonials-heading">
-    <h3 id="testimonials-heading">Testimonials</h3>
-    <div style="margin-top:12px" class="carousel" id="carousel">
-      <div class="test">
-        <strong>Dr. A — Research Coordinator</strong>
-        <p class="muted">"Yashwanth transformed our repository and made research outputs much easier to find. Excellent attention to metadata."</p>
-      </div>
-      <div class="test">
-        <strong>Ms. R — Librarian</strong>
-        <p class="muted">"Highly professional and detail-oriented. The Koha migration was seamless and well documented."</p>
-      </div>
-      <div class="test">
-        <strong>Prof. T — Faculty</strong>
-        <p class="muted">"Great workshops — students now know how to find and use digital resources effectively."</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery" class="card" aria-labelledby="gallery-heading">
-    <h3 id="gallery-heading">Gallery</h3>
-    <div class="gallery" style="margin-top:12px">
-      <figure class="thumb"><img src="photo1.JPG" alt="Gallery 1" data-full="photo1.JPG"></figure>
-      <figure class="thumb"><img src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Gallery 2"></figure>
-      <figure class="thumb"><img src="/mnt/data/7c1630af-7f01-42df-878b-7de0c18c94b0.png" alt="Gallery 3"></figure>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="card" aria-labelledby="contact-heading">
-    <h3 id="contact-heading">Contact</h3>
-    <p class="muted">If you'd like to work together, please use the contact form below or email me at <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
-
-    <form id="contactForm" novalidate style="margin-top:12px">
-      <div class="two">
-        <div>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-        </div>
-      </div>
-      <div style="margin-top:12px">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-      </div>
-
-      <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
-        <button class="btn neon" type="submit">Send Message</button>
-        <button class="btn ghost" id="resetForm" type="button">Reset</button>
-        <div style="flex:1"></div>
-        <div class="muted">Call: <a href="tel:+917760144157">+91 77601 44157</a></div>
-      </div>
+    <form id="bookForm">
+        <input type="text" id="title" placeholder="Book Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="year" placeholder="Year" required>
+        <button type="submit">Add Book</button>
     </form>
-  </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="card" aria-labelledby="experience-heading">
-    <h3 id="experience-heading">Experience & Timeline</h3>
-    <div style="margin-top:12px" class="two">
-      <div>
-        <h4>Assistant Librarian — Current</h4>
-        <div class="muted">2023 — Present</div>
-        <p class="muted">Library automation, repository management, staff training, and metadata strategy.</p>
-      </div>
-      <div>
-        <h4>Library Staff — Previous</h4>
-        <div class="muted">2021 — 2023</div>
-        <p class="muted">Cataloging, circulation support and digitization assistance.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS -->
-  <section id="certs" class="card" aria-labelledby="certs-heading">
-    <h3 id="certs-heading">Certifications & Learning</h3>
-    <div style="margin-top:12px" class="grid-3">
-      <div class="card"><strong>Koha Administration — Advanced</strong><p class="muted">Self-directed / Project-based</p></div>
-      <div class="card"><strong>DSpace Repository Setup</strong><p class="muted">Repository configuration & metadata</p></div>
-      <div class="card"><strong>Metadata Standards</strong><p class="muted">MARC21, Dublin Core</p></div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="muted">Built with care • © 2025 Yashwanth K S</div>
-  </footer>
-
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="bookList"></tbody>
+    </table>
 </div>
 
-<!-- MODAL TEMPLATE (hidden) -->
-<template id="proj-detail-1">
-  <h3>Institutional Repository (DSpace)</h3>
-  <p class="muted">Full lifecycle implementation including metadata mapping (Dublin Core), batch ingest scripts and preservation workflow. Tools: DSpace, Bash, Python.</p>
-</template>
-<template id="proj-detail-2">
-  <h3>Koha Migration</h3>
-  <p class="muted">Data cleanup, MARC mapping, SQL transforms and staff training. Migrated 18k records with quality checks and OPAC customization.</p>
-</template>
-<template id="proj-detail-3">
-  <h3>Digitization Pipeline</h3>
-  <p class="muted">Scanning SOPs, OCR integration, metadata enrichment and preservation storage for archival collections.</p>
-</template>
-
-<!-- lightbox / modal container will be injected into DOM -->
-
-<!-- TOAST -->
-<div id="toast" aria-live="polite" style="position:fixed;right:16px;bottom:16px;z-index:600"></div>
-
 <script>
-(function(){
-  // utilities
-  const $ = (s, ctx=document)=> ctx.querySelector(s);
-  const $$ = (s, ctx=document)=> Array.from((ctx||document).querySelectorAll(s));
+    const form = document.getElementById("bookForm");
+    const bookList = document.getElementById("bookList");
 
-  // progress bar
-  const prog = $('#progress');
-  function updateProgress(){
-    const h = document.documentElement;
-    const percent = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-    prog.style.width = percent + '%';
-  }
-  document.addEventListener('scroll', updateProgress, {passive:true});
-  window.addEventListener('resize', updateProgress);
-  updateProgress();
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-  // reveal animation - simple fade-in
-  function reveal(){
-    $$('.card, .hero').forEach((el,i)=> setTimeout(()=> el.classList.add('show'), 60*i));
-  }
-  window.addEventListener('load', reveal);
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const year = document.getElementById("year").value;
 
-  // typing effect
-  const typing = $('#typing');
-  const words = ["Metadata Specialist","Digital Archivist","Library Automator","Reference Librarian"];
-  let wi=0,ci=0,del=false;
-  function tick(){
-    if(!typing) return;
-    const w = words[wi];
-    if(!del){ ci++; typing.textContent = w.slice(0,ci); if(ci===w.length){ del=true; setTimeout(tick,1100); return; } }
-    else { ci--; typing.textContent = w.slice(0,ci); if(ci===0){ del=false; wi=(wi+1)%words.length; } }
-    setTimeout(tick, del?50:120);
-  }
-  tick();
+        const row = document.createElement("tr");
 
-  // toast
-  const toastRoot = $('#toast');
-  function toast(msg, ms=3000){
-    const t = document.createElement('div');
-    t.textContent = msg;
-    t.style.background='rgba(0,0,0,0.8)'; t.style.color='white'; t.style.padding='8px 12px';
-    t.style.borderRadius='8px'; t.style.marginTop='8px'; t.style.boxShadow='0 8px 30px rgba(0,0,0,0.6)';
-    toastRoot.appendChild(t);
-    setTimeout(()=> t.remove(), ms);
-  }
+        row.innerHTML = `
+            <td>${title}</td>
+            <td>${author}</td>
+            <td>${year}</td>
+            <td class="delete">Delete</td>
+        `;
 
-  // contact form handling (client-side demo)
-  const form = $('#contactForm');
-  if(form){
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = $('#name').value.trim(), email = $('#email').value.trim(), message = $('#message').value.trim();
-      if(!name || !email || !message){ toast('Please complete all fields before sending.'); return; }
-      const ok = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);
-      if(!ok){ toast('Please enter a valid email address.'); return; }
-      toast('Sending message...', 1200);
-      setTimeout(()=> { toast('Message sent. I will contact you soon — thanks!', 3000); form.reset(); }, 1200);
+        bookList.appendChild(row);
+        form.reset();
     });
-  }
-  $('#resetForm')?.addEventListener('click', ()=>{ form?.reset(); toast('Form reset'); });
 
-  // search filter projects
-  $('#search')?.addEventListener('input', function(e){
-    const q = e.target.value.trim().toLowerCase();
-    $$('.project').forEach(p=>{
-      p.style.display = q ? (p.textContent.toLowerCase().includes(q) ? 'block' : 'none') : 'block';
+    bookList.addEventListener("click", function(e) {
+        if (e.target.classList.contains("delete")) {
+            e.target.parentElement.remove();
+        }
     });
-  });
-
-  // resume download (HEAD then open or modal)
-  $('#download')?.addEventListener('click', ()=>{
-    const url = '/resume.pdf';
-    fetch(url, {method:'HEAD'}).then(r=>{
-      if(r.ok){ window.open(url, '_blank'); }
-      else {
-        showModal('<h3>Resume not found</h3><p>Please upload <code>resume.pdf</code> to your site root to enable download.</p>');
-      }
-    }).catch(()=> window.open(url, '_blank'));
-  });
-  $('#openCV')?.addEventListener('click', ()=> $('#download').click());
-
-  // smooth nav
-  $$('nav a').forEach(a=> a.addEventListener('click', (e)=>{
-    const href = a.getAttribute('href');
-    if(href && href.startsWith('#')){ e.preventDefault(); document.querySelector(href)?.scrollIntoView({behavior:'smooth', block:'start'}); }
-  }));
-
-  // project modal openers
-  $$('[data-proj]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const id = btn.getAttribute('data-proj');
-      const tpl = document.getElementById(id);
-      if(!tpl) return;
-      showModal(tpl.innerHTML);
-    });
-  });
-
-  // gallery lightbox
-  $$('.gallery img').forEach(img=>{
-    img.addEventListener('click', ()=> showModal('<img src="'+(img.dataset.full || img.src)+'" style="width:100%;height:auto;border-radius:8px" />'));
-  });
-
-  // hire / contact scroll
-  $('#hire')?.addEventListener('click', ()=> { $('#contact')?.scrollIntoView({behavior:'smooth', block:'center'}); });
-  $('#contactScroll')?.addEventListener('click', ()=> { $('#contact')?.scrollIntoView({behavior:'smooth', block:'center'}); });
-
-  // theme toggle: toggles brighter neon/darker (keeps base cyber palette)
-  const tgl = $('#themeToggle');
-  tgl?.addEventListener('click', ()=>{
-    const root = document.documentElement;
-    const dark = root.classList.toggle('alt'); // alt class toggled for effect
-    tgl.setAttribute('aria-pressed', String(dark));
-    // simple persist
-    localStorage.setItem('yk_theme_alt', dark ? '1' : '0');
-  });
-  if(localStorage.getItem('yk_theme_alt') === '1') document.documentElement.classList.add('alt');
-
-  // modal utility
-  function showModal(inner){
-    const bd = document.createElement('div'); bd.className='modal-backdrop';
-    const m = document.createElement('div'); m.className='modal'; m.innerHTML = inner + '<div style="text-align:right;margin-top:12px"><button id="closeM" class="btn ghost">Close</button></div>';
-    bd.appendChild(m); document.body.appendChild(bd);
-    bd.addEventListener('click', (e)=> { if(e.target === bd) bd.remove(); });
-    m.querySelector('#closeM')?.addEventListener('click', ()=> bd.remove());
-  }
-
-  // small CSS changes for alt theme (applies when 'alt' class is present)
-  const styleAlt = document.createElement('style');
-  styleAlt.textContent = `
-    :root.alt{ --bg-900:#041226; --bg-800:#021221; --panel:#021428; --muted:#8fb7b9; --text:#dffaf4; --neon:#39ff99; --cyan:#00d1ff }
-  `;
-  document.head.appendChild(styleAlt);
-
-})();
 </script>
 
-<!-- harmless filler comments (optional) -->
-<!-- EOF -->
 </body>
 </html>
