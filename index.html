@@ -1,126 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Library App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            padding: 20px;
-        }
+<meta charset="UTF-8">
+<title>Advanced Library App</title>
 
-        h1 {
-            text-align: center;
-        }
+<style>
+:root {
+    --primary: #1f2937;
+    --secondary: #374151;
+    --accent: #3b82f6;
+    --bg: #f3f4f6;
+    --card: #ffffff;
+}
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        form {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--bg);
+}
 
-        input, button {
-            padding: 10px;
-            font-size: 14px;
-        }
+header {
+    background: var(--primary);
+    color: #fff;
+    padding: 16px 24px;
+    font-size: 20px;
+}
 
-        button {
-            grid-column: span 3;
-            background: #2c7be5;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+.container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: auto;
+}
 
-        button:hover {
-            background: #1a5fc4;
-        }
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
 
-        th, td {
-            border-bottom: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
+.card h2 {
+    margin: 0;
+    font-size: 14px;
+    color: #6b7280;
+}
 
-        th {
-            background: #f0f0f0;
-        }
+.card p {
+    font-size: 32px;
+    margin: 6px 0 0;
+    color: var(--primary);
+}
 
-        .delete {
-            color: red;
-            cursor: pointer;
-        }
-    </style>
+.form-section {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+input, select, button {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.search-bar {
+    margin-bottom: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    background: #f9fafb;
+}
+
+.delete {
+    color: #ef4444;
+    cursor: pointer;
+}
+</style>
 </head>
+
 <body>
 
+<header>📚 Advanced Library Management App</header>
+
 <div class="container">
-    <h1>📚 Library App</h1>
 
-    <form id="bookForm">
-        <input type="text" id="title" placeholder="Book Title" required>
-        <input type="text" id="author" placeholder="Author" required>
-        <input type="number" id="year" placeholder="Year" required>
-        <button type="submit">Add Book</button>
-    </form>
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <div class="card">
+            <h2>Total Books</h2>
+            <p id="totalBooks">0</p>
+        </div>
+        <div class="card">
+            <h2>Available Books</h2>
+            <p id="availableBooks">0</p>
+        </div>
+    </div>
 
+    <!-- Form -->
+    <div class="form-section">
+        <form id="bookForm">
+            <input type="text" id="title" placeholder="Book Title" required>
+            <input type="text" id="author" placeholder="Author" required>
+            <input type="number" id="year" placeholder="Year" required>
+            <select id="status">
+                <option value="Available">Available</option>
+                <option value="Issued">Issued</option>
+            </select>
+            <button type="submit">Add Book</button>
+        </form>
+    </div>
+
+    <!-- Search -->
+    <input type="text" id="search" class="search-bar" placeholder="Search by title or author...">
+
+    <!-- Table -->
     <table>
         <thead>
             <tr>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Year</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody id="bookList"></tbody>
+        <tbody id="bookTable"></tbody>
     </table>
+
 </div>
 
 <script>
-    const form = document.getElementById("bookForm");
-    const bookList = document.getElementById("bookList");
+let books = JSON.parse(localStorage.getItem("books")) || [];
 
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
+const form = document.getElementById("bookForm");
+const table = document.getElementById("bookTable");
+const search = document.getElementById("search");
 
-        const title = document.getElementById("title").value;
-        const author = document.getElementById("author").value;
-        const year = document.getElementById("year").value;
+form.addEventListener("submit", addBook);
+search.addEventListener("input", renderBooks);
 
-        const row = document.createElement("tr");
+function addBook(e) {
+    e.preventDefault();
 
-        row.innerHTML = `
-            <td>${title}</td>
-            <td>${author}</td>
-            <td>${year}</td>
-            <td class="delete">Delete</td>
-        `;
+    const book = {
+        id: Date.now(),
+        title: title.value,
+        author: author.value,
+        year: year.value,
+        status: status.value
+    };
 
-        bookList.appendChild(row);
-        form.reset();
-    });
+    books.push(book);
+    save();
+    form.reset();
+}
 
-    bookList.addEventListener("click", function(e) {
-        if (e.target.classList.contains("delete")) {
-            e.target.parentElement.remove();
-        }
-    });
+function deleteBook(id) {
+    books = books.filter(book => book.id !== id);
+    save();
+}
+
+function save() {
+    localStorage.setItem("books", JSON.stringify(books));
+    renderBooks();
+    updateDashboard();
+}
+
+function renderBooks() {
+    const query = search.value.toLowerCase();
+    table.innerHTML = "";
+
+    books
+        .filter(book =>
+            book.title.toLowerCase().includes(query) ||
+            book.author.toLowerCase().includes(query)
+        )
+        .forEach(book => {
+            table.innerHTML += `
+                <tr>
+                    <td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td>${book.year}</td>
+                    <td>${book.status}</td>
+                    <td><span class="delete" onclick="deleteBook(${book.id})">Delete</span></td>
+                </tr>
+            `;
+        });
+}
+
+function updateDashboard() {
+    totalBooks.textContent = books.length;
+    availableBooks.textContent = books.filter(b => b.status === "Available").length;
+}
+
+renderBooks();
+updateDashboard();
 </script>
 
 </body>
