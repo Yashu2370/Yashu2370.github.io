@@ -3,14 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yashwanth | Portfolio</title>
+<title>Yashwanth K S | Digital Library & IT Specialist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#0f172a;
   --card:#1e293b;
-  --accent:#22d3ee;
-  --text:#f1f5f9;
+  --accent:#6366f1;
+  --accent2:#22d3ee;
+  --text:#f8fafc;
   --muted:#94a3b8;
 }
 
@@ -18,7 +21,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Poppins',sans-serif;
 }
 
 body{
@@ -32,106 +35,127 @@ header{
   justify-content:space-between;
   align-items:center;
   padding:20px 8%;
-  background:#0b1120;
-  position:sticky;
-  top:0;
+  position:fixed;
+  width:100%;
+  background:rgba(15,23,42,0.95);
+  backdrop-filter:blur(8px);
   z-index:1000;
 }
 
 header h1{
-  color:var(--accent);
+  font-size:20px;
+  font-weight:600;
+  color:var(--accent2);
 }
 
 nav a{
-  color:var(--text);
-  margin-left:20px;
+  margin-left:25px;
   text-decoration:none;
+  color:var(--text);
+  font-size:14px;
   transition:0.3s;
 }
 
 nav a:hover{
-  color:var(--accent);
+  color:var(--accent2);
 }
 
 section{
-  padding:80px 8%;
+  padding:100px 8%;
 }
 
 .hero{
+  height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  height:90vh;
 }
 
 .hero h2{
-  font-size:48px;
+  font-size:50px;
+  font-weight:700;
+  line-height:1.2;
 }
 
 .hero span{
-  color:var(--accent);
+  color:var(--accent2);
 }
 
 .hero p{
-  margin-top:15px;
-  color:var(--muted);
+  margin-top:20px;
   max-width:600px;
+  color:var(--muted);
+  line-height:1.6;
 }
 
 .btn{
-  margin-top:25px;
-  padding:12px 25px;
+  margin-top:30px;
+  padding:12px 28px;
+  background:linear-gradient(45deg,var(--accent),var(--accent2));
   border:none;
-  background:var(--accent);
-  color:#000;
-  font-weight:bold;
-  border-radius:5px;
+  border-radius:6px;
+  font-weight:600;
   cursor:pointer;
+  color:white;
   transition:0.3s;
 }
 
 .btn:hover{
-  opacity:0.8;
+  transform:translateY(-3px);
 }
 
-.cards{
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
   margin-top:40px;
 }
 
 .card{
   background:var(--card);
-  padding:25px;
-  border-radius:10px;
+  padding:30px;
+  border-radius:12px;
   transition:0.3s;
+  border:1px solid rgba(255,255,255,0.05);
 }
 
 .card:hover{
   transform:translateY(-5px);
+  border:1px solid var(--accent2);
+}
+
+.card h3{
+  margin-bottom:15px;
+  color:var(--accent2);
 }
 
 .skills span{
   display:inline-block;
-  background:#334155;
-  padding:8px 12px;
   margin:6px;
+  padding:8px 14px;
+  background:#334155;
   border-radius:20px;
-  font-size:14px;
+  font-size:13px;
+}
+
+.timeline{
+  border-left:3px solid var(--accent2);
+  padding-left:20px;
+}
+
+.timeline div{
+  margin-bottom:25px;
 }
 
 footer{
   text-align:center;
-  padding:20px;
+  padding:30px;
   background:#0b1120;
   color:var(--muted);
 }
 
 @media(max-width:768px){
-  .hero h2{
-    font-size:32px;
-  }
+  .hero h2{font-size:32px;}
 }
 </style>
 </head>
@@ -139,92 +163,86 @@ footer{
 <body>
 
 <header>
-  <h1>Yashwanth</h1>
+  <h1>YASHWANTH K S</h1>
   <nav>
     <a href="#about">About</a>
-    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
-  <h2>Hello, I'm <span id="typing"></span></h2>
-  <p>A passionate developer creating modern and interactive web applications.</p>
+  <h2>Digital Library & <span>IT Automation Specialist</span></h2>
+  <p>Assistant Librarian with expertise in Koha LMS, Digital Repositories, SQL Analytics, SharePoint Management, and Library Automation. Driving digital transformation in academic environments.</p>
   <button class="btn" onclick="downloadResume()">Download Resume</button>
 </section>
 
 <section id="about">
-  <h2>About Me</h2>
-  <div class="cards">
+  <h2>Professional Summary</h2>
+  <div class="grid">
     <div class="card">
-      <p>I am a motivated developer with strong knowledge in HTML, CSS, JavaScript and building responsive dashboards and applications.</p>
+      <h3>Library Automation</h3>
+      <p>Administer Koha, Libsoft, MARC frameworks, cataloging systems, and SQL reporting for advanced usage analytics.</p>
+    </div>
+    <div class="card">
+      <h3>Digital Repositories</h3>
+      <p>Experienced with DSpace, Drupal, Joomla & CMS platforms for managing institutional repositories and digital content.</p>
+    </div>
+    <div class="card">
+      <h3>Data & Analytics</h3>
+      <p>Generate SQL reports, interpret usage statistics, and support research productivity using R & data tools.</p>
     </div>
   </div>
 </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Library Collection Dashboard</h3>
-      <p>Advanced interactive dashboard using HTML, CSS, JS & Chart.js.</p>
-    </div>
-    <div class="card">
-      <h3>Waste Management Report</h3>
-      <p>Comprehensive 15-page report covering Public, Private & Government roles.</p>
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div>
+      <h3>Assistant Librarian – K S School of Engineering & Management</h3>
+      <p>April 2023 – Present | Bengaluru</p>
+      <p>Managing LMS automation, digital workflows, OPAC support, DELNET services, analytics reporting & SharePoint systems.</p>
     </div>
   </div>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
+  <h2>Technical Skills</h2>
   <div class="skills">
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JavaScript</span>
-    <span>Chart.js</span>
-    <span>Responsive Design</span>
-    <span>GitHub Pages</span>
+    <span>Koha LMS</span>
+    <span>Libsoft</span>
+    <span>DSpace</span>
+    <span>Drupal</span>
+    <span>Joomla</span>
+    <span>SQL Reports</span>
+    <span>R Programming</span>
+    <span>Python (Basic)</span>
+    <span>HTML & CSS</span>
+    <span>SharePoint</span>
+    <span>Zotero</span>
+    <span>Mendeley</span>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <div class="cards">
+  <div class="grid">
     <div class="card">
-      <p>Email: yourmail@email.com</p>
-      <p>GitHub: github.com/yashu2370</p>
+      <p><strong>Email:</strong> yashu2370@gmail.com</p>
+      <p><strong>Phone:</strong> 7760144157</p>
+      <p><strong>Location:</strong> Bengaluru, India</p>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 Yashwanth | All Rights Reserved
+  © 2026 Yashwanth K S | Digital Library & IT Specialist
 </footer>
 
 <script>
-/* Typing Effect */
-const words = ["Yashwanth", "Web Developer", "Dashboard Creator"];
-let i=0, j=0, currentWord="", isDeleting=false;
-const typingElement=document.getElementById("typing");
-
-function type(){
-  currentWord = words[i];
-  if(isDeleting){
-    typingElement.textContent = currentWord.substring(0,j--);
-    if(j<0){ isDeleting=false; i=(i+1)%words.length; }
-  } else {
-    typingElement.textContent = currentWord.substring(0,j++);
-    if(j>currentWord.length){ isDeleting=true; }
-  }
-  setTimeout(type,100);
-}
-type();
-
-/* Resume Download */
 function downloadResume(){
-  alert("Add resume.pdf file in same folder to enable download.");
+  alert("Upload your resume PDF as 'resume.pdf' in the same folder and update this function for direct download.");
 }
 </script>
 
