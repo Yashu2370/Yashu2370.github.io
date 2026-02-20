@@ -4,35 +4,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yashwanth K S | Portfolio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0f172a;color:#fff;scroll-behavior:smooth;}
-header{background:linear-gradient(135deg,#1e293b,#0f172a);padding:40px;text-align:center;}
-header img{width:150px;height:150px;border-radius:50%;border:4px solid #38bdf8;object-fit:cover;}
-header h1{margin-top:15px;font-size:32px;}
-header p{color:#94a3b8;margin-top:10px;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-nav{background:#111827;display:flex;justify-content:center;gap:30px;padding:15px;position:sticky;top:0;}
-nav a{color:#38bdf8;text-decoration:none;font-weight:600;}
-nav a:hover{color:#fff;}
+body{
+background:linear-gradient(135deg,#0f172a,#0b1120);
+color:#fff;
+scroll-behavior:smooth;
+overflow-x:hidden;
+}
 
-section{padding:60px 10%;}
+/* ===== HEADER ===== */
 
-.section-title{font-size:28px;margin-bottom:30px;border-left:5px solid #38bdf8;padding-left:10px;}
+header{
+background:linear-gradient(135deg,#1e293b,#0f172a);
+padding:80px 20px 60px;
+text-align:center;
+position:relative;
+}
 
-.card{background:#1e293b;padding:25px;border-radius:10px;margin-bottom:20px;transition:0.3s;}
-.card:hover{transform:translateY(-5px);}
+/* Animated Background Glow */
+header::before{
+content:"";
+position:absolute;
+top:-100px;
+left:50%;
+transform:translateX(-50%);
+width:600px;
+height:600px;
+background:radial-gradient(circle,rgba(56,189,248,0.15),transparent 70%);
+animation:floatGlow 6s ease-in-out infinite;
+z-index:0;
+}
 
-.skills .skill{margin-bottom:15px;}
-.skills .skill-name{margin-bottom:5px;}
-.progress{background:#334155;height:8px;border-radius:5px;}
-.progress-bar{background:#38bdf8;height:8px;border-radius:5px;}
+@keyframes floatGlow{
+0%,100%{transform:translateX(-50%) translateY(0);}
+50%{transform:translateX(-50%) translateY(20px);}
+}
 
-.timeline-item{margin-bottom:20px;}
+/* ===== PROFILE FRAME ===== */
 
-.contact a{color:#38bdf8;text-decoration:none;}
-footer{text-align:center;padding:20px;background:#111827;color:#94a3b8;}
+.profile-wrapper{
+display:flex;
+justify-content:center;
+margin-bottom:20px;
+position:relative;
+z-index:1;
+animation:fadeDown 1.2s ease forwards;
+}
+
+.profile-frame{
+position:relative;
+width:180px;
+height:180px;
+border-radius:50%;
+padding:6px;
+background:linear-gradient(45deg,#38bdf8,#6366f1,#ec4899,#38bdf8);
+background-size:400% 400%;
+animation:gradientRotate 6s ease infinite;
+}
+
+.profile-frame::before{
+content:"";
+position:absolute;
+inset:-15px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(56,189,248,0.4),transparent 70%);
+animation:pulse 2.5s infinite ease-in-out;
+z-index:-1;
+}
+
+.profile-frame img{
+width:100%;
+height:100%;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #0f172a;
+}
+
+@keyframes gradientRotate{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+@keyframes pulse{
+0%{transform:scale(1);opacity:0.6;}
+50%{transform:scale(1.1);opacity:0.3;}
+100%{transform:scale(1);opacity:0.6;}
+}
+
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* TEXT ANIMATION */
+header h1{
+margin-top:15px;
+font-size:36px;
+letter-spacing:1px;
+animation:fadeUp 1.5s ease forwards;
+position:relative;
+z-index:1;
+}
+
+header p{
+color:#94a3b8;
+margin-top:10px;
+animation:fadeUp 1.8s ease forwards;
+position:relative;
+z-index:1;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* ===== NAV ===== */
+
+nav{
+background:rgba(17,24,39,0.8);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:center;
+gap:35px;
+padding:18px;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav a{
+color:#38bdf8;
+text-decoration:none;
+font-weight:600;
+position:relative;
+transition:0.3s;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+bottom:-5px;
+left:0;
+width:0%;
+height:2px;
+background:#38bdf8;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* ===== SECTIONS ===== */
+
+section{
+padding:70px 10%;
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.section-title{
+font-size:28px;
+margin-bottom:30px;
+border-left:5px solid #38bdf8;
+padding-left:12px;
+}
+
+.card{
+background:rgba(30,41,59,0.7);
+backdrop-filter:blur(15px);
+padding:25px;
+border-radius:12px;
+margin-bottom:20px;
+transition:0.4s ease;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* ===== SKILLS ===== */
+
+.progress{
+background:#334155;
+height:8px;
+border-radius:5px;
+overflow:hidden;
+}
+
+.progress-bar{
+background:linear-gradient(90deg,#38bdf8,#6366f1);
+height:8px;
+width:0;
+transition:width 2s ease;
+}
+
+/* ===== BUTTON ===== */
 
 button{
 padding:10px 20px;
@@ -43,15 +230,32 @@ color:#000;
 font-weight:600;
 cursor:pointer;
 margin-top:15px;
+transition:0.3s;
 }
-button:hover{background:#0ea5e9;}
+
+button:hover{
+background:#0ea5e9;
+transform:scale(1.05);
+}
+
+footer{
+text-align:center;
+padding:25px;
+background:#0b1120;
+color:#94a3b8;
+}
 </style>
 </head>
+
 <body>
 
 <header>
+<div class="profile-wrapper">
+<div class="profile-frame">
 <img src="profile.jpg" alt="Profile Photo">
-<h1>YASHWANTH K S</h1>
+</div>
+</div>
+<h1>YASHWANtH K S</h1>
 <p>Library & Information Science Professional | Library Automation | Digital Resource Management</p>
 </header>
 
@@ -67,7 +271,7 @@ button:hover{background:#0ea5e9;}
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
-<p>Dedicated Library & Information Science professional with experience in cataloging, library automation, digital resource management, analytics reporting, and user support. Skilled in Koha LMS, DSpace, CMS platforms, SharePoint, and online learning tools. Seeking to contribute to efficient library operations and digital transformation in a progressive academic or corporate environment.</p>
+<p>Dedicated Library & Information Science professional with experience in cataloging, library automation, digital resource management, analytics reporting, and user support. Skilled in Koha LMS, DSpace, CMS platforms, SharePoint, and online learning tools.</p>
 </div>
 </section>
 
@@ -77,91 +281,42 @@ button:hover{background:#0ea5e9;}
 <h3>Assistant Librarian</h3>
 <p><strong>K S School of Engineering & Management, Bengaluru</strong></p>
 <p>April 2023 – Present</p>
-<ul>
-<li>Manage circulation, OPAC, classification, shelving and user services.</li>
-<li>Administer Koha & Libsoft LMS.</li>
-<li>Generate SQL-based analytics reports.</li>
-<li>Handle DELNET services & digital repositories.</li>
-<li>Manage SharePoint documentation & usage analytics.</li>
-</ul>
 </div>
 </section>
 
 <section id="education">
 <h2 class="section-title">Education</h2>
-<div class="timeline-item card">
-<h3>M.L.I.Sc – Master of Library & Information Science</h3>
-<p>Bangalore University – 2022 | First Class (67.35%)</p>
-</div>
-<div class="timeline-item card">
-<h3>Bachelor of Arts (B.A.)</h3>
-<p>Belture Government College – 2020 | First Class (62.71%)</p>
-</div>
-<div class="timeline-item card">
-<h3>PUC – 2017 | SSLC – 2014</h3>
+<div class="card">
+<h3>M.L.I.Sc – Bangalore University (2022)</h3>
+<p>First Class (67.35%)</p>
 </div>
 </section>
 
 <section id="skills">
 <h2 class="section-title">Key Skills</h2>
-<div class="skills">
 
-<div class="skill">
-<div class="skill-name">Library Automation (Koha, Libsoft)</div>
+<div class="card">
+<div>Library Automation</div>
 <div class="progress"><div class="progress-bar" style="width:90%"></div></div>
 </div>
 
-<div class="skill">
-<div class="skill-name">Digital Libraries (DSpace, EPrints, Greenstone)</div>
+<div class="card">
+<div>Digital Libraries</div>
 <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
 </div>
 
-<div class="skill">
-<div class="skill-name">HTML, CSS, MS Office</div>
-<div class="progress"><div class="progress-bar" style="width:80%"></div></div>
-</div>
-
-<div class="skill">
-<div class="skill-name">SQL Reports & Analytics</div>
+<div class="card">
+<div>SQL Reports & Analytics</div>
 <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
-</div>
-
-</div>
-</section>
-
-<section id="courses">
-<h2 class="section-title">Certifications & Courses</h2>
-
-<div class="card">
-<h3>O’Level Computer Certification</h3>
-<p>National Institute of Electronics & Information Technology (NIELIT)</p>
-</div>
-
-<div class="card">
-<h3>Science Communication: Research Productivity & Data Analytics</h3>
-<p>NPTEL Online Certification</p>
-</div>
-
-<div class="card">
-<h3>Advanced R Programming for Data Analytics in Business</h3>
-<p>NPTEL Online Certification</p>
-</div>
-
-<div class="card">
-<h3>IT Applications in Libraries</h3>
-<p>NPTEL Online Certification</p>
 </div>
 
 </section>
 
 <section id="contact">
 <h2 class="section-title">Contact</h2>
-<div class="card contact">
+<div class="card">
+<p><strong>Email:</strong> yashu2370@gmail.com</p>
 <p><strong>Phone:</strong> 7760144157</p>
-<p><strong>Email:</strong> <a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a></p>
-<p><strong>Location:</strong> Bengaluru, Karnataka, India</p>
-<p><strong>Languages:</strong> English, Kannada, Hindi, Telugu</p>
-
 <button onclick="downloadCV()">Download CV</button>
 </div>
 </section>
@@ -174,6 +329,25 @@ button:hover{background:#0ea5e9;}
 function downloadCV(){
 window.open("For IT.pdf");
 }
+
+/* Scroll Reveal */
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", () => {
+sections.forEach(sec => {
+const top = sec.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+sec.classList.add("show");
+}
+});
+});
+
+/* Skill Animation */
+window.addEventListener("load", () => {
+document.querySelectorAll(".progress-bar").forEach(bar => {
+const width = bar.getAttribute("style").match(/\d+/)[0];
+bar.style.width = width + "%";
+});
+});
 </script>
 
 </body>
