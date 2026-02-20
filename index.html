@@ -3,196 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yashwanth K S | Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Yashwanth K S | Professional Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
 body{
-background:#0a0f1c;
-color:#fff;
+background:linear-gradient(to bottom,#fef9c3,#dcfce7,#bbf7d0,#ecfdf5);
+color:#064e3b;
 scroll-behavior:smooth;
 }
 
-/* ===== NAVBAR ===== */
-
+/* NAV */
 nav{
 position:fixed;
 top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:rgba(10,15,28,0.6);
-backdrop-filter:blur(12px);
+padding:18px 8%;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(15px);
 z-index:1000;
 }
 
-nav h2{
-font-weight:600;
-letter-spacing:1px;
-}
+nav h2{color:#065f46;}
+nav ul{display:flex;gap:25px;list-style:none;}
+nav a{text-decoration:none;color:#065f46;font-weight:500;}
+nav a:hover{color:#16a34a;}
 
-nav ul{
-display:flex;
-gap:30px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
-color:#ccc;
-font-weight:500;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#fff;
-}
-
-/* ===== HERO SECTION ===== */
-
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
 align-items:center;
 justify-content:space-between;
 padding:0 8%;
-}
-
-.hero-text{
-max-width:600px;
-}
-
-.hero-text h1{
-font-size:52px;
-font-weight:700;
-line-height:1.1;
-}
-
-.hero-text span{
-color:#3b82f6;
-}
-
-.hero-text p{
-margin-top:20px;
-font-size:18px;
-color:#aaa;
-line-height:1.6;
-}
-
-.hero-buttons{
-margin-top:30px;
-display:flex;
-gap:15px;
-}
-
-.btn{
-padding:12px 24px;
-border-radius:30px;
-border:none;
-cursor:pointer;
-font-weight:500;
-transition:0.3s;
-}
-
-.btn-primary{
-background:#3b82f6;
-color:#fff;
-}
-
-.btn-primary:hover{
-background:#2563eb;
-}
-
-.btn-outline{
-background:transparent;
-border:1px solid #555;
-color:#ccc;
-}
-
-.btn-outline:hover{
-background:#222;
-}
-
-/* ===== PROFILE IMAGE ===== */
-
-.hero-img{
+margin-top:80px;
 position:relative;
 }
 
-.hero-img img{
-width:350px;
-border-radius:20px;
-box-shadow:0 25px 50px rgba(0,0,0,0.5);
-transition:0.5s;
+.hero::before{
+content:"";
+position:absolute;
+top:-150px;
+left:50%;
+transform:translateX(-50%);
+width:600px;
+height:600px;
+background:radial-gradient(circle,rgba(253,224,71,0.6),transparent 70%);
+animation:sunrise 6s ease-in-out infinite alternate;
+z-index:-1;
 }
 
-.hero-img img:hover{
-transform:translateY(-10px);
+@keyframes sunrise{
+from{transform:translateX(-50%) scale(0.9);}
+to{transform:translateX(-50%) scale(1.1);}
 }
 
-/* ===== SECTIONS ===== */
+.hero-text h1{font-size:48px;}
+.hero-text span{color:#16a34a;}
+.hero-text p{margin-top:20px;color:#047857;}
 
-section{
-padding:100px 8%;
-}
+.buttons{margin-top:30px;display:flex;gap:15px;flex-wrap:wrap;}
 
-.section-title{
-font-size:32px;
-margin-bottom:40px;
+.btn{
+padding:10px 20px;
+border-radius:8px;
+border:none;
+cursor:pointer;
 font-weight:600;
-}
-
-.card{
-background:#111827;
-padding:30px;
-border-radius:16px;
-margin-bottom:20px;
 transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-8px);
-background:#1f2937;
+.primary{background:#16a34a;color:white;}
+.primary:hover{background:#15803d;}
+
+.outline{background:white;border:1px solid #16a34a;}
+.outline:hover{background:#dcfce7;}
+
+.hero-img img{
+width:320px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
 }
 
-/* ===== GRID ===== */
+/* SECTION */
+section{
+padding:90px 8%;
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+section.show{opacity:1;transform:translateY(0);}
 
+.section-title{
+font-size:30px;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+margin-bottom:20px;
+}
+
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:20px;
 }
 
-/* ===== FOOTER ===== */
+/* TIMELINE */
+.timeline{
+border-left:3px solid #16a34a;
+padding-left:20px;
+}
 
+/* FOOTER */
 footer{
+background:#065f46;
+color:white;
 text-align:center;
-padding:40px 0;
-background:#0f172a;
-color:#aaa;
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media(max-width:900px){
-.hero{
-flex-direction:column;
-text-align:center;
-margin-top:100px;
-}
-.hero-img{
-margin-top:40px;
-}
+padding:30px;
+margin-top:50px;
 }
 </style>
 </head>
@@ -204,76 +142,109 @@ margin-top:40px;
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#experience">Experience</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#courses">Courses</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
 <div class="hero-text">
-<h1>Hello, I'm <span>Yashwanth K S</span></h1>
-<p>Library & Information Science Professional specializing in Library Automation, Digital Resource Management, and Data Analytics.</p>
+<h1>I'm <span>Yashwanth K S</span></h1>
+<p>Library & Information Science Professional | Automation | Digital Resource Management</p>
 
-<div class="hero-buttons">
-<button class="btn btn-primary" onclick="downloadCV()">Download CV</button>
-<button class="btn btn-outline" onclick="scrollToSection('contact')">Contact Me</button>
+<div class="buttons">
+<button class="btn primary" onclick="downloadCV()">Download CV</button>
+<button class="btn outline" onclick="scrollToSection('contact')">Hire Me</button>
+<button class="btn outline" onclick="scrollToSection('experience')">View Experience</button>
+<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Email Me</button>
 </div>
 </div>
 
 <div class="hero-img">
-<img src="profile.jpg" alt="Profile Photo">
+<img src="profile.jpg" alt="Profile">
 </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
-<h2 class="section-title">About Me</h2>
+<h2 class="section-title">Career Objective</h2>
 <div class="card">
-<p>Dedicated Library & Information Science professional with experience in cataloging, automation (Koha, Libsoft), digital repositories (DSpace), SQL analytics reporting, and SharePoint management. Passionate about digital transformation in academic environments.</p>
+Dedicated Library & Information Science professional with experience in cataloging, library automation, digital resource management, analytics reporting, and user support. Skilled in Koha LMS, DSpace, CMS platforms, SharePoint, and online learning tools.
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
-<h2 class="section-title">Experience</h2>
-<div class="card">
-<h3>Assistant Librarian</h3>
-<p>K S School of Engineering & Management, Bengaluru</p>
+<h2 class="section-title">Employment History</h2>
+<div class="card timeline">
+<h3>Assistant Librarian — K S School of Engineering & Management</h3>
 <p>April 2023 – Present</p>
+<ul>
+<li>Manage circulation, classification, shelving & OPAC queries.</li>
+<li>Administer Koha & Libsoft LMS.</li>
+<li>Generate SQL analytics reports.</li>
+<li>Handle DELNET services & digital repositories.</li>
+<li>Manage SharePoint documentation & usage analytics.</li>
+<li>Conduct orientation sessions & outreach programs.</li>
+</ul>
 </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-<h2 class="section-title">Contact</h2>
+<section id="skills">
+<h2 class="section-title">Key Skills</h2>
 <div class="grid">
+<div class="card">Koha, Libsoft, NewGenLib</div>
+<div class="card">DSpace, EPrints, Greenstone</div>
+<div class="card">HTML, CSS, Python (Basic), Java (Basic)</div>
+<div class="card">Drupal, Joomla</div>
+<div class="card">Koha SQL Reports & Usage Analytics</div>
+<div class="card">Zotero, Mendeley, EndNote</div>
+<div class="card">SharePoint & Digital Content Management</div>
+</div>
+</section>
+
+<section id="courses">
+<h2 class="section-title">Certifications & Courses</h2>
 <div class="card">
-<h3>Email</h3>
-<p>yashu2370@gmail.com</p>
+<strong>O’Level Computer Certification – NIELIT</strong>
+<p>HTML, CSS, Java, Python, IT Applications, MS Office</p>
 </div>
 <div class="card">
-<h3>Phone</h3>
-<p>7760144157</p>
+<strong>Science Communication – NPTEL</strong>
 </div>
 <div class="card">
-<h3>Location</h3>
-<p>Bengaluru, India</p>
+<strong>Advanced R Programming – NPTEL</strong>
 </div>
+<div class="card">
+<strong>IT Applications in Libraries – NPTEL</strong>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">Contact Details</h2>
+<div class="grid">
+<div class="card"><strong>Phone:</strong> 7760144157</div>
+<div class="card"><strong>Email:</strong> yashu2370@gmail.com</div>
+<div class="card"><strong>Address:</strong> No.15, Mallasandra, Off Kanakapura Road, Bengaluru – 560109</div>
+<div class="card"><strong>Languages:</strong> English, Kannada, Hindi, Telugu</div>
 </div>
 </section>
 
 <footer>
-© 2026 Yashwanth K S. All rights reserved.
+© 2026 Yashwanth K S | Professional Green Sunrise Portfolio
 </footer>
 
 <script>
-function downloadCV(){
-window.open("For IT.pdf");
-}
+function downloadCV(){window.open("For IT.pdf");}
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top < window.innerHeight-100){
+sec.classList.add("show");
 }
+});
+});
 </script>
 
 </body>
