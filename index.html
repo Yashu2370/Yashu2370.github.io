@@ -8,170 +8,201 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
 
 body{
-background:linear-gradient(to bottom,#fefce8,#dcfce7,#f0fdf4);
-color:#064e3b;
-scroll-behavior:smooth;
+    background:linear-gradient(to bottom,#fefce8,#dcfce7,#f0fdf4);
+    color:#064e3b;
+    scroll-behavior:smooth;
 }
 
-/* NAV */
+/* NAVIGATION */
 nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px 8%;
-background:rgba(255,255,255,0.75);
-backdrop-filter:blur(10px);
-box-shadow:0 4px 20px rgba(0,0,0,0.05);
-z-index:1000;
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 8%;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+    z-index:1000;
 }
 
-nav h2{font-weight:600;color:#065f46;}
-nav ul{display:flex;gap:20px;list-style:none;}
-nav a{text-decoration:none;color:#065f46;font-weight:500;font-size:14px;}
-nav a:hover{color:#16a34a;}
+nav h2{
+    font-weight:600;
+    color:#065f46;
+}
 
-/* HERO */
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:#065f46;
+    font-weight:500;
+    font-size:14px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#16a34a;
+}
+
+/* HERO SECTION */
 .hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:120px 8% 60px;
-position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:120px 8% 60px;
+    position:relative;
 }
 
 .hero::before{
-content:"";
-position:absolute;
-top:-200px;
-left:50%;
-transform:translateX(-50%);
-width:500px;
-height:500px;
-background:radial-gradient(circle,rgba(253,224,71,0.4),transparent 70%);
-z-index:-1;
+    content:"";
+    position:absolute;
+    top:-200px;
+    left:50%;
+    transform:translateX(-50%);
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(253,224,71,0.4),transparent 70%);
+    z-index:-1;
 }
 
 .hero-text h1{
-font-size:40px;
-font-weight:700;
+    font-size:40px;
+    font-weight:700;
 }
 
-.hero-text span{color:#16a34a;}
+.hero-text span{
+    color:#16a34a;
+}
 
 .hero-text p{
-margin-top:15px;
-font-size:15px;
-color:#047857;
-max-width:500px;
-line-height:1.6;
+    margin-top:15px;
+    font-size:15px;
+    color:#047857;
+    max-width:520px;
+    line-height:1.6;
 }
 
 .buttons{
-margin-top:20px;
-display:flex;
-gap:12px;
-flex-wrap:wrap;
+    margin-top:20px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
 .btn{
-padding:8px 18px;
-border-radius:6px;
-border:none;
-cursor:pointer;
-font-size:13px;
-font-weight:500;
-transition:0.3s;
+    padding:8px 18px;
+    border-radius:6px;
+    border:none;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:500;
+    transition:0.3s;
 }
 
 .primary{
-background:#16a34a;
-color:white;
+    background:#16a34a;
+    color:white;
 }
-.primary:hover{background:#15803d;}
+
+.primary:hover{
+    background:#15803d;
+}
 
 .outline{
-background:white;
-border:1px solid #16a34a;
+    background:white;
+    border:1px solid #16a34a;
 }
-.outline:hover{background:#dcfce7;}
+
+.outline:hover{
+    background:#dcfce7;
+}
 
 .hero-img img{
-width:260px;
-border-radius:16px;
-box-shadow:0 15px 35px rgba(0,0,0,0.08);
+    width:260px;
+    border-radius:16px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
 }
 
-/* SECTION */
+/* SECTIONS */
 section{
-padding:60px 8%;
-opacity:0;
-transform:translateY(20px);
-transition:all 0.6s ease;
+    padding:60px 8%;
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 0.6s ease;
 }
 
 section.show{
-opacity:1;
-transform:translateY(0);
+    opacity:1;
+    transform:translateY(0);
 }
 
 .section-title{
-font-size:22px;
-margin-bottom:20px;
-font-weight:600;
+    font-size:22px;
+    margin-bottom:20px;
+    font-weight:600;
 }
 
 /* CARD */
 .card{
-background:white;
-padding:18px 22px;
-border-radius:12px;
-box-shadow:0 8px 20px rgba(0,0,0,0.05);
-margin-bottom:15px;
-transition:0.3s;
+    background:white;
+    padding:18px 22px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    margin-bottom:15px;
+    transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-3px);
+    transform:translateY(-3px);
 }
 
 /* GRID */
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:15px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:15px;
 }
 
 /* TIMELINE */
 .timeline{
-border-left:2px solid #16a34a;
-padding-left:15px;
+    border-left:2px solid #16a34a;
+    padding-left:15px;
 }
 
 /* FOOTER */
 footer{
-background:#065f46;
-color:white;
-text-align:center;
-padding:20px;
-font-size:13px;
+    background:#065f46;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:13px;
 }
 
 /* RESPONSIVE */
 @media(max-width:900px){
-.hero{
-flex-direction:column;
-text-align:center;
-padding:120px 8% 40px;
-}
-.hero-img{
-margin-top:25px;
-}
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:120px 8% 40px;
+    }
+    .hero-img{
+        margin-top:25px;
+    }
 }
 </style>
 </head>
@@ -189,10 +220,14 @@ margin-top:25px;
 </ul>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
 <div class="hero-text">
 <h1>Hello, I'm <span>Yashwanth K S</span></h1>
-<p>Library & Information Science Professional specializing in automation, digital resource management, analytics reporting, and digital transformation.</p>
+<p>
+Library & Information Science Professional specializing in library automation,
+digital resource management, SQL-based analytics reporting, and academic digital transformation.
+</p>
 
 <div class="buttons">
 <button class="btn primary" onclick="downloadCV()">Download CV</button>
@@ -203,32 +238,37 @@ margin-top:25px;
 </div>
 
 <div class="hero-img">
-<img src="profile.jpg" alt="Profile">
+<img src="profile.jpg" alt="Yashwanth Profile">
 </div>
 </div>
 
+<!-- ABOUT -->
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
-Dedicated Library & Information Science professional experienced in Koha LMS, Libsoft, DSpace, CMS platforms, SQL analytics, and SharePoint documentation. Passionate about enhancing digital library systems and academic resource management.
+Dedicated Library & Information Science professional experienced in Koha LMS, Libsoft,
+DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation.
+Committed to strengthening digital library ecosystems and enhancing academic resource management.
 </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section id="experience">
 <h2 class="section-title">Employment</h2>
 <div class="card timeline">
 <strong>Assistant Librarian</strong><br>
 K S School of Engineering & Management (2023 – Present)
 <ul>
-<li>Manage circulation, OPAC, and classification</li>
-<li>Administer Koha & Libsoft</li>
-<li>Generate SQL usage reports</li>
-<li>Handle DELNET & digital repositories</li>
-<li>Conduct user training sessions</li>
+<li>Manage circulation, OPAC services, and classification systems</li>
+<li>Administer Koha & Libsoft LMS</li>
+<li>Generate and analyze SQL usage reports</li>
+<li>Maintain DELNET access & institutional repositories</li>
+<li>Conduct user orientation and training sessions</li>
 </ul>
 </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
 <h2 class="section-title">Skills</h2>
 <div class="grid">
@@ -236,69 +276,43 @@ K S School of Engineering & Management (2023 – Present)
 <div class="card">DSpace • EPrints • Greenstone</div>
 <div class="card">HTML • CSS • Python • Java</div>
 <div class="card">Drupal • Joomla</div>
-<div class="card">SQL Reports • Usage Analytics</div>
+<div class="card">SQL Reporting • Usage Analytics</div>
 <div class="card">Zotero • Mendeley • EndNote</div>
 <div class="card">SharePoint • Digital Content Management</div>
 </div>
 </section>
 
+<!-- COURSES -->
+<section id="courses">
+<h2 class="section-title">Certifications & Courses</h2>
+
 <div class="card">
 <strong>O’Level Computer Certification – NIELIT</strong><br><br>
-
-<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate1.pdf')">
-View Certificate 1
-</button>
-
-<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate2.pdf')">
-View Certificate 2
-</button>
-
-<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate3.pdf')">
-View Certificate 3
-</button>
-
-<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate4.pdf')">
-View Certificate 4
-</button>
-
-<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate5.pdf')">
-View Certificate 5
-</button>
-
+<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate1.pdf')">Certificate 1</button>
+<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate2.pdf')">Certificate 2</button>
+<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate3.pdf')">Certificate 3</button>
+<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate4.pdf')">Certificate 4</button>
+<button class="btn outline" onclick="window.open('certificates/OLevel_Certificate5.pdf')">Certificate 5</button>
 </div>
 
-<!-- Science Communication -->
 <div class="card">
 <strong>Science Communication – NPTEL</strong><br><br>
-
-<a href="certificates/nptel_science_communication.pdf" target="_blank">
-<button class="btn outline">View Certificate</button>
-</a>
-
+<button class="btn outline" onclick="window.open('certificates/nptel_science_communication.pdf')">View Certificate</button>
 </div>
 
-<!-- Advanced R -->
 <div class="card">
 <strong>Advanced R Programming – NPTEL</strong><br><br>
-
-<a href="certificates/nptel_advanced_r.pdf" target="_blank">
-<button class="btn outline">View Certificate</button>
-</a>
-
+<button class="btn outline" onclick="window.open('certificates/nptel_advanced_r.pdf')">View Certificate</button>
 </div>
 
-<!-- IT Applications -->
 <div class="card">
 <strong>IT Applications in Libraries – NPTEL</strong><br><br>
-
-<a href="certificates/nptel_it_libraries.pdf" target="_blank">
-<button class="btn outline">View Certificate</button>
-</a>
-
+<button class="btn outline" onclick="window.open('certificates/nptel_it_libraries.pdf')">View Certificate</button>
 </div>
 
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
 <h2 class="section-title">Contact</h2>
 <div class="grid">
@@ -310,22 +324,26 @@ View Certificate 5
 </section>
 
 <footer>
-© 2026 Yashwanth K S | Elegant Green Portfolio
+© 2026 Yashwanth K S | Professional Green Portfolio
 </footer>
 
 <script>
-function downloadCV(){window.open("For IT.pdf");}
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
+function downloadCV(){
+    window.open("For IT.pdf");
 }
 
-const sections=document.querySelectorAll("section");
-window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top < window.innerHeight-80){
-sec.classList.add("show");
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
-});
+
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+    sections.forEach(sec=>{
+        if(sec.getBoundingClientRect().top < window.innerHeight - 80){
+            sec.classList.add("show");
+        }
+    });
 });
 </script>
 
