@@ -8,200 +8,225 @@
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome Icons -->
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
-    color:#064e3b;
-    scroll-behavior:smooth;
+background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
+color:#064e3b;
+scroll-behavior:smooth;
 }
 
 /* NAVIGATION */
 nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 8%;
-    background:rgba(255,255,255,0.7);
-    backdrop-filter:blur(12px);
-    box-shadow:0 8px 20px rgba(0,0,0,0.05);
-    z-index:1000;
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(12px);
+box-shadow:0 8px 20px rgba(0,0,0,0.05);
+z-index:1000;
 }
 
 nav h2{
-    font-weight:700;
-    color:#065f46;
+font-weight:700;
+color:#065f46;
 }
 
 nav ul{
-    display:flex;
-    gap:25px;
-    list-style:none;
+display:flex;
+gap:25px;
+list-style:none;
 }
 
 nav a{
-    text-decoration:none;
-    color:#065f46;
-    font-weight:500;
-    transition:0.3s;
+text-decoration:none;
+color:#065f46;
+font-weight:500;
+transition:0.3s;
 }
 
 nav a:hover{
-    color:#16a34a;
+color:#16a34a;
 }
 
 /* HERO */
 .hero{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:140px 8% 80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:140px 8% 80px;
 }
 
 .hero-text h1{
-    font-size:42px;
-    font-weight:700;
+font-size:42px;
+font-weight:700;
 }
 
 .hero-text span{
-    color:#16a34a;
+color:#16a34a;
 }
 
 .hero-text p{
-    margin-top:15px;
-    max-width:550px;
-    line-height:1.7;
-    color:#047857;
+margin-top:15px;
+max-width:550px;
+line-height:1.7;
+color:#047857;
 }
 
 .buttons{
-    margin-top:25px;
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+margin-top:25px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
 .btn{
-    padding:10px 20px;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:14px;
-    font-weight:500;
-    transition:0.3s;
-    border:none;
+padding:10px 22px;
+border-radius:30px;
+cursor:pointer;
+font-size:14px;
+font-weight:500;
+transition:0.3s;
+border:none;
 }
 
 .primary{
-    background:#16a34a;
-    color:#fff;
+background:#16a34a;
+color:#fff;
 }
 
 .primary:hover{
-    background:#15803d;
-    transform:translateY(-2px);
+background:#15803d;
+transform:translateY(-3px);
 }
 
 .outline{
-    background:#fff;
-    border:2px solid #16a34a;
-    color:#065f46;
+background:#fff;
+border:2px solid #16a34a;
+color:#065f46;
 }
 
 .outline:hover{
-    background:#dcfce7;
-    transform:translateY(-2px);
+background:#dcfce7;
+transform:translateY(-3px);
 }
 
 .hero-img img{
-    width:260px;
-    border-radius:20px;
-    box-shadow:0 20px 40px rgba(0,0,0,0.1);
+width:260px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.1);
 }
 
 /* SECTIONS */
 section{
-    padding:80px 8%;
+padding:80px 8%;
 }
 
 .section-title{
-    font-size:26px;
-    font-weight:600;
-    margin-bottom:25px;
-    position:relative;
+font-size:26px;
+font-weight:600;
+margin-bottom:25px;
+position:relative;
 }
 
 .section-title::after{
-    content:"";
-    width:60px;
-    height:4px;
-    background:#16a34a;
-    position:absolute;
-    bottom:-8px;
-    left:0;
-    border-radius:5px;
+content:"";
+width:60px;
+height:4px;
+background:#16a34a;
+position:absolute;
+bottom:-8px;
+left:0;
+border-radius:5px;
 }
 
 /* CARDS */
 .card{
-    background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(12px);
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.05);
-    margin-bottom:25px;
-    transition:0.3s;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+margin-bottom:25px;
+transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+transform:translateY(-6px);
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
 }
 
 .timeline{
-    border-left:4px solid #16a34a;
-    padding-left:20px;
+border-left:4px solid #16a34a;
+padding-left:20px;
 }
 
-/* SKILL ICON STYLE */
 .skill-icon{
-    margin-right:8px;
-    color:#16a34a;
+margin-right:8px;
+color:#16a34a;
+}
+
+/* SKILL PROGRESS */
+.skill{
+margin-bottom:22px;
+}
+
+.skill p{
+margin-bottom:6px;
+font-weight:500;
+}
+
+.progress{
+width:100%;
+height:10px;
+background:#e5e7eb;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+border-radius:20px;
+transition:width 1.5s ease-in-out;
 }
 
 /* FOOTER */
 footer{
-    background:#065f46;
-    color:#fff;
-    text-align:center;
-    padding:20px;
+background:#065f46;
+color:#fff;
+text-align:center;
+padding:20px;
 }
 
 /* RESPONSIVE */
 @media(max-width:900px){
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
-    .hero-img{
-        margin-top:30px;
-    }
+.hero{
+flex-direction:column;
+text-align:center;
+}
+.hero-img{
+margin-top:30px;
+}
 }
 </style>
 </head>
@@ -232,15 +257,12 @@ and academic digital transformation.
 <button class="btn primary" onclick="downloadCV()">
 <i class="fa-solid fa-download"></i> Download CV
 </button>
-
 <button class="btn outline" onclick="scrollToSection('experience')">
 <i class="fa-solid fa-briefcase"></i> Experience
 </button>
-
 <button class="btn outline" onclick="scrollToSection('contact')">
 <i class="fa-solid fa-envelope"></i> Contact
 </button>
-
 <button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">
 <i class="fa-solid fa-paper-plane"></i> Email
 </button>
@@ -252,7 +274,6 @@ and academic digital transformation.
 </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
@@ -262,7 +283,6 @@ Committed to strengthening digital library ecosystems and enhancing academic res
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
 <h2 class="section-title">Employment</h2>
 <div class="card timeline">
@@ -278,67 +298,77 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
 <h2 class="section-title">Skills</h2>
-<div class="grid">
-<div class="card"><i class="fa-solid fa-database skill-icon"></i>Koha • Libsoft • NewGenLib</div>
-<div class="card"><i class="fa-solid fa-cloud skill-icon"></i>DSpace • EPrints • Greenstone</div>
-<div class="card"><i class="fa-solid fa-code skill-icon"></i>HTML • CSS • Python • Java</div>
-<div class="card"><i class="fa-solid fa-globe skill-icon"></i>Drupal • Joomla</div>
-<div class="card"><i class="fa-solid fa-chart-line skill-icon"></i>SQL Reporting • Usage Analytics</div>
-<div class="card"><i class="fa-solid fa-book skill-icon"></i>Zotero • Mendeley • EndNote</div>
-<div class="card"><i class="fa-solid fa-folder-open skill-icon"></i>SharePoint • Digital Content Management</div>
+<div class="card">
+
+<div class="skill">
+<p><i class="fa-solid fa-database skill-icon"></i> Koha • Libsoft • NewGenLib</p>
+<div class="progress"><div class="progress-bar" data-progress="90"></div></div>
+</div>
+
+<div class="skill">
+<p><i class="fa-solid fa-cloud skill-icon"></i> DSpace • EPrints • Greenstone</p>
+<div class="progress"><div class="progress-bar" data-progress="85"></div></div>
+</div>
+
+<div class="skill">
+<p><i class="fa-solid fa-code skill-icon"></i> HTML • CSS • Python • Java</p>
+<div class="progress"><div class="progress-bar" data-progress="80"></div></div>
+</div>
+
+<div class="skill">
+<p><i class="fa-solid fa-globe skill-icon"></i> Drupal • Joomla</p>
+<div class="progress"><div class="progress-bar" data-progress="75"></div></div>
+</div>
+
+<div class="skill">
+<p><i class="fa-solid fa-chart-line skill-icon"></i> SQL Reporting • Usage Analytics</p>
+<div class="progress"><div class="progress-bar" data-progress="88"></div></div>
+</div>
+
+<div class="skill">
+<p><i class="fa-solid fa-book skill-icon"></i> Zotero • Mendeley • EndNote</p>
+<div class="progress"><div class="progress-bar" data-progress="92"></div></div>
+</div>
+
+<div class="skill">
+<p><i class="fa-solid fa-folder-open skill-icon"></i> SharePoint • Digital Content Management</p>
+<div class="progress"><div class="progress-bar" data-progress="85"></div></div>
+</div>
+
 </div>
 </section>
 
-<!-- COURSES -->
 <section id="courses">
 <h2 class="section-title">Certifications & Courses</h2>
 
 <div class="card">
 <strong>O’Level Computer Certification – NIELIT</strong><br><br>
-<button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">
-<i class="fa-solid fa-file-pdf"></i> Programming & Problem Solving through Python
-</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')">
-<i class="fa-solid fa-file-pdf"></i> Internet of Things and its Application
-</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')">
-<i class="fa-solid fa-file-pdf"></i> Web Designing & Publishing
-</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')">
-<i class="fa-solid fa-file-pdf"></i> IT Tools and Network Basics
-</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')">
-<i class="fa-solid fa-file-pdf"></i> Course on Computer Concepts
-</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-file-pdf"></i> Programming & Problem Solving through Python</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-file-pdf"></i> Internet of Things and its Application</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-file-pdf"></i> Web Designing & Publishing</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-file-pdf"></i> IT Tools and Network Basics</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-file-pdf"></i> Course on Computer Concepts</button>
 </div>
 
 <div class="card">
 <strong>Science Communication – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_science_communication.pdf')">
-<i class="fa-solid fa-file-pdf"></i> View Certificate
-</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_science_communication.pdf')"><i class="fa-solid fa-file-pdf"></i> View Certificate</button>
 </div>
 
 <div class="card">
 <strong>Advanced R Programming – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_advanced_r.pdf')">
-<i class="fa-solid fa-file-pdf"></i> View Certificate
-</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_advanced_r.pdf')"><i class="fa-solid fa-file-pdf"></i> View Certificate</button>
 </div>
 
 <div class="card">
 <strong>IT Applications in Libraries – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_it_libraries.pdf')">
-<i class="fa-solid fa-file-pdf"></i> View Certificate
-</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_it_libraries.pdf')"><i class="fa-solid fa-file-pdf"></i> View Certificate</button>
 </div>
 
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2 class="section-title">Contact</h2>
 <div class="grid">
@@ -357,9 +387,22 @@ K S School of Engineering & Management (2023 – Present)
 function downloadCV(){
 window.open("For IT.pdf");
 }
+
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
+
+const bars=document.querySelectorAll(".progress-bar");
+function showProgress(){
+bars.forEach(bar=>{
+const value=bar.getAttribute("data-progress");
+const top=bar.getBoundingClientRect().top;
+if(top<window.innerHeight-50){
+bar.style.width=value+"%";
+}
+});
+}
+window.addEventListener("scroll",showProgress);
 </script>
 
 </body>
