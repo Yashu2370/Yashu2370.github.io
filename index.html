@@ -30,7 +30,7 @@ nav{
     justify-content:space-between;
     align-items:center;
     padding:14px 8%;
-    background:rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.9);
     backdrop-filter:blur(10px);
     box-shadow:0 4px 20px rgba(0,0,0,0.05);
     z-index:1000;
@@ -59,7 +59,7 @@ nav a:hover{
     color:#16a34a;
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero{
     display:flex;
     align-items:center;
@@ -105,18 +105,21 @@ nav a:hover{
 }
 
 .btn{
-    padding:8px 18px;
-    border-radius:6px;
-    border:none;
+    padding:9px 18px;
+    border-radius:8px;
     cursor:pointer;
     font-size:13px;
     font-weight:500;
-    transition:0.3s;
+    transition:0.3s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
 }
 
 .primary{
     background:#16a34a;
     color:white;
+    border:none;
 }
 
 .primary:hover{
@@ -126,12 +129,20 @@ nav a:hover{
 .outline{
     background:white;
     border:1px solid #16a34a;
+    color:#065f46;
 }
 
 .outline:hover{
     background:#dcfce7;
 }
 
+/* PDF ICON STYLE */
+.pdf-icon{
+    font-size:14px;
+    color:#e11d48;
+}
+
+/* IMAGE */
 .hero-img img{
     width:260px;
     border-radius:16px;
@@ -140,7 +151,7 @@ nav a:hover{
 
 /* SECTIONS */
 section{
-    padding:60px 8%;
+    padding:70px 8%;
     opacity:0;
     transform:translateY(20px);
     transition:all 0.6s ease;
@@ -160,28 +171,33 @@ section.show{
 /* CARD */
 .card{
     background:white;
-    padding:18px 22px;
-    border-radius:12px;
+    padding:20px 24px;
+    border-radius:14px;
     box-shadow:0 8px 20px rgba(0,0,0,0.05);
-    margin-bottom:15px;
+    margin-bottom:20px;
     transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-3px);
+    transform:translateY(-4px);
 }
 
 /* GRID */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:15px;
+    gap:18px;
 }
 
 /* TIMELINE */
 .timeline{
-    border-left:2px solid #16a34a;
-    padding-left:15px;
+    border-left:3px solid #16a34a;
+    padding-left:18px;
+}
+
+/* CERTIFICATE BUTTON SPACING */
+.card .btn{
+    margin-bottom:10px;
 }
 
 /* FOOTER */
@@ -189,8 +205,9 @@ footer{
     background:#065f46;
     color:white;
     text-align:center;
-    padding:20px;
+    padding:22px;
     font-size:13px;
+    margin-top:40px;
 }
 
 /* RESPONSIVE */
@@ -198,12 +215,10 @@ footer{
     .hero{
         flex-direction:column;
         text-align:center;
-        padding:120px 8% 40px;
     }
     .hero-img{
         margin-top:25px;
     }
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 }
 </style>
 </head>
@@ -290,42 +305,51 @@ K S School of Engineering & Management (2023 – Present)
 <div class="card">
 <strong>O’Level Computer Certification – NIELIT</strong><br><br>
 
-<button class="btn outline glass-btn" onclick="window.open('OLevel_Certificate1.pdf')">
-<i class="fa-solid fa-file-pdf" style="color:#e60023; margin-right:8px;"></i>
-PROGRAMMING AND PROBLEM SOLVING THROUGH PYTHON📑
+<button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">
+<span class="pdf-icon">📄</span>
+PROGRAMMING AND PROBLEM SOLVING THROUGH PYTHON
 </button>
 
 <button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')">
-INTERNET OF THINGS AND ITS APPLICATION📑
+<span class="pdf-icon">📄</span>
+INTERNET OF THINGS AND ITS APPLICATION
 </button>
 
 <button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')">
-WEB DESIGNING & PUBLISHING📑
+<span class="pdf-icon">📄</span>
+WEB DESIGNING & PUBLISHING
 </button>
 
 <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')">
-INFORMATION TECHNOLOGY TOOLS AND NETWORK BASICS📑
+<span class="pdf-icon">📄</span>
+INFORMATION TECHNOLOGY TOOLS AND NETWORK BASICS
 </button>
 
 <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')">
-COURSE ON COMPUTER CONCEPTS📑
+<span class="pdf-icon">📄</span>
+COURSE ON COMPUTER CONCEPTS
 </button>
-
 </div>
 
 <div class="card">
 <strong>Science Communication – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_science_communication.pdf')">View Certificate</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_science_communication.pdf')">
+<span class="pdf-icon">📄</span> View Certificate
+</button>
 </div>
 
 <div class="card">
 <strong>Advanced R Programming – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_advanced_r.pdf')">View Certificate</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_advanced_r.pdf')">
+<span class="pdf-icon">📄</span> View Certificate
+</button>
 </div>
 
 <div class="card">
 <strong>IT Applications in Libraries – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_it_libraries.pdf')">View Certificate</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_it_libraries.pdf')">
+<span class="pdf-icon">📄</span> View Certificate
+</button>
 </div>
 
 </section>
