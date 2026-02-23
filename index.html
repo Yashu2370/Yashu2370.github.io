@@ -217,6 +217,68 @@ color:#fff;
 text-align:center;
 padding:20px;
 }
+  /* HERO SLIDER */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.hero-slider{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:0;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1.5s ease-in-out;
+}
+
+.slide.active{
+opacity:1;
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+z-index:1;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 8%;
+color:white;
+}
+
+.hero-text h1{
+color:white;
+}
+
+.hero-text span{
+color:#22c55e;
+}
+
+.hero-text p{
+color:#e5e7eb;
+}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -245,33 +307,49 @@ margin-top:30px;
 </nav>
 
 <div class="hero">
-<div class="hero-text">
-<h1>Hello, I'm <span>Yashwanth K S</span></h1>
-<p>
-Library & Information Science Professional specializing in library automation,
-digital resource management, SQL-based analytics reporting,
-and academic digital transformation.
-</p>
 
-<div class="buttons">
-<button class="btn primary" onclick="downloadCV()">
-<i class="fa-solid fa-download"></i> Download CV
-</button>
-<button class="btn outline" onclick="scrollToSection('experience')">
-<i class="fa-solid fa-briefcase"></i> Experience
-</button>
-<button class="btn outline" onclick="scrollToSection('contact')">
-<i class="fa-solid fa-envelope"></i> Contact
-</button>
-<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">
-<i class="fa-solid fa-paper-plane"></i> Email
-</button>
-</div>
+<!-- Background Slider -->
+<div class="hero-slider">
+    <img src="slide1.jpg" class="slide active">
+    <img src="slide2.jpg" class="slide">
+    <img src="slide3.jpg" class="slide">
 </div>
 
-<div class="hero-img">
-<img src="profile.jpg" alt="Yashwanth Profile">
+<div class="overlay"></div>
+
+<div class="hero-content">
+    <div class="hero-text">
+        <h1>Hello, I'm <span>Yashwanth K S</span></h1>
+        <p>
+        Library & Information Science Professional specializing in library automation,
+        digital resource management, SQL-based analytics reporting,
+        and academic digital transformation.
+        </p>
+
+        <div class="buttons">
+            <button class="btn primary" onclick="downloadCV()">
+            <i class="fa-solid fa-download"></i> Download CV
+            </button>
+
+            <button class="btn outline" onclick="scrollToSection('experience')">
+            <i class="fa-solid fa-briefcase"></i> Experience
+            </button>
+
+            <button class="btn outline" onclick="scrollToSection('contact')">
+            <i class="fa-solid fa-envelope"></i> Contact
+            </button>
+
+            <button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">
+            <i class="fa-solid fa-paper-plane"></i> Email
+            </button>
+        </div>
+    </div>
+
+    <div class="hero-img">
+        <img src="profile.jpg" alt="Yashwanth Profile">
+    </div>
 </div>
+
 </div>
 
 <section id="about">
@@ -384,6 +462,17 @@ K S School of Engineering & Management (2023 – Present)
 </footer>
 
 <script>
+  // HERO IMAGE SLIDER
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+
+function nextSlide(){
+slides[currentSlide].classList.remove("active");
+currentSlide = (currentSlide + 1) % slides.length;
+slides[currentSlide].classList.add("active");
+}
+
+setInterval(nextSlide, 4000);
 function downloadCV(){
 window.open("For IT.pdf");
 }
