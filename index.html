@@ -5,19 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yashwanth K S | Professional Portfolio</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
 background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
@@ -25,7 +17,7 @@ color:#064e3b;
 scroll-behavior:smooth;
 }
 
-/* ================= NAVIGATION ================= */
+/* NAVIGATION */
 nav{
 position:fixed;
 width:100%;
@@ -39,30 +31,12 @@ backdrop-filter:blur(12px);
 box-shadow:0 8px 20px rgba(0,0,0,0.05);
 z-index:1000;
 }
+nav h2{font-weight:700;color:#065f46;}
+nav ul{display:flex;gap:25px;list-style:none;}
+nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;}
+nav a:hover{color:#16a34a;}
 
-nav h2{
-font-weight:700;
-color:#065f46;
-}
-
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
-color:#065f46;
-font-weight:500;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#16a34a;
-}
-
-/* ================= HERO SECTION ================= */
+/* HERO */
 .hero{
 position:relative;
 height:100vh;
@@ -87,12 +61,10 @@ width:100%;
 height:100%;
 object-fit:cover;
 opacity:0;
-transition:opacity 1.5s ease-in-out;
+transition:opacity 0.7s ease-in-out;
 }
 
-.slide.active{
-opacity:1;
-}
+.slide.active{opacity:1;}
 
 .overlay{
 position:absolute;
@@ -119,9 +91,7 @@ font-weight:700;
 color:white;
 }
 
-.hero-text span{
-color:#22c55e;
-}
+.hero-text span{color:#22c55e;}
 
 .hero-text p{
 margin-top:15px;
@@ -151,7 +121,6 @@ border:none;
 background:#16a34a;
 color:#fff;
 }
-
 .primary:hover{
 background:#15803d;
 transform:translateY(-3px);
@@ -162,7 +131,6 @@ background:#fff;
 border:2px solid #16a34a;
 color:#065f46;
 }
-
 .outline:hover{
 background:#dcfce7;
 transform:translateY(-3px);
@@ -174,10 +142,8 @@ border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* ================= SECTIONS ================= */
-section{
-padding:80px 8%;
-}
+/* SECTIONS */
+section{padding:80px 8%;}
 
 .section-title{
 font-size:26px;
@@ -197,9 +163,9 @@ left:0;
 border-radius:5px;
 }
 
-/* ================= CARDS ================= */
+/* CARDS */
 .card{
-background:rgba(255,255,255,0.8);
+background:rgba(255,255,255,0.85);
 backdrop-filter:blur(12px);
 padding:25px;
 border-radius:18px;
@@ -207,10 +173,7 @@ box-shadow:0 10px 30px rgba(0,0,0,0.05);
 margin-bottom:25px;
 transition:0.3s;
 }
-
-.card:hover{
-transform:translateY(-6px);
-}
+.card:hover{transform:translateY(-6px);}
 
 .grid{
 display:grid;
@@ -223,20 +186,11 @@ border-left:4px solid #16a34a;
 padding-left:20px;
 }
 
-.skill-icon{
-margin-right:8px;
-color:#16a34a;
-}
+.skill-icon{margin-right:8px;color:#16a34a;}
 
-/* ================= SKILLS ================= */
-.skill{
-margin-bottom:22px;
-}
-
-.skill p{
-margin-bottom:6px;
-font-weight:500;
-}
+/* SKILLS */
+.skill{margin-bottom:22px;}
+.skill p{margin-bottom:6px;font-weight:500;}
 
 .progress{
 width:100%;
@@ -254,7 +208,7 @@ border-radius:20px;
 transition:width 1.5s ease-in-out;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 footer{
 background:#065f46;
 color:#fff;
@@ -262,15 +216,13 @@ text-align:center;
 padding:20px;
 }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 @media(max-width:900px){
 .hero-content{
 flex-direction:column;
 text-align:center;
 }
-.hero-img{
-margin-top:30px;
-}
+.hero-img{margin-top:30px;}
 }
 </style>
 </head>
@@ -288,12 +240,11 @@ margin-top:30px;
 </ul>
 </nav>
 
-<!-- ================= HERO ================= -->
 <div class="hero">
 
 <div class="hero-slider">
-<img src="slide1.jpg" class="slide active">
-<img src="slide2.jpg" class="slide">
+<img src="slide1.jpeg" class="slide active">
+<img src="slide2.jpeg" class="slide">
 <img src="slide3.jpg" class="slide">
 </div>
 
@@ -330,11 +281,9 @@ and academic digital transformation.
 <div class="hero-img">
 <img src="profile.jpg" alt="Yashwanth Profile">
 </div>
-
 </div>
 </div>
 
-<!-- ================= ABOUT ================= -->
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
@@ -344,7 +293,6 @@ Committed to strengthening digital library ecosystems and enhancing academic res
 </div>
 </section>
 
-<!-- ================= EXPERIENCE ================= -->
 <section id="experience">
 <h2 class="section-title">Employment</h2>
 <div class="card timeline">
@@ -360,7 +308,6 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
-<!-- ================= SKILLS ================= -->
 <section id="skills">
 <h2 class="section-title">Skills</h2>
 <div class="card">
@@ -403,37 +350,35 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
-<!-- ================= COURSES ================= -->
 <section id="courses">
 <h2 class="section-title">Certifications & Courses</h2>
 
 <div class="card">
 <strong>O’Level Computer Certification – NIELIT</strong><br><br>
-<button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-file-pdf"></i> Programming & Problem Solving through Python</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-file-pdf"></i> Internet of Things and its Application</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-file-pdf"></i> Web Designing & Publishing</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-file-pdf"></i> IT Tools and Network Basics</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-file-pdf"></i> Course on Computer Concepts</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">Programming & Problem Solving through Python</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')">Internet of Things and its Application</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')">Web Designing & Publishing</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')">IT Tools and Network Basics</button>
+<button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')">Course on Computer Concepts</button>
 </div>
 
 <div class="card">
 <strong>Science Communication – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_science_communication.pdf')"><i class="fa-solid fa-file-pdf"></i> View Certificate</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_science_communication.pdf')">View Certificate</button>
 </div>
 
 <div class="card">
 <strong>Advanced R Programming – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_advanced_r.pdf')"><i class="fa-solid fa-file-pdf"></i> View Certificate</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_advanced_r.pdf')">View Certificate</button>
 </div>
 
 <div class="card">
 <strong>IT Applications in Libraries – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('certificates/nptel_it_libraries.pdf')"><i class="fa-solid fa-file-pdf"></i> View Certificate</button>
+<button class="btn outline" onclick="window.open('certificates/nptel_it_libraries.pdf')">View Certificate</button>
 </div>
 
 </section>
 
-<!-- ================= CONTACT ================= -->
 <section id="contact">
 <h2 class="section-title">Contact</h2>
 <div class="grid">
@@ -449,7 +394,6 @@ K S School of Engineering & Management (2023 – Present)
 </footer>
 
 <script>
-// HERO SLIDER
 const slides=document.querySelectorAll(".slide");
 let currentSlide=0;
 
@@ -458,21 +402,17 @@ slides[currentSlide].classList.remove("active");
 currentSlide=(currentSlide+1)%slides.length;
 slides[currentSlide].classList.add("active");
 }
-setInterval(nextSlide,4000);
+setInterval(nextSlide,2000); // FAST SLIDER (2 sec)
 
-// DOWNLOAD CV
 function downloadCV(){
 window.open("For IT.pdf");
 }
 
-// SMOOTH SCROLL
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
-// SKILL PROGRESS ANIMATION
 const bars=document.querySelectorAll(".progress-bar");
-
 function showProgress(){
 bars.forEach(bar=>{
 const value=bar.getAttribute("data-progress");
