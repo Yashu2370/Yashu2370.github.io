@@ -353,23 +353,32 @@ currentSlide=(currentSlide+1)%slides.length;
 slides[currentSlide].classList.add("active"); 
 } 
 setInterval(nextSlide,2000); 
+
 function downloadCV(){ 
 window.open("For IT.pdf"); 
 } 
+
 function scrollToSection(id){ 
 document.getElementById(id).scrollIntoView({behavior:'smooth'}); 
 } 
-const bars=document.querySelectorAll(".progress-bar"); 
-function showProgress(){ 
-bars.forEach(bar=>{ 
-const value=bar.getAttribute("data-progress"); 
-const top=bar.getBoundingClientRect().top; 
-if(top<window.innerHeight-50){ 
-bar.style.width=value+"%"; 
-} 
-}); 
-} 
-window.addEventListener("scroll",showProgress); 
+
+/* ===== IMPROVED SKILL ANIMATION ===== */
+const bars=document.querySelectorAll(".progress-bar");
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+const bar = entry.target;
+const value = bar.getAttribute("data-progress");
+bar.style.width = value + "%";
+observer.unobserve(bar);
+}
+});
+},{ threshold:0.6 });
+
+bars.forEach(bar=>{
+observer.observe(bar);
+});
 </script> 
 </body> 
 </html>
