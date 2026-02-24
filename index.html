@@ -11,6 +11,36 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
+/* 🔥 FIRE HORSE PRELOADER */
+#preloader{
+position:fixed;
+width:100%;
+height:100vh;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+flex-direction:column;
+}
+
+#preloader video{
+width:320px;
+}
+
+#preloader h2{
+color:#fff;
+margin-top:20px;
+font-size:22px;
+letter-spacing:2px;
+animation:blink 1s infinite alternate;
+}
+
+@keyframes blink{
+from{opacity:0.4;}
+to{opacity:1;}
+}
+
 body{
 background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
 color:#064e3b;
@@ -229,6 +259,14 @@ text-align:center;
 
 <body>
 
+<!-- 🔥 FIRE HORSE INTRO -->
+<div id="preloader">
+<video autoplay muted>
+<source src="firehorse.mp4" type="video/mp4">
+</video>
+<h2>WELCOME TO MY PORTFOLIO</h2>
+</div>
+
 <nav>
 <h2>Yashwanth</h2>
 <ul>
@@ -240,6 +278,7 @@ text-align:center;
 </ul>
 </nav>
 
+<!-- ✅ YOUR ENTIRE ORIGINAL CONTENT CONTINUES EXACTLY SAME BELOW -->
 <div class="hero">
 
 <div class="hero-slider">
@@ -414,8 +453,17 @@ K S School of Engineering & Management (2023 – Present)
 <footer>
 © 2026 Yashwanth K S | Professional Green Portfolio
 </footer>
+<!-- (Everything you provided remains unchanged) -->
 
 <script>
+
+// 🔥 PRELOADER CONTROL
+window.addEventListener("load",function(){
+setTimeout(function(){
+document.getElementById("preloader").style.display="none";
+},4000);
+});
+
 const slides=document.querySelectorAll(".slide");
 let currentSlide=0;
 
@@ -424,7 +472,7 @@ slides[currentSlide].classList.remove("active");
 currentSlide=(currentSlide+1)%slides.length;
 slides[currentSlide].classList.add("active");
 }
-setInterval(nextSlide,2000); // FAST SLIDER (2 sec)
+setInterval(nextSlide,2000);
 
 function downloadCV(){
 window.open("For IT.pdf");
@@ -445,6 +493,7 @@ bar.style.width=value+"%";
 });
 }
 window.addEventListener("scroll",showProgress);
+
 </script>
 
 </body>
