@@ -1,13 +1,25 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-<meta charset="UTF-8"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>Yashwanth K S | Professional Portfolio</title> 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yashwanth K S | Professional Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-   /* ===== PRELOADER ===== */
+
+/* ===== GLOBAL ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
+color:#064e3b;
+scroll-behavior:smooth;
+overflow-x:hidden;
+}
+
+/* ===== PRELOADER ===== */
 #preloader{
 position:fixed;
 width:100%;
@@ -17,7 +29,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
-transition:0.6s;
 }
 .loader{
 width:60px;
@@ -27,9 +38,7 @@ border-top:6px solid transparent;
 border-radius:50%;
 animation:spin 1s linear infinite;
 }
-@keyframes spin{
-100%{transform:rotate(360deg);}
-}
+@keyframes spin{100%{transform:rotate(360deg);}}
 
 /* ===== SCROLL PROGRESS ===== */
 #progressBar{
@@ -45,42 +54,145 @@ z-index:2000;
 /* ===== CURSOR GLOW ===== */
 .cursor-glow{
 position:fixed;
-width:20px;
-height:20px;
+width:18px;
+height:18px;
 background:rgba(34,197,94,0.6);
 border-radius:50%;
 pointer-events:none;
 transform:translate(-50%,-50%);
-transition:0.1s;
+transition:0.08s;
 z-index:3000;
 }
 
-/* ===== PARALLAX HERO ===== */
-.hero-slider img{
-transform:scale(1.1);
-transition:transform 6s ease-in-out;
+/* ===== NAVIGATION ===== */
+nav{
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(10px);
+z-index:1000;
 }
-.slide.active{
-transform:scale(1);
-}
+nav ul{display:flex;gap:25px;list-style:none;}
+nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;}
+nav a:hover{color:#16a34a;}
 
-/* ===== MAGNETIC BUTTON ===== */
-.btn{
+/* ===== HERO ===== */
+.hero{
 position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
 overflow:hidden;
 }
-.btn::after{
-content:"";
+.hero-slider{
 position:absolute;
-width:0;
-height:100%;
-background:rgba(255,255,255,0.2);
-left:0;
-top:0;
-transition:0.4s;
-}
-.btn:hover::after{
 width:100%;
+height:100%;
+}
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1s ease, transform 6s ease;
+transform:scale(1.1);
+}
+.slide.active{
+opacity:1;
+transform:scale(1);
+}
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+}
+.hero-content{
+position:relative;
+z-index:2;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 8%;
+color:white;
+width:100%;
+}
+.hero-text h1{font-size:42px;}
+.hero-text span{color:#22c55e;}
+.hero-text p{margin-top:15px;max-width:550px;color:#e5e7eb;}
+.buttons{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap;}
+.btn{
+padding:10px 22px;
+border-radius:30px;
+cursor:pointer;
+font-size:14px;
+font-weight:500;
+border:none;
+transition:0.3s;
+}
+.primary{background:#16a34a;color:#fff;}
+.primary:hover{background:#15803d;transform:translateY(-3px);}
+.outline{background:#fff;border:2px solid #16a34a;color:#065f46;}
+.outline:hover{background:#dcfce7;transform:translateY(-3px);}
+.hero-img img{
+width:260px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* ===== SECTIONS ===== */
+section{padding:80px 8%;}
+.section-title{font-size:26px;margin-bottom:25px;position:relative;}
+.section-title::after{
+content:"";
+width:60px;
+height:4px;
+background:#16a34a;
+position:absolute;
+bottom:-8px;
+left:0;
+}
+
+/* ===== CARDS ===== */
+.card{
+background:rgba(255,255,255,0.9);
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+margin-bottom:25px;
+transition:0.3s;
+}
+.card:hover{transform:translateY(-6px);}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+.timeline{border-left:4px solid #16a34a;padding-left:20px;}
+
+/* ===== SKILLS ===== */
+.skill{margin-bottom:22px;}
+.progress{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
+.progress-bar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+transition:width 1.5s ease;
+}
+
+/* ===== FOOTER ===== */
+footer{
+background:#065f46;
+color:#fff;
+text-align:center;
+padding:20px;
 }
 
 /* ===== DARK MODE ===== */
@@ -88,276 +200,83 @@ body.dark{
 background:#0f172a;
 color:#e2e8f0;
 }
-body.dark .card{
-background:#1e293b;
-color:#fff;
+body.dark .card{background:#1e293b;color:#fff;}
+body.dark nav{background:rgba(15,23,42,0.8);}
+
+@media(max-width:900px){
+.hero-content{flex-direction:column;text-align:center;}
+.hero-img{margin-top:30px;}
 }
-body.dark nav{
-background:rgba(15,23,42,0.8);
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;} 
-body{ 
-background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7); 
-color:#064e3b; 
-scroll-behavior:smooth; 
-} 
-   <!-- PRELOADER -->
-<div id="preloader">
-  <div class="loader"></div>
+
+</style>
+</head>
+
+<body>
+
+<div id="preloader"><div class="loader"></div></div>
+<div id="progressBar"></div>
+<div class="cursor-glow"></div>
+
+<nav>
+<h2>Yashwanth</h2>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#courses">Courses</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-slider">
+<img src="slide1.jpeg" class="slide active">
+<img src="slide2.jpeg" class="slide">
+<img src="slide3.jpg" class="slide">
+</div>
+<div class="overlay"></div>
+<div class="hero-content">
+<div class="hero-text">
+<h1>Hello, I'm <span>Yashwanth K S</span></h1>
+<p></p>
+<div class="buttons">
+<button class="btn primary" onclick="window.open('For IT.pdf')">Download CV</button>
+<button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
+<button class="btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Email</button>
+</div>
+</div>
+<div class="hero-img">
+<img src="profile.jpg">
+</div>
+</div>
 </div>
 
-<!-- SCROLL PROGRESS BAR -->
-<div id="progressBar"></div>
+<!-- ABOUT -->
+<section id="about">
+<h2 class="section-title">Career Objective</h2>
+<div class="card">
+Dedicated Library & Information Science professional experienced in Koha LMS, Libsoft, DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation.
+</div>
+</section>
 
-<!-- CURSOR GLOW -->
-<div class="cursor-glow"></div>
-/* NAVIGATION */ 
-nav{ 
-position:fixed; 
-width:100%; 
-top:0; 
-display:flex; 
-justify-content:space-between; 
-align-items:center; 
-padding:15px 8%; 
-background:rgba(255,255,255,0.75); 
-backdrop-filter:blur(12px); 
-box-shadow:0 8px 20px rgba(0,0,0,0.05); 
-z-index:1000; 
-} 
-nav h2{font-weight:700;color:#065f46;} 
-nav ul{display:flex;gap:25px;list-style:none;} 
-nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;} 
-nav a:hover{color:#16a34a;} 
-/* HERO */ 
-.hero{ 
-position:relative; 
-height:100vh; 
-display:flex; 
-align-items:center; 
-justify-content:center; 
-overflow:hidden; 
-} 
-.hero-slider{ 
-position:absolute; 
-width:100%; 
-height:100%; 
-top:0; 
-left:0; 
-z-index:0; 
-} 
-.slide{ 
-position:absolute; 
-width:100%; 
-height:100%; 
-object-fit:cover; 
-opacity:0; 
-transition:opacity 0.10s ease-in-out; 
-} 
-.slide.active{opacity:1;} 
-.overlay{ 
-position:absolute; 
-width:100%; 
-height:100%; 
-background:rgba(0,0,0,0.55); 
-z-index:1; 
-} 
-.hero-content{ 
-position:relative; 
-z-index:2; 
-width:100%; 
-display:flex; 
-justify-content:space-between; 
-align-items:center; 
-padding:0 8%; 
-color:white; 
-} 
-.hero-text h1{ 
-font-size:42px; 
-font-weight:700; 
-color:white; 
-} 
-.hero-text span{color:#22c55e;} 
-.hero-text p{ 
-margin-top:15px; 
-max-width:550px; 
-line-height:1.7; 
-color:#e5e7eb; 
-} 
-.buttons{ 
-margin-top:25px; 
-display:flex; 
-gap:15px; 
-flex-wrap:wrap; 
-} 
-.btn{ 
-padding:10px 22px; 
-border-radius:30px; 
-cursor:pointer; 
-font-size:14px; 
-font-weight:500; 
-transition:0.3s; 
-border:none; 
-} 
-.primary{ 
-background:#16a34a; 
-color:#fff; 
-} 
-.primary:hover{ 
-background:#15803d; 
-transform:translateY(-3px); 
-} 
-.outline{ 
-background:#fff; 
-border:2px solid #16a34a; 
-color:#065f46; 
-} 
-.outline:hover{ 
-background:#dcfce7; 
-transform:translateY(-3px); 
-} 
-.hero-img img{ 
-width:260px; 
-border-radius:20px; 
-box-shadow:0 20px 40px rgba(0,0,0,0.3); 
-} 
-/* SECTIONS */ 
-section{padding:80px 8%;} 
-.section-title{ 
-font-size:26px; 
-font-weight:600; 
-margin-bottom:25px; 
-position:relative; 
-} 
-.section-title::after{ 
-content:""; 
-width:60px; 
-height:4px; 
-background:#16a34a; 
-position:absolute; 
-bottom:-8px; 
-left:0; 
-border-radius:5px; 
-} 
-/* CARDS */ 
-.card{ 
-background:rgba(255,255,255,0.85); 
-backdrop-filter:blur(12px); 
-padding:25px; 
-border-radius:18px; 
-box-shadow:0 10px 30px rgba(0,0,0,0.05); 
-margin-bottom:25px; 
-transition:0.3s; 
-} 
-.card:hover{transform:translateY(-6px);} 
-.grid{ 
-display:grid; 
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); 
-gap:20px; 
-} 
-.timeline{ 
-border-left:4px solid #16a34a; 
-padding-left:20px; 
-} 
-.skill-icon{margin-right:8px;color:#16a34a;} 
-/* SKILLS */ 
-.skill{margin-bottom:22px;} 
-.skill p{margin-bottom:6px;font-weight:500;} 
-.progress{ 
-width:100%; 
-height:10px; 
-background:#e5e7eb; 
-border-radius:20px; 
-overflow:hidden; 
-} 
-.progress-bar{ 
-height:100%; 
-width:0; 
-background:linear-gradient(90deg,#16a34a,#22c55e); 
-border-radius:20px; 
-transition:width 1.5s ease-in-out; 
-} 
-/* FOOTER */ 
-footer{ 
-background:#065f46; 
-color:#fff; 
-text-align:center; 
-padding:20px; 
-} 
-/* RESPONSIVE */ 
-@media(max-width:900px){ 
-.hero-content{ 
-flex-direction:column; 
-text-align:center; 
-} 
-.hero-img{margin-top:30px;} 
-} 
-</style> 
-</head> 
-<body> 
-<nav> 
-<h2>Yashwanth</h2> 
-<ul> 
-<li><a href="#about">About</a></li> 
-<li><a href="#experience">Experience</a></li> 
-<li><a href="#skills">Skills</a></li> 
-<li><a href="#courses">Courses</a></li> 
-<li><a href="#contact">Contact</a></li> 
-</ul> 
-</nav> 
-<div class="hero"> 
-<div class="hero-slider"> 
-<img src="slide1.jpeg" class="slide active"> 
-<img src="slide2.jpeg" class="slide"> 
-<img src="slide3.jpg" class="slide"> 
-</div> 
-<div class="overlay"></div> 
-<div class="hero-content"> 
-<div class="hero-text"> 
-<h1>Hello, I'm <span>Yashwanth K S</span></h1> 
-<p> 
-Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation. 
-</p> 
-<div class="buttons"> 
-<button class="btn primary" onclick="downloadCV()"> 
-<i class="fa-solid fa-download"></i> Download CV 
-</button> 
-<button class="btn outline" onclick="scrollToSection('experience')"> 
-<i class="fa-solid fa-briefcase"></i> Experience 
-</button> 
-<button class="btn outline" onclick="scrollToSection('contact')"> 
-<i class="fa-solid fa-envelope"></i> Contact 
-</button> 
-<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'"> 
-<i class="fa-solid fa-paper-plane"></i> Email 
-</button> 
-</div> 
-</div> 
-<div class="hero-img"> 
-<img src="profile.jpg" alt="Yashwanth Profile"> 
-</div> 
-</div> 
-</div> 
-<section id="about"> 
-<h2 class="section-title">Career Objective</h2> 
-<div class="card"> 
-Dedicated Library & Information Science professional experienced in Koha LMS, Libsoft, DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation. Committed to strengthening digital library ecosystems and enhancing academic resource management. 
-</div> 
-</section> 
-<section id="experience"> 
-<h2 class="section-title">Employment</h2> 
-<div class="card timeline"> 
-<strong><i class="fa-solid fa-user-tie skill-icon"></i>Assistant Librarian</strong><br> 
-K S School of Engineering & Management (2023 – Present) 
-<ul> 
-<li>Manage circulation, OPAC services, and classification systems</li> 
-<li>Administer Koha & Libsoft LMS</li> 
-<li>Generate and analyze SQL usage reports</li> 
-<li>Maintain DELNET access & institutional repositories</li> 
-<li>Conduct user orientation and training sessions</li> 
-</ul> 
-</div> 
-</section> 
+<!-- EXPERIENCE -->
+<section id="experience">
+<h2 class="section-title">Employment</h2>
+<div class="card timeline">
+<strong>Assistant Librarian</strong><br>
+K S School of Engineering & Management (2023 – Present)
+<ul>
+<li>Manage circulation & OPAC services</li>
+<li>Administer Koha & Libsoft LMS</li>
+<li>Generate SQL usage reports</li>
+<li>Maintain DELNET access</li>
+<li>Conduct user orientation sessions</li>
+</ul>
+</div>
+</section>
+
 <section id="skills"> 
 <h2 class="section-title">Skills</h2> 
 <div class="card"> 
@@ -439,119 +358,59 @@ K S School of Engineering & Management (2023 – Present)
 <div class="card"><i class="fa-solid fa-language skill-icon"></i> English, Kannada, Hindi, Telugu</div> 
 </div> 
 </section> 
-<footer> 
-© 2026 Yashwanth K S | Professional Green Portfolio 
-</footer> 
+
+<footer>
+© 2026 Yashwanth K S | Professional Green Portfolio
+</footer>
+
 <script>
 
-/* ================= PRELOADER ================= */
-window.addEventListener("load",()=>{
-document.getElementById("preloader").style.opacity="0";
-setTimeout(()=>{
-document.getElementById("preloader").style.display="none";
-},600);
-});
+/* PRELOADER */
+window.addEventListener("load",()=>{preloader.style.display="none";});
 
-/* ================= SCROLL PROGRESS ================= */
+/* PROGRESS BAR */
 window.addEventListener("scroll",()=>{
-let scrollTop=document.documentElement.scrollTop;
-let scrollHeight=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-let progress=(scrollTop/scrollHeight)*100;
-document.getElementById("progressBar").style.width=progress+"%";
+let winScroll=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+progressBar.style.width=(winScroll/height)*100+"%";
 });
 
-/* ================= CURSOR GLOW ================= */
-const cursor=document.querySelector(".cursor-glow");
+/* CURSOR */
 document.addEventListener("mousemove",(e)=>{
-cursor.style.left=e.pageX+"px";
-cursor.style.top=e.pageY+"px";
+document.querySelector(".cursor-glow").style.left=e.pageX+"px";
+document.querySelector(".cursor-glow").style.top=e.pageY+"px";
 });
 
-/* ================= ADVANCED SLIDER ================= */
+/* SLIDER */
 const slides=document.querySelectorAll(".slide");
 let current=0;
-
-function showSlide(index){
-slides.forEach(s=>s.classList.remove("active"));
-slides[index].classList.add("active");
-}
-
-function nextSlide(){
+setInterval(()=>{
+slides[current].classList.remove("active");
 current=(current+1)%slides.length;
-showSlide(current);
-}
+slides[current].classList.add("active");
+},4000);
 
-setInterval(nextSlide,4000);
-
-/* ================= PARALLAX EFFECT ================= */
-window.addEventListener("scroll",()=>{
-let scroll=window.scrollY;
-document.querySelector(".hero-slider").style.transform=
-"translateY("+scroll*0.4+"px)";
-});
-
-/* ================= TYPING EFFECT ================= */
+/* TYPING */
 const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
 const typing=document.querySelector(".hero-text p");
-typing.innerHTML="";
 let i=0;
 function type(){
-if(i<text.length){
-typing.innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,20);
-}
+if(i<text.length){typing.innerHTML+=text.charAt(i);i++;setTimeout(type,20);}
 }
 type();
 
-/* ================= DARK MODE TOGGLE ================= */
-const toggle=document.createElement("button");
-toggle.innerHTML="🌙";
-toggle.style.position="fixed";
-toggle.style.right="30px";
-toggle.style.bottom="90px";
-toggle.style.padding="10px";
-toggle.style.borderRadius="50%";
-toggle.style.border="none";
-toggle.style.cursor="pointer";
-toggle.style.background="#16a34a";
-toggle.style.color="#fff";
-document.body.appendChild(toggle);
-
-toggle.addEventListener("click",()=>{
-document.body.classList.toggle("dark");
-});
-
-/* ================= SKILL ANIMATION ================= */
+/* SKILL ANIMATION */
 const bars=document.querySelectorAll(".progress-bar");
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
-let bar=entry.target;
-bar.style.width=bar.getAttribute("data-progress")+"%";
-observer.unobserve(bar);
+entry.target.style.width=entry.target.dataset.progress+"%";
 }
 });
-},{threshold:0.6});
+});
 bars.forEach(bar=>observer.observe(bar));
 
-/* ================= REVEAL EFFECT ================= */
-const reveals=document.querySelectorAll(".card, .section-title");
-const revealObs=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.style.opacity=1;
-entry.target.style.transform="translateY(0)";
-}
-});
-},{threshold:0.2});
-reveals.forEach(el=>{
-el.style.opacity=0;
-el.style.transform="translateY(40px)";
-el.style.transition="0.8s";
-revealObs.observe(el);
-});
-
 </script>
-</body> 
+
+</body>
 </html>
