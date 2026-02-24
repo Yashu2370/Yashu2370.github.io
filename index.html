@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{
@@ -40,7 +39,7 @@ animation:spin 1s linear infinite;
 }
 @keyframes spin{100%{transform:rotate(360deg);}}
 
- /* ===== SCROLL PROGRESS ===== */
+/* ===== SCROLL PROGRESS ===== */
 #progressBar{
 position:fixed;
 top:0;
@@ -126,7 +125,7 @@ width:100%;
 }
 .hero-text h1{font-size:42px;}
 .hero-text span{color:#22c55e;}
-.hero-text p{margin-top:15px;max-width:550px;color:#e5e7eb;}
+.hero-text p{margin-top:15px;max-width:550px;color:#e5e7eb; min-height: 1.5em;}
 .buttons{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap;}
 .btn{
 padding:10px 22px;
@@ -207,7 +206,6 @@ body.dark nav{background:rgba(15,23,42,0.8);}
 .hero-content{flex-direction:column;text-align:center;}
 .hero-img{margin-top:30px;}
 }
-
 </style>
 </head>
 
@@ -233,7 +231,6 @@ body.dark nav{background:rgba(15,23,42,0.8);}
 </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
 <div class="hero-slider">
 <img src="slide1.jpeg" class="slide active">
@@ -258,7 +255,6 @@ body.dark nav{background:rgba(15,23,42,0.8);}
 </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
@@ -266,7 +262,6 @@ Dedicated Library & Information Science professional experienced in Koha LMS, Li
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
 <h2 class="section-title">Employment</h2>
 <div class="card timeline">
@@ -282,53 +277,42 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
 <h2 class="section-title">Skills</h2>
 <div class="card">
-
 <div class="skill">
 <p><i class="fa-solid fa-database"></i> Koha • Libsoft • NewGenLib</p>
 <div class="progress"><div class="progress-bar" data-progress="90"></div></div>
 </div>
-
 <div class="skill">
 <p><i class="fa-solid fa-cloud"></i> DSpace • EPrints • Greenstone</p>
 <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
 </div>
-
 <div class="skill">
 <p><i class="fa-solid fa-code"></i> HTML • CSS • Python • Java</p>
 <div class="progress"><div class="progress-bar" data-progress="80"></div></div>
 </div>
-
 <div class="skill">
 <p><i class="fa-solid fa-globe"></i> Drupal • Joomla</p>
 <div class="progress"><div class="progress-bar" data-progress="75"></div></div>
 </div>
-
 <div class="skill">
 <p><i class="fa-solid fa-chart-line"></i> SQL Reporting • Usage Analytics</p>
 <div class="progress"><div class="progress-bar" data-progress="88"></div></div>
 </div>
-
 <div class="skill">
 <p><i class="fa-solid fa-book"></i> Zotero • Mendeley • EndNote</p>
 <div class="progress"><div class="progress-bar" data-progress="92"></div></div>
 </div>
-
 <div class="skill">
 <p><i class="fa-solid fa-folder-open"></i> SharePoint • Digital Content Management</p>
 <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
 </div>
-
 </div>
 </section>
 
-<!-- COURSES -->
 <section id="courses">
 <h2 class="section-title">Certifications & Courses</h2>
-
 <div class="card">
 <strong>O'Level Computer Certification – NIELIT</strong><br><br>
 <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-download"></i> Programming & Problem Solving through Python</button>
@@ -337,49 +321,38 @@ K S School of Engineering & Management (2023 – Present)
 <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-download"></i> IT Tools and Network Basics</button>
 <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-download"></i> Course on Computer Concepts</button>
 </div>
-
 <div class="card">
 <strong>Science Communication – NPTEL</strong><br><br>
 <button class="btn outline" onclick="window.open('certificates/nptel_science_communication.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
 </div>
-
 <div class="card">
 <strong>Advanced R Programming – NPTEL</strong><br><br>
 <button class="btn outline" onclick="window.open('certificates/nptel_advanced_r.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
 </div>
-
 <div class="card">
 <strong>IT Applications in Libraries – NPTEL</strong><br><br>
 <button class="btn outline" onclick="window.open('certificates/nptel_it_libraries.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
 </div>
-
 </section>
-  <!-- EDUCATION -->
+
 <section id="education">
 <h2 class="section-title">Education</h2>
-
 <div class="card">
 <strong>Master of Library & Information Science (M.Lib.I.Sc)</strong><br>
 University Name – Year
 </div>
-
 <div class="card">
 <strong>Bachelor of Library & Information Science (B.Lib.I.Sc)</strong><br>
 University Name – Year
 </div>
-
 <div class="card">
 <strong>Bachelor's Degree</strong><br>
 University Name – Year
 </div>
-
 </section>
 
-
-<!-- DIGITAL INITIATIVES -->
 <section id="projects">
 <h2 class="section-title">Digital Initiatives & Projects</h2>
-
 <div class="card">
 <ul>
 <li>Implemented and administered Koha Library Management System</li>
@@ -390,14 +363,10 @@ University Name – Year
 <li>Handled SharePoint documentation and digital records</li>
 </ul>
 </div>
-
 </section>
 
-
-<!-- ACHIEVEMENTS -->
 <section id="achievements">
 <h2 class="section-title">Key Achievements</h2>
-
 <div class="card">
 <ul>
 <li>Improved digital resource usage through analytics monitoring</li>
@@ -406,14 +375,10 @@ University Name – Year
 <li>Supported academic digital transformation initiatives</li>
 </ul>
 </div>
-
 </section>
 
-
-<!-- WORKSHOPS -->
 <section id="workshops">
 <h2 class="section-title">Workshops & Faculty Development Programs</h2>
-
 <div class="card">
 <ul>
 <li>Participated in Library Automation Webinars</li>
@@ -421,14 +386,10 @@ University Name – Year
 <li>Completed NPTEL Professional Development Courses</li>
 </ul>
 </div>
-
 </section>
 
-
-<!-- MEMBERSHIPS -->
 <section id="memberships">
 <h2 class="section-title">Professional Memberships</h2>
-
 <div class="card">
 <ul>
 <li>DELNET – Developing Library Network</li>
@@ -436,10 +397,8 @@ University Name – Year
 <li>Academic Library Professional Networks</li>
 </ul>
 </div>
-
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2 class="section-title">Contact</h2>
 <div class="grid">
@@ -455,7 +414,6 @@ University Name – Year
 </footer>
 
 <script>
-
 const preloader=document.getElementById("preloader");
 const progressBar=document.getElementById("progressBar");
 
@@ -468,8 +426,9 @@ progressBar.style.width=(winScroll/height)*100+"%";
 });
 
 document.addEventListener("mousemove",(e)=>{
-document.querySelector(".cursor-glow").style.left=e.pageX+"px";
-document.querySelector(".cursor-glow").style.top=e.pageY+"px";
+const glow = document.querySelector(".cursor-glow");
+glow.style.left=e.pageX+"px";
+glow.style.top=e.pageY+"px";
 });
 
 const slides=document.querySelectorAll(".slide");
@@ -497,7 +456,6 @@ entry.target.style.width=entry.target.dataset.progress+"%";
 });
 });
 bars.forEach(bar=>observer.observe(bar));
-
 </script>
 
 </body>
