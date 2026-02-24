@@ -25,7 +25,7 @@ color:#064e3b;
 scroll-behavior:smooth;
 }
 
-/* NAVIGATION */
+/* ================= NAVIGATION ================= */
 nav{
 position:fixed;
 width:100%;
@@ -34,7 +34,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 8%;
-background:rgba(255,255,255,0.7);
+background:rgba(255,255,255,0.75);
 backdrop-filter:blur(12px);
 box-shadow:0 8px 20px rgba(0,0,0,0.05);
 z-index:1000;
@@ -62,162 +62,7 @@ nav a:hover{
 color:#16a34a;
 }
 
-/* HERO */
-.hero{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:140px 8% 80px;
-}
-
-.hero-text h1{
-font-size:42px;
-font-weight:700;
-}
-
-.hero-text span{
-color:#16a34a;
-}
-
-.hero-text p{
-margin-top:15px;
-max-width:550px;
-line-height:1.7;
-color:#047857;
-}
-
-.buttons{
-margin-top:25px;
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:10px 22px;
-border-radius:30px;
-cursor:pointer;
-font-size:14px;
-font-weight:500;
-transition:0.3s;
-border:none;
-}
-
-.primary{
-background:#16a34a;
-color:#fff;
-}
-
-.primary:hover{
-background:#15803d;
-transform:translateY(-3px);
-}
-
-.outline{
-background:#fff;
-border:2px solid #16a34a;
-color:#065f46;
-}
-
-.outline:hover{
-background:#dcfce7;
-transform:translateY(-3px);
-}
-
-.hero-img img{
-width:260px;
-border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.1);
-}
-
-/* SECTIONS */
-section{
-padding:80px 8%;
-}
-
-.section-title{
-font-size:26px;
-font-weight:600;
-margin-bottom:25px;
-position:relative;
-}
-
-.section-title::after{
-content:"";
-width:60px;
-height:4px;
-background:#16a34a;
-position:absolute;
-bottom:-8px;
-left:0;
-border-radius:5px;
-}
-
-/* CARDS */
-.card{
-background:rgba(255,255,255,0.75);
-backdrop-filter:blur(12px);
-padding:25px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-margin-bottom:25px;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-6px);
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
-}
-
-.timeline{
-border-left:4px solid #16a34a;
-padding-left:20px;
-}
-
-.skill-icon{
-margin-right:8px;
-color:#16a34a;
-}
-
-/* SKILL PROGRESS */
-.skill{
-margin-bottom:22px;
-}
-
-.skill p{
-margin-bottom:6px;
-font-weight:500;
-}
-
-.progress{
-width:100%;
-height:10px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progress-bar{
-height:100%;
-width:0;
-background:linear-gradient(90deg,#16a34a,#22c55e);
-border-radius:20px;
-transition:width 1.5s ease-in-out;
-}
-
-/* FOOTER */
-footer{
-background:#065f46;
-color:#fff;
-text-align:center;
-padding:20px;
-}
-  /* HERO SLIDER */
+/* ================= HERO SECTION ================= */
 .hero{
 position:relative;
 height:100vh;
@@ -269,6 +114,8 @@ color:white;
 }
 
 .hero-text h1{
+font-size:42px;
+font-weight:700;
 color:white;
 }
 
@@ -277,12 +124,147 @@ color:#22c55e;
 }
 
 .hero-text p{
+margin-top:15px;
+max-width:550px;
+line-height:1.7;
 color:#e5e7eb;
 }
 
-/* RESPONSIVE */
+.buttons{
+margin-top:25px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:10px 22px;
+border-radius:30px;
+cursor:pointer;
+font-size:14px;
+font-weight:500;
+transition:0.3s;
+border:none;
+}
+
+.primary{
+background:#16a34a;
+color:#fff;
+}
+
+.primary:hover{
+background:#15803d;
+transform:translateY(-3px);
+}
+
+.outline{
+background:#fff;
+border:2px solid #16a34a;
+color:#065f46;
+}
+
+.outline:hover{
+background:#dcfce7;
+transform:translateY(-3px);
+}
+
+.hero-img img{
+width:260px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* ================= SECTIONS ================= */
+section{
+padding:80px 8%;
+}
+
+.section-title{
+font-size:26px;
+font-weight:600;
+margin-bottom:25px;
+position:relative;
+}
+
+.section-title::after{
+content:"";
+width:60px;
+height:4px;
+background:#16a34a;
+position:absolute;
+bottom:-8px;
+left:0;
+border-radius:5px;
+}
+
+/* ================= CARDS ================= */
+.card{
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(12px);
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+margin-bottom:25px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+
+.timeline{
+border-left:4px solid #16a34a;
+padding-left:20px;
+}
+
+.skill-icon{
+margin-right:8px;
+color:#16a34a;
+}
+
+/* ================= SKILLS ================= */
+.skill{
+margin-bottom:22px;
+}
+
+.skill p{
+margin-bottom:6px;
+font-weight:500;
+}
+
+.progress{
+width:100%;
+height:10px;
+background:#e5e7eb;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+border-radius:20px;
+transition:width 1.5s ease-in-out;
+}
+
+/* ================= FOOTER ================= */
+footer{
+background:#065f46;
+color:#fff;
+text-align:center;
+padding:20px;
+}
+
+/* ================= RESPONSIVE ================= */
 @media(max-width:900px){
-.hero{
+.hero-content{
 flex-direction:column;
 text-align:center;
 }
@@ -306,52 +288,53 @@ margin-top:30px;
 </ul>
 </nav>
 
+<!-- ================= HERO ================= -->
 <div class="hero">
 
-<!-- Background Slider -->
 <div class="hero-slider">
-    <img src="slide1.jpg" class="slide active">
-    <img src="slide2.jpg" class="slide">
-    <img src="slide3.jpg" class="slide">
+<img src="slide1.jpg" class="slide active">
+<img src="slide2.jpg" class="slide">
+<img src="slide3.jpg" class="slide">
 </div>
 
 <div class="overlay"></div>
 
 <div class="hero-content">
-    <div class="hero-text">
-        <h1>Hello, I'm <span>Yashwanth K S</span></h1>
-        <p>
-        Library & Information Science Professional specializing in library automation,
-        digital resource management, SQL-based analytics reporting,
-        and academic digital transformation.
-        </p>
+<div class="hero-text">
+<h1>Hello, I'm <span>Yashwanth K S</span></h1>
+<p>
+Library & Information Science Professional specializing in library automation,
+digital resource management, SQL-based analytics reporting,
+and academic digital transformation.
+</p>
 
-        <div class="buttons">
-            <button class="btn primary" onclick="downloadCV()">
-            <i class="fa-solid fa-download"></i> Download CV
-            </button>
+<div class="buttons">
+<button class="btn primary" onclick="downloadCV()">
+<i class="fa-solid fa-download"></i> Download CV
+</button>
 
-            <button class="btn outline" onclick="scrollToSection('experience')">
-            <i class="fa-solid fa-briefcase"></i> Experience
-            </button>
+<button class="btn outline" onclick="scrollToSection('experience')">
+<i class="fa-solid fa-briefcase"></i> Experience
+</button>
 
-            <button class="btn outline" onclick="scrollToSection('contact')">
-            <i class="fa-solid fa-envelope"></i> Contact
-            </button>
+<button class="btn outline" onclick="scrollToSection('contact')">
+<i class="fa-solid fa-envelope"></i> Contact
+</button>
 
-            <button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">
-            <i class="fa-solid fa-paper-plane"></i> Email
-            </button>
-        </div>
-    </div>
+<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">
+<i class="fa-solid fa-paper-plane"></i> Email
+</button>
+</div>
+</div>
 
-    <div class="hero-img">
-        <img src="profile.jpg" alt="Yashwanth Profile">
-    </div>
+<div class="hero-img">
+<img src="profile.jpg" alt="Yashwanth Profile">
 </div>
 
 </div>
+</div>
 
+<!-- ================= ABOUT ================= -->
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
@@ -361,6 +344,7 @@ Committed to strengthening digital library ecosystems and enhancing academic res
 </div>
 </section>
 
+<!-- ================= EXPERIENCE ================= -->
 <section id="experience">
 <h2 class="section-title">Employment</h2>
 <div class="card timeline">
@@ -376,6 +360,7 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
+<!-- ================= SKILLS ================= -->
 <section id="skills">
 <h2 class="section-title">Skills</h2>
 <div class="card">
@@ -418,6 +403,7 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
+<!-- ================= COURSES ================= -->
 <section id="courses">
 <h2 class="section-title">Certifications & Courses</h2>
 
@@ -447,6 +433,7 @@ K S School of Engineering & Management (2023 – Present)
 
 </section>
 
+<!-- ================= CONTACT ================= -->
 <section id="contact">
 <h2 class="section-title">Contact</h2>
 <div class="grid">
@@ -462,26 +449,30 @@ K S School of Engineering & Management (2023 – Present)
 </footer>
 
 <script>
-  // HERO IMAGE SLIDER
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
+// HERO SLIDER
+const slides=document.querySelectorAll(".slide");
+let currentSlide=0;
 
 function nextSlide(){
 slides[currentSlide].classList.remove("active");
-currentSlide = (currentSlide + 1) % slides.length;
+currentSlide=(currentSlide+1)%slides.length;
 slides[currentSlide].classList.add("active");
 }
+setInterval(nextSlide,4000);
 
-setInterval(nextSlide, 4000);
+// DOWNLOAD CV
 function downloadCV(){
 window.open("For IT.pdf");
 }
 
+// SMOOTH SCROLL
 function scrollToSection(id){
 document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
+// SKILL PROGRESS ANIMATION
 const bars=document.querySelectorAll(".progress-bar");
+
 function showProgress(){
 bars.forEach(bar=>{
 const value=bar.getAttribute("data-progress");
