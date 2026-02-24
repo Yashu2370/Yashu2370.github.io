@@ -344,41 +344,197 @@ K S School of Engineering & Management (2023 – Present)
 <footer> 
 © 2026 Yashwanth K S | Professional Green Portfolio 
 </footer> 
-<script> 
-const slides=document.querySelectorAll(".slide"); 
-let currentSlide=0; 
-function nextSlide(){ 
-slides[currentSlide].classList.remove("active"); 
-currentSlide=(currentSlide+1)%slides.length; 
-slides[currentSlide].classList.add("active"); 
-} 
-setInterval(nextSlide,2000); 
+<script>
 
-function downloadCV(){ 
-window.open("For IT.pdf"); 
-} 
+/* =========================
+   PRELOADER
+========================= */
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
 
-function scrollToSection(id){ 
-document.getElementById(id).scrollIntoView({behavior:'smooth'}); 
-} 
+/* =========================
+   HERO SLIDER (ADVANCED)
+========================= */
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+let slideInterval;
 
-/* ===== IMPROVED SKILL ANIMATION ===== */
-const bars=document.querySelectorAll(".progress-bar");
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+function startSlider() {
+    slideInterval = setInterval(nextSlide, 4000);
+}
+
+function stopSlider() {
+    clearInterval(slideInterval);
+}
+
+startSlider();
+
+/* Pause on Hover */
+const hero = document.querySelector(".hero");
+hero.addEventListener("mouseenter", stopSlider);
+hero.addEventListener("mouseleave", startSlider);
+
+
+/* =========================
+   TYPING EFFECT
+========================= */
+const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+const typingElement = document.querySelector(".hero-text p");
+let i = 0;
+
+typingElement.textContent = "";
+
+function typingEffect() {
+    if (i < text.length) {
+        typingElement.textContent += text.charAt(i);
+        i++;
+        setTimeout(typingEffect, 25);
+    }
+}
+typingEffect();
+
+
+/* =========================
+   SMOOTH SCROLL FUNCTION
+========================= */
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+
+/* =========================
+   DOWNLOAD CV
+========================= */
+function downloadCV(){
+    window.open("For IT.pdf");
+}
+
+
+/* =========================
+   ACTIVE NAVIGATION ON SCROLL
+========================= */
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(a => {
+        a.classList.remove("active");
+        if (a.getAttribute("href") === "#" + current) {
+            a.classList.add("active");
+        }
+    });
+});
+
+
+/* =========================
+   NAVBAR SHADOW ON SCROLL
+========================= */
+const nav = document.querySelector("nav");
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        nav.style.boxShadow = "0 10px 30px rgba(0,0,0,0.1)";
+    } else {
+        nav.style.boxShadow = "0 8px 20px rgba(0,0,0,0.05)";
+    }
+});
+
+
+/* =========================
+   SKILL ANIMATION
+========================= */
+const bars = document.querySelectorAll(".progress-bar");
 
 const observer = new IntersectionObserver((entries)=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-const bar = entry.target;
-const value = bar.getAttribute("data-progress");
-bar.style.width = value + "%";
-observer.unobserve(bar);
-}
-});
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            const bar = entry.target;
+            const value = bar.getAttribute("data-progress");
+            bar.style.width = value + "%";
+            observer.unobserve(bar);
+        }
+    });
 },{ threshold:0.6 });
 
 bars.forEach(bar=>{
-observer.observe(bar);
+    observer.observe(bar);
 });
+
+
+/* =========================
+   SCROLL REVEAL ANIMATION
+========================= */
+const cards = document.querySelectorAll(".card, .section-title");
+
+const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            revealObserver.unobserve(entry.target);
+        }
+    });
+},{ threshold:0.2 });
+
+cards.forEach(el=>{
+    el.style.opacity = "0";
+    el.style.transform = "translateY(40px)";
+    el.style.transition = "all 0.8s ease";
+    revealObserver.observe(el);
+});
+
+
+/* =========================
+   BACK TO TOP BUTTON
+========================= */
+const topBtn = document.createElement("button");
+topBtn.innerHTML = "↑";
+topBtn.style.position = "fixed";
+topBtn.style.bottom = "30px";
+topBtn.style.right = "30px";
+topBtn.style.padding = "10px 15px";
+topBtn.style.borderRadius = "50%";
+topBtn.style.border = "none";
+topBtn.style.background = "#16a34a";
+topBtn.style.color = "#fff";
+topBtn.style.cursor = "pointer";
+topBtn.style.display = "none";
+topBtn.style.fontSize = "18px";
+topBtn.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
+document.body.appendChild(topBtn);
+
+window.addEventListener("scroll", ()=>{
+    if(window.scrollY > 300){
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
+});
+
+topBtn.addEventListener("click", ()=>{
+    window.scrollTo({top:0, behavior:"smooth"});
+});
+
 </script> 
 </body> 
 </html>
