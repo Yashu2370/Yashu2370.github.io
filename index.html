@@ -9,64 +9,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-/* 🔥 FIRE PRELOADER (NO VIDEO) */
-#preloader{
-position:fixed;
-width:100%;
-height:100vh;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-flex-direction:column;
-overflow:hidden;
-}
-
-.fire-horse{
-font-size:80px;
-animation:float 2s ease-in-out infinite alternate;
-text-shadow:
-0 0 10px #ff4500,
-0 0 20px #ff4500,
-0 0 40px #ff0000,
-0 0 80px #ff0000;
-}
-
-.loading-text{
-color:white;
-margin-top:20px;
-letter-spacing:3px;
-font-size:20px;
-animation:blink 1s infinite alternate;
-}
-
-/* Fire Flames */
-.flame{
-position:absolute;
-bottom:0;
-width:100%;
-height:100%;
-background:radial-gradient(circle at 50% 100%, #ff4500 0%, #ff0000 30%, transparent 70%);
-opacity:0.4;
-animation:fireMove 2s infinite alternate;
-}
-
-@keyframes fireMove{
-0%{transform:translateY(0);}
-100%{transform:translateY(-20px);}
-}
-
-@keyframes float{
-from{transform:translateY(-10px);}
-to{transform:translateY(10px);}
-}
-
-@keyframes blink{
-from{opacity:0.5;}
-to{opacity:1;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
@@ -75,7 +22,7 @@ color:#064e3b;
 scroll-behavior:smooth;
 }
 
-/* NAVIGATION */
+/* ================= NAVIGATION ================= */
 nav{
 position:fixed;
 width:100%;
@@ -89,12 +36,30 @@ backdrop-filter:blur(12px);
 box-shadow:0 8px 20px rgba(0,0,0,0.05);
 z-index:1000;
 }
-nav h2{font-weight:700;color:#065f46;}
-nav ul{display:flex;gap:25px;list-style:none;}
-nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;}
-nav a:hover{color:#16a34a;}
 
-/* HERO */
+nav h2{
+font-weight:700;
+color:#065f46;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:#065f46;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#16a34a;
+}
+
+/* ================= HERO ================= */
 .hero{
 position:relative;
 height:100vh;
@@ -119,10 +84,12 @@ width:100%;
 height:100%;
 object-fit:cover;
 opacity:0;
-transition:opacity 0.10s ease-in-out;
+transition:opacity 1s ease-in-out;
 }
 
-.slide.active{opacity:1;}
+.slide.active{
+opacity:1;
+}
 
 .overlay{
 position:absolute;
@@ -149,7 +116,9 @@ font-weight:700;
 color:white;
 }
 
-.hero-text span{color:#22c55e;}
+.hero-text span{
+color:#22c55e;
+}
 
 .hero-text p{
 margin-top:15px;
@@ -179,6 +148,7 @@ border:none;
 background:#16a34a;
 color:#fff;
 }
+
 .primary:hover{
 background:#15803d;
 transform:translateY(-3px);
@@ -189,6 +159,7 @@ background:#fff;
 border:2px solid #16a34a;
 color:#065f46;
 }
+
 .outline:hover{
 background:#dcfce7;
 transform:translateY(-3px);
@@ -200,7 +171,10 @@ border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
 
-section{padding:80px 8%;}
+/* ================= SECTIONS ================= */
+section{
+padding:80px 8%;
+}
 
 .section-title{
 font-size:26px;
@@ -229,7 +203,10 @@ box-shadow:0 10px 30px rgba(0,0,0,0.05);
 margin-bottom:25px;
 transition:0.3s;
 }
-.card:hover{transform:translateY(-6px);}
+
+.card:hover{
+transform:translateY(-6px);
+}
 
 .grid{
 display:grid;
@@ -242,10 +219,19 @@ border-left:4px solid #16a34a;
 padding-left:20px;
 }
 
-.skill-icon{margin-right:8px;color:#16a34a;}
+.skill-icon{
+margin-right:8px;
+color:#16a34a;
+}
 
-.skill{margin-bottom:22px;}
-.skill p{margin-bottom:6px;font-weight:500;}
+.skill{
+margin-bottom:22px;
+}
+
+.skill p{
+margin-bottom:6px;
+font-weight:500;
+}
 
 .progress{
 width:100%;
@@ -275,21 +261,14 @@ padding:20px;
 flex-direction:column;
 text-align:center;
 }
-.hero-img{margin-top:30px;}
+.hero-img{
+margin-top:30px;
+}
 }
 </style>
 </head>
 
 <body>
-
-<!-- 🔥 FIRE INTRO -->
-<div id="preloader">
-<div class="flame"></div>
-<div class="fire-horse">🐎🔥</div>
-<div class="loading-text">WELCOME TO MY PORTFOLIO</div>
-</div>
-
-<!-- YOUR ORIGINAL WEBSITE (UNCHANGED BELOW) -->
 
 <nav>
 <h2>Yashwanth</h2>
@@ -302,7 +281,7 @@ text-align:center;
 </ul>
 </nav>
 
-<!-- EVERYTHING ELSE REMAINS EXACTLY SAME (Your full content continues here) -->
+<!-- ================= HERO ================= -->
 <div class="hero">
 
 <div class="hero-slider">
@@ -347,6 +326,7 @@ and academic digital transformation.
 </div>
 </div>
 
+<!-- ================= ABOUT ================= -->
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
@@ -356,6 +336,7 @@ Committed to strengthening digital library ecosystems and enhancing academic res
 </div>
 </section>
 
+<!-- ================= EXPERIENCE ================= -->
 <section id="experience">
 <h2 class="section-title">Employment</h2>
 <div class="card timeline">
@@ -371,6 +352,7 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
+<!-- ================= SKILLS ================= -->
 <section id="skills">
 <h2 class="section-title">Skills</h2>
 <div class="card">
@@ -413,6 +395,7 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
+<!-- ================= COURSES ================= -->
 <section id="courses">
 <h2 class="section-title">Certifications & Courses</h2>
 
@@ -438,7 +421,6 @@ K S School of Engineering & Management (2023 – Present)
 <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')">
 <i class="fa-solid fa-download"></i> Course on Computer Concepts
 </button>
-
 </div>
 
 <div class="card">
@@ -464,6 +446,7 @@ K S School of Engineering & Management (2023 – Present)
 
 </section>
 
+<!-- ================= CONTACT ================= -->
 <section id="contact">
 <h2 class="section-title">Contact</h2>
 <div class="grid">
@@ -477,16 +460,34 @@ K S School of Engineering & Management (2023 – Present)
 <footer>
 © 2026 Yashwanth K S | Professional Green Portfolio
 </footer>
+
 <script>
 
-// 🔥 PRELOADER CONTROL
-window.addEventListener("load",function(){
-setTimeout(function(){
-document.getElementById("preloader").style.display="none";
+/* Image Slider */
+let slides=document.querySelectorAll(".slide");
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove("active");
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
 },4000);
-});
 
-// Your original JS remains unchanged
+/* Smooth Scroll */
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+/* Download CV */
+function downloadCV(){
+window.open("Yashwanth_CV.pdf","_blank");
+}
+
+/* Skill Animation */
+window.addEventListener("load",()=>{
+document.querySelectorAll(".progress-bar").forEach(bar=>{
+bar.style.width=bar.getAttribute("data-progress")+"%";
+});
+});
 
 </script>
 
