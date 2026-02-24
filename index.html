@@ -6,13 +6,111 @@
 <title>Yashwanth K S | Professional Portfolio</title> 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
-<style> 
+<style>
+   /* ===== PRELOADER ===== */
+#preloader{
+position:fixed;
+width:100%;
+height:100vh;
+background:#064e3b;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+transition:0.6s;
+}
+.loader{
+width:60px;
+height:60px;
+border:6px solid #22c55e;
+border-top:6px solid transparent;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* ===== SCROLL PROGRESS ===== */
+#progressBar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+width:0%;
+z-index:2000;
+}
+
+/* ===== CURSOR GLOW ===== */
+.cursor-glow{
+position:fixed;
+width:20px;
+height:20px;
+background:rgba(34,197,94,0.6);
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+transition:0.1s;
+z-index:3000;
+}
+
+/* ===== PARALLAX HERO ===== */
+.hero-slider img{
+transform:scale(1.1);
+transition:transform 6s ease-in-out;
+}
+.slide.active{
+transform:scale(1);
+}
+
+/* ===== MAGNETIC BUTTON ===== */
+.btn{
+position:relative;
+overflow:hidden;
+}
+.btn::after{
+content:"";
+position:absolute;
+width:0;
+height:100%;
+background:rgba(255,255,255,0.2);
+left:0;
+top:0;
+transition:0.4s;
+}
+.btn:hover::after{
+width:100%;
+}
+
+/* ===== DARK MODE ===== */
+body.dark{
+background:#0f172a;
+color:#e2e8f0;
+}
+body.dark .card{
+background:#1e293b;
+color:#fff;
+}
+body.dark nav{
+background:rgba(15,23,42,0.8);
+}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;} 
 body{ 
 background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7); 
 color:#064e3b; 
 scroll-behavior:smooth; 
 } 
+   <!-- PRELOADER -->
+<div id="preloader">
+  <div class="loader"></div>
+</div>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="progressBar"></div>
+
+<!-- CURSOR GLOW -->
+<div class="cursor-glow"></div>
 /* NAVIGATION */ 
 nav{ 
 position:fixed; 
@@ -346,195 +444,114 @@ K S School of Engineering & Management (2023 – Present)
 </footer> 
 <script>
 
-/* =========================
-   PRELOADER
-========================= */
-window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
+/* ================= PRELOADER ================= */
+window.addEventListener("load",()=>{
+document.getElementById("preloader").style.opacity="0";
+setTimeout(()=>{
+document.getElementById("preloader").style.display="none";
+},600);
 });
 
-/* =========================
-   HERO SLIDER (ADVANCED)
-========================= */
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-let slideInterval;
-
-function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove("active"));
-    slides[index].classList.add("active");
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-}
-
-function startSlider() {
-    slideInterval = setInterval(nextSlide, 4000);
-}
-
-function stopSlider() {
-    clearInterval(slideInterval);
-}
-
-startSlider();
-
-/* Pause on Hover */
-const hero = document.querySelector(".hero");
-hero.addEventListener("mouseenter", stopSlider);
-hero.addEventListener("mouseleave", startSlider);
-
-
-/* =========================
-   TYPING EFFECT
-========================= */
-const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-const typingElement = document.querySelector(".hero-text p");
-let i = 0;
-
-typingElement.textContent = "";
-
-function typingEffect() {
-    if (i < text.length) {
-        typingElement.textContent += text.charAt(i);
-        i++;
-        setTimeout(typingEffect, 25);
-    }
-}
-typingEffect();
-
-
-/* =========================
-   SMOOTH SCROLL FUNCTION
-========================= */
-function scrollToSection(id){
-    document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-
-
-/* =========================
-   DOWNLOAD CV
-========================= */
-function downloadCV(){
-    window.open("For IT.pdf");
-}
-
-
-/* =========================
-   ACTIVE NAVIGATION ON SCROLL
-========================= */
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav ul li a");
-
-window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop) {
-            current = section.getAttribute("id");
-        }
-    });
-
-    navLinks.forEach(a => {
-        a.classList.remove("active");
-        if (a.getAttribute("href") === "#" + current) {
-            a.classList.add("active");
-        }
-    });
+/* ================= SCROLL PROGRESS ================= */
+window.addEventListener("scroll",()=>{
+let scrollTop=document.documentElement.scrollTop;
+let scrollHeight=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let progress=(scrollTop/scrollHeight)*100;
+document.getElementById("progressBar").style.width=progress+"%";
 });
 
-
-/* =========================
-   NAVBAR SHADOW ON SCROLL
-========================= */
-const nav = document.querySelector("nav");
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        nav.style.boxShadow = "0 10px 30px rgba(0,0,0,0.1)";
-    } else {
-        nav.style.boxShadow = "0 8px 20px rgba(0,0,0,0.05)";
-    }
+/* ================= CURSOR GLOW ================= */
+const cursor=document.querySelector(".cursor-glow");
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left=e.pageX+"px";
+cursor.style.top=e.pageY+"px";
 });
 
+/* ================= ADVANCED SLIDER ================= */
+const slides=document.querySelectorAll(".slide");
+let current=0;
 
-/* =========================
-   SKILL ANIMATION
-========================= */
-const bars = document.querySelectorAll(".progress-bar");
+function showSlide(index){
+slides.forEach(s=>s.classList.remove("active"));
+slides[index].classList.add("active");
+}
 
-const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            const bar = entry.target;
-            const value = bar.getAttribute("data-progress");
-            bar.style.width = value + "%";
-            observer.unobserve(bar);
-        }
-    });
-},{ threshold:0.6 });
+function nextSlide(){
+current=(current+1)%slides.length;
+showSlide(current);
+}
 
-bars.forEach(bar=>{
-    observer.observe(bar);
+setInterval(nextSlide,4000);
+
+/* ================= PARALLAX EFFECT ================= */
+window.addEventListener("scroll",()=>{
+let scroll=window.scrollY;
+document.querySelector(".hero-slider").style.transform=
+"translateY("+scroll*0.4+"px)";
 });
 
+/* ================= TYPING EFFECT ================= */
+const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+const typing=document.querySelector(".hero-text p");
+typing.innerHTML="";
+let i=0;
+function type(){
+if(i<text.length){
+typing.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,20);
+}
+}
+type();
 
-/* =========================
-   SCROLL REVEAL ANIMATION
-========================= */
-const cards = document.querySelectorAll(".card, .section-title");
+/* ================= DARK MODE TOGGLE ================= */
+const toggle=document.createElement("button");
+toggle.innerHTML="🌙";
+toggle.style.position="fixed";
+toggle.style.right="30px";
+toggle.style.bottom="90px";
+toggle.style.padding="10px";
+toggle.style.borderRadius="50%";
+toggle.style.border="none";
+toggle.style.cursor="pointer";
+toggle.style.background="#16a34a";
+toggle.style.color="#fff";
+document.body.appendChild(toggle);
 
-const revealObserver = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-            revealObserver.unobserve(entry.target);
-        }
-    });
-},{ threshold:0.2 });
-
-cards.forEach(el=>{
-    el.style.opacity = "0";
-    el.style.transform = "translateY(40px)";
-    el.style.transition = "all 0.8s ease";
-    revealObserver.observe(el);
+toggle.addEventListener("click",()=>{
+document.body.classList.toggle("dark");
 });
 
+/* ================= SKILL ANIMATION ================= */
+const bars=document.querySelectorAll(".progress-bar");
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+let bar=entry.target;
+bar.style.width=bar.getAttribute("data-progress")+"%";
+observer.unobserve(bar);
+}
+});
+},{threshold:0.6});
+bars.forEach(bar=>observer.observe(bar));
 
-/* =========================
-   BACK TO TOP BUTTON
-========================= */
-const topBtn = document.createElement("button");
-topBtn.innerHTML = "↑";
-topBtn.style.position = "fixed";
-topBtn.style.bottom = "30px";
-topBtn.style.right = "30px";
-topBtn.style.padding = "10px 15px";
-topBtn.style.borderRadius = "50%";
-topBtn.style.border = "none";
-topBtn.style.background = "#16a34a";
-topBtn.style.color = "#fff";
-topBtn.style.cursor = "pointer";
-topBtn.style.display = "none";
-topBtn.style.fontSize = "18px";
-topBtn.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
-document.body.appendChild(topBtn);
-
-window.addEventListener("scroll", ()=>{
-    if(window.scrollY > 300){
-        topBtn.style.display = "block";
-    } else {
-        topBtn.style.display = "none";
-    }
+/* ================= REVEAL EFFECT ================= */
+const reveals=document.querySelectorAll(".card, .section-title");
+const revealObs=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.opacity=1;
+entry.target.style.transform="translateY(0)";
+}
+});
+},{threshold:0.2});
+reveals.forEach(el=>{
+el.style.opacity=0;
+el.style.transform="translateY(40px)";
+el.style.transition="0.8s";
+revealObs.observe(el);
 });
 
-topBtn.addEventListener("click", ()=>{
-    window.scrollTo({top:0, behavior:"smooth"});
-});
-
-</script> 
+</script>
 </body> 
 </html>
