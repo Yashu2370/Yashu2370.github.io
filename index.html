@@ -139,22 +139,6 @@ width:260px;
 border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
- .btn{
-padding:10px 22px;
-border-radius:30px;
-cursor:pointer;
-font-size:14px;
-font-weight:500;
-border:none;
-transition:0.3s;
-}
-
-.btn.active{
-background:#16a34a !important;
-color:white !important;
-box-shadow:0 0 10px #22c55e;
-transform:scale(1.05);
-}
 
 /* ===== SECTIONS ===== */
 section{padding:20px 8%;}
@@ -271,9 +255,6 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
 <li><a href="#memberships">Memberships</a></li>
 </ul>
 </nav>
- <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">
-<i class="fa-solid fa-download"></i> Programming & Problem Solving through Python
-</button>
 
 <!-- HERO -->
 <div class="hero">
@@ -609,18 +590,6 @@ window.addEventListener("scroll",()=>{
 let winScroll=document.documentElement.scrollTop;
 let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
 progressBar.style.width=(winScroll/height)*100+"%";
-});
- // Highlight clicked course button
-const courseButtons = document.querySelectorAll("#courses .btn");
-
-courseButtons.forEach(btn=>{
-btn.addEventListener("click",function(){
-
-courseButtons.forEach(b=>b.classList.remove("active"));
-
-this.classList.add("active");
-
-});
 });
 
 document.addEventListener("mousemove",(e)=>{
