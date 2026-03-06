@@ -179,6 +179,16 @@ width:0;
 background:linear-gradient(90deg,#16a34a,#22c55e);
 transition:width 1.5s ease;
 }
+ .fade-section{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.fade-section.show{
+opacity:1;
+transform:translateY(0);
+}
 
 /* ===== FOOTER ===== */
 footer{
@@ -200,7 +210,7 @@ body.dark nav{background:rgba(15,23,42,0.8);}
 .hero-content{flex-direction:column;text-align:center;}
 .hero-img{margin-top:30px;}
 }
- <style>
+ 
 .footer{
   text-align:center;
   padding:25px 0;
@@ -218,12 +228,19 @@ body.dark nav{background:rgba(15,23,42,0.8);}
 </head>
 
 <body>
-
+ <button id="topBtn"
+style="position:fixed;bottom:30px;right:30px;padding:12px;border:none;border-radius:50%;background:#16a34a;color:white;font-size:18px;cursor:pointer;display:none;z-index:2000;">
+<i class="fa-solid fa-arrow-up"></i>
+</button>
 <div id="preloader"><div class="loader"></div></div>
 <div id="progressBar"></div>
 <div class="cursor-glow"></div>
 
 <nav>
+ <button onclick="document.body.classList.toggle('dark')" 
+style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;background:#16a34a;color:white;cursor:pointer;">
+🌙
+</button>
 <h2>Yashwanth</h2>
 <ul>
 <li><a href="#about">About</a></li>
@@ -579,8 +596,34 @@ document.addEventListener("mousemove",(e)=>{
 document.querySelector(".cursor-glow").style.left=e.pageX+"px";
 document.querySelector(".cursor-glow").style.top=e.pageY+"px";
 });
+ const topBtn=document.getElementById("topBtn");
 
+window.addEventListener("scroll",()=>{
+if(document.documentElement.scrollTop>300){
+topBtn.style.display="block";
+}else{
+topBtn.style.display="none";
+}
+});
 
+topBtn.onclick=()=>{
+window.scrollTo({top:0,behavior:"smooth"});
+};
+ const sections=document.querySelectorAll("section");
+
+const revealObserver=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+sections.forEach(sec=>{
+sec.classList.add("fade-section");
+revealObserver.observe(sec);
+});
+ 
 const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
 const typing=document.querySelector(".hero-text p");
 let i=0;
