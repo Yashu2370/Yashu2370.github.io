@@ -11,53 +11,112 @@
 <style>
 
  /* Styling to match your existing 'card' design */
-  .form-container {
-    margin-top: 30px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 25px;
-    text-align: left;
+ #contact{
+  padding:80px 20px;
+}
+
+.section-title{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:50px;
+}
+
+.contact-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  max-width:1000px;
+  margin:auto;
+}
+
+/* Contact Cards */
+
+.contact-info{
+  display:grid;
+  gap:20px;
+}
+
+.contact-card{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.contact-card:hover{
+  transform:translateY(-5px);
+}
+
+.contact-card i{
+  font-size:22px;
+  color:#4a6cf7;
+}
+
+/* Form */
+
+.contact-form{
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:500;
+}
+
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-size:14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+  outline:none;
+  border-color:#4a6cf7;
+}
+
+/* Button */
+
+.submit-btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  background:#4a6cf7;
+  color:#fff;
+  font-size:16px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.submit-btn:hover{
+  background:#324edc;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+  .contact-wrapper{
+    grid-template-columns:1fr;
   }
 
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
-  }
-
-  .form-group input, 
-  .form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: inherit;
-    box-sizing: border-box; /* Crucial for layout */
-  }
-
-  .submit-btn {
-    background-color: #2563eb; /* A nice professional blue */
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-  }
-
-  .submit-btn:hover {
-    background-color: #1d4ed8;
-  }
+}
 
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
@@ -654,32 +713,68 @@ Actively involved in institutional digital initiatives and academic resource man
 </section>
 
 <section id="contact">
-  <h2 class="section-title">Contact</h2>
-  
-  <div class="grid">
-    <div class="card"><i class="fa-solid fa-phone"></i> 7760144157</div>
-    <div class="card"><i class="fa-solid fa-envelope"></i> yashu2370@gmail.com</div>
-    <div class="card"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
-    <div class="card"><i class="fa-solid fa-language"></i> English, Kannada, Hindi, Telugu</div>
-  </div>
+  <h2 class="section-title">Get In Touch</h2>
 
-  <div class="card form-container">
-    <form action="https://formspree.io/f/mbdzzokb" method="POST">
-      
-      <input type="text" name="_gotcha" style="display:none">
+  <div class="contact-wrapper">
 
-      <div class="form-group">
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" rows="4" placeholder="How can I help you?" required></textarea>
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <div class="contact-card">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <h4>Phone</h4>
+          <p>7760144157</p>
+        </div>
       </div>
 
-      <button type="submit" class="submit-btn">Send Message</button>
-    </form>
+      <div class="contact-card">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+          <h4>Email</h4>
+          <p>yashu2370@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <h4>Location</h4>
+          <p>Bengaluru, India</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <i class="fa-solid fa-language"></i>
+        <div>
+          <h4>Languages</h4>
+          <p>English, Kannada, Hindi, Telugu</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+      <form action="https://formspree.io/f/mbdzzokb" method="POST">
+
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea name="message" rows="4" placeholder="How can I help you?" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+
+      </form>
+    </div>
+
   </div>
 </section>
 
