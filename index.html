@@ -376,7 +376,31 @@ K S School of Engineering & Management (2023 – Present)
 <div class="progress-bar" data-progress="92"></div>
 </div>
 </div>
+ <section id="stats">
+<h2 class="section-title">Professional Highlights</h2>
 
+<div class="grid">
+
+<div class="card">
+<h2 class="counter" data-target="2">0</h2>
+<p>Years Experience</p>
+</div>
+
+<div class="card">
+<h2 class="counter" data-target="6">0</h2>
+<p>Certifications</p>
+</div>
+
+<div class="card">
+<h2 class="counter" data-target="10">0</h2>
+<p>Digital Tools Used</p>
+</div>
+
+<div class="card">
+<h2 class="counter" data-target="5000">0</h2>
+<p>Library Records Managed</p>
+</div>
+  
 </div>
 </section>
 
@@ -622,6 +646,23 @@ entry.target.classList.add("show");
 sections.forEach(sec=>{
 sec.classList.add("fade-section");
 revealObserver.observe(sec);
+});
+ const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+const update=()=>{
+const target=+counter.getAttribute("data-target");
+const current=+counter.innerText;
+const increment=target/100;
+
+if(current<target){
+counter.innerText=Math.ceil(current+increment);
+setTimeout(update,20);
+}else{
+counter.innerText=target;
+}
+};
+update();
 });
  
 const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
