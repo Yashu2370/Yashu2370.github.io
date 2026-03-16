@@ -210,6 +210,16 @@ body.dark nav{background:rgba(15,23,42,0.8);}
 .hero-content{flex-direction:column;text-align:center;}
 .hero-img{margin-top:30px;}
 }
+ .hero-text a{
+color:white;
+margin-right:18px;
+transition:0.3s;
+}
+
+.hero-text a:hover{
+color:#22c55e;
+transform:scale(1.2);
+}
  
 .footer{
   text-align:center;
@@ -272,6 +282,21 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
  <button class="btn primary" onclick="window.open('For IT.pdf')">
           <i class="fa-solid fa-download"></i> Download CV
         </button>
+ <div style="margin-top:20px;font-size:22px;">
+
+<a href="https://linkedin.com" target="_blank">
+<i class="fa-brands fa-linkedin"></i>
+</a>
+
+<a href="https://github.com" target="_blank">
+<i class="fa-brands fa-github"></i>
+</a>
+
+<a href="mailto:yashu2370@gmail.com">
+<i class="fa-solid fa-envelope"></i>
+</a>
+
+</div>
 <button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
 <button class="btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
 <button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Email</button>
@@ -588,6 +613,26 @@ Actively involved in institutional digital initiatives and academic resource man
 </section>
 
 <!-- CONTACT -->
+ <div class="card">
+
+<form>
+
+<input type="text" placeholder="Your Name" required 
+style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
+
+<input type="email" placeholder="Your Email" required 
+style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
+
+<textarea placeholder="Your Message" rows="4" required
+style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;"></textarea>
+
+<br><br>
+
+<button class="btn primary">Send Message</button>
+
+</form>
+
+</div>
 <section id="contact">
 <h2 class="section-title">Contact</h2>
 <div class="grid">
