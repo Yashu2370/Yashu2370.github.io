@@ -1,758 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yashwanth K S | Professional Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashwanth K S | Professional Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
+    <style>
+        /* ===== GLOBAL ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, #ecfdf5, #f0fdf4, #dcfce7);
+            color: #064e3b;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
 
-/* ===== GLOBAL ===== */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{
-background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
-color:#064e3b;
-scroll-behavior:smooth;
-overflow-x:hidden;
-}
+        /* ===== PRELOADER ===== */
+        #preloader {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #064e3b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #22c55e;
+            border-top: 6px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-/* ===== PRELOADER ===== */
-#preloader{
-position:fixed;
-width:100%;
-height:100vh;
-background:#064e3b;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-.loader{
-width:60px;
-height:60px;
-border:6px solid #22c55e;
-border-top:6px solid transparent;
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-@keyframes spin{100%{transform:rotate(360deg);}}
+        /* ===== SCROLL PROGRESS ===== */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #16a34a, #22c55e);
+            width: 0%;
+            z-index: 2000;
+        }
 
-/* ===== SCROLL PROGRESS ===== */
-#progressBar{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:linear-gradient(90deg,#16a34a,#22c55e);
-width:0%;
-z-index:2000;
-}
+        /* ===== CURSOR GLOW ===== */
+        .cursor-glow {
+            position: fixed;
+            width: 18px;
+            height: 18px;
+            background: rgba(34,197,94,0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: 0.08s;
+            z-index: 3000;
+        }
 
-/* ===== CURSOR GLOW ===== */
-.cursor-glow{
-position:fixed;
-width:18px;
-height:18px;
-background:rgba(34,197,94,0.6);
-border-radius:50%;
-pointer-events:none;
-transform:translate(-50%,-50%);
-transition:0.08s;
-z-index:3000;
-}
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        nav ul { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; justify-content: flex-end; }
+        nav a { text-decoration: none; color: #065f46; font-weight: 500; transition: 0.3s; font-size: 14px; }
+        nav a:hover { color: #16a34a; }
 
-/* ===== NAVIGATION ===== */
-nav{
-position:fixed;
-width:100%;
-top:0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 8%;
-background:rgba(255,255,255,0.8);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-nav ul{display:flex;gap:25px;list-style:none;}
-nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;}
-nav a:hover{color:#16a34a;}
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+        .hero-slider { position: absolute; width: 100%; height: 100%; }
+        .hero-video { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+        .overlay { position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.55); }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            color: white;
+            width: 100%;
+        }
+        .hero-text h1 { font-size: 42px; }
+        .hero-text span { color: #22c55e; }
+        .hero-text p { margin-top: 15px; max-width: 550px; color: #e5e7eb; min-height: 3em; }
+        
+        .buttons { margin-top: 25px; display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn {
+            padding: 10px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .primary { background: #16a34a; color: #fff; }
+        .primary:hover { background: #15803d; transform: translateY(-3px); }
+        .outline { background: #fff; border: 2px solid #16a34a; color: #065f46; }
+        .outline:hover { background: #dcfce7; transform: translateY(-3px); }
 
-/* ===== HERO ===== */
-.hero{
-position:relative;
-height:70vh;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-}
-.hero-slider{
-position:absolute;
-width:100%;
-height:100%;
-}
-.hero-video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-}
-.overlay{
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.55);
-}
-.hero-content{
-position:relative;
-z-index:2;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 8%;
-color:white;
-width:100%;
-}
-.hero-text h1{font-size:42px;}
-.hero-text span{color:#22c55e;}
-.hero-text p{margin-top:15px;max-width:550px;color:#e5e7eb;}
-.buttons{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap;}
+        .hero-img img {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
 
-.btn{
-padding:10px 22px;
-border-radius:30px;
-cursor:pointer;
-font-size:14px;
-font-weight:500;
-border:none;
-transition:0.3s;
-}
+        /* ===== SECTIONS ===== */
+        section { padding: 60px 8% 20px 8%; }
+        .section-title { font-size: 28px; margin-bottom: 25px; position: relative; }
+        .section-title::after {
+            content: "";
+            width: 80px;
+            height: 3px;
+            background: #16a34a;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
 
-.primary{background:#16a34a;color:#fff;}
-.primary:hover{background:#15803d;transform:translateY(-3px);}
+        /* ===== CARDS ===== */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-6px); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+        .timeline { border-left: 4px solid #16a34a; padding-left: 20px; }
 
-.outline{background:#fff;border:2px solid #16a34a;color:#065f46;}
-.outline:hover{background:#dcfce7;transform:translateY(-3px);}
+        /* ===== SKILLS ===== */
+        .skill { margin-bottom: 22px; }
+        .progress { height: 10px; background: #e5e7eb; border-radius: 20px; overflow: hidden; margin-top: 8px; }
+        .progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, #16a34a, #22c55e); transition: width 1.5s ease; }
 
-.hero-img img{
-width:260px;
-border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.3);
-}
+        .fade-section { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .fade-section.show { opacity: 1; transform: translateY(0); }
 
-/* ===== SECTIONS ===== */
-section{padding:20px 8%;}
-.section-title{font-size:28px;margin-bottom:29px;position:relative;}
+        /* ===== STATS ===== */
+        .counter { font-size: 32px; color: #16a34a; font-weight: 700; }
 
-.section-title::after{
-content:"";
-width:80px;
-height:1px;
-background:#16a34a;
-position:absolute;
-bottom:-1px;
-left:0;
-}
+        /* ===== DARK MODE ===== */
+        body.dark { background: #0f172a; color: #e2e8f0; }
+        body.dark .card { background: #1e293b; color: #fff; }
+        body.dark nav { background: rgba(15, 23, 42, 0.8); }
+        body.dark nav a { color: #cbd5e1; }
 
-/* ===== CARDS ===== */
-.card{
-background:rgba(255,255,255,0.9);
-padding:25px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-margin-bottom:15px;
-transition:0.3s;
-}
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-size: 14px;
+        }
+        .footer strong { color: #22c55e; }
 
-.card:hover{transform:translateY(-6px);}
+        /* ===== RESPONSIVE ===== */
+        @media(max-width: 900px) {
+            .hero-content { flex-direction: column-reverse; text-align: center; gap: 30px; }
+            .hero-text h1 { font-size: 32px; }
+            .hero-text p { margin: 15px auto; }
+            .buttons { justify-content: center; }
+            nav { padding: 10px 5%; }
+            nav ul { display: none; } /* Simplified for mobile */
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:20px;
-}
+        #topBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 12px;
+            border: none;
+            border-radius: 50%;
+            background: #16a34a;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+            z-index: 2000;
+        }
 
-.timeline{border-left:4px solid #16a34a;padding-left:20px;}
-
-/* ===== SKILLS ===== */
-.skill{margin-bottom:22px;}
-
-.progress{
-height:10px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progress-bar{
-height:100%;
-width:0;
-background:linear-gradient(90deg,#16a34a,#22c55e);
-transition:width 1.5s ease;
-}
-
-.fade-section{
-opacity:0;
-transform:translateY(40px);
-transition:all 0.8s ease;
-}
-
-.fade-section.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* ===== FOOTER ===== */
-footer{
-background:#065f46;
-color:#fff;
-text-align:center;
-padding:20px;
-}
-
-/* ===== DARK MODE ===== */
-body.dark{
-background:#0f172a;
-color:#e2e8f0;
-}
-
-body.dark .card{
-background:#1e293b;
-color:#fff;
-}
-
-body.dark nav{
-background:rgba(15,23,42,0.8);
-}
-
-@media(max-width:900px){
-.hero-content{flex-direction:column;text-align:center;}
-.hero-img{margin-top:30px;}
-}
-
-.hero-text a{
-color:white;
-margin-right:18px;
-transition:0.3s;
-}
-
-.hero-text a:hover{
-color:#22c55e;
-transform:scale(1.2);
-}
-
-.footer{
-text-align:center;
-padding:25px 0;
-background:#0f172a;
-color:#e2e8f0;
-font-size:14px;
-letter-spacing:0.5px;
-}
-
-.footer strong{
-color:#22c55e;
-}
-
-</style>
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+    </style>
 </head>
 
 <body>
- <button id="topBtn"
-style="position:fixed;bottom:30px;right:30px;padding:12px;border:none;border-radius:50%;background:#16a34a;color:white;font-size:18px;cursor:pointer;display:none;z-index:2000;">
-<i class="fa-solid fa-arrow-up"></i>
-</button>
-<div id="preloader"><div class="loader"></div></div>
-<div id="progressBar"></div>
-<div class="cursor-glow"></div>
-
-<nav>
- <button onclick="document.body.classList.toggle('dark')" 
-style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;background:#16a34a;color:white;cursor:pointer;">
-🌙
-</button>
-<h2>Yashwanth</h2>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#experience">Experience</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#courses">Courses</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#achievements">Achievements</a></li>
-<li><a href="#workshops">Workshops</a></li>
-<li><a href="#memberships">Memberships</a></li>
-</ul>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-<div class="hero-slider">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="1.mp4" type="video/mp4">
-  </video>
-</div>
-<div class="overlay"></div>
-<div class="hero-content">
-<div class="hero-text">
-<h1>Hello, I'm <span>Yashwanth K S</span></h1>
-<p></p>
-<div class="buttons">
- <button class="btn primary" onclick="window.open('For IT.pdf')">
-          <i class="fa-solid fa-download"></i> Download CV
-        </button>
- <div style="margin-top:20px;font-size:22px;">
-
-<a href="https://linkedin.com" target="_blank">
-<i class="fa-brands fa-linkedin"></i>
-</a>
-
-<a href="https://github.com" target="_blank">
-<i class="fa-brands fa-github"></i>
-</a>
-
-<a href="mailto:yashu2370@gmail.com">
-<i class="fa-solid fa-envelope"></i>
-</a>
-
-</div>
-<button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
-<button class="btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
-<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Email</button>
-</div>
-</div>
-<div class="hero-img">
-<img src="profile.jpg">
-</div>
-</div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-<h2 class="section-title">Career Objective</h2>
-<div class="card">
-Dedicated Library & Information Science professional with expertise in Koha LMS, Libsoft, DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation. Aspiring to transition into IT roles where I can apply database management, system administration, and analytical skills to build optimized digital systems and data-driven applications.
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-<h2 class="section-title">Employment</h2>
-<div class="card timeline">
-<strong>Assistant Librarian</strong><br>
-K S School of Engineering & Management (2023 – Present)
-<ul>
-<li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
-<li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
-<li>Manage and optimize OPAC systems for efficient information retrieval</li>
-<li>Maintain and support DELNET digital access systems and electronic resource integration</li>
-<li>Conduct technical user training sessions on LMS, digital repositories, and information systems</li>
-<li>Support data organization, documentation, and workflow optimization using digital tools</li>
-</ul>
-</div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-<h2 class="section-title">💻 Technical Skills</h2>
-<div class="card">
-
-<div class="skill">
-<p><i class="fa-solid fa-database"></i> 
-<strong>Library & Information Systems:</strong> Koha • Libsoft • NewGenLib</p>
-<div class="progress">
-<div class="progress-bar" data-progress="90"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-cloud"></i> 
-<strong>Digital Repository Management:</strong> DSpace • EPrints • Greenstone</p>
-<div class="progress">
-<div class="progress-bar" data-progress="85"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-code"></i> 
-<strong>Web Development:</strong> HTML • CSS</p>
-<div class="progress">
-<div class="progress-bar" data-progress="80"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-laptop-code"></i> 
-<strong>Programming:</strong> Python • Java</p>
-<div class="progress">
-<div class="progress-bar" data-progress="75"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-chart-line"></i> 
-<strong>Database & Reporting:</strong> SQL Queries • SQL Reporting • Usage Analytics</p>
-<div class="progress">
-<div class="progress-bar" data-progress="88"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-globe"></i> 
-<strong>Content Management Systems:</strong> Drupal • Joomla</p>
-<div class="progress">
-<div class="progress-bar" data-progress="78"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-folder-open"></i> 
-<strong>Collaboration & Documentation Tools:</strong> SharePoint • Digital Content Management</p>
-<div class="progress">
-<div class="progress-bar" data-progress="85"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-book"></i> 
-<strong>Reference Management Tools:</strong> Zotero • Mendeley • EndNote</p>
-<div class="progress">
-<div class="progress-bar" data-progress="92"></div>
-</div>
-</div>
- <section id="stats">
-<h2 class="section-title">Professional Highlights</h2>
-
-<div class="grid">
-
-<div class="card">
-<h2 class="counter" data-target="2">0</h2>
-<p>Years Experience</p>
-</div>
-
-<div class="card">
-<h2 class="counter" data-target="6">0</h2>
-<p>Certifications</p>
-</div>
-
-<div class="card">
-<h2 class="counter" data-target="10">0</h2>
-<p>Digital Tools Used</p>
-</div>
-
-<div class="card">
-<h2 class="counter" data-target="5000">0</h2>
-<p>Library Records Managed</p>
-</div>
-  
-</div>
-</section>
-
-<!-- COURSES -->
-<section id="courses">
-<h2 class="section-title">Certifications & Courses</h2>
-
-<div class="card">
-<strong>O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</strong><br><br>
-<button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-download"></i> Programming & Problem Solving through Python</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-download"></i> Internet of Things and its Application</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-download"></i> Web Designing & Publishing</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-download"></i> IT Tools and Network Basics</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-download"></i> Course on Computer Concepts</button>
-</div>
-
-<div class="card">
-<strong>Science Communication: Research Productivity and Data Analytics using
-Open Source Software – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
-</div>
-
-<div class="card">
-<strong>Advanced R Programming for Data Analytics in Business – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
-</div>
-
-<div class="card">
-<strong>IT Applications in Libraries – NPTEL</strong><br><br>
-<span style="color:#4CAF50; font-weight:500;">
-<i class="fa-solid fa-circle-check"></i> Completed (Certificate not available)
-</span>
-</div>
- 
- <div class="card">
-<strong>Training Webinar: How to Navigate the New Emerald Insight Platform</strong><br><br>
-<button class="btn outline" onclick="window.open('Training Webinar.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
-</div>
-
-</section>
-  <!-- EDUCATION -->
-<section id="education">
-<h2 class="section-title">Education</h2>
-<div class="card">
-
-<h3>Master of Library & Information Science (M.L.I.Sc)</h3>
-<p>Bangalore University | 2022</p>
-
-<br>
-
-<h3>Bachelor of Arts (B.A.)</h3>
-<p>Belture Government College | 2020</p>
-
-</div>
-</section>
-
-
-<!-- DIGITAL INITIATIVES & PROJECTS -->
-<section id="projects">
-<h2 class="section-title">Digital Initiatives & Projects</h2>
-<div class="card">
-
-<ul>
-
-<li><strong>Koha Library Management System Implementation:</strong> 
-Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.</li>
-
-<br>
-
-<li><strong>Library Automation & Workflow Optimization:</strong> 
-Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.</li>
-
-<br>
-
-<li><strong>Institutional Repository Management:</strong> 
-Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.</li>
-
-<br>
-
-<li><strong>SQL-Based Data Analytics & Reporting:</strong> 
-Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.</li>
-
-<br>
-
-<li><strong>Digital Resource Integration:</strong> 
-Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.</li>
-
-<br>
-
-<li><strong>SharePoint & Digital Documentation Management:</strong> 
-Handled structured document storage, internal resource sharing, and workflow documentation using Microsoft SharePoint.</li>
-
-</ul>
-
-</div>
-</section>
-
-
-<!-- KEY ACHIEVEMENTS -->
-<section id="achievements">
-<h2 class="section-title">Key Achievements</h2>
-<div class="card">
-
-<ul>
-
-<li><strong>Successfully Administered Koha & Libsoft LMS:</strong> 
-Managed cataloging, circulation, user records, MARC customization, and troubleshooting to ensure smooth library automation.</li>
-
-<br>
-
-<li><strong>Generated SQL-Based Analytical Reports:</strong> 
-Prepared circulation statistics, usage trends, and monthly/annual analytics reports for data-driven decision making.</li>
-
-<br>
-
-<li><strong>Maintained Digital Repository & E-Resources:</strong> 
-Managed DSpace repository, DELNET services (ILL & document delivery), and digital resource access systems.</li>
-
-<br>
-
-<li><strong>Conducted Technical Training Sessions:</strong> 
-Delivered orientation programs on OPAC, digital databases, citation management tools (Zotero, Mendeley, EndNote), and research support tools.</li>
-
-<br>
-
-<li><strong>Managed SharePoint Documentation:</strong> 
-Handled structured document storage, internal resource sharing, and policy documentation using Microsoft SharePoint.</li>
-
-</ul>
-
-</div>
-</section>
-
-
-<!-- WORKSHOPS & PROFESSIONAL DEVELOPMENT -->
-<section id="workshops">
-<h2 class="section-title">Workshops & Professional Development</h2>
-
-<div class="card">
-<ul>
-
-<li><strong>NPTEL Online Certifications:</strong> 
-Completed professional courses in Science Communication & Data Analytics, Advanced R Programming, and IT Applications in Libraries.</li>
-
-<br>
-
-<li><strong>Library Automation & Digital Repository Training:</strong> 
-Participated in webinars and technical sessions focused on Koha LMS, DSpace repositories, and digital library tools.</li>
-
-<br>
-
-<li><strong>Research & Citation Tools Training:</strong> 
-Engaged in training programs related to Zotero, Mendeley, EndNote, and academic productivity tools.</li>
-
-</ul>
-</div>
-
-</section>
-
-
-
-<!-- PROFESSIONAL MEMBERSHIPS & DIGITAL NETWORKS -->
-<section id="memberships">
-<h2 class="section-title">Professional Memberships & Digital Networks</h2>
-
-<div class="card">
-<ul>
-
-<li><strong>DELNET (Developing Library Network):</strong> 
-Managed inter-library loan (ILL), document delivery, and academic resource access services.</li>
-
-<br>
-
-<li><strong>N-LIST / INFLIBNET Coordination Support:</strong> 
-Supported access to e-resources and digital academic databases for institutional users.</li>
-
-<br>
-
-<li><strong>Academic & Digital Library Professional Engagement:</strong> 
-Actively involved in institutional digital initiatives and academic resource management activities.</li>
-
-</ul>
-</div>
-
-</section>
-
-<!-- CONTACT -->
- <div class="card">
-
-<form>
-
-<input type="text" placeholder="Your Name" required 
-style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
-
-<input type="email" placeholder="Your Email" required 
-style="width:100%;padding:10px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
-
-<textarea placeholder="Your Message" rows="4" required
-style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;"></textarea>
-
-<br><br>
-
-<button class="btn primary">Send Message</button>
-
-</form>
-
-</div>
-<section id="contact">
-<h2 class="section-title">Contact</h2>
-<div class="grid">
-<div class="card"><i class="fa-solid fa-phone"></i> 7760144157</div>
-<div class="card"><i class="fa-solid fa-envelope"></i> yashu2370@gmail.com</div>
-<div class="card"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
-<div class="card"><i class="fa-solid fa-language"></i> English, Kannada, Hindi, Telugu</div>
-</div>
-</section>
-
-<footer class="footer">
-  <p>© 2026 <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
-  <p>Library & Information Science Professional | Academic Digital Transformation Specialist</p>
-</footer>
-
-<script>
-
-const preloader=document.getElementById("preloader");
-const progressBar=document.getElementById("progressBar");
-
-window.addEventListener("load",()=>{preloader.style.display="none";});
-
-window.addEventListener("scroll",()=>{
-let winScroll=document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-progressBar.style.width=(winScroll/height)*100+"%";
-});
-
-document.addEventListener("mousemove",(e)=>{
-document.querySelector(".cursor-glow").style.left=e.pageX+"px";
-document.querySelector(".cursor-glow").style.top=e.pageY+"px";
-});
- const topBtn=document.getElementById("topBtn");
-
-window.addEventListener("scroll",()=>{
-if(document.documentElement.scrollTop>300){
-topBtn.style.display="block";
-}else{
-topBtn.style.display="none";
-}
-});
-
-topBtn.onclick=()=>{
-window.scrollTo({top:0,behavior:"smooth"});
-};
- const sections=document.querySelectorAll("section");
-
-const revealObserver=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
-});
-
-sections.forEach(sec=>{
-sec.classList.add("fade-section");
-revealObserver.observe(sec);
-});
- const counters=document.querySelectorAll(".counter");
-
-counters.forEach(counter=>{
-const update=()=>{
-const target=+counter.getAttribute("data-target");
-const current=+counter.innerText;
-const increment=target/100;
-
-if(current<target){
-counter.innerText=Math.ceil(current+increment);
-setTimeout(update,20);
-}else{
-counter.innerText=target;
-}
-};
-update();
-});
- 
-const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-const typing=document.querySelector(".hero-text p");
-let i=0;
-function type(){
-if(i<text.length){typing.innerHTML+=text.charAt(i);i++;setTimeout(type,20);}
-}
-type();
-
-const bars=document.querySelectorAll(".progress-bar");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.style.width=entry.target.dataset.progress+"%";
-}
-});
-});
-bars.forEach(bar=>observer.observe(bar));
-
-</script>
-
+    <button id="topBtn"><i class="fa-solid fa-arrow-up"></i></button>
+    <div id="preloader"><div class="loader"></div></div>
+    <div id="progressBar"></div>
+    <div class="cursor-glow"></div>
+
+    <nav>
+        <div style="display: flex; align-items: center;">
+            <h2>Yashwanth</h2>
+            <button onclick="document.body.classList.toggle('dark')" style="margin-left:20px; padding:6px 14px; border:none; border-radius:20px; background:#16a34a; color:white; cursor:pointer;">🌙</button>
+        </div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-slider">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hello, I'm <span>Yashwanth K S</span></h1>
+                <p id="typing-text"></p>
+                <div class="buttons">
+                    <button class="btn primary" onclick="window.open('For IT.pdf')">
+                        <i class="fa-solid fa-download"></i> Download CV
+                    </button>
+                    <button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
+                    <button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Email</button>
+                </div>
+                <div style="margin-top:25px; font-size:24px; display: flex; gap: 20px;">
+                    <a href="https://linkedin.com" target="_blank" style="color:white;"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com" target="_blank" style="color:white;"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:yashu2370@gmail.com" style="color:white;"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <img src="profile.jpg" alt="Yashwanth K S">
+            </div>
+        </div>
+    </div>
+
+    <section id="about">
+        <h2 class="section-title">Career Objective</h2>
+        <div class="card">
+            Dedicated Library & Information Science professional with expertise in Koha LMS, Libsoft, DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation. Aspiring to transition into IT roles where I can apply database management, system administration, and analytical skills to build optimized digital systems and data-driven applications.
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Employment</h2>
+        <div class="card timeline">
+            <strong>Assistant Librarian</strong><br>
+            K S School of Engineering & Management (2023 – Present)
+            <ul style="margin-top:10px; padding-left:20px;">
+                <li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
+                <li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
+                <li>Manage and optimize OPAC systems for efficient information retrieval</li>
+                <li>Maintain and support DELNET digital access systems and electronic resource integration</li>
+                <li>Conduct technical user training sessions on LMS, digital repositories, and information systems</li>
+                <li>Support data organization, documentation, and workflow optimization using digital tools</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">💻 Technical Skills</h2>
+        <div class="card">
+            <div class="grid">
+                <div class="skill">
+                    <p><i class="fa-solid fa-database"></i> <strong>Library Systems:</strong> Koha • Libsoft</p>
+                    <div class="progress"><div class="progress-bar" data-progress="90"></div></div>
+                </div>
+                <div class="skill">
+                    <p><i class="fa-solid fa-cloud"></i> <strong>Repositories:</strong> DSpace • EPrints</p>
+                    <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
+                </div>
+                <div class="skill">
+                    <p><i class="fa-solid fa-code"></i> <strong>Web Dev:</strong> HTML • CSS</p>
+                    <div class="progress"><div class="progress-bar" data-progress="80"></div></div>
+                </div>
+                <div class="skill">
+                    <p><i class="fa-solid fa-laptop-code"></i> <strong>Programming:</strong> Python • Java</p>
+                    <div class="progress"><div class="progress-bar" data-progress="75"></div></div>
+                </div>
+                <div class="skill">
+                    <p><i class="fa-solid fa-chart-line"></i> <strong>Database:</strong> SQL • Analytics</p>
+                    <div class="progress"><div class="progress-bar" data-progress="88"></div></div>
+                </div>
+                <div class="skill">
+                    <p><i class="fa-solid fa-folder-open"></i> <strong>Tools:</strong> SharePoint • Zotero</p>
+                    <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats">
+        <h2 class="section-title">Professional Highlights</h2>
+        <div class="grid">
+            <div class="card" style="text-align:center;">
+                <h2 class="counter" data-target="2">0</h2>
+                <p>Years Experience</p>
+            </div>
+            <div class="card" style="text-align:center;">
+                <h2 class="counter" data-target="6">0</h2>
+                <p>Certifications</p>
+            </div>
+            <div class="card" style="text-align:center;">
+                <h2 class="counter" data-target="10">0</h2>
+                <p>Digital Tools Used</p>
+            </div>
+            <div class="card" style="text-align:center;">
+                <h2 class="counter" data-target="5000">0</h2>
+                <p>Records Managed</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses">
+        <h2 class="section-title">Certifications & Courses</h2>
+        <div class="card">
+            <strong>O'Level Computer Certification - NIELIT</strong><br><br>
+            <div class="buttons">
+                <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">Python Programming</button>
+                <button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')">IoT Applications</button>
+                <button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')">Web Designing</button>
+                <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')">IT Tools & Networks</button>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <strong>Science Communication & Data Analytics – NPTEL</strong><br><br>
+                <button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')">View Certificate</button>
+            </div>
+            <div class="card">
+                <strong>Advanced R Programming – NPTEL</strong><br><br>
+                <button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')">View Certificate</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="card">
+            <h3>Master of Library & Information Science (M.L.I.Sc)</h3>
+            <p>Bangalore University | 2022</p>
+            <hr style="margin:15px 0; opacity:0.1;">
+            <h3>Bachelor of Arts (B.A.)</h3>
+            <p>Belture Government College | 2020</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Digital Initiatives & Projects</h2>
+        <div class="card">
+            <ul style="padding-left:20px;">
+                <li style="margin-bottom:15px;"><strong>Koha LMS Implementation:</strong> Administered cataloging, circulation, user management, and MARC customization.</li>
+                <li style="margin-bottom:15px;"><strong>SQL-Based Data Analytics:</strong> Generated analytics reports to monitor circulation trends and resource utilization.</li>
+                <li style="margin-bottom:15px;"><strong>Institutional Repository:</strong> Maintained DSpace for digital content organization and metadata management.</li>
+                <li style="margin-bottom:15px;"><strong>SharePoint Management:</strong> Handled structured document storage and internal resource sharing.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <h2 class="section-title">Key Achievements</h2>
+        <div class="card">
+            <ul style="padding-left:20px;">
+                <li style="margin-bottom:10px;">Successfully Administered Koha & Libsoft LMS automation.</li>
+                <li style="margin-bottom:10px;">Conducted technical training on Citation tools (Zotero, Mendeley).</li>
+                <li style="margin-bottom:10px;">Managed DELNET services for inter-library loans and resource retrieval.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="grid">
+            <div class="card" style="grid-column: span 2;">
+                <form action="#">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="4" required></textarea>
+                    <button type="submit" class="btn primary">Send Message</button>
+                </form>
+            </div>
+            <div class="card">
+                <p><i class="fa-solid fa-phone"></i> 7760144157</p>
+                <p style="margin-top:10px;"><i class="fa-solid fa-envelope"></i> yashu2370@gmail.com</p>
+                <p style="margin-top:10px;"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</p>
+                <p style="margin-top:10px;"><i class="fa-solid fa-language"></i> Eng, Kan, Hin, Tel</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
+        <p style="margin-top:5px; opacity:0.8;">Library & Information Science Professional | Academic Digital Transformation Specialist</p>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener("load", () => {
+            document.getElementById("preloader").style.display = "none";
+        });
+
+        // Progress Bar
+        window.addEventListener("scroll", () => {
+            let winScroll = document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById("progressBar").style.width = (winScroll / height) * 100 + "%";
+            
+            // Top Button Visibility
+            if (winScroll > 300) {
+                document.getElementById("topBtn").style.display = "block";
+            } else {
+                document.getElementById("topBtn").style.display = "none";
+            }
+        });
+
+        // Back to Top
+        document.getElementById("topBtn").onclick = () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
+        // Cursor Glow
+        document.addEventListener("mousemove", (e) => {
+            const glow = document.querySelector(".cursor-glow");
+            glow.style.left = e.clientX + "px";
+            glow.style.top = e.clientY + "px";
+        });
+
+        // Typing Effect
+        const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+        const typingElement = document.getElementById("typing-text");
+        let charIndex = 0;
+        function type() {
+            if (charIndex < text.length) {
+                typingElement.innerHTML += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 30);
+            }
+        }
+        type();
+
+        // Skill Bars & Fade Animations
+        const observerOptions = { threshold: 0.2 };
+        
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    
+                    // Trigger skill bars if the section is the skill section
+                    if(entry.target.id === 'skills') {
+                        const bars = entry.target.querySelectorAll(".progress-bar");
+                        bars.forEach(bar => bar.style.width = bar.dataset.progress + "%");
+                    }
+
+                    // Trigger counters if the section is stats
+                    if(entry.target.id === 'stats') {
+                        const counters = entry.target.querySelectorAll(".counter");
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute("data-target");
+                            const update = () => {
+                                const current = +counter.innerText;
+                                const inc = target / 50;
+                                if (current < target) {
+                                    counter.innerText = Math.ceil(current + inc);
+                                    setTimeout(update, 30);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            update();
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll("section").forEach(sec => {
+            sec.classList.add("fade-section");
+            revealObserver.observe(sec);
+        });
+    </script>
 </body>
 </html>
