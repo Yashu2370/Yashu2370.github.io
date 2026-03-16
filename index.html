@@ -11,25 +11,27 @@
 <style>
 
  /* Styling to match your existing 'card' design */
- #contact{
-  padding:80px 20px;
+/* ===== CONTACT SECTION ===== */
+
+#contact{
+  padding:60px 8%;
 }
 
-.section-title{
+#contact .section-title{
   text-align:center;
-  font-size:32px;
-  margin-bottom:50px;
+  margin-bottom:40px;
 }
+
+/* Layout */
 
 .contact-wrapper{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:40px;
-  max-width:1000px;
-  margin:auto;
+  gap:30px;
+  align-items:start;
 }
 
-/* Contact Cards */
+/* Contact Info Cards */
 
 .contact-info{
   display:grid;
@@ -40,54 +42,58 @@
   display:flex;
   align-items:center;
   gap:15px;
-  background:#fff;
+  background:rgba(255,255,255,0.9);
   padding:20px;
-  border-radius:10px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
   transition:0.3s;
 }
 
 .contact-card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-6px);
 }
 
 .contact-card i{
   font-size:22px;
-  color:#4a6cf7;
+  color:#16a34a;
 }
 
-/* Form */
+/* Form Container */
 
 .contact-form{
-  background:#fff;
-  padding:30px;
-  border-radius:10px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  background:rgba(255,255,255,0.9);
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
+/* Form Fields */
+
 .form-group{
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .form-group label{
   display:block;
-  margin-bottom:8px;
+  margin-bottom:6px;
   font-weight:500;
 }
 
 .form-group input,
 .form-group textarea{
   width:100%;
-  padding:12px;
-  border-radius:6px;
-  border:1px solid #ccc;
+  padding:10px;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
   font-size:14px;
+  transition:0.3s;
 }
 
 .form-group input:focus,
 .form-group textarea:focus{
   outline:none;
-  border-color:#4a6cf7;
+  border-color:#16a34a;
+  box-shadow:0 0 0 2px rgba(34,197,94,0.2);
 }
 
 /* Button */
@@ -96,16 +102,18 @@
   width:100%;
   padding:12px;
   border:none;
-  background:#4a6cf7;
-  color:#fff;
-  font-size:16px;
-  border-radius:6px;
+  border-radius:25px;
+  background:#16a34a;
+  color:white;
+  font-size:15px;
+  font-weight:500;
   cursor:pointer;
   transition:0.3s;
 }
 
 .submit-btn:hover{
-  background:#324edc;
+  background:#15803d;
+  transform:translateY(-2px);
 }
 
 /* Responsive */
@@ -713,46 +721,32 @@ Actively involved in institutional digital initiatives and academic resource man
 </section>
 
 <section id="contact">
-  <h2 class="section-title">Get In Touch</h2>
+  <h2 class="section-title">Contact</h2>
 
   <div class="contact-wrapper">
 
-    <!-- Contact Info -->
     <div class="contact-info">
       <div class="contact-card">
         <i class="fa-solid fa-phone"></i>
-        <div>
-          <h4>Phone</h4>
-          <p>7760144157</p>
-        </div>
+        <p>7760144157</p>
       </div>
 
       <div class="contact-card">
         <i class="fa-solid fa-envelope"></i>
-        <div>
-          <h4>Email</h4>
-          <p>yashu2370@gmail.com</p>
-        </div>
+        <p>yashu2370@gmail.com</p>
       </div>
 
       <div class="contact-card">
         <i class="fa-solid fa-location-dot"></i>
-        <div>
-          <h4>Location</h4>
-          <p>Bengaluru, India</p>
-        </div>
+        <p>Bengaluru, India</p>
       </div>
 
       <div class="contact-card">
         <i class="fa-solid fa-language"></i>
-        <div>
-          <h4>Languages</h4>
-          <p>English, Kannada, Hindi, Telugu</p>
-        </div>
+        <p>English, Kannada, Hindi, Telugu</p>
       </div>
     </div>
 
-    <!-- Contact Form -->
     <div class="contact-form">
       <form action="https://formspree.io/f/mbdzzokb" method="POST">
 
@@ -760,23 +754,23 @@ Actively involved in institutional digital initiatives and academic resource man
 
         <div class="form-group">
           <label>Your Email</label>
-          <input type="email" name="email" placeholder="Enter your email" required>
+          <input type="email" name="email" required>
         </div>
 
         <div class="form-group">
           <label>Your Message</label>
-          <textarea name="message" rows="4" placeholder="How can I help you?" required></textarea>
+          <textarea name="message" rows="4" required></textarea>
         </div>
 
         <button type="submit" class="submit-btn">
-          <i class="fa-solid fa-paper-plane"></i> Send Message
+          Send Message
         </button>
 
       </form>
     </div>
 
   </div>
-</section>
+</section>          
 
 <footer class="footer">
   <p>© 2026 <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
