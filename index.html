@@ -3,402 +3,324 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Yashwanth K S | Professional Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-/* =========================================
-   GLOBAL VARIABLES & RESET
-========================================= */
+/* ======================
+GLOBAL
+====================== */
+
 :root{
-  --primary:#16a34a;
-  --primary-light:#22c55e;
-  --primary-dark:#15803d;
-  --bg-gradient:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
-  --text-main:#064e3b;
-  --card-bg:rgba(255,255,255,0.9);
-  --shadow-soft:0 10px 30px rgba(0,0,0,0.05);
-  --shadow-strong:0 20px 40px rgba(0,0,0,0.3);
+--primary:#16a34a;
+--light:#22c55e;
+--dark:#065f46;
+--bg:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
 }
 
-*,
-*::before,
-*::after{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-  font-family:'Poppins',sans-serif;
-  background:var(--bg-gradient);
-  color:var(--text-main);
-  scroll-behavior:smooth;
-  overflow-x:hidden;
-  line-height:1.6;
+background:var(--bg);
+color:var(--dark);
+overflow-x:hidden;
+line-height:1.6;
+animation:fadePage 1s forwards;
+opacity:0;
 }
 
-/* =========================================
-   PRELOADER
-========================================= */
+@keyframes fadePage{
+to{opacity:1;}
+}
+
+/* ======================
+PRELOADER
+====================== */
+
 #preloader{
-  position:fixed;
-  inset:0;
-  background:#064e3b;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+position:fixed;
+inset:0;
+background:#064e3b;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
 }
 
 .loader{
-  width:60px;
-  height:60px;
-  border:6px solid var(--primary-light);
-  border-top-color:transparent;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
+width:60px;
+height:60px;
+border:6px solid #22c55e;
+border-top:6px solid transparent;
+border-radius:50%;
+animation:spin 1s linear infinite;
 }
 
 @keyframes spin{
-  to{transform:rotate(360deg);}
+to{transform:rotate(360deg);}
 }
 
-/* =========================================
-   SCROLL PROGRESS BAR
-========================================= */
+/* ======================
+PROGRESS BAR
+====================== */
+
 #progressBar{
-  position:fixed;
-  top:0;
-  left:0;
-  height:4px;
-  width:0%;
-  background:linear-gradient(90deg,var(--primary),var(--primary-light));
-  z-index:2000;
+position:fixed;
+top:0;
+left:0;
+height:4px;
+width:0%;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+z-index:2000;
 }
 
-/* =========================================
-   CURSOR GLOW
-========================================= */
+/* ======================
+CURSOR GLOW
+====================== */
+
 .cursor-glow{
-  position:fixed;
-  width:18px;
-  height:18px;
-  background:rgba(34,197,94,0.6);
-  border-radius:50%;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  transition:transform 0.08s linear;
-  z-index:3000;
-  filter:blur(1px);
+position:fixed;
+width:18px;
+height:18px;
+background:rgba(34,197,94,0.6);
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+filter:blur(1px);
+z-index:3000;
 }
 
-/* =========================================
-   NAVIGATION
-========================================= */
+/* ======================
+NAVBAR
+====================== */
+
 nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 8%;
-  backdrop-filter:blur(12px);
-  background:rgba(255,255,255,0.8);
-  border-bottom:1px solid rgba(0,0,0,0.05);
-  z-index:1000;
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 8%;
+
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(18px) saturate(180%);
+border-bottom:1px solid rgba(255,255,255,0.2);
+
+z-index:1000;
 }
 
 nav ul{
-  display:flex;
-  gap:25px;
-  list-style:none;
+display:flex;
+gap:22px;
+list-style:none;
 }
 
 nav a{
-  text-decoration:none;
-  color:#065f46;
-  font-weight:500;
-  position:relative;
-  transition:color .3s ease;
-}
-
-nav a::after{
-  content:"";
-  position:absolute;
-  bottom:-4px;
-  left:0;
-  width:0;
-  height:2px;
-  background:var(--primary);
-  transition:width .3s;
+text-decoration:none;
+color:#064e3b;
+font-weight:500;
 }
 
 nav a:hover{
-  color:var(--primary);
+color:#16a34a;
 }
 
-nav a:hover::after{
-  width:100%;
-}
+/* ======================
+HERO
+====================== */
 
-/* =========================================
-   HERO SECTION
-========================================= */
 .hero{
-  position:relative;
-  height:70vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+position:relative;
+height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
 }
 
-.hero-slider{
-  position:absolute;
-  inset:0;
-}
-
-.hero-video{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 .overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.55);
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.55);
 }
 
 .hero-content{
-  position:relative;
-  z-index:2;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 8%;
-  width:100%;
-  color:#fff;
+position:relative;
+z-index:2;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 8%;
+width:100%;
+color:white;
 }
 
 .hero-text h1{
-  font-size:42px;
-  font-weight:700;
+font-size:42px;
 }
 
 .hero-text span{
-  color:var(--primary-light);
+background:linear-gradient(90deg,#22c55e,#16a34a,#4ade80);
+background-size:200%;
+-webkit-background-clip:text;
+color:transparent;
+animation:gradientMove 4s infinite linear;
+}
+
+@keyframes gradientMove{
+0%{background-position:0%}
+100%{background-position:200%}
 }
 
 .hero-text p{
-  margin-top:15px;
-  max-width:550px;
-  color:#e5e7eb;
+margin-top:15px;
+max-width:520px;
 }
 
-.buttons{
-  margin-top:25px;
-  display:flex;
-  gap:15px;
-  flex-wrap:wrap;
+.hero-img img{
+width:260px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* =========================================
-   BUTTONS
-========================================= */
+/* ======================
+BUTTONS
+====================== */
+
 .btn{
-  padding:10px 22px;
-  border-radius:30px;
-  cursor:pointer;
-  font-size:14px;
-  font-weight:500;
-  border:none;
-  transition:all .3s ease;
+padding:10px 22px;
+border-radius:30px;
+border:none;
+cursor:pointer;
+font-size:14px;
+transition:.3s;
 }
 
 .primary{
-  background:var(--primary);
-  color:#fff;
-}
-
-.primary:hover{
-  background:var(--primary-dark);
-  transform:translateY(-3px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+background:#16a34a;
+color:white;
 }
 
 .outline{
-  background:#fff;
-  border:2px solid var(--primary);
-  color:#065f46;
+background:white;
+border:2px solid #16a34a;
+color:#065f46;
 }
 
-.outline:hover{
-  background:#dcfce7;
-  transform:translateY(-3px);
+.btn:hover{
+transform:translateY(-4px);
 }
 
-/* =========================================
-   HERO IMAGE
-========================================= */
-.hero-img img{
-  width:260px;
-  border-radius:20px;
-  box-shadow:var(--shadow-strong);
-}
+/* ======================
+SECTIONS
+====================== */
 
-/* =========================================
-   SECTIONS
-========================================= */
 section{
-  padding:60px 8%;
+padding:70px 8%;
 }
 
 .section-title{
-  font-size:28px;
-  margin-bottom:29px;
-  position:relative;
+font-size:28px;
+margin-bottom:25px;
 }
 
-.section-title::after{
-  content:"";
-  width:80px;
-  height:3px;
-  background:var(--primary);
-  position:absolute;
-  bottom:-8px;
-  left:0;
-  border-radius:5px;
-}
-
-/* =========================================
-   CARDS
-========================================= */
 .card{
-  background:var(--card-bg);
-  padding:25px;
-  border-radius:18px;
-  box-shadow:var(--shadow-soft);
-  margin-bottom:15px;
-  transition:all .3s ease;
+background:white;
+padding:25px;
+border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+transition:.4s;
 }
-
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 40px rgba(0,0,0,0.08);
-}
-
-/* GRID SYSTEM */
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
 }
 
-.timeline{
-  border-left:4px solid var(--primary);
-  padding-left:20px;
-}
-
-/* =========================================
-   SKILLS
-========================================= */
-.skill{
-  margin-bottom:22px;
-}
+/* ======================
+SKILLS
+====================== */
 
 .progress{
-  height:10px;
-  background:#e5e7eb;
-  border-radius:20px;
-  overflow:hidden;
+height:10px;
+background:#e5e7eb;
+border-radius:20px;
+overflow:hidden;
 }
 
 .progress-bar{
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,var(--primary),var(--primary-light));
-  transition:width 1.5s ease;
+height:100%;
+width:0;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+transition:width 1.5s ease;
 }
 
-/* =========================================
-   SCROLL ANIMATION
-========================================= */
+/* ======================
+COUNTERS
+====================== */
+
+.counter{
+font-size:32px;
+font-weight:600;
+color:#16a34a;
+}
+
+/* ======================
+SCROLL REVEAL
+====================== */
+
 .fade-section{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all .8s ease;
+opacity:0;
+transform:translateY(40px);
+transition:all .8s;
 }
 
 .fade-section.show{
-  opacity:1;
-  transform:translateY(0);
+opacity:1;
+transform:translateY(0);
 }
 
-/* =========================================
-   FOOTER
-========================================= */
+/* ======================
+FOOTER
+====================== */
+
 footer{
-  background:#065f46;
-  color:#fff;
-  text-align:center;
-  padding:20px;
+background:#065f46;
+color:white;
+text-align:center;
+padding:30px;
 }
 
-.footer{
-  text-align:center;
-  padding:25px 0;
-  background:#0f172a;
-  color:#e2e8f0;
-  font-size:14px;
-  letter-spacing:.5px;
-}
-
-.footer strong{
-  color:var(--primary-light);
-}
-
-/* =========================================
-   DARK MODE
-========================================= */
-body.dark{
-  background:#0f172a;
-  color:#e2e8f0;
-}
-
-body.dark .card{
-  background:#1e293b;
-  color:#fff;
-}
-
-body.dark nav{
-  background:rgba(15,23,42,0.8);
-}
-
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
 @media(max-width:900px){
 
-  .hero-content{
-    flex-direction:column;
-    text-align:center;
-  }
+.hero-content{
+flex-direction:column;
+text-align:center;
+}
 
-  .hero-img{
-    margin-top:30px;
-  }
-
-  .hero-text h1{
-    font-size:34px;
-  }
+.hero-img{
+margin-top:25px;
+}
 
 }
 
@@ -406,474 +328,337 @@ body.dark nav{
 </head>
 
 <body>
- <button id="topBtn"
-style="position:fixed;bottom:30px;right:30px;padding:12px;border:none;border-radius:50%;background:#16a34a;color:white;font-size:18px;cursor:pointer;display:none;z-index:2000;">
-<i class="fa-solid fa-arrow-up"></i>
-</button>
+
 <div id="preloader"><div class="loader"></div></div>
 <div id="progressBar"></div>
 <div class="cursor-glow"></div>
 
-<nav>
- <button onclick="document.body.classList.toggle('dark')" 
-style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;background:#16a34a;color:white;cursor:pointer;">
-🌙
+<button id="topBtn"
+style="position:fixed;bottom:30px;right:30px;background:#16a34a;color:white;border:none;padding:12px;border-radius:50%;display:none;">
+<i class="fa-solid fa-arrow-up"></i>
 </button>
+
+<nav>
+
 <h2>Yashwanth</h2>
+
 <ul>
 <li><a href="#about">About</a></li>
-<li><a href="#experience">Experience</a></li>
 <li><a href="#skills">Skills</a></li>
-<li><a href="#courses">Courses</a></li>
+<li><a href="#stats">Stats</a></li>
 <li><a href="#contact">Contact</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#achievements">Achievements</a></li>
-<li><a href="#workshops">Workshops</a></li>
-<li><a href="#memberships">Memberships</a></li>
 </ul>
+
+<button onclick="document.body.classList.toggle('dark')" class="btn primary">
+🌙
+</button>
+
 </nav>
 
 <!-- HERO -->
+
 <div class="hero">
-<div class="hero-slider">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="1.mp4" type="video/mp4">
-  </video>
-</div>
+
+<video autoplay muted loop>
+<source src="1.mp4" type="video/mp4">
+</video>
+
 <div class="overlay"></div>
+
 <div class="hero-content">
+
 <div class="hero-text">
-<h1>Hello, I'm <span>Yashwanth K S</span></h1>
+
+<h1>Hello I'm <span>Yashwanth K S</span></h1>
+
 <p></p>
-<div class="buttons">
- <button class="btn primary" onclick="window.open('For IT.pdf')">
-          <i class="fa-solid fa-download"></i> Download CV
-        </button>
-<button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
-<button class="btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
-<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Email</button>
+
+<div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+
+<button class="btn primary">Download CV</button>
+<button class="btn outline">Contact</button>
+
 </div>
+
 </div>
+
 <div class="hero-img">
 <img src="profile.jpg">
 </div>
+
 </div>
 </div>
 
 <!-- ABOUT -->
-<section id="about">
-<h2 class="section-title">Career Objective</h2>
-<div class="card">
-Dedicated Library & Information Science professional with expertise in Koha LMS, Libsoft, DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation. Aspiring to transition into IT roles where I can apply database management, system administration, and analytical skills to build optimized digital systems and data-driven applications.
-</div>
-</section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-<h2 class="section-title">Employment</h2>
-<div class="card timeline">
-<strong>Assistant Librarian</strong><br>
-K S School of Engineering & Management (2023 – Present)
-<ul>
-<li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
-<li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
-<li>Manage and optimize OPAC systems for efficient information retrieval</li>
-<li>Maintain and support DELNET digital access systems and electronic resource integration</li>
-<li>Conduct technical user training sessions on LMS, digital repositories, and information systems</li>
-<li>Support data organization, documentation, and workflow optimization using digital tools</li>
-</ul>
+<section id="about">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="card">
+
+Library & Information Science professional specializing in digital library systems, automation tools, and SQL-based reporting.
+
 </div>
+
 </section>
 
 <!-- SKILLS -->
+
 <section id="skills">
-<h2 class="section-title">💻 Technical Skills</h2>
-<div class="card">
 
-<div class="skill">
-<p><i class="fa-solid fa-database"></i> 
-<strong>Library & Information Systems:</strong> Koha • Libsoft • NewGenLib</p>
-<div class="progress">
-<div class="progress-bar" data-progress="90"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-cloud"></i> 
-<strong>Digital Repository Management:</strong> DSpace • EPrints • Greenstone</p>
-<div class="progress">
-<div class="progress-bar" data-progress="85"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-code"></i> 
-<strong>Web Development:</strong> HTML • CSS</p>
-<div class="progress">
-<div class="progress-bar" data-progress="80"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-laptop-code"></i> 
-<strong>Programming:</strong> Python • Java</p>
-<div class="progress">
-<div class="progress-bar" data-progress="75"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-chart-line"></i> 
-<strong>Database & Reporting:</strong> SQL Queries • SQL Reporting • Usage Analytics</p>
-<div class="progress">
-<div class="progress-bar" data-progress="88"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-globe"></i> 
-<strong>Content Management Systems:</strong> Drupal • Joomla</p>
-<div class="progress">
-<div class="progress-bar" data-progress="78"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-folder-open"></i> 
-<strong>Collaboration & Documentation Tools:</strong> SharePoint • Digital Content Management</p>
-<div class="progress">
-<div class="progress-bar" data-progress="85"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-book"></i> 
-<strong>Reference Management Tools:</strong> Zotero • Mendeley • EndNote</p>
-<div class="progress">
-<div class="progress-bar" data-progress="92"></div>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- COURSES -->
-<section id="courses">
-<h2 class="section-title">Certifications & Courses</h2>
+<h2 class="section-title">Skills</h2>
 
 <div class="card">
-<strong>O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</strong><br><br>
-<button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-download"></i> Programming & Problem Solving through Python</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-download"></i> Internet of Things and its Application</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-download"></i> Web Designing & Publishing</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-download"></i> IT Tools and Network Basics</button>
-<button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-download"></i> Course on Computer Concepts</button>
-</div>
 
-<div class="card">
-<strong>Science Communication: Research Productivity and Data Analytics using
-Open Source Software – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
-</div>
-
-<div class="card">
-<strong>Advanced R Programming for Data Analytics in Business – NPTEL</strong><br><br>
-<button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
-</div>
-
-<div class="card">
-<strong>IT Applications in Libraries – NPTEL</strong><br><br>
-<span style="color:#4CAF50; font-weight:500;">
-<i class="fa-solid fa-circle-check"></i> Completed (Certificate not available)
-</span>
-</div>
- 
- <div class="card">
-<strong>Training Webinar: How to Navigate the New Emerald Insight Platform</strong><br><br>
-<button class="btn outline" onclick="window.open('Training Webinar.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
-</div>
-
-</section>
-  <!-- EDUCATION -->
-<section id="education">
-<h2 class="section-title">Education</h2>
-<div class="card">
-
-<h3>Master of Library & Information Science (M.L.I.Sc)</h3>
-<p>Bangalore University | 2022</p>
+<p>Koha LMS</p>
+<div class="progress"><div class="progress-bar" data-progress="90"></div></div>
 
 <br>
 
-<h3>Bachelor of Arts (B.A.)</h3>
-<p>Belture Government College | 2020</p>
-
-</div>
-</section>
-
-
-<!-- DIGITAL INITIATIVES & PROJECTS -->
-<section id="projects">
-<h2 class="section-title">Digital Initiatives & Projects</h2>
-<div class="card">
-
-<ul>
-
-<li><strong>Koha Library Management System Implementation:</strong> 
-Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.</li>
+<p>SQL Reporting</p>
+<div class="progress"><div class="progress-bar" data-progress="85"></div></div>
 
 <br>
 
-<li><strong>Library Automation & Workflow Optimization:</strong> 
-Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.</li>
+<p>Web Development</p>
+<div class="progress"><div class="progress-bar" data-progress="80"></div></div>
 
-<br>
-
-<li><strong>Institutional Repository Management:</strong> 
-Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.</li>
-
-<br>
-
-<li><strong>SQL-Based Data Analytics & Reporting:</strong> 
-Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.</li>
-
-<br>
-
-<li><strong>Digital Resource Integration:</strong> 
-Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.</li>
-
-<br>
-
-<li><strong>SharePoint & Digital Documentation Management:</strong> 
-Handled structured document storage, internal resource sharing, and workflow documentation using Microsoft SharePoint.</li>
-
-</ul>
-
-</div>
-</section>
-
-
-<!-- KEY ACHIEVEMENTS -->
-<section id="achievements">
-<h2 class="section-title">Key Achievements</h2>
-<div class="card">
-
-<ul>
-
-<li><strong>Successfully Administered Koha & Libsoft LMS:</strong> 
-Managed cataloging, circulation, user records, MARC customization, and troubleshooting to ensure smooth library automation.</li>
-
-<br>
-
-<li><strong>Generated SQL-Based Analytical Reports:</strong> 
-Prepared circulation statistics, usage trends, and monthly/annual analytics reports for data-driven decision making.</li>
-
-<br>
-
-<li><strong>Maintained Digital Repository & E-Resources:</strong> 
-Managed DSpace repository, DELNET services (ILL & document delivery), and digital resource access systems.</li>
-
-<br>
-
-<li><strong>Conducted Technical Training Sessions:</strong> 
-Delivered orientation programs on OPAC, digital databases, citation management tools (Zotero, Mendeley, EndNote), and research support tools.</li>
-
-<br>
-
-<li><strong>Managed SharePoint Documentation:</strong> 
-Handled structured document storage, internal resource sharing, and policy documentation using Microsoft SharePoint.</li>
-
-</ul>
-
-</div>
-</section>
-
-
-<!-- WORKSHOPS & PROFESSIONAL DEVELOPMENT -->
-<section id="workshops">
-<h2 class="section-title">Workshops & Professional Development</h2>
-
-<div class="card">
-<ul>
-
-<li><strong>NPTEL Online Certifications:</strong> 
-Completed professional courses in Science Communication & Data Analytics, Advanced R Programming, and IT Applications in Libraries.</li>
-
-<br>
-
-<li><strong>Library Automation & Digital Repository Training:</strong> 
-Participated in webinars and technical sessions focused on Koha LMS, DSpace repositories, and digital library tools.</li>
-
-<br>
-
-<li><strong>Research & Citation Tools Training:</strong> 
-Engaged in training programs related to Zotero, Mendeley, EndNote, and academic productivity tools.</li>
-
-</ul>
 </div>
 
 </section>
 
+<!-- COUNTER STATS -->
 
+<section id="stats">
 
-<!-- PROFESSIONAL MEMBERSHIPS & DIGITAL NETWORKS -->
-<section id="memberships">
-<h2 class="section-title">Professional Memberships & Digital Networks</h2>
+<h2 class="section-title">Achievements</h2>
+
+<div class="grid">
 
 <div class="card">
-<ul>
+<div class="counter" data-target="50">0</div>
+Projects
+</div>
 
-<li><strong>DELNET (Developing Library Network):</strong> 
-Managed inter-library loan (ILL), document delivery, and academic resource access services.</li>
+<div class="card">
+<div class="counter" data-target="20">0</div>
+Certificates
+</div>
 
-<br>
+<div class="card">
+<div class="counter" data-target="5">0</div>
+Years Experience
+</div>
 
-<li><strong>N-LIST / INFLIBNET Coordination Support:</strong> 
-Supported access to e-resources and digital academic databases for institutional users.</li>
+<div class="card">
+<div class="counter" data-target="15">0</div>
+Tools
+</div>
 
-<br>
-
-<li><strong>Academic & Digital Library Professional Engagement:</strong> 
-Actively involved in institutional digital initiatives and academic resource management activities.</li>
-
-</ul>
 </div>
 
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact">
+
 <h2 class="section-title">Contact</h2>
+
 <div class="grid">
+
 <div class="card"><i class="fa-solid fa-phone"></i> 7760144157</div>
+
 <div class="card"><i class="fa-solid fa-envelope"></i> yashu2370@gmail.com</div>
-<div class="card"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
-<div class="card"><i class="fa-solid fa-language"></i> English, Kannada, Hindi, Telugu</div>
+
+<div class="card"><i class="fa-solid fa-location-dot"></i> Bengaluru</div>
+
 </div>
+
 </section>
 
-<footer class="footer">
-  <p>© 2026 <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
-  <p>Library & Information Science Professional | Academic Digital Transformation Specialist</p>
+<footer>
+
+© 2026 Yashwanth K S
+
 </footer>
 
 <script>
 
-/* ===============================
-   ELEMENT REFERENCES
-================================ */
-const preloader = document.getElementById("preloader");
-const progressBar = document.getElementById("progressBar");
-const cursor = document.querySelector(".cursor-glow");
-const topBtn = document.getElementById("topBtn");
-const sections = document.querySelectorAll("section");
-const bars = document.querySelectorAll(".progress-bar");
-const typingText = document.querySelector(".hero-text p");
+/* PRELOADER */
 
-/* ===============================
-   PRELOADER
-================================ */
-window.addEventListener("load", () => {
-  if (preloader) preloader.style.display = "none";
+window.addEventListener("load",()=>{
+document.getElementById("preloader").style.display="none";
 });
 
-/* ===============================
-   SCROLL EVENTS
-================================ */
-window.addEventListener("scroll", () => {
+/* PROGRESS BAR */
 
-  /* Scroll Progress Bar */
-  const winScroll = document.documentElement.scrollTop;
-  const height =
-    document.documentElement.scrollHeight -
-    document.documentElement.clientHeight;
+window.addEventListener("scroll",()=>{
 
-  if (progressBar) {
-    progressBar.style.width = (winScroll / height) * 100 + "%";
-  }
+let winScroll=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
 
-  /* Scroll To Top Button */
-  if (topBtn) {
-    topBtn.style.display =
-      document.documentElement.scrollTop > 300 ? "block" : "none";
-  }
+document.getElementById("progressBar").style.width=(winScroll/height)*100+"%";
 
 });
 
-/* ===============================
-   CURSOR GLOW EFFECT
-================================ */
-document.addEventListener("mousemove", (e) => {
-  if (!cursor) return;
+/* CURSOR GLOW */
 
-  cursor.style.left = e.pageX + "px";
-  cursor.style.top = e.pageY + "px";
+document.addEventListener("mousemove",e=>{
+
+const cursor=document.querySelector(".cursor-glow");
+
+cursor.style.left=e.pageX+"px";
+cursor.style.top=e.pageY+"px";
+
 });
 
-/* ===============================
-   SCROLL TO TOP BUTTON
-================================ */
-if (topBtn) {
-  topBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
+/* TOP BUTTON */
+
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+topBtn.style.display=document.documentElement.scrollTop>300?"block":"none";
+});
+
+topBtn.onclick=()=>{
+window.scrollTo({top:0,behavior:"smooth"});
+};
+
+/* TYPING EFFECT */
+
+const text="Library & Information Science Professional specializing in digital library systems and analytics.";
+
+const typing=document.querySelector(".hero-text p");
+
+let i=0;
+
+function type(){
+
+if(i<text.length){
+typing.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,20);
 }
 
-/* ===============================
-   SECTION FADE REVEAL
-================================ */
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  },
-  { threshold: 0.15 }
-);
-
-sections.forEach((sec) => {
-  sec.classList.add("fade-section");
-  revealObserver.observe(sec);
-});
-
-/* ===============================
-   TYPING EFFECT
-================================ */
-const text =
-  "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-
-let i = 0;
-
-function type() {
-  if (!typingText) return;
-
-  if (i < text.length) {
-    typingText.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(type, 20);
-  }
 }
 
 type();
 
-/* ===============================
-   SKILL PROGRESS ANIMATION
-================================ */
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.width =
-        entry.target.dataset.progress + "%";
-    }
-  });
+/* SKILL BAR */
+
+const bars=document.querySelectorAll(".progress-bar");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.width=entry.target.dataset.progress+"%";
+}
+});
 });
 
-bars.forEach((bar) => skillObserver.observe(bar));
+bars.forEach(bar=>observer.observe(bar));
+
+/* COUNTERS */
+
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+counter.innerText="0";
+
+const update=()=>{
+
+const target=+counter.getAttribute("data-target");
+const c=+counter.innerText;
+
+const increment=target/200;
+
+if(c<target){
+
+counter.innerText=`${Math.ceil(c+increment)}`;
+
+setTimeout(update,10);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+};
+
+update();
+
+});
+
+/* MAGNETIC BUTTON */
+
+document.querySelectorAll(".btn").forEach(btn=>{
+
+btn.addEventListener("mousemove",e=>{
+
+const rect=btn.getBoundingClientRect();
+
+const x=e.clientX-rect.left-rect.width/2;
+const y=e.clientY-rect.top-rect.height/2;
+
+btn.style.transform=`translate(${x*0.2}px,${y*0.2}px)`;
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+btn.style.transform="translate(0,0)";
+});
+
+});
+
+/* 3D CARD */
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+const centerX=rect.width/2;
+const centerY=rect.height/2;
+
+const rotateX=(y-centerY)/15;
+const rotateY=(centerX-x)/15;
+
+card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="rotateX(0) rotateY(0)";
+});
+
+});
+
+/* SCROLL REVEAL */
+
+const sections=document.querySelectorAll("section");
+
+const revealObserver=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+
+});
+
+sections.forEach(sec=>{
+sec.classList.add("fade-section");
+revealObserver.observe(sec);
+});
 
 </script>
 
