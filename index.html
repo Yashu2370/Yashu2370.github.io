@@ -12,7 +12,6 @@
 
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
 body{
 background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
 color:#064e3b;
@@ -31,7 +30,6 @@ justify-content:center;
 align-items:center;
 z-index:9999;
 }
-
 .loader{
 width:60px;
 height:60px;
@@ -40,12 +38,9 @@ border-top:6px solid transparent;
 border-radius:50%;
 animation:spin 1s linear infinite;
 }
+@keyframes spin{100%{transform:rotate(360deg);}}
 
-@keyframes spin{
-100%{transform:rotate(360deg);}
-}
-
-/* ===== SCROLL PROGRESS ===== */
+ /* ===== SCROLL PROGRESS ===== */
 #progressBar{
 position:fixed;
 top:0;
@@ -82,187 +77,72 @@ background:rgba(255,255,255,0.8);
 backdrop-filter:blur(10px);
 z-index:1000;
 }
-
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
-color:#065f46;
-font-weight:500;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#16a34a;
-}
+nav ul{display:flex;gap:25px;list-style:none;}
+nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;}
+nav a:hover{color:#16a34a;}
 
 /* ===== HERO ===== */
-
 .hero{
 position:relative;
-height:85vh;
+height:70vh;
 display:flex;
 align-items:center;
 justify-content:center;
 overflow:hidden;
 }
-
-.hero-video{
+.hero-slider{
+position:absolute;
+width:100%;
+height:100%;
+}
+ .hero-video{
 position:absolute;
 width:100%;
 height:100%;
 object-fit:cover;
-filter:brightness(0.55);
 }
-
 .overlay{
 position:absolute;
 width:100%;
 height:100%;
-background:linear-gradient(120deg,rgba(0,0,0,0.6),rgba(0,0,0,0.4));
-backdrop-filter:blur(3px);
+background:rgba(0,0,0,0.55);
 }
-
 .hero-content{
 position:relative;
 z-index:2;
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:60px;
 padding:0 8%;
+color:white;
 width:100%;
-animation:fadeUp 1.2s ease;
 }
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(40px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-.hero-text h1{
-font-size:48px;
-font-weight:700;
-line-height:1.2;
-}
-
-.hero-text span{
-background:linear-gradient(90deg,#22c55e,#4ade80,#16a34a);
-background-size:200% auto;
-color:transparent;
-background-clip:text;
--webkit-background-clip:text;
-animation:shine 4s linear infinite;
-}
-
-@keyframes shine{
-to{background-position:200% center;}
-}
-
-.hero-text p{
-margin-top:15px;
-font-size:16px;
-max-width:520px;
-color:#e5e7eb;
-line-height:1.6;
-}
-
-/* ===== BUTTONS ===== */
-
-.buttons{
-margin-top:30px;
-display:flex;
-flex-wrap:wrap;
-gap:16px;
-}
-
+.hero-text h1{font-size:42px;}
+.hero-text span{color:#22c55e;}
+.hero-text p{margin-top:15px;max-width:550px;color:#e5e7eb;}
+.buttons{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap;}
 .btn{
-padding:12px 26px;
-border-radius:40px;
+padding:10px 22px;
+border-radius:30px;
 cursor:pointer;
 font-size:14px;
 font-weight:500;
 border:none;
-transition:all 0.35s ease;
-display:flex;
-align-items:center;
-gap:8px;
+transition:0.3s;
 }
-
-.primary{
-background:linear-gradient(135deg,#16a34a,#22c55e);
-color:white;
-box-shadow:0 10px 25px rgba(34,197,94,0.35);
-}
-
-.primary:hover{
-transform:translateY(-4px) scale(1.04);
-box-shadow:0 15px 35px rgba(34,197,94,0.55);
-}
-
-.outline{
-background:rgba(255,255,255,0.15);
-border:1px solid rgba(255,255,255,0.4);
-color:white;
-backdrop-filter:blur(10px);
-}
-
-.outline:hover{
-background:rgba(255,255,255,0.3);
-transform:translateY(-3px);
-}
-
-/* ===== PROFILE IMAGE ===== */
-
-.hero-img{
-position:relative;
-}
-
+.primary{background:#16a34a;color:#fff;}
+.primary:hover{background:#15803d;transform:translateY(-3px);}
+.outline{background:#fff;border:2px solid #16a34a;color:#065f46;}
+.outline:hover{background:#dcfce7;transform:translateY(-3px);}
 .hero-img img{
-width:280px;
+width:260px;
 border-radius:20px;
-box-shadow:0 25px 50px rgba(0,0,0,0.45);
-transition:0.5s;
-animation:float 4s ease-in-out infinite;
-}
-
-.hero-img img:hover{
-transform:scale(1.05);
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
-}
-
-.hero-img::before{
-content:"";
-position:absolute;
-width:300px;
-height:300px;
-background:radial-gradient(circle,#22c55e40,transparent 70%);
-top:-10px;
-left:-10px;
-z-index:-1;
-filter:blur(30px);
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
 
 /* ===== SECTIONS ===== */
-
-section{
-padding:20px 8%;
-}
-
-.section-title{
-font-size:28px;
-margin-bottom:29px;
-position:relative;
-}
-
+section{padding:20px 8%;}
+.section-title{font-size:28px;margin-bottom:29px;position:relative;}
 .section-title::after{
 content:"";
 width:80px;
@@ -274,7 +154,6 @@ left:0;
 }
 
 /* ===== CARDS ===== */
-
 .card{
 background:rgba(255,255,255,0.9);
 padding:25px;
@@ -283,39 +162,35 @@ box-shadow:0 10px 30px rgba(0,0,0,0.05);
 margin-bottom:15px;
 transition:0.3s;
 }
-
-.card:hover{
-transform:translateY(-6px);
-}
-
+.card:hover{transform:translateY(-6px);}
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:20px;
 }
+.timeline{border-left:4px solid #16a34a;padding-left:20px;}
 
 /* ===== SKILLS ===== */
-
-.skill{
-margin-bottom:22px;
-}
-
-.progress{
-height:10px;
-background:#e5e7eb;
-border-radius:20px;
-overflow:hidden;
-}
-
+.skill{margin-bottom:22px;}
+.progress{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
 .progress-bar{
 height:100%;
 width:0;
 background:linear-gradient(90deg,#16a34a,#22c55e);
 transition:width 1.5s ease;
 }
+ .fade-section{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.fade-section.show{
+opacity:1;
+transform:translateY(0);
+}
 
 /* ===== FOOTER ===== */
-
 footer{
 background:#065f46;
 color:#fff;
@@ -324,48 +199,28 @@ padding:20px;
 }
 
 /* ===== DARK MODE ===== */
-
 body.dark{
 background:#0f172a;
 color:#e2e8f0;
 }
-
-body.dark .card{
-background:#1e293b;
-color:#fff;
-}
-
-body.dark nav{
-background:rgba(15,23,42,0.8);
-}
-
-/* ===== RESPONSIVE ===== */
+body.dark .card{background:#1e293b;color:#fff;}
+body.dark nav{background:rgba(15,23,42,0.8);}
 
 @media(max-width:900px){
-
-.hero-content{
-flex-direction:column;
-text-align:center;
+.hero-content{flex-direction:column;text-align:center;}
+.hero-img{margin-top:30px;}
 }
-
-.hero-img img{
-width:220px;
-margin-top:30px;
-}
-
-}
-
+ 
 .footer{
-text-align:center;
-padding:25px 0;
-background:#0f172a;
-color:#e2e8f0;
-font-size:14px;
-letter-spacing:0.5px;
+  text-align:center;
+  padding:25px 0;
+  background:#0f172a;
+  color:#e2e8f0;
+  font-size:14px;
+  letter-spacing:0.5px;
 }
-
 .footer strong{
-color:#22c55e;
+  color:#22c55e;
 }
 
 </style>
@@ -402,50 +257,28 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
 
 <!-- HERO -->
 <div class="hero">
-
-<video class="hero-video" autoplay muted loop playsinline>
-<source src="1.mp4" type="video/mp4">
-</video>
-
+<div class="hero-slider">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="1.mp4" type="video/mp4">
+  </video>
+</div>
 <div class="overlay"></div>
-
 <div class="hero-content">
-
 <div class="hero-text">
-
 <h1>Hello, I'm <span>Yashwanth K S</span></h1>
-
-<p>
-Aspiring Library & Information Science professional passionate about 
-digital libraries, cataloging, metadata management, and information systems.
-</p>
-
+<p></p>
 <div class="buttons">
-
-<button class="btn primary" onclick="window.open('For IT.pdf')">
-<i class="fa-solid fa-download"></i> Download CV
-</button>
-
-<button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">
-<i class="fa-solid fa-briefcase"></i> Experience
-</button>
-
-<button class="btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-<i class="fa-solid fa-envelope"></i> Contact
-</button>
-
-<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">
-<i class="fa-solid fa-paper-plane"></i> Email
-</button>
-
+ <button class="btn primary" onclick="window.open('For IT.pdf')">
+          <i class="fa-solid fa-download"></i> Download CV
+        </button>
+<button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
+<button class="btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Email</button>
 </div>
-
 </div>
-
 <div class="hero-img">
-<img src="profile.jpg" alt="Yashwanth">
+<img src="profile.jpg">
 </div>
-
 </div>
 </div>
 
