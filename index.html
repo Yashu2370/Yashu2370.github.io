@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Yashwanth K S - Library and Information Science Professional transitioning into IT, specializing in SQL, Koha LMS, and digital systems.">
+<meta name="keywords" content="Library Science, SQL, Koha, DSpace, Portfolio, IT Jobs">
+
 <title>Yashwanth K S | Professional Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -266,18 +270,18 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
 <div class="hero-content">
 <div class="hero-text">
 <h1>Hello, I'm <span>Yashwanth K S</span></h1>
-<p></p>
+<p id="typing-text"></p>
 <div class="buttons">
- <button class="btn primary" onclick="window.open('For IT.pdf')">
-          <i class="fa-solid fa-download"></i> Download CV
-        </button>
+ <a href="For IT.pdf" target="_blank" class="btn primary">
+<i class="fa-solid fa-download"></i> Download CV
+</a>
 <button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
 <button class="btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
 <button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Email</button>
 </div>
 </div>
 <div class="hero-img">
-<img src="profile.jpg">
+<img src="profile.jpg" alt="Yashwanth K S Profile Photo">
 </div>
 </div>
 </div>
@@ -565,11 +569,37 @@ Actively involved in institutional digital initiatives and academic resource man
 <!-- CONTACT -->
 <section id="contact">
 <h2 class="section-title">Contact</h2>
+
 <div class="grid">
-<div class="card"><i class="fa-solid fa-phone"></i> 7760144157</div>
-<div class="card"><i class="fa-solid fa-envelope"></i> yashu2370@gmail.com</div>
-<div class="card"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
-<div class="card"><i class="fa-solid fa-language"></i> English, Kannada, Hindi, Telugu</div>
+
+<div class="card">
+<i class="fa-solid fa-phone"></i> 
+<a href="tel:7760144157">7760144157</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-envelope"></i> 
+<a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-location-dot"></i> Bengaluru, India
+</div>
+
+<div class="card">
+<i class="fa-solid fa-language"></i> English, Kannada, Hindi, Telugu
+</div>
+
+<div class="card">
+<i class="fa-brands fa-linkedin"></i> 
+<a href="https://linkedin.com/in/yashwanthks" target="_blank">LinkedIn</a>
+</div>
+
+<div class="card">
+<i class="fa-brands fa-github"></i> 
+<a href="https://github.com/yashwanthks" target="_blank">GitHub</a>
+</div>
+
 </div>
 </section>
 
@@ -624,7 +654,7 @@ revealObserver.observe(sec);
 });
  
 const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-const typing=document.querySelector(".hero-text p");
+const typing=document.getElementById("typing-text");
 let i=0;
 function type(){
 if(i<text.length){typing.innerHTML+=text.charAt(i);i++;setTimeout(type,20);}
