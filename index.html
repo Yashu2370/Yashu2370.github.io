@@ -40,7 +40,7 @@ animation:spin 1s linear infinite;
 }
 @keyframes spin{100%{transform:rotate(360deg);}}
 
- /* ===== SCROLL PROGRESS ===== */
+/* ===== SCROLL PROGRESS ===== */
 #progressBar{
 position:fixed;
 top:0;
@@ -95,7 +95,7 @@ position:absolute;
 width:100%;
 height:100%;
 }
- .hero-video{
+.hero-video{
 position:absolute;
 width:100%;
 height:100%;
@@ -120,6 +120,7 @@ width:100%;
 .hero-text h1{font-size:42px;}
 .hero-text span{color:#22c55e;}
 .hero-text p{margin-top:15px;max-width:550px;color:#e5e7eb;}
+
 .buttons{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap;}
 .btn{
 padding:10px 22px;
@@ -134,6 +135,7 @@ transition:0.3s;
 .primary:hover{background:#15803d;transform:translateY(-3px);}
 .outline{background:#fff;border:2px solid #16a34a;color:#065f46;}
 .outline:hover{background:#dcfce7;transform:translateY(-3px);}
+
 .hero-img img{
 width:260px;
 border-radius:20px;
@@ -142,60 +144,127 @@ box-shadow:0 20px 40px rgba(0,0,0,0.3);
 
 /* ===== SECTIONS ===== */
 section{padding:20px 8%;}
-.section-title{font-size:28px;margin-bottom:29px;position:relative;}
+.section-title{
+font-size:28px;
+margin-bottom:29px;
+position:relative;
+}
 .section-title::after{
 content:"";
 width:80px;
-height:1px;
+height:2px;
 background:#16a34a;
 position:absolute;
-bottom:-1px;
+bottom:-6px;
 left:0;
 }
 
 /* ===== CARDS ===== */
 .card{
-background:rgba(255,255,255,0.9);
+background:rgba(255,255,255,0.95);
 padding:25px;
 border-radius:18px;
 box-shadow:0 10px 30px rgba(0,0,0,0.05);
 margin-bottom:15px;
 transition:0.3s;
 }
-.card:hover{transform:translateY(-6px);}
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(0,0,0,0.12);
+}
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:20px;
 }
-.timeline{border-left:4px solid #16a34a;padding-left:20px;}
+
+.timeline{
+border-left:4px solid #16a34a;
+padding-left:20px;
+}
 
 /* ===== SKILLS ===== */
 .skill{margin-bottom:22px;}
-.progress{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
+.progress{
+height:10px;
+background:#e5e7eb;
+border-radius:20px;
+overflow:hidden;
+}
 .progress-bar{
 height:100%;
 width:0;
 background:linear-gradient(90deg,#16a34a,#22c55e);
 transition:width 1.5s ease;
 }
- .fade-section{
+
+/* ===== SCROLL ANIMATION ===== */
+.fade-section{
 opacity:0;
 transform:translateY(40px);
 transition:all 0.8s ease;
 }
-
 .fade-section.show{
 opacity:1;
 transform:translateY(0);
 }
 
+/* ===== CONTACT FIX (PREMIUM UI) ===== */
+#contact .card{
+display:flex;
+align-items:center;
+gap:15px;
+border:1px solid rgba(0,0,0,0.05);
+}
+
+#contact .card div{
+display:flex;
+flex-direction:column;
+}
+
+#contact .card i{
+font-size:18px;
+color:#16a34a;
+background:#dcfce7;
+padding:10px;
+border-radius:10px;
+}
+
+#contact .card p{
+font-size:12px;
+color:#6b7280;
+margin:0;
+}
+
+#contact .card a,
+#contact .card span{
+font-size:14px;
+font-weight:500;
+color:#064e3b;
+text-decoration:none;
+}
+
+#contact .card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+#contact .card a:hover{
+color:#16a34a;
+}
+
 /* ===== FOOTER ===== */
-footer{
-background:#065f46;
-color:#fff;
+.footer{
 text-align:center;
-padding:20px;
+padding:25px 0;
+background:#0f172a;
+color:#e2e8f0;
+font-size:14px;
+letter-spacing:0.5px;
+}
+.footer strong{
+color:#22c55e;
 }
 
 /* ===== DARK MODE ===== */
@@ -203,24 +272,23 @@ body.dark{
 background:#0f172a;
 color:#e2e8f0;
 }
-body.dark .card{background:#1e293b;color:#fff;}
-body.dark nav{background:rgba(15,23,42,0.8);}
+body.dark .card{
+background:#1e293b;
+color:#fff;
+}
+body.dark nav{
+background:rgba(15,23,42,0.8);
+}
 
+/* ===== RESPONSIVE ===== */
 @media(max-width:900px){
-.hero-content{flex-direction:column;text-align:center;}
-.hero-img{margin-top:30px;}
+.hero-content{
+flex-direction:column;
+text-align:center;
 }
- 
-.footer{
-  text-align:center;
-  padding:25px 0;
-  background:#0f172a;
-  color:#e2e8f0;
-  font-size:14px;
-  letter-spacing:0.5px;
+.hero-img{
+margin-top:30px;
 }
-.footer strong{
-  color:#22c55e;
 }
 
 </style>
@@ -564,52 +632,64 @@ Actively involved in institutional digital initiatives and academic resource man
 
 <!-- CONTACT -->
 <section id="contact">
-<h2 class="section-title">Contact</h2>
+<h2 class="section-title">Get In Touch</h2>
 
 <div class="grid">
 
 <div class="card">
-<i class="fa-solid fa-phone"></i> 
-<a href="tel:7760144157">Call Me</a>
+<i class="fa-solid fa-phone"></i>
+<div>
+<p>Phone</p>
+<a href="tel:7760144157">+91 77601 44157</a>
+</div>
 </div>
 
 <div class="card">
-<i class="fa-solid fa-envelope"></i> 
-<a href="mailto:yashu2370@gmail.com">Email Me</a>
+<i class="fa-solid fa-envelope"></i>
+<div>
+<p>Email</p>
+<a href="mailto:yashu2370@gmail.com">yashu2370@gmail.com</a>
+</div>
 </div>
 
 <div class="card">
-<i class="fa-solid fa-location-dot"></i> 
-Bengaluru, India
+<i class="fa-solid fa-location-dot"></i>
+<div>
+<p>Location</p>
+<span>Bengaluru, India</span>
+</div>
 </div>
 
 <div class="card">
-<i class="fa-solid fa-language"></i> 
-English, Kannada, Hindi, Telugu
+<i class="fa-solid fa-language"></i>
+<div>
+<p>Languages</p>
+<span>English, Kannada, Hindi, Telugu</span>
+</div>
 </div>
 
-<!-- LinkedIn -->
 <div class="card">
-<i class="fa-brands fa-linkedin"></i> 
-<a href="https://linkedin.com/in/yashwanthks" target="_blank">
-LinkedIn Profile
-</a>
+<i class="fa-brands fa-linkedin"></i>
+<div>
+<p>LinkedIn</p>
+<a href="https://linkedin.com/in/yashwanthks" target="_blank">View Profile</a>
+</div>
 </div>
 
-<!-- GitHub -->
 <div class="card">
-<i class="fa-brands fa-github"></i> 
-<a href="https://github.com/yashwanthks" target="_blank">
-GitHub Portfolio
-</a>
+<i class="fa-brands fa-github"></i>
+<div>
+<p>GitHub</p>
+<a href="https://github.com/yashwanthks" target="_blank">View Projects</a>
+</div>
 </div>
 
-<!-- Indeed (Replace with your actual profile link later) -->
 <div class="card">
-<i class="fa-solid fa-briefcase"></i> 
-<a href="https://profile.indeed.com/" target="_blank">
-Indeed Profile
-</a>
+<i class="fa-solid fa-briefcase"></i>
+<div>
+<p>Indeed</p>
+<a href="#">View Profile</a>
+</div>
 </div>
 
 </div>
