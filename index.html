@@ -127,6 +127,23 @@ nav ul{display:flex;gap:25px;list-style:none;}
 nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;}
 nav a:hover{color:#16a34a;}
 
+ .ripple {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.5s linear;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(8);
+    opacity: 0;
+  }
+}
+
 /* ===== HERO ===== */
 .hero{
 position:relative;
@@ -743,7 +760,7 @@ Actively involved in institutional digital initiatives and academic resource man
 </footer>
 
 <script>
-// 🌙 Dark Mode Toggle + Save Preference
+// 🌙 ================= DARK MODE =================
 const btn = document.getElementById("themeToggle");
 const icon = btn.querySelector(".icon");
 
@@ -765,26 +782,24 @@ if (localStorage.getItem("theme") === "dark") {
   icon.textContent = "☀️";
 }
 
-// 🔝 Scroll to Top + 📊 Progress Bar
+// 🔝 ================= SCROLL + PROGRESS =================
 const topBtn = document.getElementById("topBtn");
 const progressBar = document.getElementById("progressBar");
 
 window.addEventListener("scroll", () => {
-  // Top button
+  // Show Top Button
   topBtn.style.display = window.scrollY > 300 ? "block" : "none";
 
-  // Progress bar
-  let scroll = document.documentElement.scrollTop;
-  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  // Progress Bar
+  const scroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   progressBar.style.width = (scroll / height) * 100 + "%";
 });
 
 // Scroll to top
-topBtn.onclick = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+topBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-// ✨ Section Reveal Animation (Optimized)
+// ✨ ================= SECTION ANIMATION =================
 const sections = document.querySelectorAll("section");
 
 const revealObserver = new IntersectionObserver(entries => {
@@ -793,14 +808,14 @@ const revealObserver = new IntersectionObserver(entries => {
       entry.target.classList.add("show");
     }
   });
-});
+}, { threshold: 0.15 });
 
 sections.forEach(sec => {
   sec.classList.add("fade-section");
   revealObserver.observe(sec);
 });
 
-// 📊 Skill Bars Animation
+// 📊 ================= SKILL BAR =================
 const bars = document.querySelectorAll(".progress-bar");
 
 const barObserver = new IntersectionObserver(entries => {
@@ -809,11 +824,11 @@ const barObserver = new IntersectionObserver(entries => {
       entry.target.style.width = entry.target.dataset.progress + "%";
     }
   });
-});
+}, { threshold: 0.3 });
 
 bars.forEach(bar => barObserver.observe(bar));
 
-// 🖱 Cursor Glow Effect
+// 🖱 ================= CURSOR GLOW =================
 const glow = document.querySelector(".cursor-glow");
 
 document.addEventListener("mousemove", e => {
@@ -821,26 +836,76 @@ document.addEventListener("mousemove", e => {
   glow.style.top = e.clientY + "px";
 });
 
-// ⏳ Preloader
+// ⏳ ================= PRELOADER =================
 const preloader = document.getElementById("preloader");
 
 window.addEventListener("load", () => {
-  preloader.style.display = "none";
+  preloader.style.opacity = "0";
+  setTimeout(() => preloader.style.display = "none", 500);
 });
 
-// ⌨️ Typing Effect
+// ⌨️ ================= TYPING EFFECT =================
 const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
 const typing = document.querySelector(".hero-text p");
 
 let i = 0;
+typing.innerHTML = "";
+
 function type() {
   if (i < text.length) {
     typing.innerHTML += text.charAt(i);
     i++;
-    setTimeout(type, 20);
+    setTimeout(type, 18);
   }
 }
 type();
+
+// 🎯 ================= ACTIVE NAV LINK =================
+const navLinks = document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// ⚡ ================= SMOOTH SCROLL (ALL LINKS) =================
+document.querySelectorAll("a[href^='#']").forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+      .scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+// 💥 ================= BUTTON RIPPLE EFFECT =================
+document.querySelectorAll(".btn").forEach(button => {
+  button.addEventListener("click", function(e) {
+    const circle = document.createElement("span");
+    circle.classList.add("ripple");
+    this.appendChild(circle);
+
+    const x = e.clientX - this.offsetLeft;
+    const y = e.clientY - this.offsetTop;
+
+    circle.style.left = x + "px";
+    circle.style.top = y + "px";
+
+    setTimeout(() => circle.remove(), 500);
+  });
+});
 </script>
 
 </body>
