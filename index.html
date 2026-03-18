@@ -743,15 +743,14 @@ Actively involved in institutional digital initiatives and academic resource man
 </footer>
 
 <script>
-
- // 🌙 Dark Mode Toggle + Save Preference
+// 🌙 Dark Mode Toggle + Save Preference
 const btn = document.getElementById("themeToggle");
 const icon = btn.querySelector(".icon");
 
 btn.onclick = () => {
   document.body.classList.toggle("dark");
 
-  if(document.body.classList.contains("dark")){
+  if (document.body.classList.contains("dark")) {
     icon.textContent = "☀️";
     localStorage.setItem("theme", "dark");
   } else {
@@ -761,50 +760,58 @@ btn.onclick = () => {
 };
 
 // Load saved theme
-if(localStorage.getItem("theme") === "dark"){
+if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
   icon.textContent = "☀️";
 }
 
-// 🔝 Scroll to Top
+// 🔝 Scroll to Top + 📊 Progress Bar
 const topBtn = document.getElementById("topBtn");
+const progressBar = document.getElementById("progressBar");
 
-window.onscroll = () => {
+window.addEventListener("scroll", () => {
+  // Top button
   topBtn.style.display = window.scrollY > 300 ? "block" : "none";
 
-  // 📊 Progress Bar
+  // Progress bar
   let scroll = document.documentElement.scrollTop;
   let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  document.getElementById("progressBar").style.width = (scroll / height) * 100 + "%";
+  progressBar.style.width = (scroll / height) * 100 + "%";
+});
+
+// Scroll to top
+topBtn.onclick = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-topBtn.onclick = () => window.scrollTo({top:0, behavior:"smooth"});
-
-// ✨ Section Reveal Animation
+// ✨ Section Reveal Animation (Optimized)
 const sections = document.querySelectorAll("section");
 
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.classList.add("show");
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
     }
   });
 });
 
-// 📊 Animate Skill Bars
+sections.forEach(sec => {
+  sec.classList.add("fade-section");
+  revealObserver.observe(sec);
+});
+
+// 📊 Skill Bars Animation
 const bars = document.querySelectorAll(".progress-bar");
 
-window.addEventListener("scroll", () => {
-  bars.forEach(bar => {
-    const value = bar.getAttribute("data-progress");
-    const top = bar.getBoundingClientRect().top;
-
-    if(top < window.innerHeight){
-      bar.style.width = value + "%";
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.width = entry.target.dataset.progress + "%";
     }
   });
 });
+
+bars.forEach(bar => barObserver.observe(bar));
 
 // 🖱 Cursor Glow Effect
 const glow = document.querySelector(".cursor-glow");
@@ -813,69 +820,27 @@ document.addEventListener("mousemove", e => {
   glow.style.left = e.clientX + "px";
   glow.style.top = e.clientY + "px";
 });
- 
 
-const preloader=document.getElementById("preloader");
-const progressBar=document.getElementById("progressBar");
+// ⏳ Preloader
+const preloader = document.getElementById("preloader");
 
-window.addEventListener("load",()=>{preloader.style.display="none";});
-
-window.addEventListener("scroll",()=>{
-let winScroll=document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-progressBar.style.width=(winScroll/height)*100+"%";
+window.addEventListener("load", () => {
+  preloader.style.display = "none";
 });
 
-document.addEventListener("mousemove",(e)=>{
-document.querySelector(".cursor-glow").style.left=e.pageX+"px";
-document.querySelector(".cursor-glow").style.top=e.pageY+"px";
-});
- const topBtn=document.getElementById("topBtn");
+// ⌨️ Typing Effect
+const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+const typing = document.querySelector(".hero-text p");
 
-window.addEventListener("scroll",()=>{
-if(document.documentElement.scrollTop>300){
-topBtn.style.display="block";
-}else{
-topBtn.style.display="none";
-}
-});
-
-topBtn.onclick=()=>{
-window.scrollTo({top:0,behavior:"smooth"});
-};
- const sections=document.querySelectorAll("section");
-
-const revealObserver=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
-});
-
-sections.forEach(sec=>{
-sec.classList.add("fade-section");
-revealObserver.observe(sec);
-});
- 
-const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-const typing=document.querySelector(".hero-text p");
-let i=0;
-function type(){
-if(i<text.length){typing.innerHTML+=text.charAt(i);i++;setTimeout(type,20);}
+let i = 0;
+function type() {
+  if (i < text.length) {
+    typing.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 20);
+  }
 }
 type();
-
-const bars=document.querySelectorAll(".progress-bar");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.style.width=entry.target.dataset.progress+"%";
-}
-});
-});
-bars.forEach(bar=>observer.observe(bar));
-
 </script>
 
 </body>
