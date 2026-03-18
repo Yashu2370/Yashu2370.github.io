@@ -75,6 +75,13 @@ body {
 nav {
   position: fixed;
   width: 100%;
+  transition: 0.4s;
+}
+
+nav.scrolled {
+  background: rgba(6,78,59,0.9);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
   top: 0;
   padding: 15px 8%;
   display: flex;
@@ -111,17 +118,22 @@ nav a.active {
 
 /* ===== THEME BUTTON ===== */
 .theme-btn {
-  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
   border-radius: 30px;
   border: none;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 14px;
   background: linear-gradient(135deg,#16a34a,#22c55e);
   color: #fff;
   transition: 0.3s;
 }
+
 .theme-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(34,197,94,0.6);
 }
 
 /* ===== HERO ===== */
@@ -176,6 +188,7 @@ nav a.active {
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   transition: 0.4s;
+  animation: float 4s ease-in-out infinite;
 }
 .hero-img img:hover {
   transform: scale(1.05);
@@ -225,11 +238,9 @@ nav a.active {
   transform: scale(0);
   animation: rippleEffect 0.5s linear;
 }
-@keyframes rippleEffect {
-  to {
-    transform: scale(8);
-    opacity: 0;
-  }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* ===== SECTIONS ===== */
@@ -261,6 +272,8 @@ section.show {
 
 /* ===== CARDS ===== */
 .card {
+  position: relative;
+overflow: hidden;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(10px);
   padding: 25px;
@@ -270,6 +283,15 @@ section.show {
 }
 .card:hover {
   transform: translateY(-6px);
+}
+  .card:hover::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(34,197,94,0.15), transparent 70%);
+  top: -50%;
+  left: -50%;
 }
 
 .grid {
@@ -396,6 +418,7 @@ style="position:fixed;bottom:30px;right:30px;padding:12px;border:none;border-rad
 <nav>
  <button id="themeToggle" class="theme-btn">
   <span class="icon">🌙</span>
+  <span class="text">Dark</span>
 </button>
 <h2>Yashwanth K S</h2>
 <ul>
@@ -752,26 +775,33 @@ Actively involved in institutional digital initiatives and academic resource man
 </footer>
 
 <script>
+  
+  window.addEventListener("scroll", () => {
+  document.querySelector("nav").classList.toggle("scrolled", window.scrollY > 50);
+});
+  
 // 🌙 ================= DARK MODE =================
 const btn = document.getElementById("themeToggle");
-const icon = btn.querySelector(".icon");
+const textLabel = btn.querySelector(".text");
 
 btn.onclick = () => {
   document.body.classList.toggle("dark");
 
-  if (document.body.classList.contains("dark")) {
-    icon.textContent = "☀️";
-    localStorage.setItem("theme", "dark");
-  } else {
-    icon.textContent = "🌙";
-    localStorage.setItem("theme", "light");
-  }
-};
+ if (document.body.classList.contains("dark")) {
+  icon.textContent = "☀️";
+  textLabel.textContent = "Light";
+  localStorage.setItem("theme", "dark");
+} else {
+  icon.textContent = "🌙";
+  textLabel.textContent = "Dark";
+  localStorage.setItem("theme", "light");
+}
 
 // Load saved theme
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
   icon.textContent = "☀️";
+  textLabel.textContent = "Light";
 }
 
 // 🔝 ================= SCROLL + PROGRESS =================
