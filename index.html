@@ -10,6 +10,25 @@
 
 <style>
 
+ .socials a:hover{
+color:#22c55e;
+transform:scale(1.2);
+transition:0.3s;
+}
+
+iframe{
+border:none;
+border-radius:12px;
+}
+
+.card{
+transition: all 0.4s ease;
+}
+
+.card:hover{
+transform: translateY(-8px) scale(1.02);
+}
+
  .contact-form {
   margin-top: 30px;
   background: #1e1e2f;
@@ -312,7 +331,16 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
 <div class="hero-content">
 <div class="hero-text">
 <h1>Hello, I'm <span>Yashwanth K S</span></h1>
-<p></p>
+<p id="typing-text"></p>
+
+<div class="socials" style="margin-top:15px;">
+  <a href="https://linkedin.com" target="_blank" style="color:white;margin-right:10px;font-size:20px;">
+    <i class="fab fa-linkedin"></i>
+  </a>
+  <a href="https://github.com" target="_blank" style="color:white;font-size:20px;">
+    <i class="fab fa-github"></i>
+  </a>
+</div>
 <div class="buttons">
  <button class="btn primary" onclick="window.open('For IT.pdf')">
           <i class="fa-solid fa-download"></i> Download CV
@@ -327,6 +355,15 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
 </div>
 </div>
 </div>
+ <section id="stats">
+<h2 class="section-title">Professional Highlights</h2>
+<div class="grid">
+  <div class="card">3+ Years Experience</div>
+  <div class="card">10+ Projects</div>
+  <div class="card">5+ Certifications</div>
+  <div class="card">SQL & Analytics Expert</div>
+</div>
+</section>
 
 <!-- ABOUT -->
 <section id="about">
@@ -478,44 +515,72 @@ Open Source Software – NPTEL</strong><br><br>
 </div>
 </section>
 
+ <section id="resume">
+<h2 class="section-title">Resume Preview</h2>
+<div class="card">
+  <iframe src="For IT.pdf" width="100%" height="500px"></iframe>
+</div>
+</section>
+
 
 <!-- DIGITAL INITIATIVES & PROJECTS -->
 <section id="projects">
-<h2 class="section-title">Digital Initiatives & Projects</h2>
+<h2 class="section-title">Projects</h2>
+
+<div class="grid">
+
 <div class="card">
+  <h3>Library Analytics Dashboard</h3>
+  <p>SQL-based reporting system for insights & decision-making.</p>
+  <button class="btn outline">View</button>
+</div>
 
-<ul>
+<div class="card">
+  <h3>Koha LMS Implementation</h3>
+  <p>End-to-end automation with cataloging & circulation.</p>
+  <button class="btn outline">View</button>
+</div>
 
-<li><strong>Koha Library Management System Implementation:</strong> 
-Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.</li>
+<div class="card">
+  <h3>DSpace Repository</h3>
+  <p>Institutional repository with metadata & digital access.</p>
+  <button class="btn outline">View</button>
+</div>
 
-<br>
+</div>
+</section>
 
-<li><strong>Library Automation & Workflow Optimization:</strong> 
-Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.</li>
+ <section id="testimonials">
+<h2 class="section-title">Testimonials</h2>
 
-<br>
+<div class="grid">
+  <div class="card">
+    "Excellent technical and analytical skills."  
+    <br><strong>- Faculty</strong>
+  </div>
 
-<li><strong>Institutional Repository Management:</strong> 
-Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.</li>
+  <div class="card">
+    "Strong system management and problem solving."  
+    <br><strong>- Management</strong>
+  </div>
+</div>
+</section>
 
-<br>
+ <section id="blog">
+<h2 class="section-title">Blog</h2>
 
-<li><strong>SQL-Based Data Analytics & Reporting:</strong> 
-Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.</li>
+<div class="grid">
+  <div class="card">
+    <h3>Library Automation using Koha</h3>
+    <p>How I improved workflows using LMS</p>
+    <button class="btn outline">Read</button>
+  </div>
 
-<br>
-
-<li><strong>Digital Resource Integration:</strong> 
-Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.</li>
-
-<br>
-
-<li><strong>SharePoint & Digital Documentation Management:</strong> 
-Handled structured document storage, internal resource sharing, and workflow documentation using Microsoft SharePoint.</li>
-
-</ul>
-
+  <div class="card">
+    <h3>SQL in Library Analytics</h3>
+    <p>Using data for better decisions</p>
+    <button class="btn outline">Read</button>
+  </div>
 </div>
 </section>
 
@@ -685,11 +750,16 @@ sec.classList.add("fade-section");
 revealObserver.observe(sec);
 });
  
-const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-const typing=document.querySelector(".hero-text p");
+const text="Assistant Librarian | Aspiring Data Analyst | SQL • Python • Digital Systems";
+const typing=document.getElementById("typing-text");
 let i=0;
+
 function type(){
-if(i<text.length){typing.innerHTML+=text.charAt(i);i++;setTimeout(type,20);}
+if(i<text.length){
+typing.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,40);
+}
 }
 type();
 
