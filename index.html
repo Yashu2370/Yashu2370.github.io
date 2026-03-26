@@ -10,56 +10,53 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== MOBILE MENU FIX (FINAL) ===== */
 
-.menu-toggle{
-  display:none;
-  font-size:26px;
-  cursor:pointer;
+ .contact-form {
+  margin-top: 30px;
+  background: #1e1e2f;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* Mobile View */
-@media (max-width: 768px){
-
-  .menu-toggle{
-    display:block;
-  }
-
-  nav ul{
-    display:none;
-    flex-direction:column;
-
-    /* 🔥 FIXED PART */
-    position:fixed;        /* changed from absolute */
-    top:70px;
-    right:10px;
-
-    width:270px;
-    background:#ffffff;
-    padding:15px;
-    border-radius:12px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.25);
-
-    z-index:9999;          /* VERY IMPORTANT */
-
-    max-height:80vh;
-    overflow-y:auto;
-  }
-
-  nav ul.active{
-    display:flex;
-  }
-
-  /* optional styling */
-  nav ul li{
-    padding:10px 0;
-    border-bottom:1px solid #eee;
-  }
-
-  nav ul li:last-child{
-    border-bottom:none;
-  }
+.contact-form h3 {
+  margin-bottom: 15px;
+  color: #fff;
 }
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.contact-form input {
+  height: 40px;
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form button {
+  background: #6c63ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #5548d9;
+}
+
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{
@@ -286,24 +283,12 @@ style="position:fixed;bottom:30px;right:30px;padding:12px;border:none;border-rad
 <div class="cursor-glow"></div>
 
 <nav>
-
-<!-- Dark Mode Button -->
-<button onclick="document.body.classList.toggle('dark')" 
+ <button onclick="document.body.classList.toggle('dark')" 
 style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;background:#16a34a;color:white;cursor:pointer;">
 🌙
 </button>
-
 <h2>Yashwanth</h2>
-
-<!-- ✅ Menu Button -->
-<div class="menu-toggle" id="menu-toggle">
-  <i class="fa fa-bars"></i>
-</div>
-
-<ul id="nav-links">
-
-<!-- ✅ Full Menu -->
-<ul id="nav-links">
+<ul>
 <li><a href="#about">About</a></li>
 <li><a href="#experience">Experience</a></li>
 <li><a href="#skills">Skills</a></li>
@@ -315,7 +300,6 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
 <li><a href="#workshops">Workshops</a></li>
 <li><a href="#memberships">Memberships</a></li>
 </ul>
-
 </nav>
 
 <!-- HERO -->
@@ -674,8 +658,7 @@ document.addEventListener("mousemove",(e)=>{
 document.querySelector(".cursor-glow").style.left=e.pageX+"px";
 document.querySelector(".cursor-glow").style.top=e.pageY+"px";
 });
-
-const topBtn=document.getElementById("topBtn");
+ const topBtn=document.getElementById("topBtn");
 
 window.addEventListener("scroll",()=>{
 if(document.documentElement.scrollTop>300){
@@ -688,8 +671,7 @@ topBtn.style.display="none";
 topBtn.onclick=()=>{
 window.scrollTo({top:0,behavior:"smooth"});
 };
-
-const sections=document.querySelectorAll("section");
+ const sections=document.querySelectorAll("section");
 
 const revealObserver=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
@@ -703,22 +685,16 @@ sections.forEach(sec=>{
 sec.classList.add("fade-section");
 revealObserver.observe(sec);
 });
-
+ 
 const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
 const typing=document.querySelector(".hero-text p");
 let i=0;
-
 function type(){
-if(i<text.length){
-typing.innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,20);
-}
+if(i<text.length){typing.innerHTML+=text.charAt(i);i++;setTimeout(type,20);}
 }
 type();
 
 const bars=document.querySelectorAll(".progress-bar");
-
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -726,40 +702,7 @@ entry.target.style.width=entry.target.dataset.progress+"%";
 }
 });
 });
-
 bars.forEach(bar=>observer.observe(bar));
-
-
-// ===== FINAL MENU TOGGLE (SAFE VERSION) =====
-document.addEventListener("DOMContentLoaded", () => {
-
-  const toggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
-
-  // Safety check
-  if (!toggle || !navLinks) return;
-
-  // Open / Close menu
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    navLinks.classList.toggle("active");
-  });
-
-  // Close when clicking menu items
-  document.querySelectorAll("#nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-    });
-  });
-
-  // Close when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!navLinks.contains(e.target) && !toggle.contains(e.target)) {
-      navLinks.classList.remove("active");
-    }
-  });
-
-});
 
 </script>
 
