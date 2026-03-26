@@ -10,12 +10,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
- .menu-toggle{
+/* ===== MOBILE MENU FIX (FINAL) ===== */
+
+.menu-toggle{
   display:none;
   font-size:26px;
   cursor:pointer;
 }
 
+/* Mobile View */
 @media (max-width: 768px){
 
   .menu-toggle{
@@ -25,14 +28,20 @@
   nav ul{
     display:none;
     flex-direction:column;
-    position:absolute;
+
+    /* 🔥 FIXED PART */
+    position:fixed;        /* changed from absolute */
     top:70px;
-    right:0;
-    width:260px;
+    right:10px;
+
+    width:270px;
     background:#ffffff;
     padding:15px;
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+
+    z-index:9999;          /* VERY IMPORTANT */
+
     max-height:80vh;
     overflow-y:auto;
   }
@@ -40,54 +49,17 @@
   nav ul.active{
     display:flex;
   }
-}
 
- .contact-form {
-  margin-top: 30px;
-  background: #1e1e2f;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
+  /* optional styling */
+  nav ul li{
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+  }
 
-.contact-form h3 {
-  margin-bottom: 15px;
-  color: #fff;
+  nav ul li:last-child{
+    border-bottom:none;
+  }
 }
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  font-size: 14px;
-}
-
-.contact-form input {
-  height: 40px;
-}
-
-.contact-form textarea {
-  resize: none;
-}
-
-.contact-form button {
-  background: #6c63ff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.contact-form button:hover {
-  background: #5548d9;
-}
-
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{
@@ -758,28 +730,35 @@ entry.target.style.width=entry.target.dataset.progress+"%";
 bars.forEach(bar=>observer.observe(bar));
 
 
-// ===== FIXED MENU TOGGLE =====
-const toggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
+// ===== FINAL MENU TOGGLE (SAFE VERSION) =====
+document.addEventListener("DOMContentLoaded", () => {
 
-// Open / Close on button click
-toggle.addEventListener("click", (e) => {
-  e.stopPropagation(); // prevent outside click conflict
-  navLinks.classList.toggle("active");
-});
+  const toggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
 
-// Close when clicking any menu item
-document.querySelectorAll("#nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
+  // Safety check
+  if (!toggle || !navLinks) return;
+
+  // Open / Close menu
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle("active");
   });
-});
 
-// Close when clicking outside menu
-document.addEventListener("click", (e) => {
-  if (!navLinks.contains(e.target) && !toggle.contains(e.target)) {
-    navLinks.classList.remove("active");
-  }
+  // Close when clicking menu items
+  document.querySelectorAll("#nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!navLinks.contains(e.target) && !toggle.contains(e.target)) {
+      navLinks.classList.remove("active");
+    }
+  });
+
 });
 
 </script>
