@@ -756,19 +756,28 @@ entry.target.style.width=entry.target.dataset.progress+"%";
 bars.forEach(bar=>observer.observe(bar));
 
 
-// ✅ ===== MENU TOGGLE (ADDED) =====
+// ===== FIXED MENU TOGGLE =====
 const toggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
-toggle.addEventListener("click", () => {
+// Open / Close on button click
+toggle.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevent outside click conflict
   navLinks.classList.toggle("active");
 });
 
-// ✅ Auto close menu after click (optional but useful)
-document.querySelectorAll("#nav-links a").forEach(link=>{
-  link.addEventListener("click", ()=>{
+// Close when clicking any menu item
+document.querySelectorAll("#nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
     navLinks.classList.remove("active");
   });
+});
+
+// Close when clicking outside menu
+document.addEventListener("click", (e) => {
+  if (!navLinks.contains(e.target) && !toggle.contains(e.target)) {
+    navLinks.classList.remove("active");
+  }
 });
 
 </script>
