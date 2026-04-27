@@ -8,726 +8,476 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 
 <style>
-:root {
-  --primary-green: #16a34a;
-  --secondary-green: #22c55e;
-  --dark-green: #065f46;
-  --light-green: #dcfce7;
-  --dark-bg: #0f172a;
-  --card-bg: rgba(255,255,255,0.95);
-  --text-dark: #064e3b;
-  --text-light: #e2e8f0;
-  --shadow: 0 20px 60px rgba(0,0,0,0.1);
-  --glow: 0 0 30px rgba(34,197,94,0.4);
+/* ===== GLOBAL STYLES ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+background:linear-gradient(135deg,#ecfdf5 0%,#f0fdf4 50%,#dcfce7 100%);
+color:#064e3b;
+scroll-behavior:smooth;
+overflow-x:hidden;
+line-height:1.6;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+/* ===== PRELOADER ===== */
+#preloader{
+position:fixed;
+width:100%;
+height:100vh;
+background:#064e3b;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+transition:opacity 0.5s ease-out;
+}
+.loader{
+width:60px;
+height:60px;
+border:6px solid rgba(255,255,255,0.2);
+border-top:6px solid #22c55e;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+ /* ===== SCROLL PROGRESS ===== */
+#progressBar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+width:0%;
+z-index:2000;
+box-shadow:0 0 10px rgba(22,163,74,0.5);
+transition:width 0.3s ease;
 }
 
-body {
-  background: linear-gradient(135deg, #ecfdf5, #f0fdf4, #dcfce7);
-  color: var(--text-dark);
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  line-height: 1.6;
-  transition: all 0.3s ease;
-}
-
-body.dark {
-  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
-  color: var(--text-light);
-}
-
-body.dark .card {
-  background: rgba(30, 41, 59, 0.95);
-  color: var(--text-light);
-}
-
-body.dark nav {
-  background: rgba(15, 23, 42, 0.95);
-}
-
-/* ===== ADVANCED PRELOADER ===== */
-#preloader {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(45deg, var(--dark-green), var(--primary-green));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease;
-}
-
-.loader-container {
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-.loader {
-  width: 60px;
-  height: 60px;
-  border: 6px solid rgba(255,255,255,0.2);
-  border-top: 6px solid #fff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-.loader::after {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border: 6px solid rgba(34,197,94,0.3);
-  border-top: 6px solid transparent;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite reverse;
-}
-
-.preloader-text {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: 500;
-  color: white;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-@keyframes spin {
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* ===== ENHANCED SCROLL PROGRESS ===== */
-#progressBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
-  width: 0%;
-  z-index: 2000;
-  box-shadow: var(--glow);
-  transition: width 0.3s ease;
-}
-
-/* ===== ADVANCED CURSOR ===== */
-.cursor-glow {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(circle, rgba(34,197,94,0.8) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, opacity 0.3s ease;
-  z-index: 3000;
-  mix-blend-mode: difference;
-}
-
-.cursor-glow.hover {
-  transform: translate(-50%, -50%) scale(2);
-  opacity: 0.8;
+/* ===== CURSOR GLOW ===== */
+.cursor-glow{
+position:fixed;
+width:18px;
+height:18px;
+background:rgba(34,197,94,0.6);
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+transition:all 0.1s ease-out;
+z-index:3000;
+border:2px solid rgba(255,255,255,0.8);
 }
 
 /* ===== NAVIGATION ===== */
-nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 8%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-  z-index: 1000;
-  transition: all 0.3s ease;
+nav{
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+background:rgba(255,255,255,0.92);
+backdrop-filter:blur(15px);
+box-shadow:0 2px 20px rgba(0,0,0,0.08);
+z-index:1000;
+transition:all 0.3s ease;
+}
+nav.scrolled{background:rgba(255,255,255,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.12);}
+nav h2{font-size:24px;font-weight:600;color:#065f46;}
+nav ul{display:flex;gap:30px;list-style:none;align-items:center;}
+nav a{
+text-decoration:none;
+color:#065f46;
+font-weight:500;
+padding:8px 0;
+position:relative;
+transition:all 0.3s ease;
+}
+nav a:hover{color:#16a34a;transform:translateY(-2px);}
+nav a::after{
+content:'';
+position:absolute;
+bottom:0;
+left:0;
+width:0;
+height:2px;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+transition:width 0.3s ease;
+}
+nav a:hover::after{width:100%;}
+
+.theme-toggle{
+margin-left:20px;
+padding:8px 16px;
+border:none;
+border-radius:25px;
+background:#16a34a;
+color:white;
+cursor:pointer;
+font-size:16px;
+font-weight:500;
+transition:all 0.3s ease;
+box-shadow:0 4px 15px rgba(22,163,74,0.3);
+}
+.theme-toggle:hover{
+background:#15803d;
+transform:translateY(-2px);
+box-shadow:0 6px 20px rgba(22,163,74,0.4);
 }
 
-nav.scrolled {
-  padding: 12px 8%;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+/* ===== HERO ===== */
+.hero{
+position:relative;
+height:80vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
 }
-
-nav h2 {
-  font-size: 24px;
-  font-weight: 700;
-  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-slider{position:absolute;width:100%;height:100%;}
+.hero-video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
 }
-
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,rgba(0,0,0,0.6),rgba(6,79,70,0.4));
 }
-
-nav a {
-  text-decoration: none;
-  color: var(--dark-green);
-  font-weight: 500;
-  position: relative;
-  transition: all 0.3s ease;
-  padding: 8px 0;
+.hero-content{
+position:relative;
+z-index:2;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 8%;
+color:white;
+width:100%;
+max-width:1400px;
+margin:0 auto;
 }
-
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
-  transition: width 0.3s ease;
+.hero-text h1{
+font-size:48px;
+font-weight:700;
+line-height:1.2;
+margin-bottom:20px;
 }
-
-nav a:hover::after {
-  width: 100%;
+.hero-text span{
+background:linear-gradient(45deg,#22c55e,#4ade80);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
 }
-
-nav a:hover {
-  color: var(--primary-green);
-  transform: translateY(-2px);
+.hero-text p{
+margin-top:20px;
+max-width:550px;
+font-size:16px;
+font-weight:400;
+opacity:0;
+animation:fadeInUp 1s ease 1s forwards;
 }
-
-.theme-toggle {
-  margin-left: 20px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow);
+@keyframes fadeInUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
 }
-
-.theme-toggle:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: var(--glow);
+.buttons{
+margin-top:30px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
 }
-
-/* ===== HERO SECTION ===== */
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.btn{
+padding:12px 28px;
+border-radius:30px;
+cursor:pointer;
+font-size:15px;
+font-weight:500;
+border:none;
+transition:all 0.3s ease;
+position:relative;
+overflow:hidden;
 }
-
-.hero-slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.primary{
+background:linear-gradient(45deg,#16a34a,#22c55e);
+color:#fff;
+box-shadow:0 8px 25px rgba(22,163,74,0.3);
 }
-
-.hero-video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.6) contrast(1.1);
-  transition: filter 0.5s ease;
+.primary:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 35px rgba(22,163,74,0.4);
 }
-
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(6,79,70,0.4));
+.outline{
+background:transparent;
+border:2px solid rgba(255,255,255,0.9);
+color:white;
+backdrop-filter:blur(10px);
 }
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 8%;
-  color: white;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+.outline:hover{
+background:rgba(255,255,255,0.15);
+border-color:#22c55e;
+transform:translateY(-3px);
 }
-
-.hero-text h1 {
-  font-size: clamp(36px, 5vw, 52px);
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 20px;
+.hero-img img{
+width:280px;
+height:280px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+border:6px solid rgba(255,255,255,0.2);
+transition:all 0.4s ease;
 }
-
-.hero-text span {
-  color: var(--secondary-green);
-  background: linear-gradient(45deg, var(--secondary-green), #4ade80);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-text p {
-  margin-top: 20px;
-  max-width: 600px;
-  font-size: 18px;
-  opacity: 0;
-}
-
-.buttons {
-  margin-top: 35px;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 14px 28px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.primary {
-  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
-  color: #fff;
-  box-shadow: var(--shadow);
-}
-
-.primary:hover {
-  background: linear-gradient(45deg, var(--secondary-green), #4ade80);
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: var(--glow), 0 25px 50px rgba(22,163,74,0.4);
-}
-
-.outline {
-  background: transparent;
-  border: 2px solid rgba(255,255,255,0.9);
-  color: white;
-  backdrop-filter: blur(10px);
-}
-
-.outline:hover {
-  background: rgba(255,255,255,0.2);
-  border-color: var(--secondary-green);
-  transform: translateY(-4px);
-  box-shadow: var(--glow);
-}
-
-.hero-img {
-  position: relative;
-}
-
-.hero-img img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 25px;
-  box-shadow: var(--shadow);
-  transition: all 0.5s ease;
-  border: 8px solid rgba(255,255,255,0.2);
-}
-
-.hero-img img:hover {
-  transform: scale(1.05) rotate(3deg);
-  box-shadow: var(--glow), 0 30px 60px rgba(0,0,0,0.4);
-}
+.hero-img img:hover{transform:scale(1.05);box-shadow:0 25px 50px rgba(0,0,0,0.4);}
 
 /* ===== SECTIONS ===== */
-section {
-  padding: 100px 8%;
-  position: relative;
+section{padding:80px 8%;position:relative;}
+.section-title{
+font-size:32px;
+font-weight:700;
+margin-bottom:40px;
+text-align:center;
+position:relative;
+}
+.section-title::after{
+content:"";
+width:80px;
+height:2px;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+position:absolute;
+bottom:-8px;
+left:50%;
+transform:translateX(-50%);
+border-radius:1px;
 }
 
-.section-title {
-  font-size: clamp(28px, 4vw, 36px);
-  margin-bottom: 40px;
-  position: relative;
-  font-weight: 700;
-  text-align: center;
+/* ===== CARDS ===== */
+.card{
+background:rgba(255,255,255,0.92);
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,0.08);
+margin-bottom:20px;
+transition:all 0.3s ease;
+border:1px solid rgba(255,255,255,0.3);
+backdrop-filter:blur(10px);
 }
-
-.section-title::after {
-  content: "";
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 2px;
-  box-shadow: 0 2px 10px rgba(22,163,74,0.3);
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 60px rgba(0,0,0,0.12);
 }
-
-/* ===== ADVANCED CARDS ===== */
-.card {
-  background: var(--card-bg);
-  padding: 35px;
-  border-radius: 25px;
-  box-shadow: var(--shadow);
-  margin-bottom: 25px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+.timeline{
+border-left:4px solid #16a34a;
+padding-left:25px;
+position:relative;
 }
-
-.card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.timeline {
-  border-left: 5px solid var(--primary-green);
-  padding-left: 30px;
-  position: relative;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: -7px;
-  top: 0;
-  bottom: 0;
-  width: 16px;
-  height: 16px;
-  background: var(--secondary-green);
-  border-radius: 50%;
-  box-shadow: var(--glow);
+.timeline::before{
+content:'';
+position:absolute;
+left:-10px;
+top:0;
+width:20px;
+height:20px;
+background:#22c55e;
+border-radius:50%;
+box-shadow:0 0 0 4px white;
 }
 
 /* ===== SKILLS ===== */
-.skill {
-  margin-bottom: 30px;
+.skill{margin-bottom:25px;}
+.skill p{
+font-size:16px;
+margin-bottom:15px;
+font-weight:500;
+display:flex;
+align-items:center;
+gap:12px;
 }
-
-.skill p {
-  font-size: 16px;
-  margin-bottom: 15px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.skill i{color:#16a34a;font-size:20px;}
+.progress{
+height:10px;
+background:rgba(229,231,235,0.8);
+border-radius:20px;
+overflow:hidden;
+position:relative;
 }
-
-.skill i {
-  color: var(--primary-green);
-  font-size: 20px;
+.progress-bar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#16a34a,#22c55e);
+border-radius:20px;
+transition:width 1.8s ease-out;
+position:relative;
 }
-
-.progress {
-  height: 12px;
-  background: rgba(229,231,235,0.6);
-  border-radius: 25px;
-  overflow: hidden;
-  position: relative;
+.progress-bar::after{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+animation:shimmer 2s infinite;
 }
+@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
 
-.progress-bar {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
-  border-radius: 25px;
-  transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  box-shadow: var(--glow);
+/* ===== ANIMATION CLASSES ===== */
+.fade-section{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease-out;
 }
-
-.progress-bar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.fade-section {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.fade-section.show {
-  opacity: 1;
-  transform: translateY(0);
+.fade-section.show{
+opacity:1;
+transform:translateY(0);
 }
 
 /* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  padding: 40px 0;
-  background: linear-gradient(135deg, var(--dark-bg), #1e293b);
-  color: var(--text-light);
-  font-size: 15px;
-  letter-spacing: 0.5px;
-  position: relative;
-  overflow: hidden;
+.footer{
+text-align:center;
+padding:30px 0;
+background:linear-gradient(135deg,#065f46,#047857);
+color:#e5e7eb;
+font-size:14px;
+letter-spacing:0.5px;
 }
+.footer strong{color:#22c55e;font-weight:600;}
 
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+/* ===== DARK MODE ===== */
+body.dark{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:#e2e8f0;
 }
-
-.footer strong {
-  color: var(--secondary-green);
-  font-weight: 700;
+body.dark .card{
+background:rgba(30,41,59,0.95);
+border-color:rgba(255,255,255,0.1);
+color:#e2e8f0;
 }
-
-/* ===== BACK TO TOP BUTTON ===== */
-#topBtn {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  padding: 16px;
-  border: none;
-  border-radius: 50%;
-  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  display: none;
-  z-index: 2000;
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
-  border: 4px solid rgba(255,255,255,0.3);
-}
-
-#topBtn:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: var(--glow), 0 20px 40px rgba(22,163,74,0.4);
-}
+body.dark nav{background:rgba(15,23,42,0.95);}
+body.dark .progress{background:rgba(71,85,105,0.6);}
 
 /* ===== CONTACT FORM ===== */
-.contact-form {
-  margin-top: 40px;
-  background: linear-gradient(135deg, rgba(30,30,47,0.95), rgba(15,23,42,0.95));
-  padding: 40px;
-  border-radius: 25px;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(20px);
+.contact-form{
+margin-top:40px;
+background:rgba(30,30,47,0.95);
+padding:30px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+backdrop-filter:blur(15px);
 }
-
-.contact-form h3 {
-  margin-bottom: 25px;
-  color: white;
-  font-size: 28px;
-  text-align: center;
+.contact-form h3{
+margin-bottom:20px;
+color:#fff;
+font-size:24px;
+text-align:center;
 }
-
 .contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 16px 20px;
-  margin-bottom: 20px;
-  border: 2px solid rgba(255,255,255,0.1);
-  border-radius: 15px;
-  outline: none;
-  font-size: 16px;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+.contact-form textarea{
+width:100%;
+padding:14px 16px;
+margin-bottom:16px;
+border:2px solid rgba(255,255,255,0.1);
+border-radius:12px;
+outline:none;
+font-size:15px;
+background:rgba(255,255,255,0.08);
+color:#fff;
+transition:all 0.3s ease;
 }
-
 .contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(255,255,255,0.7);
-}
-
+.contact-form textarea::placeholder{color:rgba(255,255,255,0.6);}
 .contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--secondary-green);
-  box-shadow: var(--glow);
-  transform: translateY(-2px);
+.contact-form textarea:focus{
+border-color:#22c55e;
+box-shadow:0 0 0 3px rgba(34,197,94,0.2);
+transform:translateY(-2px);
+}
+.contact-form textarea{resize:vertical;min-height:120px;}
+.contact-form button{
+background:linear-gradient(45deg,#6c63ff,#8b5cf6);
+color:white;
+border:none;
+padding:14px 30px;
+border-radius:12px;
+cursor:pointer;
+font-size:15px;
+font-weight:500;
+width:100%;
+transition:all 0.3s ease;
+text-transform:uppercase;
+letter-spacing:0.5px;
+}
+.contact-form button:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(108,99,255,0.4);
 }
 
-.contact-form textarea {
-  resize: vertical;
-  min-height: 140px;
+/* ===== BACK TO TOP ===== */
+#topBtn{
+position:fixed;
+bottom:30px;
+right:30px;
+padding:14px;
+border:none;
+border-radius:50%;
+background:#16a34a;
+color:white;
+font-size:18px;
+cursor:pointer;
+display:none;
+z-index:2000;
+box-shadow:0 8px 25px rgba(22,163,74,0.3);
+transition:all 0.3s ease;
+border:3px solid rgba(255,255,255,0.3);
 }
+#topBtn:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(22,163,74,0.4);}
 
-.contact-form button {
-  background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
-  color: white;
-  border: none;
-  padding: 16px 40px;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  transition: all 0.4s ease;
-  width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+.hero{height:70vh;}
+.hero-content{flex-direction:column;text-align:center;gap:30px;}
+.hero-img{margin-top:20px;}
+nav{padding:12px 5%;}
+nav ul{flex-wrap:wrap;gap:15px;justify-content:center;}
+.buttons{justify-content:center;}
 }
-
-.contact-form button:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--glow), 0 20px 40px rgba(22,163,74,0.4);
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 1024px) {
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 40px;
-  }
-  
-  .hero-img {
-    margin-top: 0;
-  }
-  
-  nav ul {
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px 5%;
-  }
-  
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  section {
-    padding: 60px 5%;
-  }
-  
-  .buttons {
-    justify-content: center;
-  }
-  
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 32px;
-  }
-  
-  .card {
-    padding: 25px 20px;
-  }
-  
-  .contact-form {
-    padding: 25px 20px;
-  }
-}
-
-/* ===== SMOOTH SCROLLBAR ===== */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(229,231,235,0.5);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--primary-green), var(--secondary-green));
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-green);
+@media(max-width:600px){
+section{padding:60px 5%;}
+.card{padding:25px 20px;}
+.hero-text h1{font-size:36px;}
+.grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 
 <body>
- <!-- BACK TO TOP BUTTON -->
- <button id="topBtn" aria-label="Back to top">
+ <!-- BACK TO TOP -->
+ <button id="topBtn" aria-label="Scroll to top">
   <i class="fa-solid fa-arrow-up"></i>
  </button>
 
- <!-- ENHANCED PRELOADER -->
+ <!-- PRELOADER -->
  <div id="preloader">
-  <div class="loader-container">
-   <div class="loader"></div>
-  </div>
-  <div class="preloader-text">Loading Portfolio...</div>
+  <div class="loader"></div>
  </div>
 
- <!-- SCROLL PROGRESS BAR -->
+ <!-- PROGRESS BAR -->
  <div id="progressBar"></div>
  
- <!-- ADVANCED CURSOR -->
- <div class="cursor-glow" id="cursorGlow"></div>
+ <!-- CURSOR -->
+ <div class="cursor-glow"></div>
 
- <!-- ENHANCED NAVIGATION -->
- <nav id="navbar">
-  <button class="theme-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+ <!-- NAVIGATION -->
+ <nav id="nav">
+  <button class="theme-toggle" onclick="toggleDarkMode()" aria-label="Toggle theme">
    🌙
   </button>
   <h2>Yashwanth</h2>
@@ -745,12 +495,11 @@ section {
   </ul>
  </nav>
 
- <!-- HERO SECTION -->
+ <!-- HERO -->
  <div class="hero">
   <div class="hero-slider">
-   <video class="hero-video" autoplay muted loop playsinline preload="auto">
+   <video class="hero-video" autoplay muted loop playsinline preload="metadata">
     <source src="1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
    </video>
   </div>
   <div class="overlay"></div>
@@ -759,7 +508,7 @@ section {
     <h1>Hello, I'm <span>Yashwanth K S</span></h1>
     <p></p>
     <div class="buttons">
-     <button class="btn primary" onclick="downloadCV()">
+     <button class="btn primary" onclick="window.open('For IT.pdf','_blank')">
       <i class="fa-solid fa-download"></i> Download CV
      </button>
      <button class="btn outline" onclick="smoothScroll('experience')">
@@ -768,13 +517,13 @@ section {
      <button class="btn outline" onclick="smoothScroll('contact')">
       Contact
      </button>
-     <button class="btn outline" onclick="sendEmail()">
+     <button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">
       Email
      </button>
     </div>
    </div>
    <div class="hero-img">
-    <img src="profile.jpg" alt="Yashwanth K S - Professional Photo" loading="lazy">
+    <img src="profile.jpg" alt="Yashwanth K S" loading="lazy">
    </div>
   </div>
  </div>
@@ -791,9 +540,9 @@ section {
  <section id="experience" class="fade-section">
   <h2 class="section-title">Employment</h2>
   <div class="card timeline">
-   <strong>Assistant Librarian</strong><br>
-   K S School of Engineering & Management (2023 – Present)
-   <ul>
+   <strong style="font-size:20px;color:#065f46;">Assistant Librarian</strong><br>
+   <strong>K S School of Engineering & Management (2023 – Present)</strong>
+   <ul style="margin-top:15px;">
     <li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
     <li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
     <li>Manage and optimize OPAC systems for efficient information retrieval</li>
@@ -811,65 +560,42 @@ section {
    <div class="skill">
     <p><i class="fa-solid fa-database"></i> 
     <strong>Library & Information Systems:</strong> Koha • Libsoft • NewGenLib</p>
-    <div class="progress">
-     <div class="progress-bar" data-progress="90"></div>
-    </div>
+    <div class="progress"><div class="progress-bar" data-progress="90"></div></div>
    </div>
-
    <div class="skill">
     <p><i class="fa-solid fa-cloud"></i> 
     <strong>Digital Repository Management:</strong> DSpace • EPrints • Greenstone</p>
-    <div class="progress">
-     <div class="progress-bar" data-progress="85"></div>
-    </div>
+    <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
    </div>
-
    <div class="skill">
     <p><i class="fa-solid fa-code"></i> 
     <strong>Web Development:</strong> HTML • CSS</p>
-    <div class="progress">
-     <div class="progress-bar" data-progress="80"></div>
-    </div>
+    <div class="progress"><div class="progress-bar" data-progress="80"></div></div>
    </div>
-
    <div class="skill">
     <p><i class="fa-solid fa-laptop-code"></i> 
     <strong>Programming:</strong> Python • Java</p>
-    <div class="progress">
-     <div class="progress-bar" data-progress="75"></div>
-    </div>
+    <div class="progress"><div class="progress-bar" data-progress="75"></div></div>
    </div>
-
    <div class="skill">
     <p><i class="fa-solid fa-chart-line"></i> 
     <strong>Database & Reporting:</strong> SQL Queries • SQL Reporting • Usage Analytics</p>
-    <div class="progress">
-     <div class="progress-bar" data-progress="88"></div>
-    </div>
+    <div class="progress"><div class="progress-bar" data-progress="88"></div></div>
    </div>
-
    <div class="skill">
     <p><i class="fa-solid fa-globe"></i> 
     <strong>Content Management Systems:</strong> Drupal • Joomla</p>
-    <div class="progress">
-     <div class="progress-bar" data-progress="78"></div>
-    </div>
+    <div class="progress"><div class="progress-bar" data-progress="78"></div></div>
    </div>
-
    <div class="skill">
     <p><i class="fa-solid fa-folder-open"></i> 
     <strong>Collaboration & Documentation Tools:</strong> SharePoint • Digital Content Management</p>
-    <div class="progress">
-     <div class="progress-bar" data-progress="85"></div>
-    </div>
+    <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
    </div>
-
    <div class="skill">
     <p><i class="fa-solid fa-book"></i> 
     <strong>Reference Management Tools:</strong> Zotero • Mendeley • EndNote</p>
-    <div class="progress">
-     <div class="progress-bar" data-progress="92"></div>
-    </div>
+    <div class="progress"><div class="progress-bar" data-progress="92"></div></div>
    </div>
   </div>
  </section>
@@ -877,54 +603,49 @@ section {
  <!-- COURSES -->
  <section id="courses" class="fade-section">
   <h2 class="section-title">Certifications & Courses</h2>
-
   <div class="grid">
    <div class="card">
-    <strong>O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</strong><br><br>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
-     <button class="btn outline" onclick="downloadCert('OLevel_Certificate1.pdf')">
+    <strong>O'Level Computer Certification - NIELIT</strong><br><br>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+     <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf','_blank')">
       <i class="fa-solid fa-download"></i> Python
      </button>
-     <button class="btn outline" onclick="downloadCert('OLevel_Certificate2.pdf')">
+     <button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf','_blank')">
       <i class="fa-solid fa-download"></i> IoT
      </button>
-     <button class="btn outline" onclick="downloadCert('OLevel_Certificate3.pdf')">
+     <button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf','_blank')">
       <i class="fa-solid fa-download"></i> Web Design
      </button>
-     <button class="btn outline" onclick="downloadCert('OLevel_Certificate4.pdf')">
+     <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf','_blank')">
       <i class="fa-solid fa-download"></i> IT Tools
      </button>
-     <button class="btn outline" onclick="downloadCert('OLevel_Certificate5.pdf')">
+     <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf','_blank')">
       <i class="fa-solid fa-download"></i> CCC
      </button>
     </div>
    </div>
-
    <div class="card">
-    <strong>Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</strong><br><br>
-    <button class="btn primary" onclick="downloadCert('nptel_science_communication_data_analytics_2024.pdf')">
+    <strong>Science Communication & Data Analytics – NPTEL</strong><br><br>
+    <button class="btn primary" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf','_blank')">
      <i class="fa-solid fa-download"></i> View Certificate
     </button>
    </div>
-
    <div class="card">
-    <strong>Advanced R Programming for Data Analytics in Business – NPTEL</strong><br><br>
-    <button class="btn primary" onclick="downloadCert('advanced_r_programming_data_analytics_2024.pdf')">
+    <strong>Advanced R Programming – NPTEL</strong><br><br>
+    <button class="btn primary" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf','_blank')">
      <i class="fa-solid fa-download"></i> View Certificate
     </button>
    </div>
-
    <div class="card">
     <strong>IT Applications in Libraries – NPTEL</strong><br><br>
-    <span style="color: var(--secondary-green); font-weight: 600; display: flex; align-items: center; gap: 10px;">
-     <i class="fa-solid fa-circle-check" style="font-size: 24px;"></i> 
-     Completed (Certificate not available)
+    <span style="color:#22c55e;font-weight:600;font-size:16px;">
+     <i class="fa-solid fa-check-circle" style="margin-right:8px;"></i>
+     Completed
     </span>
    </div>
-   
    <div class="card">
-    <strong>Training Webinar: How to Navigate the New Emerald Insight Platform</strong><br><br>
-    <button class="btn primary" onclick="downloadCert('Training Webinar.pdf')">
+    <strong>Emerald Insight Platform Training</strong><br><br>
+    <button class="btn primary" onclick="window.open('Training Webinar.pdf','_blank')">
      <i class="fa-solid fa-download"></i> View Certificate
     </button>
    </div>
@@ -936,82 +657,65 @@ section {
   <h2 class="section-title">Education</h2>
   <div class="grid">
    <div class="card">
-    <h3>Master of Library & Information Science (M.L.I.Sc)</h3>
+    <h3 style="color:#065f46;font-size:22px;margin-bottom:10px;">Master of Library & Information Science (M.L.I.Sc)</h3>
     <p><strong>Bangalore University</strong> | 2022</p>
    </div>
    <div class="card">
-    <h3>Bachelor of Arts (B.A.)</h3>
+    <h3 style="color:#065f46;font-size:22px;margin-bottom:10px;">Bachelor of Arts (B.A.)</h3>
     <p><strong>Belture Government College</strong> | 2020</p>
    </div>
   </div>
  </section>
 
- <!-- DIGITAL INITIATIVES & PROJECTS -->
+ <!-- PROJECTS -->
  <section id="projects" class="fade-section">
   <h2 class="section-title">Digital Initiatives & Projects</h2>
   <div class="card">
-   <ul style="line-height: 2;">
-    <li><strong>Koha Library Management System Implementation:</strong> 
-    Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.</li>
-    <li><strong>Library Automation & Workflow Optimization:</strong> 
-    Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.</li>
-    <li><strong>Institutional Repository Management:</strong> 
-    Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.</li>
-    <li><strong>SQL-Based Data Analytics & Reporting:</strong> 
-    Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.</li>
-    <li><strong>Digital Resource Integration:</strong> 
-    Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.</li>
-    <li><strong>SharePoint & Digital Documentation Management:</strong> 
-    Handled structured document storage, internal resource sharing, and workflow documentation using Microsoft SharePoint.</li>
+   <ul style="line-height:1.8;">
+    <li><strong>Koha LMS Implementation:</strong> Administered Koha including cataloging, circulation, user management, MARC customization, and troubleshooting.</li>
+    <li><strong>Library Automation:</strong> Managed Libsoft LMS and automated workflows for operational efficiency.</li>
+    <li><strong>DSpace Repository:</strong> Maintained institutional repository for digital content and metadata management.</li>
+    <li><strong>SQL Analytics:</strong> Generated reports for circulation trends, user activity, and resource utilization.</li>
+    <li><strong>DELNET Integration:</strong> Managed ILL, document delivery, and academic resource services.</li>
+    <li><strong>SharePoint Management:</strong> Handled document storage and workflow documentation.</li>
    </ul>
   </div>
  </section>
 
- <!-- KEY ACHIEVEMENTS -->
+ <!-- ACHIEVEMENTS -->
  <section id="achievements" class="fade-section">
   <h2 class="section-title">Key Achievements</h2>
   <div class="card">
-   <ul style="line-height: 2;">
-    <li><strong>Successfully Administered Koha & Libsoft LMS:</strong> 
-    Managed cataloging, circulation, user records, MARC customization, and troubleshooting to ensure smooth library automation.</li>
-    <li><strong>Generated SQL-Based Analytical Reports:</strong> 
-    Prepared circulation statistics, usage trends, and monthly/annual analytics reports for data-driven decision making.</li>
-    <li><strong>Maintained Digital Repository & E-Resources:</strong> 
-    Managed DSpace repository, DELNET services (ILL & document delivery), and digital resource access systems.</li>
-    <li><strong>Conducted Technical Training Sessions:</strong> 
-    Delivered orientation programs on OPAC, digital databases, citation management tools (Zotero, Mendeley, EndNote), and research support tools.</li>
-    <li><strong>Managed SharePoint Documentation:</strong> 
-    Handled structured document storage, internal resource sharing, and policy documentation using Microsoft SharePoint.</li>
+   <ul style="line-height:1.8;">
+    <li><strong>Koha & Libsoft Administration:</strong> Managed complete library automation systems.</li>
+    <li><strong>SQL Analytics Reports:</strong> Created data-driven decision-making reports.</li>
+    <li><strong>Digital Repository Management:</strong> Maintained DSpace and DELNET services.</li>
+    <li><strong>Technical Training:</strong> Delivered sessions on OPAC, databases, and citation tools.</li>
+    <li><strong>SharePoint Implementation:</strong> Managed institutional documentation systems.</li>
    </ul>
   </div>
  </section>
 
- <!-- WORKSHOPS & PROFESSIONAL DEVELOPMENT -->
+ <!-- WORKSHOPS -->
  <section id="workshops" class="fade-section">
   <h2 class="section-title">Workshops & Professional Development</h2>
   <div class="card">
-   <ul style="line-height: 2;">
-    <li><strong>NPTEL Online Certifications:</strong> 
-    Completed professional courses in Science Communication & Data Analytics, Advanced R Programming, and IT Applications in Libraries.</li>
-    <li><strong>Library Automation & Digital Repository Training:</strong> 
-    Participated in webinars and technical sessions focused on Koha LMS, DSpace repositories, and digital library tools.</li>
-    <li><strong>Research & Citation Tools Training:</strong> 
-    Engaged in training programs related to Zotero, Mendeley, EndNote, and academic productivity tools.</li>
+   <ul style="line-height:1.8;">
+    <li><strong>NPTEL Certifications:</strong> Science Communication, R Programming, IT Applications.</li>
+    <li><strong>Library Automation Training:</strong> Koha LMS, DSpace repositories, digital tools.</li>
+    <li><strong>Research Tools Training:</strong> Zotero, Mendeley, EndNote productivity tools.</li>
    </ul>
   </div>
  </section>
 
- <!-- PROFESSIONAL MEMBERSHIPS & DIGITAL NETWORKS -->
+ <!-- MEMBERSHIPS -->
  <section id="memberships" class="fade-section">
-  <h2 class="section-title">Professional Memberships & Digital Networks</h2>
+  <h2 class="section-title">Professional Memberships</h2>
   <div class="card">
-   <ul style="line-height: 2;">
-    <li><strong>DELNET (Developing Library Network):</strong> 
-    Managed inter-library loan (ILL), document delivery, and academic resource access services.</li>
-    <li><strong>N-LIST / INFLIBNET Coordination Support:</strong> 
-    Supported access to e-resources and digital academic databases for institutional users.</li>
-    <li><strong>Academic & Digital Library Professional Engagement:</strong> 
-    Actively involved in institutional digital initiatives and academic resource management activities.</li>
+   <ul style="line-height:1.8;">
+    <li><strong>DELNET:</strong> Managed ILL and document delivery services.</li>
+    <li><strong>N-LIST/INFLIBNET:</strong> Supported e-resource access coordination.</li>
+    <li><strong>Digital Library Networks:</strong> Active in academic digital initiatives.</li>
    </ul>
   </div>
  </section>
@@ -1019,38 +723,33 @@ section {
  <!-- CONTACT -->
  <section id="contact" class="fade-section">
   <h2 class="section-title">Contact</h2>
-
   <div class="grid">
-    <div class="card" data-aos="fade-up" data-aos-delay="100">
-     <i class="fa-solid fa-phone" style="font-size: 32px; color: var(--primary-green); margin-bottom: 15px; display: block;"></i>
-     7760144157
-    </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="200">
-     <i class="fa-solid fa-envelope" style="font-size: 32px; color: var(--primary-green); margin-bottom: 15px; display: block;"></i>
-     yashu2370@gmail.com
-    </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="300">
-     <i class="fa-solid fa-location-dot" style="font-size: 32px; color: var(--primary-green); margin-bottom: 15px; display: block;"></i>
-     Bengaluru, India
-    </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="400">
-     <i class="fa-solid fa-language" style="font-size: 32px; color: var(--primary-green); margin-bottom: 15px; display: block;"></i>
-     English, Kannada, Hindi, Telugu
-    </div>
+   <div class="card">
+    <i class="fa-solid fa-phone" style="font-size:28px;color:#16a34a;margin-bottom:12px;display:block;"></i>
+    7760144157
+   </div>
+   <div class="card">
+    <i class="fa-solid fa-envelope" style="font-size:28px;color:#16a34a;margin-bottom:12px;display:block;"></i>
+    yashu2370@gmail.com
+   </div>
+   <div class="card">
+    <i class="fa-solid fa-location-dot" style="font-size:28px;color:#16a34a;margin-bottom:12px;display:block;"></i>
+    Bengaluru, India
+   </div>
+   <div class="card">
+    <i class="fa-solid fa-language" style="font-size:28px;color:#16a34a;margin-bottom:12px;display:block;"></i>
+    English, Kannada, Hindi, Telugu
+   </div>
   </div>
 
-  <!-- ENHANCED CONTACT FORM -->
   <div class="contact-form">
-    <h3>Send me a message 💬</h3>
-    <form action="https://formspree.io/f/mbdzzokb" method="POST" id="contactForm">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Type your message..." required></textarea>
-      <button type="submit">
-        <span id="submitText">Send Message</span>
-        <span id="loadingText" style="display: none;">Sending...</span>
-      </button>
-    </form>
+   <h3>Send me a message 💬</h3>
+   <form action="https://formspree.io/f/mbdzzokb" method="POST">
+    <input type="text" name="name" placeholder="Your Name *" required>
+    <input type="email" name="email" placeholder="Your Email *" required>
+    <textarea name="message" rows="5" placeholder="Your Message *" required></textarea>
+    <button type="submit">Send Message</button>
+   </form>
   </div>
  </section>
 
@@ -1059,211 +758,131 @@ section {
   <p>Library & Information Science Professional | Academic Digital Transformation Specialist</p>
  </footer>
 
- <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
  <script>
- // ===== ADVANCED INITIALIZATION =====
+ // ===== CORE FUNCTIONALITY =====
  document.addEventListener('DOMContentLoaded', function() {
-  initPortfolio();
+  initAll();
  });
 
- function initPortfolio() {
-  // Preloader
+ function initAll() {
+  hidePreloader();
+  initScrollEvents();
+  initTyping();
+  initProgressBars();
+  checkDarkMode();
+ }
+
+ // Preloader
+ function hidePreloader() {
+  const preloader = document.getElementById('preloader');
   setTimeout(() => {
-   const preloader = document.getElementById('preloader');
    preloader.style.opacity = '0';
    setTimeout(() => preloader.style.display = 'none', 500);
-  }, 2000);
-
-  // AOS Animation
-  AOS.init({
-   duration: 1000,
-   once: true,
-   offset: 100
-  });
-
-  // Typing animation
-  startTyping();
-
-  // Initialize all observers
-  initScrollProgress();
-  initScrollReveal();
-  initNavbarScroll();
-  initCursor();
-  initBackToTop();
-  initProgressBars();
+  }, 1500);
  }
 
- // ===== PRELOADER =====
- window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
- });
-
- // ===== SCROLL PROGRESS =====
- function initScrollProgress() {
+ // Scroll Events
+ function initScrollEvents() {
+  // Progress Bar
   window.addEventListener('scroll', () => {
-   const winScroll = document.documentElement.scrollTop;
-   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-   const scrolled = (winScroll / height) * 100;
-   document.getElementById('progressBar').style.width = scrolled + '%';
+   const scrollTop = document.documentElement.scrollTop;
+   const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+   const progress = (scrollTop / scrollHeight) * 100;
+   document.getElementById('progressBar').style.width = progress + '%';
+   
+   // Navbar
+   document.getElementById('nav').classList.toggle('scrolled', scrollTop > 50);
+   
+   // Back to Top
+   const topBtn = document.getElementById('topBtn');
+   topBtn.style.display = scrollTop > 300 ? 'block' : 'none';
   });
- }
-
- // ===== ENHANCED CURSOR =====
- function initCursor() {
-  const cursor = document.getElementById('cursorGlow');
   
-  document.addEventListener('mousemove', (e) => {
-   cursor.style.left = e.pageX + 'px';
-   cursor.style.top = e.pageY + 'px';
-  });
-
-  // Hover effects
-  const hoverables = document.querySelectorAll('a, button, .card, .btn');
-  hoverables.forEach(el => {
-   el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-   el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-  });
- }
-
- // ===== NAVBAR SCROLL EFFECT =====
- function initNavbarScroll() {
-  window.addEventListener('scroll', () => {
-   const navbar = document.getElementById('navbar');
-   if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-   } else {
-    navbar.classList.remove('scrolled');
-   }
-  });
- }
-
- // ===== BACK TO TOP =====
- function initBackToTop() {
-  const topBtn = document.getElementById('topBtn');
-  window.addEventListener('scroll', () => {
-   if (document.documentElement.scrollTop > 400) {
-    topBtn.style.display = 'block';
-    topBtn.style.opacity = '1';
-   } else {
-    topBtn.style.opacity = '0';
-    setTimeout(() => topBtn.style.display = 'none', 300);
-   }
-  });
-
-  topBtn.onclick = () => {
-   window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('topBtn').onclick = () => {
+   window.scrollTo({top:0,behavior:'smooth'});
   };
  }
 
- // ===== SMOOTH SCROLL =====
- function smoothScroll(targetId) {
-  document.getElementById(targetId).scrollIntoView({ 
-   behavior: 'smooth',
-   block: 'start'
-  });
- }
+ // Cursor
+ document.addEventListener('mousemove', (e) => {
+  document.querySelector('.cursor-glow').style.left = e.pageX + 'px';
+  document.querySelector('.cursor-glow').style.top = e.pageY + 'px';
+ });
 
- // ===== TYPING ANIMATION =====
- function startTyping() {
+ // Typing Animation
+ function initTyping() {
   const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-  const typing = document.querySelector('.hero-text p');
+  const typingEl = document.querySelector('.hero-text p');
   let i = 0;
   
-  function type() {
+  function typeWriter() {
    if (i < text.length) {
-    typing.innerHTML += text.charAt(i);
+    typingEl.innerHTML += text.charAt(i);
     i++;
-    const speed = Math.random() > 0.9 ? 100 : 30;
-    setTimeout(type, speed);
+    setTimeout(typeWriter, 30);
    }
   }
-  type();
+  typeWriter();
  }
 
- // ===== PROGRESS BARS =====
+ // Progress Bars
  function initProgressBars() {
-  const bars = document.querySelectorAll('.progress-bar');
   const observer = new IntersectionObserver((entries) => {
    entries.forEach(entry => {
     if (entry.isIntersecting) {
-     entry.target.style.width = entry.target.dataset.progress + '%';
+     const bar = entry.target.querySelector('.progress-bar');
+     bar.style.width = bar.dataset.progress + '%';
     }
    });
   });
-  bars.forEach(bar => observer.observe(bar));
- }
-
- // ===== SCROLL REVEAL =====
- function initScrollReveal() {
-  const sections = document.querySelectorAll('.fade-section');
-  const revealObserver = new IntersectionObserver((entries) => {
-   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-     entry.target.classList.add('show');
-    }
-   });
+  
+  document.querySelectorAll('.skill').forEach(skill => {
+   observer.observe(skill);
   });
-  sections.forEach(sec => revealObserver.observe(sec));
  }
 
- // ===== UTILITY FUNCTIONS =====
+ // Scroll Reveal
+ const sections = document.querySelectorAll('.fade-section');
+ const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+   if (entry.isIntersecting) {
+    entry.target.classList.add('show');
+   }
+  });
+ });
+ sections.forEach(section => sectionObserver.observe(section));
+
+ // Smooth Scroll
+ function smoothScroll(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+ }
+
+ // Dark Mode
  function toggleDarkMode() {
   document.body.classList.toggle('dark');
   localStorage.setItem('darkMode', document.body.classList.contains('dark'));
  }
 
- function downloadCV() {
-  window.open('For IT.pdf', '_blank');
+ function checkDarkMode() {
+  if (localStorage.getItem('darkMode') === 'true') {
+   document.body.classList.add('dark');
+  }
  }
 
- function sendEmail() {
-  window.location.href = 'mailto:yashu2370@gmail.com';
- }
-
- function downloadCert(file) {
-  window.open(file, '_blank');
- }
-
- // ===== LOAD DARK MODE PREFERENCE =====
- if (localStorage.getItem('darkMode') === 'true') {
-  document.body.classList.add('dark');
- }
-
- // ===== FORM SUBMISSION =====
- document.getElementById('contactForm').addEventListener('submit', function(e) {
-  const submitBtn = this.querySelector('button');
-  const submitText = document.getElementById('submitText');
-  const loadingText = document.getElementById('loadingText');
+ // Form Enhancement
+ document.querySelector('.contact-form form').addEventListener('submit', function() {
+  const btn = this.querySelector('button');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+  btn.disabled = true;
   
-  submitText.style.display = 'none';
-  loadingText.style.display = 'inline';
-  submitBtn.disabled = true;
-  
-  // Re-enable after 3 seconds (formspree handles actual submission)
   setTimeout(() => {
-   submitText.style.display = 'inline';
-   loadingText.style.display = 'none';
-   submitBtn.disabled = false;
+   btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Sent!';
+   setTimeout(() => {
+    btn.innerHTML = 'Send Message';
+    btn.disabled = false;
+   }, 2000);
   }, 3000);
  });
-
- // ===== PWA SERVICE WORKER (Optional) =====
- if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-   navigator.serviceWorker.register('/sw.js')
-    .then(reg => console.log('SW registered'))
-    .catch(err => console.log('SW registration failed'));
-  });
- }
-
- // ===== PERFORMANCE OPTIMIZATION =====
- if ('requestIdleCallback' in window) {
-  requestIdleCallback(() => {
-   // Lazy load images
-   const images = document.querySelectorAll('img[loading="lazy"]');
-   images.forEach(img => img.src = img.dataset.src || img.src);
-  });
- }
  </script>
 </body>
 </html>
