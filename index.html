@@ -245,17 +245,221 @@ text-align:center;
 padding:20px;
 }
 
-/* ===== DARK MODE ===== */
-body.dark{
-background:#0f172a;
-color:#e2e8f0;
+/* ===== DARK MODE 2026 GREEN THEME ===== */
+body.dark {
+  background: linear-gradient(135deg, #064e3b 0%, #047857 40%, #065f46 100%);
+  color: #e0f2fe;
+  position: relative;
 }
-body.dark .card{background:#1e293b;color:#fff;}
-body.dark nav{background:rgba(15,23,42,0.8);}
 
-@media(max-width:900px){
-.hero-content{flex-direction:column;text-align:center;}
-.hero-img{margin-top:30px;}
+body.dark::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(34,197,94,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(22,163,74,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(134,239,172,0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+  animation: darkFloat 25s ease-in-out infinite;
+}
+
+@keyframes darkFloat {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  33% { transform: scale(1.05) rotate(120deg); }
+  66% { transform: scale(1.02) rotate(240deg); }
+}
+
+body.dark .card {
+  background: linear-gradient(145deg, rgba(6,78,59,0.98), rgba(4,120,87,0.95));
+  color: #d1fae5;
+  border: 1px solid rgba(34,197,94,0.4);
+  backdrop-filter: blur(25px);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.6),
+    0 0 25px rgba(34,197,94,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+body.dark nav {
+  background: rgba(6,78,59,0.95);
+  backdrop-filter: blur(30px);
+  border-bottom: 1px solid rgba(34,197,94,0.5);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+body.dark nav a {
+  color: #d1fae5;
+}
+
+body.dark nav a:hover {
+  color: #22c55e;
+  text-shadow: 0 0 15px rgba(34,197,94,0.8);
+}
+
+body.dark .section-title {
+  background: linear-gradient(135deg, #22c55e, #4ade80, #86efac);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark .btn.primary {
+  background: linear-gradient(45deg, #16a34a, #22c55e, #4ade80);
+  box-shadow: 0 8px 25px rgba(22,163,74,0.5);
+}
+
+body.dark .btn.primary:hover {
+  background: linear-gradient(45deg, #15803d, #16a34a);
+  box-shadow: 0 15px 35px rgba(22,163,74,0.7);
+}
+
+body.dark .btn.outline {
+  background: rgba(255,255,255,0.1);
+  border-color: #22c55e;
+  color: #d1fae5;
+  backdrop-filter: blur(15px);
+}
+
+body.dark .btn.outline:hover {
+  background: linear-gradient(45deg, #22c55e, #4ade80);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(34,197,94,0.5);
+}
+
+body.dark .progress {
+  background: rgba(34,197,94,0.2);
+}
+
+body.dark .progress-bar {
+  background: linear-gradient(90deg, #16a34a, #22c55e, #4ade80);
+  box-shadow: 0 0 15px rgba(34,197,94,0.6);
+}
+
+body.dark .contact-form {
+  background: linear-gradient(145deg, rgba(6,78,59,0.98), rgba(4,120,87,0.95));
+  border: 1px solid rgba(34,197,94,0.5);
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(34,197,94,0.3);
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(34,197,94,0.4);
+  color: #d1fae5;
+}
+
+body.dark .contact-form input::placeholder,
+body.dark .contact-form textarea::placeholder {
+  color: rgba(209,250,229,0.7);
+}
+
+body.dark .contact-form button {
+  background: linear-gradient(45deg, #22c55e, #4ade80);
+}
+
+body.dark .contact-form button:hover {
+  background: linear-gradient(45deg, #16a34a, #22c55e);
+  box-shadow: 0 10px 30px rgba(34,197,94,0.6);
+}
+
+body.dark .footer {
+  background: linear-gradient(135deg, #064e3b, #047857);
+  border-top: 2px solid rgba(34,197,94,0.4);
+}
+
+body.dark .footer strong {
+  color: #22c55e;
+  text-shadow: 0 0 15px rgba(34,197,94,0.8);
+}
+
+body.dark .timeline {
+  border-left-color: rgba(34,197,94,0.8);
+  background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(22,163,74,0.2));
+}
+
+body.dark .skill i {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74,222,128,0.6);
+}
+
+/* ===== RESPONSIVE 2026 GREEN ENHANCED ===== */
+@media (max-width: 1200px) {
+  nav { padding: 15px 6%; }
+  nav ul { gap: 20px; }
+}
+
+@media (max-width: 900px) {
+  .hero-content { 
+    flex-direction: column; 
+    text-align: center; 
+    gap: 30px;
+  }
+  .hero-img { 
+    margin-top: 30px; 
+    order: -1;
+  }
+  section { 
+    padding: 60px 5%; 
+  }
+  nav { 
+    padding: 12px 5%; 
+    flex-wrap: wrap; 
+    gap: 15px;
+  }
+  nav ul { 
+    gap: 12px; 
+    font-size: 14px; 
+  }
+  .buttons {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn {
+    min-width: 200px;
+    margin-bottom: 10px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero { height: 85vh; }
+  .hero-text h1 { font-size: 36px; }
+  section { padding: 50px 4%; }
+  .card { padding: 20px; }
+  .contact-form { padding: 25px 20px; margin-top: 25px; }
+  #topBtn { bottom: 20px; right: 20px; padding: 10px; }
+}
+
+@media (max-width: 480px) {
+  nav h2 { font-size: 20px; }
+  nav ul { gap: 10px; }
+  .section-title { font-size: 24px; }
+  .skill p { font-size: 14px; }
+}
+
+/* ===== PRINT OPTIMIZATION GREEN ===== */
+@media print {
+  body.dark { 
+    background: white !important; 
+    color: black !important; 
+  }
+  nav, .cursor-glow, #progressBar, #preloader, #topBtn { 
+    display: none !important; 
+  }
+  section { break-inside: avoid; }
+  .card { 
+    box-shadow: none; 
+    border: 1px solid #22c55e; 
+    background: white !important;
+  }
 }
  
 .footer{
