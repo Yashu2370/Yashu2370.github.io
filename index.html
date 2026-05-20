@@ -91,42 +91,40 @@ animation:spin 1s linear infinite;
 /* CERTIFICATE PREVIEW */
 
 .preview-container{
-position:relative;
-display:inline-block;
-margin:8px;
+    position: relative;
+    display: inline-block;
+    margin: 6px;
 }
 
 .cert-preview{
-position:absolute;
-top:55px;
-left:0;
-width:260px;
-height:180px;
-background:#fff;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 240px;
+    height: 170px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 
-opacity:0;
-visibility:hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
 
-transform:translateY(10px) scale(0.8);
-
-transition:all 0.35s ease;
-
-z-index:999;
+    transition: 0.3s ease;
+    z-index: 100;
 }
 
 .cert-preview iframe{
-width:100%;
-height:100%;
-border:none;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .preview-container:hover .cert-preview{
-opacity:1;
-visibility:visible;
-transform:translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
  /* ===== SCROLL PROGRESS ===== */
@@ -605,168 +603,166 @@ K S School of Engineering & Management (2023 – Present)
 </div>
 </section>
 
-<!-- COURSES -->
+<!-- CERTIFICATIONS -->
 <section id="courses">
 
 <h2 class="section-title">Certifications & Courses</h2>
 
 <!-- O LEVEL -->
 <div class="card">
+    <strong>
+        O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)
+    </strong>
 
-<strong>O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</strong>
+    <br><br>
 
-<br><br>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">
+            <i class="fa-solid fa-download"></i>
+            Programming & Problem Solving through Python
+        </button>
 
-<div class="preview-container">
-<button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">
-<i class="fa-solid fa-download"></i> Programming & Problem Solving through Python
-</button>
+        <div class="cert-preview">
+            <iframe src="OLevel_Certificate1.pdf"></iframe>
+        </div>
+    </div>
 
-<div class="cert-preview">
-<iframe src="OLevel_Certificate1.pdf"></iframe>
-</div>
-</div>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')">
+            <i class="fa-solid fa-download"></i>
+            Internet of Things and its Application
+        </button>
 
-<div class="preview-container">
-<button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')">
-<i class="fa-solid fa-download"></i> Internet of Things and its Application
-</button>
+        <div class="cert-preview">
+            <iframe src="OLevel_Certificate2.pdf"></iframe>
+        </div>
+    </div>
 
-<div class="cert-preview">
-<iframe src="OLevel_Certificate2.pdf"></iframe>
-</div>
-</div>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')">
+            <i class="fa-solid fa-download"></i>
+            Web Designing & Publishing
+        </button>
 
-<div class="preview-container">
-<button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')">
-<i class="fa-solid fa-download"></i> Web Designing & Publishing
-</button>
+        <div class="cert-preview">
+            <iframe src="OLevel_Certificate3.pdf"></iframe>
+        </div>
+    </div>
 
-<div class="cert-preview">
-<iframe src="OLevel_Certificate3.pdf"></iframe>
-</div>
-</div>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')">
+            <i class="fa-solid fa-download"></i>
+            IT Tools and Network Basics
+        </button>
 
-<div class="preview-container">
-<button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')">
-<i class="fa-solid fa-download"></i> IT Tools and Network Basics
-</button>
+        <div class="cert-preview">
+            <iframe src="OLevel_Certificate4.pdf"></iframe>
+        </div>
+    </div>
 
-<div class="cert-preview">
-<iframe src="OLevel_Certificate4.pdf"></iframe>
-</div>
-</div>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')">
+            <i class="fa-solid fa-download"></i>
+            Course on Computer Concepts
+        </button>
 
-<div class="preview-container">
-<button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')">
-<i class="fa-solid fa-download"></i> Course on Computer Concepts
-</button>
-
-<div class="cert-preview">
-<iframe src="OLevel_Certificate5.pdf"></iframe>
-</div>
-</div>
-
+        <div class="cert-preview">
+            <iframe src="OLevel_Certificate5.pdf"></iframe>
+        </div>
+    </div>
 </div>
 
 <!-- IEEE -->
 <div class="card">
+    <strong>
+        Ethical Hacking – IEEE Blended Learning Program
+    </strong>
 
-<strong>Ethical Hacking – IEEE Blended Learning Program</strong>
+    <br><br>
 
-<br><br>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('IEEE.pdf')">
+            <i class="fa-solid fa-download"></i>
+            View Certificate
+        </button>
 
-<div class="preview-container">
-
-<button class="btn outline" onclick="window.open('IEEE.pdf')">
-<i class="fa-solid fa-download"></i> View Certificate
-</button>
-
-<div class="cert-preview">
-<iframe src="IEEE.pdf"></iframe>
+        <div class="cert-preview">
+            <iframe src="IEEE.pdf"></iframe>
+        </div>
+    </div>
 </div>
 
-</div>
-
-</div>
-
-<!-- NPTEL 1 -->
+<!-- NPTEL -->
 <div class="card">
+    <strong>
+        Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL
+    </strong>
 
-<strong>
-Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL
-</strong>
+    <br><br>
 
-<br><br>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')">
+            <i class="fa-solid fa-download"></i>
+            View Certificate
+        </button>
 
-<div class="preview-container">
-
-<button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')">
-<i class="fa-solid fa-download"></i> View Certificate
-</button>
-
-<div class="cert-preview">
-<iframe src="nptel_science_communication_data_analytics_2024.pdf"></iframe>
+        <div class="cert-preview">
+            <iframe src="nptel_science_communication_data_analytics_2024.pdf"></iframe>
+        </div>
+    </div>
 </div>
 
-</div>
-
-</div>
-
-<!-- NPTEL 2 -->
 <div class="card">
+    <strong>
+        Advanced R Programming for Data Analytics in Business – NPTEL
+    </strong>
 
-<strong>Advanced R Programming for Data Analytics in Business – NPTEL</strong>
+    <br><br>
 
-<br><br>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')">
+            <i class="fa-solid fa-download"></i>
+            View Certificate
+        </button>
 
-<div class="preview-container">
-
-<button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')">
-<i class="fa-solid fa-download"></i> View Certificate
-</button>
-
-<div class="cert-preview">
-<iframe src="advanced_r_programming_data_analytics_2024.pdf"></iframe>
+        <div class="cert-preview">
+            <iframe src="advanced_r_programming_data_analytics_2024.pdf"></iframe>
+        </div>
+    </div>
 </div>
 
-</div>
-
-</div>
-
-<!-- NPTEL COMPLETED -->
+<!-- COMPLETED -->
 <div class="card">
+    <strong>
+        IT Applications in Libraries – NPTEL
+    </strong>
 
-<strong>IT Applications in Libraries – NPTEL</strong>
+    <br><br>
 
-<br><br>
-
-<span style="color:#4CAF50; font-weight:500;">
-<i class="fa-solid fa-circle-check"></i>
-Completed (Certificate not available)
-</span>
-
+    <span style="color:#4CAF50; font-weight:500;">
+        <i class="fa-solid fa-circle-check"></i>
+        Completed (Certificate not available)
+    </span>
 </div>
 
 <!-- WEBINAR -->
 <div class="card">
+    <strong>
+        Training Webinar: How to Navigate the New Emerald Insight Platform
+    </strong>
 
-<strong>Training Webinar: How to Navigate the New Emerald Insight Platform</strong>
+    <br><br>
 
-<br><br>
+    <div class="preview-container">
+        <button class="btn outline" onclick="window.open('Training Webinar.pdf')">
+            <i class="fa-solid fa-download"></i>
+            View Certificate
+        </button>
 
-<div class="preview-container">
-
-<button class="btn outline" onclick="window.open('Training Webinar.pdf')">
-<i class="fa-solid fa-download"></i> View Certificate
-</button>
-
-<div class="cert-preview">
-<iframe src="Training Webinar.pdf"></iframe>
-</div>
-
-</div>
-
+        <div class="cert-preview">
+            <iframe src="Training Webinar.pdf"></iframe>
+        </div>
+    </div>
 </div>
 
 </section>
