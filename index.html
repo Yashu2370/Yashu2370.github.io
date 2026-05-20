@@ -86,6 +86,40 @@ border-top:6px solid transparent;
 border-radius:50%;
 animation:spin 1s linear infinite;
 }
+/* CERTIFICATE SMALL PREVIEW */
+
+.preview-container{
+position:relative;
+display:inline-block;
+}
+
+.cert-preview{
+position:absolute;
+top:55px;
+left:0;
+width:260px;
+height:180px;
+background:#fff;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+opacity:0;
+visibility:hidden;
+transition:0.3s ease;
+z-index:999;
+}
+
+.cert-preview iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+.preview-container:hover .cert-preview{
+opacity:1;
+visibility:visible;
+}
+ 
 @keyframes spin{100%{transform:rotate(360deg);}}
 
  /* ===== SCROLL PROGRESS ===== */
