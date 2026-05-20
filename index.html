@@ -106,10 +106,14 @@ background:#fff;
 border-radius:12px;
 overflow:hidden;
 box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
 opacity:0;
 visibility:hidden;
-transform:translateY(10px);
-transition:all 0.3s ease;
+
+transform:translateY(10px) scale(0.8);
+
+transition:all 0.35s ease;
+
 z-index:999;
 }
 
@@ -122,7 +126,7 @@ border:none;
 .preview-container:hover .cert-preview{
 opacity:1;
 visibility:visible;
-transform:translateY(0);
+transform:translateY(0) scale(1);
 }
 
  /* ===== SCROLL PROGRESS ===== */
