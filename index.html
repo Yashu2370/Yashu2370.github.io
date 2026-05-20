@@ -27,6 +27,7 @@
 .contact-form input,
 .contact-form textarea {
   width: 100%;
+  box-sizing:border-box;
   padding: 10px;
   margin-bottom: 12px;
   border: none;
@@ -131,7 +132,7 @@ nav a:hover{color:#16a34a;}
 /* ===== HERO ===== */
 .hero{
 position:relative;
-height:70vh;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -147,6 +148,7 @@ position:absolute;
 width:100%;
 height:100%;
 object-fit:cover;
+filter:brightness(0.7);
 }
 .overlay{
 position:absolute;
@@ -250,12 +252,58 @@ body.dark{
 background:#0f172a;
 color:#e2e8f0;
 }
-body.dark .card{background:#1e293b;color:#fff;}
-body.dark nav{background:rgba(15,23,42,0.8);}
+
+body.dark section{
+background:#0f172a;
+}
+
+body.dark .card{
+background:#1e293b;
+color:#fff;
+}
+
+body.dark nav{
+background:rgba(15,23,42,0.8);
+}
+
+body.dark .section-title{
+color:#22c55e;
+}
+
+body.dark .hero-text p{
+color:#cbd5e1;
+}
+
+body.dark footer{
+background:#020617;
+}
 
 @media(max-width:900px){
-.hero-content{flex-direction:column;text-align:center;}
-.hero-img{margin-top:30px;}
+
+nav{
+flex-direction:column;
+padding:15px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+margin-top:10px;
+}
+
+.hero-content{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-img{
+margin-top:30px;
+}
+
+.hero-img img{
+width:220px;
+}
 }
  
 .footer{
@@ -305,7 +353,7 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
 <!-- HERO -->
 <div class="hero">
 <div class="hero-slider">
-  <video class="hero-video" autoplay muted loop playsinline>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
     <source src="1.mp4" type="video/mp4">
   </video>
 </div>
@@ -324,7 +372,7 @@ style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;backgrou
 </div>
 </div>
 <div class="hero-img">
-<img src="profile.jpg">
+<img src="profile.jpg" alt="Yashwanth Profile">
 </div>
 </div>
 </div>
@@ -637,11 +685,12 @@ Actively involved in institutional digital initiatives and academic resource man
 </section>
 
 <footer class="footer">
-  <p>© 2026 <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
+<p>© <span id="year"></span> <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
   <p>Library & Information Science Professional | Academic Digital Transformation Specialist</p>
 </footer>
 
 <script>
+ document.getElementById("year").innerText = new Date().getFullYear();
 
 const preloader=document.getElementById("preloader");
 const progressBar=document.getElementById("progressBar");
@@ -687,11 +736,27 @@ revealObserver.observe(sec);
 });
  
 const text="Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+
 const typing=document.querySelector(".hero-text p");
+
+typing.innerHTML="";
+
 let i=0;
+
 function type(){
-if(i<text.length){typing.innerHTML+=text.charAt(i);i++;setTimeout(type,20);}
+
+if(i<text.length){
+
+typing.innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(type,20);
+
 }
+
+}
+
 type();
 
 const bars=document.querySelectorAll(".progress-bar");
