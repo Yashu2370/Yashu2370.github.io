@@ -86,7 +86,9 @@ border-top:6px solid transparent;
 border-radius:50%;
 animation:spin 1s linear infinite;
 }
-/* CERTIFICATE SMALL PREVIEW */
+@keyframes spin{100%{transform:rotate(360deg);}}
+
+ /* CERTIFICATE SMALL PREVIEW */
 
 .preview-container{
 position:relative;
@@ -119,8 +121,7 @@ border:none;
 opacity:1;
 visibility:visible;
 }
- 
-@keyframes spin{100%{transform:rotate(360deg);}}
+
 
  /* ===== SCROLL PROGRESS ===== */
 #progressBar{
