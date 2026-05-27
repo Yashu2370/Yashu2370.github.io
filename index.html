@@ -6,11 +6,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yashwanth K S | Professional Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== GLOBAL ===== */
+/* ===== DESIGN SYSTEM VARIABLES ===== */
+:root {
+  --bg-gradient: linear-gradient(135deg, #f0fdf4, #e8f5e9, #c8e6c9);
+  --text-main: #1b5e20;
+  --text-muted: #388e3c;
+  --accent: #2e7d32;
+  --accent-glow: #4caf50;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(255, 255, 255, 0.5);
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+}
+
+body.dark {
+  --bg-gradient: linear-gradient(135deg, #0f172a, #1e1b4b, #0f172a);
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --accent: #22c55e;
+  --accent-glow: #4ade80;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --nav-bg: rgba(15, 23, 42, 0.8);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ===== GLOBAL RESETS ===== */
 *{
   margin:0;
   padding:0;
@@ -18,10 +43,11 @@
   font-family:'Poppins',sans-serif;
 }
 body{
-  background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
-  color:#064e3b;
+  background: var(--bg-gradient);
+  color: var(--text-main);
   scroll-behavior:smooth;
   overflow-x:hidden;
+  transition: background 0.5s ease, color 0.3s ease;
 }
 
 /* ===== PRELOADER ===== */
@@ -38,35 +64,57 @@ body{
 .loader{
   width:60px;
   height:60px;
-  border:6px solid #22c55e;
+  border:6px solid var(--accent);
   border-top:6px solid transparent;
   border-radius:50%;
   animation:spin 1s linear infinite;
 }
 @keyframes spin{100%{transform:rotate(360deg);}}
 
-/* ===== SCROLL PROGRESS ===== */
+/* ===== SCROLL PROGRESS & TOP BTN ===== */
 #progressBar{
   position:fixed;
   top:0;
   left:0;
   height:4px;
-  background:linear-gradient(90deg,#16a34a,#22c55e);
+  background:linear-gradient(90deg, var(--accent), var(--accent-glow));
   width:0%;
   z-index:2000;
+}
+#topBtn {
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  padding:14px;
+  border:none;
+  border-radius:50%;
+  background: var(--accent);
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  display:none;
+  z-index:2000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+#topBtn:hover {
+  transform: translateY(-5px);
+  background: var(--accent-glow);
 }
 
 /* ===== CURSOR GLOW ===== */
 .cursor-glow{
   position:fixed;
-  width:18px;
-  height:18px;
-  background:rgba(34,197,94,0.6);
+  width:24px;
+  height:24px;
+  background: var(--accent-glow);
+  opacity: 0.3;
   border-radius:50%;
   pointer-events:none;
   transform:translate(-50%,-50%);
-  transition:0.08s;
+  transition: width 0.2s, height 0.2s;
   z-index:3000;
+  filter: blur(4px);
 }
 
 /* ===== NAVIGATION ===== */
@@ -77,14 +125,41 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:15px 8%;
-  background:rgba(255,255,255,0.8);
-  backdrop-filter:blur(10px);
+  padding:18px 8%;
+  background: var(--nav-bg);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
   z-index:1000;
+  box-shadow: var(--shadow);
 }
-nav ul{display:flex;gap:25px;list-style:none;}
-nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;}
-nav a:hover{color:#16a34a;}
+nav ul{display:flex;gap:30px;list-style:none;}
+nav a{text-decoration:none;color: var(--text-main);font-weight:500;transition:0.3s;position: relative; padding: 5px 0;}
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+nav a:hover::after { width: 100%; }
+nav a:hover{color: var(--accent);}
+
+.theme-toggle {
+  padding:8px 16px;
+  border:none;
+  border-radius:20px;
+  background: var(--accent);
+  color:white;
+  cursor:pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.theme-toggle:hover { background: var(--accent-glow); transform: scale(1.05); }
 
 /* ===== HERO ===== */
 .hero{
@@ -105,13 +180,12 @@ nav a:hover{color:#16a34a;}
   width:100%;
   height:100%;
   object-fit:cover;
-  filter:brightness(1);
 }
 .overlay{
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to right, rgba(0,0,0,0.55), rgba(0,0,0,0.2));
+  background: linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.4) 100%);
 }
 .hero-content{
   position:relative;
@@ -124,74 +198,131 @@ nav a:hover{color:#16a34a;}
   width:100%;
 }
 .hero-text h1{
-  font-size:42px;
+  font-size:54px;
   line-height:1.2;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
-.hero-text span{color:#22c55e;}
-.hero-text p{margin-top:15px;max-width:550px;color:#e5e7eb;min-height: 40px;}
-.buttons{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap;}
+.hero-text span{
+  color: #22c55e;
+  text-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+}
+.hero-text p{
+  margin-top:20px;
+  max-width:580px;
+  color:#e2e8f0;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 50px;
+}
+.buttons{margin-top:35px;display:flex;gap:15px;flex-wrap:wrap;}
 .btn{
-  padding:10px 22px;
+  padding:12px 26px;
   border-radius:30px;
   cursor:pointer;
   font-size:14px;
-  font-weight:500;
+  font-weight:600;
   border:none;
-  transition:0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 .primary{background:#16a34a;color:#fff;}
-.primary:hover{background:#15803d;transform:translateY(-3px);}
-.outline{background:#fff;border:2px solid #16a34a;color:#065f46;}
-.outline:hover{background:#dcfce7;transform:translateY(-3px);}
+.primary:hover{background:#15803d;transform:translateY(-3px);box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);}
+.outline{background:transparent;border:2px solid #16a34a;color:#fff;}
+.outline:hover{background:#16a34a;transform:translateY(-3px);box-shadow: 0 6px 20px rgba(22, 163, 74, 0.3);}
+
 .hero-img img{
-  width:260px;
-  border-radius:20px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  width:280px;
+  border-radius:30px;
+  border: 4px solid rgba(255,255,255,0.1);
+  box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);
+  transition: 0.5s ease;
+}
+.hero-img img:hover {
+  transform: scale(1.03) rotate(1deg);
+  border-color: #22c55e;
 }
 
 /* ===== SECTIONS ===== */
-section{padding:80px 8% 20px 8%;}
-.section-title{font-size:28px;margin-bottom:29px;position:relative;}
+section{padding:100px 8% 40px 8%; max-width: 1300px; margin: 0 auto;}
+.section-title{
+  font-size:32px;
+  margin-bottom:35px;
+  position:relative;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
 .section-title::after{
   content:"";
-  width:80px;
-  height:1px;
-  background:#16a34a;
+  width:60px;
+  height:4px;
+  border-radius: 2px;
+  background: var(--accent);
   position:absolute;
-  bottom:-1px;
+  bottom:-8px;
   left:0;
 }
 
-/* ===== CARDS ===== */
+/* ===== CARDS (GLASSMORPHISM) ===== */
 .card{
-  background:rgba(255,255,255,0.9);
-  padding:25px;
-  border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
-  margin-bottom:15px;
-  transition:0.3s;
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding:30px;
+  border-radius:24px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  margin-bottom:20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.card:hover{transform:translateY(-6px);}
+.card:hover{
+  transform:translateY(-5px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
 }
-.timeline{border-left:4px solid #16a34a;padding-left:20px;}
+.timeline{
+  border-left:4px solid var(--accent);
+  padding-left:25px;
+  border-radius: 0 24px 24px 0;
+}
+.card ul {
+  padding-left: 20px;
+  margin-top: 15px;
+}
+.card li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
 
 /* ===== SKILLS ===== */
-.skill{margin-bottom:22px;}
-.progress{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
+.skill{margin-bottom:25px;}
+.skill p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.skill i { color: var(--accent); font-size: 18px; }
+.progress{height:12px;background:rgba(0,0,0,0.05);border-radius:20px;overflow:hidden;}
+body.dark .progress { background: rgba(255,255,255,0.05); }
 .progress-bar{
   height:100%;
   width:0;
-  background:linear-gradient(90deg,#16a34a,#22c55e);
-  transition:width 1.5s ease;
+  background:linear-gradient(90deg, var(--accent), var(--accent-glow));
+  border-radius:20px;
+  transition:width 1.8s cubic-bezier(0.1, 1, 0.1, 1);
 }
+
+/* ===== ANIMATIONS ===== */
 .fade-section{
   opacity:0;
-  transform:translateY(40px);
-  transition:all 0.8s ease;
+  transform:translateY(30px);
+  transition:all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .fade-section.show{
   opacity:1;
@@ -202,23 +333,35 @@ section{padding:80px 8% 20px 8%;}
 .preview-container{
     position: relative;
     display: inline-block;
-    margin: 6px;
+    margin: 8px 8px 8px 0;
+}
+.cert-btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--text-main);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.cert-btn:hover {
+  background: var(--accent);
+  color: #fff;
 }
 .cert-preview{
     position: absolute;
-    top: 50px;
+    top: 55px;
     left: 0;
-    width: 240px;
-    height: 170px;
+    width: 280px;
+    height: 190px;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(8px);
-    transition: 0.3s ease;
+    transform: translateY(10px);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
+    border: 1px solid rgba(0,0,0,0.1);
 }
 .cert-preview iframe{
     width: 100%;
@@ -233,107 +376,86 @@ section{padding:80px 8% 20px 8%;}
 
 /* ===== CONTACT FORM ===== */
 .contact-form {
-  margin-top: 30px;
-  background: #1e1e2f;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  margin-top: 35px;
+  background: linear-gradient(135deg, #1e1e2f, #11111f);
+  padding: 35px;
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 .contact-form h3 {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: #fff;
+  font-weight: 600;
 }
 .contact-form input,
 .contact-form textarea {
   width: 100%;
   box-sizing:border-box;
-  padding: 10px;
-  margin-bottom: 12px;
-  border: none;
-  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  border-radius: 12px;
   outline: none;
   font-size: 14px;
+  transition: 0.3s;
 }
-.contact-form input {
-  height: 40px;
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #22c55e;
+  background: rgba(255,255,255,0.1);
 }
-.contact-form textarea {
-  resize: none;
-}
+.contact-form input { height: 48px; }
+.contact-form textarea { resize: none; }
 .contact-form button {
   background: #6c63ff;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
 }
 .contact-form button:hover {
   background: #5548d9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
 }
 
 /* ===== FOOTER ===== */
 .footer{
   text-align:center;
-  padding:25px 0;
+  padding:40px 20px;
   background:#0f172a;
-  color:#e2e8f0;
+  color:#94a3b8;
   font-size:14px;
   letter-spacing:0.5px;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 .footer strong{
   color:#22c55e;
 }
+.footer p { margin-bottom: 8px; }
 
-/* ===== DARK MODE ===== */
-body.dark{
-  background:#0f172a;
-  color:#e2e8f0;
-}
-body.dark section{
-  background:#0f172a;
-}
-body.dark .card{
-  background:#1e293b;
-  color:#fff;
-}
-body.dark nav{
-  background:rgba(15,23,42,0.8);
-}
-body.dark .section-title{
-  color:#22c55e;
-}
-body.dark .hero-text p{
-  color:#cbd5e1;
-}
-body.dark .footer{
-  background:#020617;
-}
-
-/* ===== RESPONSIVE MEDIA QUERIES ===== */
+/* ===== RESPONSIVE STYLES ===== */
 @media(max-width:900px){
   nav{
     flex-direction:column;
-    padding:12px 5%;
-  }
-  nav h2{
-    margin-top:10px;
-    font-size:24px;
+    padding:15px 5%;
   }
   nav ul{
     flex-wrap:wrap;
     justify-content:center;
-    gap:10px;
-    margin-top:12px;
+    gap:12px;
+    margin-top:15px;
   }
-  nav ul li a{
-    font-size:13px;
-  }
+  nav ul li a{ font-size:13px; }
   .hero{
     height:auto;
     padding-top:180px;
-    padding-bottom:80px;
+    padding-bottom:60px;
   }
   .hero-content{
     flex-direction:column-reverse;
@@ -341,58 +463,20 @@ body.dark .footer{
     gap:40px;
     padding:0 5%;
   }
-  .hero-text h1{
-    font-size:38px;
-    line-height:1.3;
-  }
-  .hero-text p{
-    font-size:15px;
-    line-height:1.8;
-    max-width:100%;
-  }
-  .buttons{
-    justify-content:center;
-  }
-  .btn{
-    font-size:13px;
-    padding:10px 18px;
-  }
-  .hero-img img{
-    width:220px;
-    max-width:90%;
-    border-radius:20px;
-  }
-  section{
-    padding:70px 5%;
-  }
-  .section-title{
-    font-size:24px;
-  }
-  .card{
-    padding:20px;
-    font-size:14px;
-  }
-  .grid{
-    grid-template-columns:1fr;
-  }
-  .contact-form{
-    padding:18px;
-  }
-  .footer{
-    font-size:13px;
-    padding:20px 10px;
-  }
-  #topBtn{
-    bottom:20px;
-    right:20px;
-    padding:10px;
-  }
+  .hero-text h1{ font-size:36px; }
+  .hero-text p{ font-size:15px; max-width:100%; }
+  .buttons{ justify-content:center; }
+  .hero-img img{ width:200px; }
+  section{ padding:80px 5% 20px 5%; }
+  .section-title{ font-size:26px; }
+  .card{ padding:20px; }
+  .grid{ grid-template-columns:1fr; }
 }
 </style>
 </head>
 
 <body>
-<button id="topBtn" style="position:fixed;bottom:30px;right:30px;padding:12px;border:none;border-radius:50%;background:#16a34a;color:white;font-size:18px;cursor:pointer;display:none;z-index:2000;">
+<button id="topBtn" title="Go to top">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
 
@@ -401,8 +485,8 @@ body.dark .footer{
 <div class="cursor-glow"></div>
 
 <nav>
-  <button onclick="document.body.classList.toggle('dark')" style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;background:#16a34a;color:white;cursor:pointer;">
-    🌙
+  <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">
+    🌓 Toggle Mode
   </button>
   <ul>
     <li><a href="#about">About</a></li>
@@ -457,8 +541,8 @@ body.dark .footer{
 <section id="experience">
   <h2 class="section-title">Employment</h2>
   <div class="card timeline">
-    <strong>Assistant Librarian</strong><br>
-    K S School of Engineering & Management (2023 – Present)
+    <h3 style="font-size: 20px; color: var(--accent); margin-bottom: 5px;">Assistant Librarian</h3>
+    <strong>K S School of Engineering & Management (2023 – Present)</strong>
     <ul>
       <li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
       <li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
@@ -515,74 +599,68 @@ body.dark .footer{
   
   <!-- O LEVEL -->
   <div class="card">
-    <strong>O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</strong>
-    <br><br>
+    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i> O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</h3>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-download"></i> Programming & Problem Solving through Python</button>
+      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-file-pdf"></i> Python Programming</button>
       <div class="cert-preview"><iframe src="OLevel_Certificate1.pdf"></iframe></div>
     </div>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-download"></i> Internet of Things and its Application</button>
+      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-file-pdf"></i> Internet of Things</button>
       <div class="cert-preview"><iframe src="OLevel_Certificate2.pdf"></iframe></div>
     </div>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-download"></i> Web Designing & Publishing</button>
+      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-file-pdf"></i> Web Designing</button>
       <div class="cert-preview"><iframe src="OLevel_Certificate3.pdf"></iframe></div>
     </div>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-download"></i> IT Tools and Network Basics</button>
+      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-file-pdf"></i> IT Tools & Networks</button>
       <div class="cert-preview"><iframe src="OLevel_Certificate4.pdf"></iframe></div>
     </div>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-download"></i> Course on Computer Concepts</button>
+      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-file-pdf"></i> Computer Concepts</button>
       <div class="cert-preview"><iframe src="OLevel_Certificate5.pdf"></iframe></div>
     </div>
   </div>
 
   <!-- IEEE -->
   <div class="card">
-    <strong>Ethical Hacking – IEEE Blended Learning Program</strong>
-    <br><br>
+    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> Ethical Hacking – IEEE Blended Learning Program</h3>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('IEEE.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
+      <button class="btn cert-btn" onclick="window.open('IEEE.pdf')"><i class="fa-solid fa-eye"></i> View Certificate</button>
       <div class="cert-preview"><iframe src="IEEE.pdf"></iframe></div>
     </div>
   </div>
 
   <!-- NPTEL -->
   <div class="card">
-    <strong>Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</strong>
-    <br><br>
+    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-chart-pie" style="color: var(--accent);"></i> Science Communication & Data Analytics – NPTEL</h3>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
+      <button class="btn cert-btn" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')"><i class="fa-solid fa-eye"></i> View Certificate</button>
       <div class="cert-preview"><iframe src="nptel_science_communication_data_analytics_2024.pdf"></iframe></div>
     </div>
   </div>
 
   <div class="card">
-    <strong>Advanced R Programming for Data Analytics in Business – NPTEL</strong>
-    <br><br>
+    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-chart-line" style="color: var(--accent);"></i> Advanced R Programming for Data Analytics – NPTEL</h3>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
+      <button class="btn cert-btn" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')"><i class="fa-solid fa-eye"></i> View Certificate</button>
       <div class="cert-preview"><iframe src="advanced_r_programming_data_analytics_2024.pdf"></iframe></div>
     </div>
   </div>
 
   <!-- COMPLETED -->
   <div class="card">
-    <strong>IT Applications in Libraries – NPTEL</strong>
-    <br><br>
-    <span style="color:#4CAF50; font-weight:500;">
-      <i class="fa-solid fa-circle-check"></i> Completed (Certificate not available)
+    <h3 style="font-size: 18px; margin-bottom: 10px;"><i class="fa-solid fa-book-open" style="color: var(--accent);"></i> IT Applications in Libraries – NPTEL</h3>
+    <span style="color:#4CAF50; font-weight:500; display: inline-flex; align-items: center; gap: 6px;">
+      <i class="fa-solid fa-circle-check"></i> Completed Successfully
     </span>
   </div>
 
   <!-- WEBINAR -->
   <div class="card">
-    <strong>Training Webinar: How to Navigate the New Emerald Insight Platform</strong>
-    <br><br>
+    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-chalkboard-user" style="color: var(--accent);"></i> Training Webinar: Navigating New Emerald Insight Platform</h3>
     <div class="preview-container">
-      <button class="btn outline" onclick="window.open('Training Webinar.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
+      <button class="btn cert-btn" onclick="window.open('Training Webinar.pdf')"><i class="fa-solid fa-eye"></i> View Certificate</button>
       <div class="cert-preview"><iframe src="Training Webinar.pdf"></iframe></div>
     </div>
   </div>
@@ -592,11 +670,14 @@ body.dark .footer{
 <section id="education">
   <h2 class="section-title">Education</h2>
   <div class="card">
-    <h3>Master of Library & Information Science (M.L.I.Sc)</h3>
-    <p>Bangalore University | 2022</p>
-    <br>
-    <h3>Bachelor of Arts (B.A.)</h3>
-    <p>Belture Government College | 2020</p>
+    <div style="margin-bottom: 20px;">
+      <h3 style="color: var(--accent); font-size: 20px;">Master of Library & Information Science (M.L.I.Sc)</h3>
+      <p style="font-weight: 500;">Bangalore University | 2022</p>
+    </div>
+    <div>
+      <h3 style="color: var(--accent); font-size: 20px;">Bachelor of Arts (B.A.)</h3>
+      <p style="font-weight: 500;">Belture Government College | 2020</p>
+    </div>
   </div>
 </section>
 
@@ -606,15 +687,10 @@ body.dark .footer{
   <div class="card">
     <ul>
       <li><strong>Koha Library Management System Implementation:</strong> Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.</li>
-      <br>
       <li><strong>Library Automation & Workflow Optimization:</strong> Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.</li>
-      <br>
       <li><strong>Institutional Repository Management:</strong> Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.</li>
-      <br>
       <li><strong>SQL-Based Data Analytics & Reporting:</strong> Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.</li>
-      <br>
       <li><strong>Digital Resource Integration:</strong> Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.</li>
-      <br>
       <li><strong>SharePoint & Digital Documentation Management:</strong> Handled structured document storage, internal resource sharing, and workflow documentation using Microsoft SharePoint.</li>
     </ul>
   </div>
@@ -626,13 +702,9 @@ body.dark .footer{
   <div class="card">
     <ul>
       <li><strong>Successfully Administered Koha & Libsoft LMS:</strong> Managed cataloging, circulation, user records, MARC customization, and troubleshooting to ensure smooth library automation.</li>
-      <br>
       <li><strong>Generated SQL-Based Analytical Reports:</strong> Prepared circulation statistics, usage trends, and monthly/annual analytics reports for data-driven decision making.</li>
-      <br>
       <li><strong>Maintained Digital Repository & E-Resources:</strong> Managed DSpace repository, DELNET services (ILL & document delivery), and digital resource access systems.</li>
-      <br>
       <li><strong>Conducted Technical Training Sessions:</strong> Delivered orientation programs on OPAC, digital databases, citation management tools (Zotero, Mendeley, EndNote), and research support tools.</li>
-      <br>
       <li><strong>Managed SharePoint Documentation:</strong> Handled structured document storage, internal resource sharing, and policy documentation using Microsoft SharePoint.</li>
     </ul>
   </div>
@@ -644,9 +716,7 @@ body.dark .footer{
   <div class="card">
     <ul>
       <li><strong>NPTEL Online Certifications:</strong> Completed professional courses in Science Communication & Data Analytics, Advanced R Programming, and IT Applications in Libraries.</li>
-      <br>
       <li><strong>Library Automation & Digital Repository Training:</strong> Participated in webinars and technical sessions focused on Koha LMS, DSpace repositories, and digital library tools.</li>
-      <br>
       <li><strong>Research & Citation Tools Training:</strong> Engaged in training programs related to Zotero, Mendeley, EndNote, and academic productivity tools.</li>
     </ul>
   </div>
@@ -658,9 +728,7 @@ body.dark .footer{
   <div class="card">
     <ul>
       <li><strong>DELNET (Developing Library Network):</strong> Managed inter-library loan (ILL), document delivery, and academic resource access services.</li>
-      <br>
       <li><strong>N-LIST / INFLIBNET Coordination Support:</strong> Supported access to e-resources and digital academic databases for institutional users.</li>
-      <br>
       <li><strong>Academic & Digital Library Professional Engagement:</strong> Actively involved in institutional digital initiatives and academic resource management activities.</li>
     </ul>
   </div>
@@ -670,10 +738,10 @@ body.dark .footer{
 <section id="contact">
   <h2 class="section-title">Contact</h2>
   <div class="grid">
-    <div class="card"><i class="fa-solid fa-phone"></i> 7760144157</div>
-    <div class="card"><i class="fa-solid fa-envelope"></i> yashu2370@gmail.com</div>
-    <div class="card"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
-    <div class="card"><i class="fa-solid fa-language"></i> English, Kannada, Hindi, Telugu</div>
+    <div class="card"><i class="fa-solid fa-phone" style="color: var(--accent); margin-right: 8px;"></i> 7760144157</div>
+    <div class="card"><i class="fa-solid fa-envelope" style="color: var(--accent); margin-right: 8px;"></i> yashu2370@gmail.com</div>
+    <div class="card"><i class="fa-solid fa-location-dot" style="color: var(--accent); margin-right: 8px;"></i> Bengaluru, India</div>
+    <div class="card"><i class="fa-solid fa-language" style="color: var(--accent); margin-right: 8px;"></i> English, Kannada, Hindi, Telugu</div>
   </div>
 
   <!-- Chat / Contact Form -->
@@ -690,14 +758,12 @@ body.dark .footer{
 
 <footer class="footer">
   <p>© <span id="year"></span> <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
-  <p>Library & Information Science Professional | Academic Digital Transformation Specialist</p>
+  <p style="color: #64748b; font-size: 13px;">Library & Information Science Professional | Academic Digital Transformation Specialist</p>
 </footer>
 
 <script>
-// Year display
 document.getElementById("year").innerText = new Date().getFullYear();
 
-// Preloader & Progress Bar
 const preloader = document.getElementById("preloader");
 const progressBar = document.getElementById("progressBar");
 
@@ -711,14 +777,14 @@ window.addEventListener("scroll", () => {
   progressBar.style.width = (winScroll / height) * 100 + "%";
 });
 
-// Fixed Cursor Glow Bug (Using Client Coordinates)
+// Fixed Cursor Glow Position Logic
 document.addEventListener("mousemove", (e) => {
   const glow = document.querySelector(".cursor-glow");
   glow.style.left = e.clientX + "px";
   glow.style.top = e.clientY + "px";
 });
 
-// Scroll to Top Button
+// Back To Top Controller
 const topBtn = document.getElementById("topBtn");
 window.addEventListener("scroll", () => {
   if (document.documentElement.scrollTop > 300) {
@@ -732,7 +798,7 @@ topBtn.onclick = () => {
   window.scrollTo({top: 0, behavior: "smooth"});
 };
 
-// Intersection Observer for Animations
+// Section Viewport Animations
 const sections = document.querySelectorAll("section");
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -740,14 +806,14 @@ const revealObserver = new IntersectionObserver(entries => {
       entry.target.classList.add("show");
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.05 });
 
 sections.forEach(sec => {
   sec.classList.add("fade-section");
   revealObserver.observe(sec);
 });
 
-// Hero Section Typing Logic
+// Hero Subtitle Typist Script
 const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
 const typing = document.querySelector(".hero-text p");
 typing.innerHTML = "";
@@ -757,12 +823,12 @@ function type() {
   if (i < text.length) {
     typing.innerHTML += text.charAt(i);
     i++;
-    setTimeout(type, 20);
+    setTimeout(type, 25);
   }
 }
 type();
 
-// Progress Bars Skill Fill Action
+// Skill-bar Dynamic Filler logic
 const bars = document.querySelectorAll(".progress-bar");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -775,3 +841,4 @@ bars.forEach(bar => observer.observe(bar));
 </script>
 </body>
 </html>
+
