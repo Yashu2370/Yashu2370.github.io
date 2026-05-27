@@ -10,17 +10,31 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== GLOBAL STYLES & VARIABLES ===== */
+/* ===== DESIGN SYSTEM VARIABLES ===== */
 :root {
   --primary: #10b981;
   --primary-hover: #059669;
-  --bg-gradient: linear-gradient(135deg, #f8fafc, #f1f5f9, #e2e8f0);
+  --bg-main: #f8fafc;
+  --bg-gradient: linear-gradient(135deg, #f8fafc, #edf2f7, #e2e8f0);
   --text-main: #0f172a;
   --text-muted: #475569;
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(241, 245, 249, 0.8);
-  --shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
-  --nav-bg: rgba(255, 255, 255, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(226, 232, 240, 0.8);
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.05);
+  --nav-bg: rgba(255, 255, 255, 0.75);
+}
+
+body.dark {
+  --bg-main: #0f172a;
+  --bg-gradient: linear-gradient(135deg, #0f172a, #1e293b, #090d16);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --card-bg: rgba(30, 41, 59, 0.65);
+  --card-border: rgba(51, 65, 85, 0.5);
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --nav-bg: rgba(15, 23, 42, 0.8);
 }
 
 * {
@@ -32,26 +46,18 @@
 
 body {
   background: var(--bg-gradient);
+  background-attachment: fixed;
   color: var(--text-main);
   scroll-behavior: smooth;
   overflow-x: hidden;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== DARK MODE CONFIGURATION ===== */
-body.dark {
-  --bg-gradient: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --card-bg: rgba(30, 41, 59, 0.7);
-  --card-border: rgba(51, 65, 85, 0.5);
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  --nav-bg: rgba(15, 23, 42, 0.8);
-}
-
-/* ===== PRELOADER ===== */
+/* ===== ADVANCED UI PRELOADER ===== */
 #preloader {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   background: #0f172a;
@@ -59,38 +65,72 @@ body.dark {
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 .loader {
   width: 50px;
   height: 50px;
-  border: 4px solid #334155;
+  border: 4px solid #1e293b;
   border-top: 4px solid var(--primary);
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 0.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
-/* ===== SCROLL PROGRESS & UTILITIES ===== */
+/* ===== UTILITIES & INTERACTIVE BARS ===== */
 #progressBar {
   position: fixed;
   top: 0;
   left: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary), #34d399);
+  background: linear-gradient(90deg, var(--primary), #34d399, #6ee7b7);
   width: 0%;
   z-index: 2000;
+  transition: width 0.1s ease-out;
 }
 
 .cursor-glow {
   position: fixed;
-  width: 20px;
-  height: 20px;
-  background: rgba(16, 185, 129, 0.3);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0) 70%);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, left 0.05s ease, top 0.05s ease;
-  z-index: 3000;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+#topBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8) translateY(10px);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#topBtn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+}
+#topBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px);
 }
 
 /* ===== NAVIGATION ===== */
@@ -101,16 +141,17 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 8%;
+  padding: 16px 8%;
   background: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0px var(--card-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--card-border);
   z-index: 1000;
+  transition: background 0.3s, border 0.3s;
 }
 nav ul {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   list-style: none;
 }
 nav a {
@@ -118,9 +159,38 @@ nav a {
   color: var(--text-main);
   font-weight: 500;
   font-size: 14px;
-  transition: 0.3s ease;
+  position: relative;
+  transition: color 0.3s;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 nav a:hover {
+  color: var(--primary);
+}
+nav a:hover::after {
+  width: 100%;
+}
+.theme-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  background: var(--card-bg);
+  color: var(--text-main);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  transition: all 0.3s;
+}
+.theme-btn:hover {
+  border-color: var(--primary);
   color: var(--primary);
 }
 
@@ -137,9 +207,10 @@ nav a:hover {
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 }
 .hero-video {
-  position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -148,7 +219,9 @@ nav a:hover {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.4));
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.5));
 }
 .hero-content {
   position: relative;
@@ -159,12 +232,13 @@ nav a:hover {
   padding: 0 8%;
   color: white;
   width: 100%;
-  gap: 40px;
+  gap: 60px;
 }
 .hero-text h1 {
-  font-size: 48px;
+  font-size: 54px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -1px;
 }
 .hero-text span {
   color: var(--primary);
@@ -174,23 +248,23 @@ nav a:hover {
   max-width: 600px;
   color: #cbd5e1;
   font-size: 16px;
-  line-height: 1.6;
-  min-height: 75px;
+  line-height: 1.7;
+  min-height: 80px;
 }
 .buttons {
-  margin-top: 30px;
+  margin-top: 35px;
   display: flex;
-  gap: 15px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 .btn {
-  padding: 12px 24px;
+  padding: 12px 26px;
   border-radius: 30px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
   border: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -198,10 +272,12 @@ nav a:hover {
 .btn.primary {
   background: var(--primary);
   color: #fff;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
 }
 .btn.primary:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 .btn.outline {
   background: transparent;
@@ -209,79 +285,79 @@ nav a:hover {
   color: var(--primary);
 }
 .btn.outline:hover {
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(16, 185, 129, 0.08);
   transform: translateY(-2px);
 }
 .hero .btn.outline {
   color: #fff;
-  border-color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 .hero .btn.outline:hover {
-  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary);
+  background: rgba(16, 185, 129, 0.15);
 }
 .hero-img img {
-  width: 280px;
-  height: 280px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  border: 4px solid var(--primary);
-  animation: morph 8s ease-in-out infinite alternate;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 4px solid rgba(16, 185, 129, 0.6);
+  animation: morphingBlob 8s ease-in-out infinite alternate;
 }
-@keyframes morph {
-  0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-  100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+@keyframes morphingBlob {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  100% { border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%; }
 }
 
-/* ===== CONTENT SECTIONS ===== */
+/* ===== CONTAINER STRUCTURE ===== */
 section {
-  padding: 80px 8% 40px 8%;
+  padding: 100px 8% 20px 8%;
   max-width: 1400px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 .section-title {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  letter-spacing: -0.5px;
   position: relative;
-  display: inline-block;
 }
 .section-title::after {
   content: "";
-  width: 50%;
+  width: 60px;
   height: 4px;
   background: var(--primary);
   position: absolute;
-  bottom: -6px;
+  bottom: -8px;
   left: 0;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
-/* ===== CARDS CONTAINER ===== */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  backdrop-filter: blur(8px);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
 }
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(16, 185, 129, 0.3);
 }
-body.dark .card:hover {
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-}
-
 .card ul {
   padding-left: 20px;
 }
 .card li {
-  margin-bottom: 10px;
-  line-height: 1.6;
+  margin-bottom: 12px;
+  line-height: 1.7;
   color: var(--text-muted);
 }
 .card li strong {
@@ -290,28 +366,30 @@ body.dark .card:hover {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 .timeline {
   border-left: 4px solid var(--primary);
-  padding-left: 25px;
-  border-radius: 0 16px 16px 0;
+  padding-left: 30px;
+  border-radius: 0 20px 20px 0;
 }
 
-/* ===== TECHNICAL SKILLS ===== */
+/* ===== SKILLS ARCHITECTURE ===== */
 .skill {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 .skill p {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 10px;
   font-size: 14px;
+  font-weight: 500;
 }
 .skill i {
   color: var(--primary);
+  font-size: 16px;
   width: 20px;
 }
 .progress {
@@ -327,10 +405,11 @@ body.dark .progress {
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, var(--primary), #34d399);
+  border-radius: 10px;
   transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
 }
 
-/* ===== CERTIFICATE PREVIEWS ===== */
+/* ===== DYNAMIC PREVIEWS ===== */
 .preview-container {
   position: relative;
   display: inline-block;
@@ -338,18 +417,18 @@ body.dark .progress {
 }
 .cert-preview {
   position: absolute;
-  top: 55px;
+  top: 60px;
   left: 0;
-  width: 280px;
-  height: 190px;
+  width: 300px;
+  height: 200px;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
+  transform: translateY(15px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
   border: 1px solid #e2e8f0;
 }
@@ -364,55 +443,62 @@ body.dark .progress {
   transform: translateY(0);
 }
 
-/* ===== ANIMATIONS ===== */
+/* ===== SCROLL VISIBILITY STRUCT ===== */
 .fade-section {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-out;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .fade-section.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ===== CONTACT FORM ===== */
+/* ===== SYSTEMS FORM CONFIG ===== */
 .contact-form {
-  margin-top: 30px;
+  margin-top: 40px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
 }
 .contact-form h3 {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   color: var(--text-main);
+  font-size: 20px;
   font-weight: 600;
 }
 .contact-form input,
 .contact-form textarea {
   width: 100%;
   box-sizing: border-box;
-  padding: 12px 16px;
-  margin-bottom: 16px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
   border: 1px solid var(--card-border);
-  background: rgba(255,255,255,0.5);
+  background: rgba(255, 255, 255, 0.4);
   color: var(--text-main);
-  border-radius: 8px;
+  border-radius: 10px;
   outline: none;
   font-size: 14px;
-  transition: border-color 0.3s;
+  transition: all 0.3s;
 }
 body.dark .contact-form input,
 body.dark .contact-form textarea {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(15, 23, 42, 0.3);
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+body.dark .contact-form input:focus,
+body.dark .contact-form textarea:focus {
+  background: rgba(15, 23, 42, 0.6);
 }
 .contact-form input {
-  height: 45px;
+  height: 48px;
 }
 .contact-form textarea {
   resize: none;
@@ -421,73 +507,76 @@ body.dark .contact-form textarea {
   background: var(--primary);
   color: white;
   border: none;
-  padding: 12px 28px;
+  padding: 14px 32px;
   border-radius: 30px;
   cursor: pointer;
   font-weight: 500;
-  transition: 0.3s;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.2);
+  transition: all 0.3s;
 }
 .contact-form button:hover {
   background: var(--primary-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
 }
 
-/* ===== FOOTER ===== */
+/* ===== FOOTER END SYSTEM ===== */
 .footer {
   text-align: center;
-  padding: 40px 20px;
-  background: #0f172a;
+  padding: 50px 20px;
+  background: #090d16;
   color: #94a3b8;
   font-size: 14px;
   border-top: 1px solid #1e293b;
+  position: relative;
+  z-index: 2;
 }
 .footer p {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .footer strong {
   color: var(--primary);
+  letter-spacing: 0.5px;
 }
 
-/* ===== RESPONSIVE MEDIA QUERIES ===== */
-@media(max-width: 960px) {
+/* ===== SYSTEM MOBILE OPTIMIZATION ===== */
+@media(max-width: 1024px) {
   nav {
     flex-direction: column;
-    padding: 15px 5%;
-    gap: 10px;
+    padding: 16px 5%;
+    gap: 14px;
   }
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
-  }
-  nav a {
-    font-size: 13px;
+    gap: 14px;
   }
   .hero {
     height: auto;
-    padding: 140px 5% 60px 5%;
+    padding: 160px 5% 80px 5%;
   }
   .hero-content {
     flex-direction: column-reverse;
     text-align: center;
-    gap: 30px;
+    gap: 40px;
   }
   .hero-text h1 {
-    font-size: 34px;
+    font-size: 40px;
   }
   .hero-text p {
-    font-size: 14px;
-    margin: 15px auto 0 auto;
+    font-size: 15px;
+    margin: 20px auto 0 auto;
   }
   .buttons {
     justify-content: center;
   }
   .hero-img img {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
   }
   section {
-    padding: 60px 5% 20px 5%;
+    padding: 80px 5% 20px 5%;
   }
   .grid {
     grid-template-columns: 1fr;
@@ -497,7 +586,7 @@ body.dark .contact-form textarea {
 </head>
 
 <body>
-<button id="topBtn" style="position:fixed;bottom:30px;right:30px;padding:14px;border:none;border-radius:50%;background:#10b981;color:white;font-size:16px;cursor:pointer;display:none;z-index:2000;box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+<button id="topBtn">
 <i class="fa-solid fa-arrow-up"></i>
 </button>
 
@@ -506,7 +595,7 @@ body.dark .contact-form textarea {
 <div class="cursor-glow"></div>
 
 <nav>
-<button onclick="document.body.classList.toggle('dark')" style="padding:8px 14px;border:none;border-radius:20px;background:var(--primary);color:white;cursor:pointer;font-size:14px;">
+<button class="theme-btn" onclick="document.body.classList.toggle('dark')">
 🌙 Toggle Theme
 </button>
 <ul>
@@ -523,6 +612,7 @@ body.dark .contact-form textarea {
 </ul>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
 <div class="hero-slider">
   <video class="hero-video" autoplay muted loop playsinline preload="auto">
@@ -549,6 +639,7 @@ body.dark .contact-form textarea {
 </div>
 </div>
 
+<!-- ABOUT -->
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
@@ -556,11 +647,12 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
+<!-- EXPERIENCE -->
 <section id="experience">
 <h2 class="section-title">Employment</h2>
 <div class="card timeline">
-<strong style="font-size:18px; color:var(--primary);">Assistant Librarian</strong><br>
-<span style="font-weight:500; display:inline-block; margin: 4px 0 12px 0;">K S School of Engineering & Management (2023 – Present)</span>
+<strong style="font-size:20px; color:var(--primary); display:block; margin-bottom:4px;">Assistant Librarian</strong>
+<span style="font-weight:500; display:inline-block; margin-bottom:16px; opacity:0.9;">K S School of Engineering & Management (2023 – Present)</span>
 <ul>
 <li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
 <li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
@@ -572,6 +664,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills">
 <h2 class="section-title">💻 Technical Skills</h2>
 <div class="card">
@@ -643,14 +736,15 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
+<!-- CERTIFICATIONS -->
 <section id="courses">
 <h2 class="section-title">Certifications & Courses</h2>
 
+<!-- O LEVEL -->
 <div class="card">
-    <strong style="color: var(--text-main);">
+    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">
         O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)
     </strong>
-    <br><br>
     <div class="preview-container">
         <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">
             <i class="fa-solid fa-download"></i> Programming & Problem Solving through Python
@@ -693,9 +787,9 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
     </div>
 </div>
 
+<!-- IEEE -->
 <div class="card">
-    <strong style="color: var(--text-main);">Ethical Hacking – IEEE Blended Learning Program</strong>
-    <br><br>
+    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">Ethical Hacking – IEEE Blended Learning Program</strong>
     <div class="preview-container">
         <button class="btn outline" onclick="window.open('IEEE.pdf')">
             <i class="fa-solid fa-download"></i> View Certificate
@@ -706,9 +800,9 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
     </div>
 </div>
 
+<!-- NPTEL -->
 <div class="card">
-    <strong style="color: var(--text-main);">Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</strong>
-    <br><br>
+    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</strong>
     <div class="preview-container">
         <button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')">
             <i class="fa-solid fa-download"></i> View Certificate
@@ -720,8 +814,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 
 <div class="card">
-    <strong style="color: var(--text-main);">Advanced R Programming for Data Analytics in Business – NPTEL</strong>
-    <br><br>
+    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">Advanced R Programming for Data Analytics in Business – NPTEL</strong>
     <div class="preview-container">
         <button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')">
             <i class="fa-solid fa-download"></i> View Certificate
@@ -732,17 +825,17 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
     </div>
 </div>
 
+<!-- COMPLETED -->
 <div class="card">
-    <strong style="color: var(--text-main);">IT Applications in Libraries – NPTEL</strong>
-    <br><br>
+    <strong style="color: var(--text-main); display:block; margin-bottom:12px;">IT Applications in Libraries – NPTEL</strong>
     <span style="color:#10b981; font-weight:500; display:inline-flex; align-items:center; gap:8px;">
         <i class="fa-solid fa-circle-check"></i> Completed (Certificate not available)
     </span>
 </div>
 
+<!-- WEBINAR -->
 <div class="card">
-    <strong style="color: var(--text-main);">Training Webinar: How to Navigate the New Emerald Insight Platform</strong>
-    <br><br>
+    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">Training Webinar: How to Navigate the New Emerald Insight Platform</strong>
     <div class="preview-container">
         <button class="btn outline" onclick="window.open('Training Webinar.pdf')">
             <i class="fa-solid fa-download"></i> View Certificate
@@ -754,17 +847,19 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
+<!-- EDUCATION -->
 <section id="education">
 <h2 class="section-title">Education</h2>
 <div class="card">
-<h3 style="color:var(--text-main); font-size:18px; margin-bottom:4px;">Master of Library & Information Science (M.L.I.Sc)</h3>
-<p style="color:var(--primary); font-weight:500; margin-bottom:20px;">Bangalore University | 2022</p>
+<h3 style="color:var(--text-main); font-size:18px; margin-bottom:4px; font-weight:600;">Master of Library & Information Science (M.L.I.Sc)</h3>
+<p style="color:var(--primary); font-weight:500; margin-bottom:24px; font-size:14px;">Bangalore University | 2022</p>
 
-<h3 style="color:var(--text-main); font-size:18px; margin-bottom:4px;">Bachelor of Arts (B.A.)</h3>
-<p style="color:var(--primary); font-weight:500;">Belture Government College | 2020</p>
+<h3 style="color:var(--text-main); font-size:18px; margin-bottom:4px; font-weight:600;">Bachelor of Arts (B.A.)</h3>
+<p style="color:var(--primary); font-weight:500; font-size:14px;">Belture Government College | 2020</p>
 </div>
 </section>
 
+<!-- DIGITAL INITIATIVES & PROJECTS -->
 <section id="projects">
 <h2 class="section-title">Digital Initiatives & Projects</h2>
 <div class="card">
@@ -779,6 +874,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
+<!-- KEY ACHIEVEMENTS -->
 <section id="achievements">
 <h2 class="section-title">Key Achievements</h2>
 <div class="card">
@@ -792,6 +888,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
+<!-- WORKSHOPS & PROFESSIONAL DEVELOPMENT -->
 <section id="workshops">
 <h2 class="section-title">Workshops & Professional Development</h2>
 <div class="card">
@@ -803,6 +900,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
+<!-- PROFESSIONAL MEMBERSHIPS & DIGITAL NETWORKS -->
 <section id="memberships">
 <h2 class="section-title">Professional Memberships & Digital Networks</h2>
 <div class="card">
@@ -814,15 +912,17 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <h2 class="section-title">Contact</h2>
   <div class="grid">
-    <div class="card" style="display:flex; align-items:center; gap:15px;"><i class="fa-solid fa-phone" style="color:var(--primary); font-size:18px;"></i> 7760144157</div>
-    <div class="card" style="display:flex; align-items:center; gap:15px;"><i class="fa-solid fa-envelope" style="color:var(--primary); font-size:18px;"></i> yashu2370@gmail.com</div>
-    <div class="card" style="display:flex; align-items:center; gap:15px;"><i class="fa-solid fa-location-dot" style="color:var(--primary); font-size:18px;"></i> Bengaluru, India</div>
-    <div class="card" style="display:flex; align-items:center; gap:15px;"><i class="fa-solid fa-language" style="color:var(--primary); font-size:18px;"></i> English, Kannada, Hindi, Telugu</div>
+    <div class="card" style="display:flex; align-items:center; gap:16px;"><i class="fa-solid fa-phone" style="color:var(--primary); font-size:18px;"></i> 7760144157</div>
+    <div class="card" style="display:flex; align-items:center; gap:16px;"><i class="fa-solid fa-envelope" style="color:var(--primary); font-size:18px;"></i> yashu2370@gmail.com</div>
+    <div class="card" style="display:flex; align-items:center; gap:16px;"><i class="fa-solid fa-location-dot" style="color:var(--primary); font-size:18px;"></i> Bengaluru, India</div>
+    <div class="card" style="display:flex; align-items:center; gap:16px;"><i class="fa-solid fa-language" style="color:var(--primary); font-size:18px;"></i> English, Kannada, Hindi, Telugu</div>
   </div>
 
+  <!-- Chat / Contact Form -->
   <div class="contact-form">
     <h3>Send me a message 💬</h3>
     <form action="https://formspree.io/f/mbdzzokb" method="POST">
@@ -836,36 +936,44 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 
 <footer class="footer">
   <p>© <span id="year"></span> <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
-  <p style="font-size: 13px; margin-top: 5px; opacity: 0.8;">Library & Information Science Professional | Academic Digital Transformation Specialist</p>
+  <p style="font-size: 13px; margin-top: 6px; opacity: 0.75; font-weight: 300;">Library & Information Science Professional | Academic Digital Transformation Specialist</p>
 </footer>
 
 <script>
+// Structural DOM Configuration Elements
 document.getElementById("year").innerText = new Date().getFullYear();
 
 const preloader = document.getElementById("preloader");
 const progressBar = document.getElementById("progressBar");
-
-window.addEventListener("load", () => { preloader.style.display = "none"; });
-
-window.addEventListener("scroll", () => {
-  let winScroll = document.documentElement.scrollTop;
-  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  progressBar.style.width = (winScroll / height) * 100 + "%";
-});
-
-document.addEventListener("mousemove", (e) => {
-  const glow = document.querySelector(".cursor-glow");
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
-
 const topBtn = document.getElementById("topBtn");
+const glow = document.querySelector(".cursor-glow");
 
+// Preloader Automation Termination
+window.addEventListener("load", () => {
+  preloader.style.opacity = "0";
+  setTimeout(() => preloader.style.display = "none", 500);
+});
+
+// Structural Metric Calculation Loops
+let activeTick = false;
 window.addEventListener("scroll", () => {
-  if (document.documentElement.scrollTop > 300) {
-    topBtn.style.display = "block";
-  } else {
-    topBtn.style.display = "none";
+  if (!activeTick) {
+    window.requestAnimationFrame(() => {
+      let winScroll = document.documentElement.scrollTop;
+      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      
+      // Calculate Scroll Progress
+      progressBar.style.width = (winScroll / height) * 100 + "%";
+      
+      // Scroll To Top Trigger Evaluation
+      if (winScroll > 300) {
+        topBtn.classList.add("visible");
+      } else {
+        topBtn.classList.remove("visible");
+      }
+      activeTick = false;
+    });
+    activeTick = true;
   }
 });
 
@@ -873,44 +981,62 @@ topBtn.onclick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-const sections = document.querySelectorAll("section");
+// High Performance Matrix Glow Tracking Interface
+let trackX = 0, trackY = 0, currentX = 0, currentY = 0;
+document.addEventListener("mousemove", (e) => {
+  trackX = e.clientX;
+  trackY = e.clientY + window.scrollY;
+});
 
+function smoothGlowInterpolation() {
+  currentX += (trackX - currentX) * 0.1;
+  currentY += (trackY - currentY) * 0.1;
+  glow.style.left = currentX + "px";
+  glow.style.top = currentY + "px";
+  requestAnimationFrame(smoothGlowInterpolation);
+}
+requestAnimationFrame(smoothGlowInterpolation);
+
+// Intersection Observers for Viewport Tracking Animations
+const sections = document.querySelectorAll("section");
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("show");
     }
   });
-}, { threshold: 0.05 });
+}, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
 
 sections.forEach(sec => {
   sec.classList.add("fade-section");
   revealObserver.observe(sec);
 });
 
-const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-const typing = document.querySelector(".hero-text p");
-typing.innerHTML = "";
-let i = 0;
+// Modular Asynchronous Stream Typist Output Loop
+const txtContent = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+const typingTarget = document.querySelector(".hero-text p");
+typingTarget.innerHTML = "";
+let characterIdx = 0;
 
-function type() {
-  if (i < text.length) {
-    typing.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(type, 20);
+function runTypingSystem() {
+  if (characterIdx < txtContent.length) {
+    typingTarget.innerHTML += txtContent.charAt(characterIdx);
+    characterIdx++;
+    setTimeout(runTypingSystem, 18);
   }
 }
-type();
+setTimeout(runTypingSystem, 600);
 
-const bars = document.querySelectorAll(".progress-bar");
-const observer = new IntersectionObserver(entries => {
+// Performance Skills Matrix Render Controller
+const technicalBars = document.querySelectorAll(".progress-bar");
+const metricObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.width = entry.target.dataset.progress + "%";
     }
   });
-});
-bars.forEach(bar => observer.observe(bar));
+}, { threshold: 0.1 });
+technicalBars.forEach(bar => metricObserver.observe(bar));
 </script>
 
 </body>
