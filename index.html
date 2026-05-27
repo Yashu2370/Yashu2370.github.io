@@ -181,11 +181,13 @@ nav a:hover{color: var(--accent);}
   height:100%;
   object-fit:cover;
 }
+
+/* FIXED: Video is brighter now (Overlay altered from 0.85/0.4 to 0.45/0.15) */
 .overlay{
   position:absolute;
   width:100%;
   height:100%;
-  background: linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.4) 100%);
+  background: linear-gradient(135deg, rgba(15,23,42,0.45) 0%, rgba(15,23,42,0.15) 100%);
 }
 .hero-content{
   position:relative;
@@ -274,6 +276,7 @@ section{padding:100px 8% 40px 8%; max-width: 1300px; margin: 0 auto;}
   box-shadow: var(--shadow);
   margin-bottom:20px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; /* FIXED: Ensures previews stay absolute to card framework */
 }
 .card:hover{
   transform:translateY(-5px) scale(1.01);
@@ -330,10 +333,15 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
 }
 
 /* ===== CERTIFICATE PREVIEW ===== */
+.cert-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
 .preview-container{
     position: relative;
     display: inline-block;
-    margin: 8px 8px 8px 0;
 }
 .cert-btn {
   background: transparent;
@@ -346,22 +354,24 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   background: var(--accent);
   color: #fff;
 }
+
+/* FIXED: Previews no longer clip inside cards (z-index and positions enhanced) */
 .cert-preview{
     position: absolute;
-    top: 55px;
+    top: 50px;
     left: 0;
-    width: 280px;
-    height: 190px;
+    width: 320px;
+    height: 220px;
     background: #fff;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 100;
-    border: 1px solid rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    border: 1px solid rgba(0,0,0,0.15);
 }
 .cert-preview iframe{
     width: 100%;
@@ -471,6 +481,7 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   .section-title{ font-size:26px; }
   .card{ padding:20px; }
   .grid{ grid-template-columns:1fr; }
+  .cert-preview { width: 260px; height: 180px; }
 }
 </style>
 </head>
@@ -502,7 +513,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-slider">
     <video class="hero-video" autoplay muted loop playsinline preload="auto">
@@ -529,7 +539,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <h2 class="section-title">Career Objective</h2>
   <div class="card">
@@ -537,7 +546,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <h2 class="section-title">Employment</h2>
   <div class="card timeline">
@@ -554,7 +562,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <h2 class="section-title">💻 Technical Skills</h2>
   <div class="card">
@@ -593,62 +600,65 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
 <section id="courses">
   <h2 class="section-title">Certifications & Courses</h2>
   
-  <!-- O LEVEL -->
   <div class="card">
-    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i> O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</h3>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-file-pdf"></i> Python Programming</button>
-      <div class="cert-preview"><iframe src="OLevel_Certificate1.pdf"></iframe></div>
-    </div>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-file-pdf"></i> Internet of Things</button>
-      <div class="cert-preview"><iframe src="OLevel_Certificate2.pdf"></iframe></div>
-    </div>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-file-pdf"></i> Web Designing</button>
-      <div class="cert-preview"><iframe src="OLevel_Certificate3.pdf"></iframe></div>
-    </div>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-file-pdf"></i> IT Tools & Networks</button>
-      <div class="cert-preview"><iframe src="OLevel_Certificate4.pdf"></iframe></div>
-    </div>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-file-pdf"></i> Computer Concepts</button>
-      <div class="cert-preview"><iframe src="OLevel_Certificate5.pdf"></iframe></div>
-    </div>
-  </div>
-
-  <!-- IEEE -->
-  <div class="card">
-    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> Ethical Hacking – IEEE Blended Learning Program</h3>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('IEEE.pdf')"><i class="fa-solid fa-eye"></i> View Certificate</button>
-      <div class="cert-preview"><iframe src="IEEE.pdf"></iframe></div>
-    </div>
-  </div>
-
-  <!-- NPTEL -->
-  <div class="card">
-    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-chart-pie" style="color: var(--accent);"></i> Science Communication & Data Analytics – NPTEL</h3>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')"><i class="fa-solid fa-eye"></i> View Certificate</button>
-      <div class="cert-preview"><iframe src="nptel_science_communication_data_analytics_2024.pdf"></iframe></div>
+    <h3 style="font-size: 18px; margin-bottom: 5px;"><i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i> O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</h3>
+    <div class="cert-grid">
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-file-pdf"></i> Python Programming</button>
+        <div class="cert-preview"><iframe src="OLevel_Certificate1.pdf"></iframe></div>
+      </div>
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-file-pdf"></i> Internet of Things</button>
+        <div class="cert-preview"><iframe src="OLevel_Certificate2.pdf"></iframe></div>
+      </div>
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-file-pdf"></i> Web Designing</button>
+        <div class="cert-preview"><iframe src="OLevel_Certificate3.pdf"></iframe></div>
+      </div>
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-file-pdf"></i> IT Tools & Networks</button>
+        <div class="cert-preview"><iframe src="OLevel_Certificate4.pdf"></iframe></div>
+      </div>
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-file-pdf"></i> Computer Concepts</button>
+        <div class="cert-preview"><iframe src="OLevel_Certificate5.pdf"></iframe></div>
+      </div>
     </div>
   </div>
 
   <div class="card">
-    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-chart-line" style="color: var(--accent);"></i> Advanced R Programming for Data Analytics – NPTEL</h3>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')"><i class="fa-solid fa-eye"></i> View Certificate</button>
-      <div class="cert-preview"><iframe src="advanced_r_programming_data_analytics_2024.pdf"></iframe></div>
+    <h3 style="font-size: 18px; margin-bottom: 5px;"><i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> Ethical Hacking – IEEE Blended Learning Program</h3>
+    <div class="cert-grid">
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        <div class="cert-preview"><iframe src="IEEE.pdf"></iframe></div>
+      </div>
     </div>
   </div>
 
-  <!-- COMPLETED -->
+  <div class="card">
+    <h3 style="font-size: 18px; margin-bottom: 5px;"><i class="fa-solid fa-chart-pie" style="color: var(--accent);"></i> Science Communication & Data Analytics – NPTEL</h3>
+    <div class="cert-grid">
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        <div class="cert-preview"><iframe src="nptel_science_communication_data_analytics_2024.pdf"></iframe></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size: 18px; margin-bottom: 5px;"><i class="fa-solid fa-chart-line" style="color: var(--accent);"></i> Advanced R Programming for Data Analytics – NPTEL</h3>
+    <div class="cert-grid">
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        <div class="cert-preview"><iframe src="advanced_r_programming_data_analytics_2024.pdf"></iframe></div>
+      </div>
+    </div>
+  </div>
+
   <div class="card">
     <h3 style="font-size: 18px; margin-bottom: 10px;"><i class="fa-solid fa-book-open" style="color: var(--accent);"></i> IT Applications in Libraries – NPTEL</h3>
     <span style="color:#4CAF50; font-weight:500; display: inline-flex; align-items: center; gap: 6px;">
@@ -656,17 +666,17 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
     </span>
   </div>
 
-  <!-- WEBINAR -->
   <div class="card">
-    <h3 style="font-size: 18px; margin-bottom: 15px;"><i class="fa-solid fa-chalkboard-user" style="color: var(--accent);"></i> Training Webinar: Navigating New Emerald Insight Platform</h3>
-    <div class="preview-container">
-      <button class="btn cert-btn" onclick="window.open('Training Webinar.pdf')"><i class="fa-solid fa-eye"></i> View Certificate</button>
-      <div class="cert-preview"><iframe src="Training Webinar.pdf"></iframe></div>
+    <h3 style="font-size: 18px; margin-bottom: 5px;"><i class="fa-solid fa-chalkboard-user" style="color: var(--accent);"></i> Training Webinar: Navigating New Emerald Insight Platform</h3>
+    <div class="cert-grid">
+      <div class="preview-container">
+        <button class="btn cert-btn"><i class="fa-solid fa-eye"></i> View Certificate</button>
+        <div class="cert-preview"><iframe src="Training Webinar.pdf"></iframe></div>
+      </div>
     </div>
   </div>
 </section>
   
-<!-- EDUCATION -->
 <section id="education">
   <h2 class="section-title">Education</h2>
   <div class="card">
@@ -681,7 +691,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </section>
 
-<!-- DIGITAL INITIATIVES & PROJECTS -->
 <section id="projects">
   <h2 class="section-title">Digital Initiatives & Projects</h2>
   <div class="card">
@@ -696,7 +705,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </section>
 
-<!-- KEY ACHIEVEMENTS -->
 <section id="achievements">
   <h2 class="section-title">Key Achievements</h2>
   <div class="card">
@@ -710,7 +718,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </section>
 
-<!-- WORKSHOPS & PROFESSIONAL DEVELOPMENT -->
 <section id="workshops">
   <h2 class="section-title">Workshops & Professional Development</h2>
   <div class="card">
@@ -722,7 +729,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </section>
 
-<!-- PROFESSIONAL MEMBERSHIPS & DIGITAL NETWORKS -->
 <section id="memberships">
   <h2 class="section-title">Professional Memberships & Digital Networks</h2>
   <div class="card">
@@ -734,7 +740,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2 class="section-title">Contact</h2>
   <div class="grid">
@@ -744,7 +749,6 @@ body.dark .progress { background: rgba(255,255,255,0.05); }
     <div class="card"><i class="fa-solid fa-language" style="color: var(--accent); margin-right: 8px;"></i> English, Kannada, Hindi, Telugu</div>
   </div>
 
-  <!-- Chat / Contact Form -->
   <div class="contact-form">
     <h3>Send me a message 💬</h3>
     <form action="https://formspree.io/f/mbdzzokb" method="POST">
@@ -842,3 +846,4 @@ bars.forEach(bar => observer.observe(bar));
 </body>
 </html>
 
+```
