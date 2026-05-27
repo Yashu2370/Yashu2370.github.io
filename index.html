@@ -10,31 +10,31 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== DESIGN SYSTEM VARIABLES ===== */
+/* ===== REVISED DESIGN SYSTEM VARIABLES ===== */
 :root {
   --primary: #10b981;
   --primary-hover: #059669;
   --bg-main: #f8fafc;
-  --bg-gradient: linear-gradient(135deg, #f8fafc, #edf2f7, #e2e8f0);
+  --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
   --text-main: #0f172a;
   --text-muted: #475569;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(226, 232, 240, 0.8);
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.05);
-  --nav-bg: rgba(255, 255, 255, 0.75);
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(203, 213, 225, 0.6);
+  --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.08);
+  --nav-bg: rgba(255, 255, 255, 0.8);
 }
 
 body.dark {
-  --bg-main: #0f172a;
-  --bg-gradient: linear-gradient(135deg, #0f172a, #1e293b, #090d16);
+  --bg-main: #0b0f19;
+  --bg-gradient: linear-gradient(135deg, #090d16 0%, #111827 50%, #1f2937 100%);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --card-bg: rgba(30, 41, 59, 0.65);
-  --card-border: rgba(51, 65, 85, 0.5);
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  --nav-bg: rgba(15, 23, 42, 0.8);
+  --card-bg: rgba(17, 24, 39, 0.7);
+  --card-border: rgba(55, 65, 81, 0.6);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.6);
+  --nav-bg: rgba(9, 13, 22, 0.8);
 }
 
 * {
@@ -53,52 +53,39 @@ body {
   transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== ADVANCED UI PRELOADER ===== */
+/* ===== PRELOADER ===== */
 #preloader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #0f172a;
+  background: #090d16;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 .loader {
   width: 50px;
   height: 50px;
-  border: 4px solid #1e293b;
+  border: 4px solid #1f2937;
   border-top: 4px solid var(--primary);
   border-radius: 50%;
   animation: spin 0.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
-/* ===== UTILITIES & INTERACTIVE BARS ===== */
+/* ===== UTILITIES ===== */
 #progressBar {
   position: fixed;
   top: 0;
   left: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary), #34d399, #6ee7b7);
+  background: linear-gradient(90deg, var(--primary), #34d399);
   width: 0%;
   z-index: 2000;
-  transition: width 0.1s ease-out;
-}
-
-.cursor-glow {
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0) 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  mix-blend-mode: screen;
 }
 
 #topBtn {
@@ -119,14 +106,14 @@ body {
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
-  transform: scale(0.8) translateY(10px);
-  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+  transform: translateY(10px);
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 #topBtn.visible {
   opacity: 1;
   visibility: visible;
-  transform: scale(1) translateY(0);
+  transform: translateY(0);
 }
 #topBtn:hover {
   background: var(--primary-hover);
@@ -147,7 +134,6 @@ nav {
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--card-border);
   z-index: 1000;
-  transition: background 0.3s, border 0.3s;
 }
 nav ul {
   display: flex;
@@ -170,7 +156,7 @@ nav a::after {
   bottom: -4px;
   left: 0;
   background-color: var(--primary);
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.3s ease;
 }
 nav a:hover {
   color: var(--primary);
@@ -221,7 +207,7 @@ nav a:hover::after {
   height: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.5));
+  background: linear-gradient(to right, rgba(9, 13, 22, 0.95), rgba(17, 24, 39, 0.6));
 }
 .hero-content {
   position: relative;
@@ -238,7 +224,6 @@ nav a:hover::after {
   font-size: 54px;
   font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -1px;
 }
 .hero-text span {
   color: var(--primary);
@@ -258,13 +243,13 @@ nav a:hover::after {
   flex-wrap: wrap;
 }
 .btn {
-  padding: 12px 26px;
+  padding: 12px 24px;
   border-radius: 30px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
   border: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -272,20 +257,19 @@ nav a:hover::after {
 .btn.primary {
   background: var(--primary);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.2);
 }
 .btn.primary:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 .btn.outline {
   background: transparent;
-  border: 2px solid var(--primary);
+  border: 1px solid var(--primary);
   color: var(--primary);
 }
 .btn.outline:hover {
-  background: rgba(16, 185, 129, 0.08);
+  background: rgba(16, 185, 129, 0.1);
   transform: translateY(-2px);
 }
 .hero .btn.outline {
@@ -301,8 +285,8 @@ nav a:hover::after {
   height: 300px;
   object-fit: cover;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  border: 4px solid rgba(16, 185, 129, 0.6);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  border: 4px solid rgba(16, 185, 129, 0.4);
   animation: morphingBlob 8s ease-in-out infinite alternate;
 }
 @keyframes morphingBlob {
@@ -315,14 +299,11 @@ section {
   padding: 100px 8% 20px 8%;
   max-width: 1400px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
 }
 .section-title {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 35px;
-  letter-spacing: -0.5px;
   position: relative;
 }
 .section-title::after {
@@ -345,12 +326,11 @@ section {
   margin-bottom: 24px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(16, 185, 129, 0.3);
 }
 .card ul {
   padding-left: 20px;
@@ -362,6 +342,13 @@ section {
 }
 .card li strong {
   color: var(--text-main);
+}
+
+.button-group-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .grid {
@@ -394,7 +381,7 @@ section {
 }
 .progress {
   height: 8px;
-  background: #e2e8f0;
+  background: #cbd5e1;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -409,45 +396,84 @@ body.dark .progress {
   transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
 }
 
-/* ===== DYNAMIC PREVIEWS ===== */
-.preview-container {
-  position: relative;
-  display: inline-block;
-  margin: 8px 8px 8px 0;
-}
-.cert-preview {
-  position: absolute;
-  top: 60px;
+/* ===== ROBUST INTERACTIVE OVERLAY MODAL FOR PREVIEWS ===== */
+.preview-modal {
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 300px;
-  height: 200px;
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+  width: 100%;
+  height: 100vh;
+  background: rgba(9, 13, 22, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(15px);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 100;
-  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
 }
-.cert-preview iframe {
+.preview-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-window {
+  width: 90%;
+  max-width: 900px;
+  height: 80vh;
+  background: var(--bg-main);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+.preview-modal.active .modal-window {
+  transform: scale(1);
+}
+.modal-header {
+  padding: 16px 24px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-header h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: var(--primary);
+}
+.modal-body {
+  flex: 1;
+  background: #fff;
+}
+.modal-body iframe {
   width: 100%;
   height: 100%;
   border: none;
-}
-.preview-container:hover .cert-preview {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
 }
 
 /* ===== SCROLL VISIBILITY STRUCT ===== */
 .fade-section {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .fade-section.show {
   opacity: 1;
@@ -485,17 +511,12 @@ body.dark .progress {
 }
 body.dark .contact-form input,
 body.dark .contact-form textarea {
-  background: rgba(15, 23, 42, 0.3);
+  background: rgba(9, 13, 22, 0.4);
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--primary);
-  background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
-}
-body.dark .contact-form input:focus,
-body.dark .contact-form textarea:focus {
-  background: rgba(15, 23, 42, 0.6);
 }
 .contact-form input {
   height: 48px;
@@ -512,16 +533,14 @@ body.dark .contact-form textarea:focus {
   cursor: pointer;
   font-weight: 500;
   font-size: 14px;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.2);
   transition: all 0.3s;
 }
 .contact-form button:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
 }
 
-/* ===== FOOTER END SYSTEM ===== */
+/* ===== FOOTER ===== */
 .footer {
   text-align: center;
   padding: 50px 20px;
@@ -529,15 +548,12 @@ body.dark .contact-form textarea:focus {
   color: #94a3b8;
   font-size: 14px;
   border-top: 1px solid #1e293b;
-  position: relative;
-  z-index: 2;
 }
 .footer p {
   margin-bottom: 10px;
 }
 .footer strong {
   color: var(--primary);
-  letter-spacing: 0.5px;
 }
 
 /* ===== SYSTEM MOBILE OPTIMIZATION ===== */
@@ -585,18 +601,28 @@ body.dark .contact-form textarea:focus {
 </style>
 </head>
 
-<body>
-<button id="topBtn">
+<body class="dark"> <button id="topBtn">
 <i class="fa-solid fa-arrow-up"></i>
 </button>
 
 <div id="preloader"><div class="loader"></div></div>
 <div id="progressBar"></div>
-<div class="cursor-glow"></div>
+
+<div class="preview-modal" id="certModal">
+  <div class="modal-window">
+    <div class="modal-header">
+      <h4 id="modalTitle">Certificate Document Viewer</h4>
+      <button class="modal-close" onclick="closeDocumentViewer()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <iframe src="" id="modalFrame"></iframe>
+    </div>
+  </div>
+</div>
 
 <nav>
 <button class="theme-btn" onclick="document.body.classList.toggle('dark')">
-🌙 Toggle Theme
+🌓 Toggle Theme
 </button>
 <ul>
 <li><a href="#about">About</a></li>
@@ -612,7 +638,6 @@ body.dark .contact-form textarea:focus {
 </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
 <div class="hero-slider">
   <video class="hero-video" autoplay muted loop playsinline preload="auto">
@@ -639,7 +664,6 @@ body.dark .contact-form textarea:focus {
 </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
 <h2 class="section-title">Career Objective</h2>
 <div class="card">
@@ -647,7 +671,6 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
 <h2 class="section-title">Employment</h2>
 <div class="card timeline">
@@ -664,7 +687,6 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
 <h2 class="section-title">💻 Technical Skills</h2>
 <div class="card">
@@ -736,96 +758,59 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
-<!-- CERTIFICATIONS -->
 <section id="courses">
 <h2 class="section-title">Certifications & Courses</h2>
 
-<!-- O LEVEL -->
 <div class="card">
-    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">
+    <strong style="color: var(--text-main); display:block; margin-bottom:8px;">
         O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)
     </strong>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')">
-            <i class="fa-solid fa-download"></i> Programming & Problem Solving through Python
+    <div class="button-group-layout">
+        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate1.pdf', 'Programming & Problem Solving through Python')">
+            <i class="fa-solid fa-file-pdf"></i> Programming & Problem Solving through Python
         </button>
-        <div class="cert-preview">
-            <iframe src="OLevel_Certificate1.pdf"></iframe>
-        </div>
-    </div>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')">
-            <i class="fa-solid fa-download"></i> Internet of Things and its Application
+        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate2.pdf', 'Internet of Things and its Application')">
+            <i class="fa-solid fa-file-pdf"></i> Internet of Things and its Application
         </button>
-        <div class="cert-preview">
-            <iframe src="OLevel_Certificate2.pdf"></iframe>
-        </div>
-    </div>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')">
-            <i class="fa-solid fa-download"></i> Web Designing & Publishing
+        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate3.pdf', 'Web Designing & Publishing')">
+            <i class="fa-solid fa-file-pdf"></i> Web Designing & Publishing
         </button>
-        <div class="cert-preview">
-            <iframe src="OLevel_Certificate3.pdf"></iframe>
-        </div>
-    </div>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')">
-            <i class="fa-solid fa-download"></i> IT Tools and Network Basics
+        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate4.pdf', 'IT Tools and Network Basics')">
+            <i class="fa-solid fa-file-pdf"></i> IT Tools and Network Basics
         </button>
-        <div class="cert-preview">
-            <iframe src="OLevel_Certificate4.pdf"></iframe>
-        </div>
-    </div>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')">
-            <i class="fa-solid fa-download"></i> Course on Computer Concepts
+        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate5.pdf', 'Course on Computer Concepts')">
+            <i class="fa-solid fa-file-pdf"></i> Course on Computer Concepts
         </button>
-        <div class="cert-preview">
-            <iframe src="OLevel_Certificate5.pdf"></iframe>
-        </div>
-    </div>
-</div>
-
-<!-- IEEE -->
-<div class="card">
-    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">Ethical Hacking – IEEE Blended Learning Program</strong>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('IEEE.pdf')">
-            <i class="fa-solid fa-download"></i> View Certificate
-        </button>
-        <div class="cert-preview">
-            <iframe src="IEEE.pdf"></iframe>
-        </div>
-    </div>
-</div>
-
-<!-- NPTEL -->
-<div class="card">
-    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</strong>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')">
-            <i class="fa-solid fa-download"></i> View Certificate
-        </button>
-        <div class="cert-preview">
-            <iframe src="nptel_science_communication_data_analytics_2024.pdf"></iframe>
-        </div>
     </div>
 </div>
 
 <div class="card">
-    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">Advanced R Programming for Data Analytics in Business – NPTEL</strong>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')">
-            <i class="fa-solid fa-download"></i> View Certificate
+    <strong style="color: var(--text-main); display:block; margin-bottom:12px;">Ethical Hacking – IEEE Blended Learning Program</strong>
+    <div class="button-group-layout">
+        <button class="btn outline" onclick="openDocumentViewer('IEEE.pdf', 'Ethical Hacking – IEEE Certificate')">
+            <i class="fa-solid fa-file-pdf"></i> View Certificate
         </button>
-        <div class="cert-preview">
-            <iframe src="advanced_r_programming_data_analytics_2024.pdf"></iframe>
-        </div>
     </div>
 </div>
 
-<!-- COMPLETED -->
+<div class="card">
+    <strong style="color: var(--text-main); display:block; margin-bottom:12px;">Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</strong>
+    <div class="button-group-layout">
+        <button class="btn outline" onclick="openDocumentViewer('nptel_science_communication_data_analytics_2024.pdf', 'Science Communication Data Analytics')">
+            <i class="fa-solid fa-file-pdf"></i> View Certificate
+        </button>
+    </div>
+</div>
+
+<div class="card">
+    <strong style="color: var(--text-main); display:block; margin-bottom:12px;">Advanced R Programming for Data Analytics in Business – NPTEL</strong>
+    <div class="button-group-layout">
+        <button class="btn outline" onclick="openDocumentViewer('advanced_r_programming_data_analytics_2024.pdf', 'Advanced R Programming')">
+            <i class="fa-solid fa-file-pdf"></i> View Certificate
+        </button>
+    </div>
+</div>
+
 <div class="card">
     <strong style="color: var(--text-main); display:block; margin-bottom:12px;">IT Applications in Libraries – NPTEL</strong>
     <span style="color:#10b981; font-weight:500; display:inline-flex; align-items:center; gap:8px;">
@@ -833,21 +818,16 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
     </span>
 </div>
 
-<!-- WEBINAR -->
 <div class="card">
-    <strong style="color: var(--text-main); display:block; margin-bottom:16px;">Training Webinar: How to Navigate the New Emerald Insight Platform</strong>
-    <div class="preview-container">
-        <button class="btn outline" onclick="window.open('Training Webinar.pdf')">
-            <i class="fa-solid fa-download"></i> View Certificate
+    <strong style="color: var(--text-main); display:block; margin-bottom:12px;">Training Webinar: How to Navigate the New Emerald Insight Platform</strong>
+    <div class="button-group-layout">
+        <button class="btn outline" onclick="openDocumentViewer('Training Webinar.pdf', 'Emerald Insight Webinar Certificate')">
+            <i class="fa-solid fa-file-pdf"></i> View Certificate
         </button>
-        <div class="cert-preview">
-            <iframe src="Training Webinar.pdf"></iframe>
-        </div>
     </div>
 </div>
 </section>
 
-<!-- EDUCATION -->
 <section id="education">
 <h2 class="section-title">Education</h2>
 <div class="card">
@@ -859,7 +839,6 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
-<!-- DIGITAL INITIATIVES & PROJECTS -->
 <section id="projects">
 <h2 class="section-title">Digital Initiatives & Projects</h2>
 <div class="card">
@@ -874,7 +853,6 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
-<!-- KEY ACHIEVEMENTS -->
 <section id="achievements">
 <h2 class="section-title">Key Achievements</h2>
 <div class="card">
@@ -888,7 +866,6 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
-<!-- WORKSHOPS & PROFESSIONAL DEVELOPMENT -->
 <section id="workshops">
 <h2 class="section-title">Workshops & Professional Development</h2>
 <div class="card">
@@ -900,7 +877,6 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
-<!-- PROFESSIONAL MEMBERSHIPS & DIGITAL NETWORKS -->
 <section id="memberships">
 <h2 class="section-title">Professional Memberships & Digital Networks</h2>
 <div class="card">
@@ -912,7 +888,6 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2 class="section-title">Contact</h2>
   <div class="grid">
@@ -922,7 +897,6 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
     <div class="card" style="display:flex; align-items:center; gap:16px;"><i class="fa-solid fa-language" style="color:var(--primary); font-size:18px;"></i> English, Kannada, Hindi, Telugu</div>
   </div>
 
-  <!-- Chat / Contact Form -->
   <div class="contact-form">
     <h3>Send me a message 💬</h3>
     <form action="https://formspree.io/f/mbdzzokb" method="POST">
@@ -940,21 +914,21 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </footer>
 
 <script>
-// Structural DOM Configuration Elements
 document.getElementById("year").innerText = new Date().getFullYear();
 
 const preloader = document.getElementById("preloader");
 const progressBar = document.getElementById("progressBar");
 const topBtn = document.getElementById("topBtn");
-const glow = document.querySelector(".cursor-glow");
+const certModal = document.getElementById("certModal");
+const modalFrame = document.getElementById("modalFrame");
+const modalTitle = document.getElementById("modalTitle");
 
-// Preloader Automation Termination
 window.addEventListener("load", () => {
   preloader.style.opacity = "0";
   setTimeout(() => preloader.style.display = "none", 500);
 });
 
-// Structural Metric Calculation Loops
+// Structural Metric Scroll Logic
 let activeTick = false;
 window.addEventListener("scroll", () => {
   if (!activeTick) {
@@ -962,10 +936,8 @@ window.addEventListener("scroll", () => {
       let winScroll = document.documentElement.scrollTop;
       let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       
-      // Calculate Scroll Progress
       progressBar.style.width = (winScroll / height) * 100 + "%";
       
-      // Scroll To Top Trigger Evaluation
       if (winScroll > 300) {
         topBtn.classList.add("visible");
       } else {
@@ -981,23 +953,26 @@ topBtn.onclick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-// High Performance Matrix Glow Tracking Interface
-let trackX = 0, trackY = 0, currentX = 0, currentY = 0;
-document.addEventListener("mousemove", (e) => {
-  trackX = e.clientX;
-  trackY = e.clientY + window.scrollY;
+// Immersive Lightbox Controller Mechanics
+function openDocumentViewer(sourcePath, displayName) {
+  modalTitle.innerText = displayName;
+  modalFrame.src = sourcePath;
+  certModal.classList.add("active");
+  document.body.style.overflow = "hidden"; // Prevents background body tracking drift
+}
+
+function closeDocumentViewer() {
+  certModal.classList.remove("active");
+  modalFrame.src = "";
+  document.body.style.overflow = "auto";
+}
+
+// Close overlay if background clicked directly
+certModal.addEventListener("click", (e) => {
+  if(e.target === certModal) closeDocumentViewer();
 });
 
-function smoothGlowInterpolation() {
-  currentX += (trackX - currentX) * 0.1;
-  currentY += (trackY - currentY) * 0.1;
-  glow.style.left = currentX + "px";
-  glow.style.top = currentY + "px";
-  requestAnimationFrame(smoothGlowInterpolation);
-}
-requestAnimationFrame(smoothGlowInterpolation);
-
-// Intersection Observers for Viewport Tracking Animations
+// Intersection Viewport Trigger Logic
 const sections = document.querySelectorAll("section");
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -1005,14 +980,14 @@ const revealObserver = new IntersectionObserver(entries => {
       entry.target.classList.add("show");
     }
   });
-}, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+}, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
 
 sections.forEach(sec => {
   sec.classList.add("fade-section");
   revealObserver.observe(sec);
 });
 
-// Modular Asynchronous Stream Typist Output Loop
+// Typed Output Matrix Loop
 const txtContent = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
 const typingTarget = document.querySelector(".hero-text p");
 typingTarget.innerHTML = "";
@@ -1027,7 +1002,7 @@ function runTypingSystem() {
 }
 setTimeout(runTypingSystem, 600);
 
-// Performance Skills Matrix Render Controller
+// Skills Progress Bar Automation
 const technicalBars = document.querySelectorAll(".progress-bar");
 const metricObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -1041,3 +1016,5 @@ technicalBars.forEach(bar => metricObserver.observe(bar));
 
 </body>
 </html>
+
+```
