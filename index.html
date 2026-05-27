@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
 <style>
 /* ===== PROFESSIONAL ENTERPRISE DESIGN TOKENS (SLATE/OBSIDIAN) ===== */
 :root {
-  --primary: #cbd5e1; /* Professional Slate Light Accent */
+  --primary: #cbd5e1;
   --primary-hover: #ffffff;
   --surface-main: #f8fafc;
   --surface-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
@@ -224,759 +225,7 @@ nav a:hover::after {
   position: relative;
   z-index: 2;
   display: flex;
-  justify-content: center; /* Center-aligned for elegant minimalist layout */
-  text-align: center;
-  padding: 0 8%;
-  color: white;
-  width: 100%;
-}
-.hero-text h1 {
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 1.15;
-}
-.hero-text span {
-  color: var(--primary);
-}
-.hero-text p {
-  margin: 24px auto 0 auto;
-  max-width: 620px;
-  color: #cbd5e1;
-  font-size: 16px;
-  line-height: 1.75;
-  min-height: 80px;
-}
-.buttons {
-  margin-top: 40px;
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
   justify-content: center;
-}
-.btn {
-  padding: 12px 24px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  border: none;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-.btn.primary {
-  background: var(--primary);
-  color: #0f172a;
-  box-shadow: 0 4px 14px rgba(100, 116, 139, 0.2);
-}
-.btn.primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(203, 213, 225, 0.3);
-}
-.btn.outline {
-  background: transparent;
-  border: 1px solid var(--primary);
-  color: var(--primary);
-}
-.btn.outline:hover {
-  background: rgba(100, 116, 139, 0.08);
-  transform: translateY(-2px);
-}
-.hero .btn.outline {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.4);
-}
-.hero .btn.outline:hover {
-  border-color: var(--primary);
-  background: rgba(100, 116, 139, 0.1);
-}
-
-/* ===== CONTAINER STRUCTURE ===== */
-section {
-  padding: 110px 8% 30px 8%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.section-title {
-  font-size: 34px;
-  font-weight: 700;
-  margin-bottom: 35px;
-  position: relative;
-}
-.section-title::after {
-  content: "";
-  width: 60px;
-  height: 4px;
-  background: var(--primary);
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  border-radius: 4px;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  padding: 38px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 26px;
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border var(--transition-smooth);
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(100, 116, 139, 0.25);
-}
-.card ul {
-  padding-left: 20px;
-}
-.card li {
-  margin-bottom: 14px;
-  line-height: 1.75;
-  color: var(--text-muted);
-}
-.card li strong {
-  color: var(--text-main);
-}
-
-.button-group-layout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 26px;
-}
-.timeline {
-  border-left: 4px solid var(--primary);
-  padding-left: 32px;
-  border-radius: 0 20px 20px 0;
-}
-
-/* ===== HIGH ACCURACY SKILL VISUALIZATION ENGINE ===== */
-.skill {
-  margin-bottom: 26px;
-}
-.skill p {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.skill i {
-  color: var(--primary);
-  font-size: 16px;
-  width: 20px;
-}
-.progress {
-  height: 8px;
-  background: #cbd5e1;
-  border-radius: 10px;
-  overflow: hidden;
-}
-body.dark .progress {
-  background: #334155;
-}
-.progress-bar {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, #64748b, #cbd5e1);
-  border-radius: 10px;
-  transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
-  will-change: width;
-}
-
-/* ===== MODAL LIGHTBOX OVERLAY ===== */
-.preview-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(9, 13, 22, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 5000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  will-change: opacity, visibility;
-}
-.preview-modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-.modal-window {
-  width: 92%;
-  max-width: 960px;
-  height: 80vh;
-  background: var(--surface-main);
-  border: 1px solid var(--card-border);
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-  transform: scale(0.96);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: transform;
-}
-.preview-modal.active .modal-window {
-  transform: scale(1);
-}
-.modal-header {
-  padding: 16px 24px;
-  background: var(--card-bg);
-  border-bottom: 1px solid var(--card-border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.modal-header h4 {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-main);
-}
-.modal-close {
-  background: none;
-  border: none;
-  color: var(--text-main);
-  font-size: 22px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.modal-close:hover {
-  color: var(--primary);
-}
-.modal-body {
-  flex: 1;
-  background: #ffffff;
-}
-.modal-body iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* ===== SCROLL VISIBILITY STRUCT ===== */
-.fade-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform, opacity;
-}
-.fade-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== SYSTEMS FORM CONFIG ===== */
-.contact-form {
-  margin-top: 45px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  padding: 45px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
-}
-.contact-form h3 {
-  margin-bottom: 26px;
-  color: var(--text-main);
-  font-size: 20px;
-  font-weight: 600;
-}
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 15px 20px;
-  margin-bottom: 20px;
-  border: 1px solid var(--card-border);
-  background: rgba(255, 255, 255, 0.4);
-  color: var(--text-main);
-  border-radius: 12px;
-  outline: none;
-  font-size: 14px;
-  transition: all var(--transition-smooth);
-}
-body.dark .contact-form input,
-body.dark .contact-form textarea {
-  background: rgba(9, 13, 22, 0.4);
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px var(--btn-glow);
-}
-.contact-form input {
-  height: 50px;
-}
-.contact-form textarea {
-  resize: none;
-}
-.contact-form button {
-  background: var(--primary);
-  color: #0f172a;
-  border: none;
-  padding: 15px 36px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 14px;
-  transition: all var(--transition-smooth);
-}
-.contact-form button:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(100, 116, 139, 0.25);
-}
-
-/* ===== FOOTER END SYSTEM ===== */
-.footer {
-  text-align: center;
-  padding: 55px 20px;
-  background: #090d16;
-  color: #94a3b8;
-  font-size: 14px;
-  border-top: 1px solid #1e293b;
-}
-.footer p {
-  margin-bottom: 12px;
-}
-.footer strong {
-  color: var(--primary);
-}
-
-/* ===== SYSTEM MOBILE OPTIMIZATION ===== */
-@media(max-width: 1024px) {
-  nav {
-    flex-direction: column;
-    padding: 16px 5%;
-    gap: 16px;
-  }
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-  }
-  .hero {
-    height: auto;
-    padding: 180px 5% 90px 5%;
-  }
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 45px;
-  }
-  .hero-text h1 {
-    font-size: 42px;
-  }
-  .hero-text p {
-    font-size: 15px;
-    margin: 24px auto 0 auto;
-  }
-  .buttons {
-    justify-content: center;
-  }
-  section {
-    padding: 90px 5% 20px 5%;
-  }
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-</head>
-
-<body class="dark">
-<button id="topBtn" aria-label="Scroll to top">
-<i class="fa-solid fa-arrow-up"></i>
-</button>
-
-<div id="preloader"><div class="loader"></div></div>
-<div id="progressBar"></div>
-
-<div class="preview-modal" id="certModal">
-  <div class="modal-window">
-    <div class="modal-header">
-      <h4 id="modalTitle">Certificate Document Viewer</h4>
-      <button class="modal-close" onclick="window.portfolioSystem.closeDocumentViewer()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div class="modal-body">
-      <iframe src="" id="modalFrame"></iframe>
-    </div>
-  </div>
-</div>
-
-<nav>
-<button class="theme-btn" onclick="document.body.classList.toggle('dark')">
-🌓 Toggle Theme
-</button>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#experience">Experience</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#courses">Courses</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#achievements">Achievements</a></li>
-<li><a href="#workshops">Workshops</a></li>
-<li><a href="#memberships">Memberships</a></li>
-</ul>
-</nav>
-
-<div class="hero">
-<div class="hero-slider">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto">
-    <source src="1.mp4" type="video/mp4">
-  </video>
-</div>
-<div class="overlay"></div>
-<div class="hero-content">
-<div class="hero-text">
-<h1>Hello, I'm <span>Yashwanth K S</span></h1>
-<p></p>
-<div class="buttons">
-<button class="btn primary" onclick="window.open('For IT.pdf')">
-  <i class="fa-solid fa-download"></i> Download CV
-</button>
-<button class="btn outline" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">Experience</button>
-<button class="btn outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
-<button class="btn outline" onclick="window.location.href='mailto:yashu2370@gmail.com'">Get in Touch</button>
-</div>
-</div>
-</div>
-</div>
-
-<section id="about">
-<h2 class="section-title">Career Objective</h2>
-<div class="card">
-Dedicated Library & Information Science professional with expertise in Koha LMS, Libsoft, DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation. Aspiring to transition into IT roles where I can apply database management, system administration, and analytical skills to build optimized digital systems and data-driven applications.
-</div>
-</section>
-
-<section id="experience">
-<h2 class="section-title">Employment</h2>
-<div class="card timeline">
-<strong style="font-size:20px; color:var(--primary); display:block; margin-bottom:4px;">Assistant Librarian</strong>
-<span style="font-weight:500; display:inline-block; margin-bottom:16px; opacity:0.9;">K S School of Engineering & Management (2023 – Present)</span>
-<ul>
-<li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
-<li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
-<li>Manage and optimize OPAC systems for efficient information retrieval</li>
-<li>Maintain and support DELNET digital access systems and electronic resource integration</li>
-<li>Conduct technical user training sessions on LMS, digital repositories, and information systems</li>
-<li>Support data organization, documentation, and workflow optimization using digital tools</li>
-</ul>
-</div>
-</section>
-
-<section id="skills">
-<h2 class="section-title">💻 Technical Skills</h2>
-<div class="card">
-
-<div class="skill">
-<p><i class="fa-solid fa-database"></i> 
-<strong>Library & Information Systems:</strong> Koha • Libsoft • NewGenLib</p>
-<div class="progress">
-<div class="progress-bar" data-progress="90"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-cloud"></i> 
-<strong>Digital Repository Management:</strong> DSpace • EPrints • Greenstone</p>
-<div class="progress">
-<div class="progress-bar" data-progress="85"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-code"></i> 
-<strong>Web Development:</strong> HTML • CSS</p>
-<div class="progress">
-<div class="progress-bar" data-progress="80"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-laptop-code"></i> 
-<strong>Programming:</strong> Python • Java</p>
-<div class="progress">
-<div class="progress-bar" data-progress="75"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-chart-line"></i> 
-<strong>Database & Reporting:</strong> SQL Queries • SQL Reporting • Usage Analytics</p>
-<div class="progress">
-<div class="progress-bar" data-progress="88"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-globe"></i> 
-<strong>Content Management Systems:</strong> Drupal • Joomla</p>
-<div class="progress">
-<div class="progress-bar" data-progress="78"></div>
-</div>
-</div>
-
-<div class="skill">
-<p><i class="fa-solid fa-folder-open"></i> 
-<strong>Collaboration & Documentation Tools:</strong> SharePoint • Digital Content Management</p>
-<div class="progress">
-<div class="progress-bar" data-progress="85"></div>
-</div>
-I have updated the portfolio, removing the poorly framed photo as requested. The interface has been completely overhauled with a sleek, professional dark canvas using obsidian and slate grey color codes, replacing the previous pink theme. All sections, information, navigation, form links, and script functionalities have been meticulously preserved and work exactly as before.
-
-Here is your updated complete codebase:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta name="google-site-verification" content="wIn61JhAgK5yjdifmPMS9aO0FLIP_IijbvH-M6IGKUM" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yashwanth K S | Professional Portfolio</title>
-
-<link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-<link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-<link href="[https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap)" rel="stylesheet">
-<link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css)">
-
-<style>
-/* ===== PROFESSIONAL ENTERPRISE DESIGN TOKENS (SLATE/OBSIDIAN) ===== */
-:root {
-  --primary: #cbd5e1; /* Professional Slate Light Accent */
-  --primary-hover: #ffffff;
-  --surface-main: #f8fafc;
-  --surface-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(203, 213, 225, 0.6);
-  --backdrop-blur: blur(12px);
-  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.03);
-  --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.08);
-  --nav-bg: rgba(255, 255, 255, 0.8);
-  --transition-smooth: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-  --btn-glow: rgba(203, 213, 225, 0.15);
-}
-
-body.dark {
-  --surface-main: #090d16;
-  --surface-gradient: linear-gradient(135deg, #090d16 0%, #111827 100%);
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --card-bg: rgba(17, 24, 39, 0.72);
-  --card-border: rgba(55, 65, 81, 0.5);
-  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.6);
-  --nav-bg: rgba(9, 13, 22, 0.82);
-  --btn-glow: rgba(203, 213, 225, 0.1);
-}
-
-/* ===== RESET & ROOT ARCHITECTURE ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: var(--surface-gradient);
-  background-attachment: fixed;
-  color: var(--text-main);
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  transition: background var(--transition-smooth), color var(--transition-smooth);
-}
-
-/* ===== PERFORMANCE LOADER LAYERS ===== */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #090d16;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
-}
-.loader {
-  width: 44px;
-  height: 44px;
-  border: 3px solid #1f2937;
-  border-top-color: var(--primary);
-  border-radius: 50%;
-  animation: spin 0.65s linear infinite;
-}
-@keyframes spin { 100% { transform: rotate(360deg); } }
-
-#progressBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #64748b, #cbd5e1);
-  width: 0%;
-  z-index: 2000;
-  will-change: width;
-}
-
-#topBtn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 46px;
-  height: 46px;
-  border: none;
-  border-radius: 50%;
-  background: var(--primary);
-  color: #0f172a;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  box-shadow: 0 10px 20px rgba(100, 116, 139, 0.3);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-#topBtn.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-#topBtn:hover {
-  background: var(--primary-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(203, 213, 225, 0.4);
-}
-
-/* ===== HIGH-PERFORMANCE NAVIGATION LAYER ===== */
-nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 8%;
-  background: var(--nav-bg);
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
-  border-bottom: 1px solid var(--card-border);
-  z-index: 1000;
-  transition: background var(--transition-smooth), border var(--transition-smooth);
-}
-nav ul {
-  display: flex;
-  gap: 24px;
-  list-style: none;
-}
-nav a {
-  text-decoration: none;
-  color: var(--text-main);
-  font-weight: 500;
-  font-size: 14px;
-  position: relative;
-  transition: color 0.3s;
-}
-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--primary);
-  transition: width 0.3s ease;
-}
-nav a:hover {
-  color: var(--primary);
-}
-nav a:hover::after {
-  width: 100%;
-}
-.theme-btn {
-  padding: 8px 16px;
-  border: 1px solid var(--card-border);
-  border-radius: 20px;
-  background: var(--card-bg);
-  color: var(--text-main);
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 13px;
-  transition: all 0.3s;
-}
-.theme-btn:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  box-shadow: 0 0 12px var(--btn-glow);
-}
-
-/* ===== HERO SECTION MINIMALIST CONFIG ===== */
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.hero-slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-.hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to bottom, rgba(9, 13, 22, 0.96), rgba(17, 24, 39, 0.7));
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center; /* Center-aligned for elegant minimalist layout */
   text-align: center;
   padding: 0 8%;
   color: white;
@@ -1651,7 +900,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 
   <div class="contact-form">
     <h3>Send me a message 💬</h3>
-    <form action="[https://formspree.io/f/mbdzzokb](https://formspree.io/f/mbdzzokb)" method="POST">
+    <form action="https://formspree.io/f/mbdzzokb" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Type your message..." required></textarea>
@@ -1683,7 +932,9 @@ class PortfolioCoreSystem {
   }
 
   initialize() {
-    this.domElements.yearLabel.innerText = new Date().getFullYear();
+    if (this.domElements.yearLabel) {
+      this.domElements.yearLabel.innerText = new Date().getFullYear();
+    }
     this.hookGlobalEvents();
     this.setupViewIntersectionObservers();
     this.executeTypingEngine();
@@ -1691,8 +942,10 @@ class PortfolioCoreSystem {
 
   hookGlobalEvents() {
     window.addEventListener("load", () => {
-      this.domElements.preloader.style.opacity = "0";
-      setTimeout(() => this.domElements.preloader.style.display = "none", 400);
+      if (this.domElements.preloader) {
+        this.domElements.preloader.style.opacity = "0";
+        setTimeout(() => this.domElements.preloader.style.display = "none", 400);
+      }
     });
 
     window.addEventListener("scroll", () => {
@@ -1705,24 +958,28 @@ class PortfolioCoreSystem {
       }
     }, {passive: true});
 
-    this.domElements.topBtn.onclick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    if (this.domElements.topBtn) {
+      this.domElements.topBtn.onclick = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+    }
 
-    this.domElements.certModal.addEventListener("click", (e) => {
-      if (e.target === this.domElements.certModal) this.closeDocumentViewer();
-    });
+    if (this.domElements.certModal) {
+      this.domElements.certModal.addEventListener("click", (e) => {
+        if (e.target === this.domElements.certModal) this.closeDocumentViewer();
+      });
+    }
   }
 
   handleScrollPerformanceLoops() {
     const scrollTop = document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     
-    if(this.domElements.progressBar) {
-      this.domElements.progressBar.style.width = (winScroll / scrollHeight) * 100 + "%";
+    if (this.domElements.progressBar && scrollHeight > 0) {
+      this.domElements.progressBar.style.width = (scrollTop / scrollHeight) * 100 + "%";
     }
 
-    if(this.domElements.topBtn) {
+    if (this.domElements.topBtn) {
       if (scrollTop > 300) {
         this.domElements.topBtn.classList.add("visible");
       } else {
@@ -1732,6 +989,7 @@ class PortfolioCoreSystem {
   }
 
   openDocumentViewer(sourcePath, displayName) {
+    if (!this.domElements.modalTitle || !this.domElements.modalFrame || !this.domElements.certModal) return;
     this.domElements.modalTitle.innerText = displayName;
     this.domElements.modalFrame.src = sourcePath;
     this.domElements.certModal.classList.add("active");
@@ -1739,16 +997,24 @@ class PortfolioCoreSystem {
   }
 
   closeDocumentViewer() {
+    if (!this.domElements.certModal || !this.domElements.modalFrame) return;
     this.domElements.certModal.classList.remove("active");
     this.domElements.modalFrame.src = "";
     document.body.style.overflow = "auto";
   }
 
   setupViewIntersectionObservers() {
+    if (!('IntersectionObserver' in window)) {
+      this.domElements.sections.forEach(sec => sec.style.opacity = "1");
+      this.domElements.technicalBars.forEach(bar => bar.style.width = bar.dataset.progress + "%");
+      return;
+    }
+
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("show");
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
@@ -1762,6 +1028,7 @@ class PortfolioCoreSystem {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.width = entry.target.dataset.progress + "%";
+          metricObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
@@ -1775,7 +1042,7 @@ class PortfolioCoreSystem {
     if (!targetElement) return;
 
     targetElement.innerHTML = "";
-    let idx = characterIdx = 0;
+    let characterIdx = 0;
 
     const runType = () => {
       if (characterIdx < textStr.length) {
