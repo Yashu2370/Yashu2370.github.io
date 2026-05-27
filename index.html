@@ -6,37 +6,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yashwanth K S | Professional Portfolio</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== REVISED DESIGN SYSTEM VARIABLES ===== */
+/* ===== DESIGN SYSTEM SPECIFICATION (TOKENS) ===== */
 :root {
   --primary: #10b981;
+  --primary-glow: rgba(16, 185, 129, 0.25);
   --primary-hover: #059669;
-  --bg-main: #f8fafc;
-  --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+  --surface-main: #f8fafc;
+  --surface-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
   --text-main: #0f172a;
   --text-muted: #475569;
   --card-bg: rgba(255, 255, 255, 0.85);
   --card-border: rgba(203, 213, 225, 0.6);
-  --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.03);
+  --backdrop-blur: blur(12px);
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.03);
   --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.08);
-  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-bg: rgba(255, 255, 255, 0.82);
+  --transition-smooth: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 body.dark {
-  --bg-main: #0b0f19;
-  --bg-gradient: linear-gradient(135deg, #090d16 0%, #111827 50%, #1f2937 100%);
+  --surface-main: #090d16;
+  --surface-gradient: linear-gradient(135deg, #090d16 0%, #111827 100%);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --card-bg: rgba(17, 24, 39, 0.7);
-  --card-border: rgba(55, 65, 81, 0.6);
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.6);
-  --nav-bg: rgba(9, 13, 22, 0.8);
+  --card-bg: rgba(17, 24, 39, 0.75);
+  --card-border: rgba(55, 65, 81, 0.5);
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.55);
+  --nav-bg: rgba(9, 13, 22, 0.85);
 }
 
+/* ===== RESET & ROOT ARCHITECTURE ===== */
 * {
   margin: 0;
   padding: 0;
@@ -45,15 +51,16 @@ body.dark {
 }
 
 body {
-  background: var(--bg-gradient);
+  background: var(--surface-gradient);
   background-attachment: fixed;
   color: var(--text-main);
   scroll-behavior: smooth;
   overflow-x: hidden;
-  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--transition-smooth), color var(--transition-smooth);
 }
 
-/* ===== PRELOADER ===== */
+/* ===== ASYNCHRONOUS RESOURCE APPLICATION SYSTEMS ===== */
 #preloader {
   position: fixed;
   top: 0;
@@ -65,40 +72,40 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--transition-smooth), visibility var(--transition-smooth);
 }
 .loader {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #1f2937;
-  border-top: 4px solid var(--primary);
+  width: 44px;
+  height: 44px;
+  border: 3px solid #1f2937;
+  border-top-color: var(--primary);
   border-radius: 50%;
-  animation: spin 0.7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation: spin 0.65s linear infinite;
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
-/* ===== UTILITIES ===== */
 #progressBar {
   position: fixed;
   top: 0;
   left: 0;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg, var(--primary), #34d399);
   width: 0%;
   z-index: 2000;
+  will-change: width;
 }
 
 #topBtn {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border: none;
   border-radius: 50%;
   background: var(--primary);
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -106,9 +113,10 @@ body {
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(12px);
+  box-shadow: 0 8px 24px var(--primary-glow);
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth), visibility var(--transition-smooth);
+  will-change: transform, opacity;
 }
 #topBtn.visible {
   opacity: 1;
@@ -117,10 +125,10 @@ body {
 }
 #topBtn:hover {
   background: var(--primary-hover);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
-/* ===== NAVIGATION ===== */
+/* ===== GLOBAL HIGH-PERFORMANCE NAVIGATION LAYER ===== */
 nav {
   position: fixed;
   width: 100%;
@@ -130,10 +138,11 @@ nav {
   align-items: center;
   padding: 16px 8%;
   background: var(--nav-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
   border-bottom: 1px solid var(--card-border);
   z-index: 1000;
+  transition: background var(--transition-smooth), border var(--transition-smooth);
 }
 nav ul {
   display: flex;
@@ -146,7 +155,7 @@ nav a {
   font-weight: 500;
   font-size: 14px;
   position: relative;
-  transition: color 0.3s;
+  transition: color var(--transition-smooth);
 }
 nav a::after {
   content: '';
@@ -156,7 +165,7 @@ nav a::after {
   bottom: -4px;
   left: 0;
   background-color: var(--primary);
-  transition: width 0.3s ease;
+  transition: width var(--transition-smooth);
 }
 nav a:hover {
   color: var(--primary);
@@ -165,7 +174,7 @@ nav a:hover::after {
   width: 100%;
 }
 .theme-btn {
-  padding: 8px 16px;
+  padding: 8px 18px;
   border: 1px solid var(--card-border);
   border-radius: 20px;
   background: var(--card-bg);
@@ -173,14 +182,15 @@ nav a:hover::after {
   cursor: pointer;
   font-weight: 500;
   font-size: 13px;
-  transition: all 0.3s;
+  transition: all var(--transition-smooth);
 }
 .theme-btn:hover {
   border-color: var(--primary);
   color: var(--primary);
+  box-shadow: 0 0 12px var(--primary-glow);
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== MAIN HERO COMPOSITOR ENGINES ===== */
 .hero {
   position: relative;
   height: 100vh;
@@ -195,6 +205,7 @@ nav a:hover::after {
   height: 100%;
   top: 0;
   left: 0;
+  pointer-events: none;
 }
 .hero-video {
   width: 100%;
@@ -207,7 +218,7 @@ nav a:hover::after {
   height: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, rgba(9, 13, 22, 0.95), rgba(17, 24, 39, 0.6));
+  background: linear-gradient(to right, rgba(9, 13, 22, 0.96), rgba(17, 24, 39, 0.65));
 }
 .hero-content {
   position: relative;
@@ -216,52 +227,56 @@ nav a:hover::after {
   justify-content: space-between;
   align-items: center;
   padding: 0 8%;
-  color: white;
+  color: #ffffff;
   width: 100%;
   gap: 60px;
 }
 .hero-text h1 {
-  font-size: 54px;
+  font-size: 56px;
   font-weight: 700;
   line-height: 1.15;
+  letter-spacing: -1px;
 }
 .hero-text span {
   color: var(--primary);
+  text-shadow: 0 0 20px var(--primary-glow);
 }
 .hero-text p {
-  margin-top: 20px;
-  max-width: 600px;
+  margin-top: 24px;
+  max-width: 620px;
   color: #cbd5e1;
   font-size: 16px;
-  line-height: 1.7;
-  min-height: 80px;
+  line-height: 1.75;
+  min-height: 84px;
 }
 .buttons {
-  margin-top: 35px;
+  margin-top: 40px;
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
 }
 .btn {
-  padding: 12px 24px;
+  padding: 12px 26px;
   border-radius: 30px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
   border: none;
-  transition: all 0.3s ease;
+  transition: all var(--transition-smooth);
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
 }
 .btn.primary {
   background: var(--primary);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 14px var(--primary-glow);
 }
 .btn.primary:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--primary-glow);
 }
 .btn.outline {
   background: transparent;
@@ -269,50 +284,52 @@ nav a:hover::after {
   color: var(--primary);
 }
 .btn.outline:hover {
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(16, 185, 129, 0.08);
   transform: translateY(-2px);
 }
 .hero .btn.outline {
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 .hero .btn.outline:hover {
   border-color: var(--primary);
   background: rgba(16, 185, 129, 0.15);
 }
 .hero-img img {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   object-fit: cover;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  border: 4px solid rgba(16, 185, 129, 0.4);
-  animation: morphingBlob 8s ease-in-out infinite alternate;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  border: 4px solid rgba(16, 185, 129, 0.35);
+  animation: morphingBlob 10s ease-in-out infinite alternate;
+  will-change: border-radius;
 }
 @keyframes morphingBlob {
   0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  100% { border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%; }
+  100% { border-radius: 45% 55% 65% 35% / 40% 65% 35% 60%; }
 }
 
-/* ===== CONTAINER STRUCTURE ===== */
+/* ===== ADVANCED STRUCTURAL LAYOUT COMPONENTS ===== */
 section {
-  padding: 100px 8% 20px 8%;
+  padding: 110px 8% 30px 8%;
   max-width: 1400px;
   margin: 0 auto;
 }
 .section-title {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 700;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
+  letter-spacing: -0.5px;
   position: relative;
 }
 .section-title::after {
   content: "";
-  width: 60px;
+  width: 50px;
   height: 4px;
   background: var(--primary);
   position: absolute;
-  bottom: -8px;
+  bottom: -10px;
   left: 0;
   border-radius: 4px;
 }
@@ -320,24 +337,25 @@ section {
 .card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  padding: 35px;
+  padding: 38px;
   border-radius: 20px;
   box-shadow: var(--shadow-sm);
-  margin-bottom: 24px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 26px;
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border var(--transition-smooth);
 }
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+  border-color: rgba(16, 185, 129, 0.25);
 }
 .card ul {
   padding-left: 20px;
 }
 .card li {
-  margin-bottom: 12px;
-  line-height: 1.7;
+  margin-bottom: 14px;
+  line-height: 1.75;
   color: var(--text-muted);
 }
 .card li strong {
@@ -347,30 +365,30 @@ section {
 .button-group-layout {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 14px;
+  margin-top: 20px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 26px;
 }
 .timeline {
   border-left: 4px solid var(--primary);
-  padding-left: 30px;
+  padding-left: 32px;
   border-radius: 0 20px 20px 0;
 }
 
-/* ===== SKILLS ARCHITECTURE ===== */
+/* ===== HIGH ACCURACY SKILL VISUALIZATION ENGINE ===== */
 .skill {
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 .skill p {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: 14px;
   font-weight: 500;
 }
@@ -393,50 +411,53 @@ body.dark .progress {
   width: 0;
   background: linear-gradient(90deg, var(--primary), #34d399);
   border-radius: 10px;
-  transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
+  transition: width 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: width;
 }
 
-/* ===== ROBUST INTERACTIVE OVERLAY MODAL FOR PREVIEWS ===== */
+/* ===== HIGH PERFORMANCE DOCUMENT LIGHTBOX COMPONENT ===== */
 .preview-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(9, 13, 22, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(9, 13, 22, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 5000;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  will-change: opacity, visibility;
 }
 .preview-modal.active {
   opacity: 1;
   visibility: visible;
 }
 .modal-window {
-  width: 90%;
-  max-width: 900px;
-  height: 80vh;
-  background: var(--bg-main);
+  width: 92%;
+  max-width: 1000px;
+  height: 82vh;
+  background: var(--surface-main);
   border: 1px solid var(--card-border);
   border-radius: 24px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-  transform: scale(0.95);
-  transition: transform 0.3s ease;
+  box-shadow: 0 35px 70px rgba(0,0,0,0.5);
+  transform: scale(0.96);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
 }
 .preview-modal.active .modal-window {
   transform: scale(1);
 }
 .modal-header {
-  padding: 16px 24px;
+  padding: 18px 26px;
   background: var(--card-bg);
   border-bottom: 1px solid var(--card-border);
   display: flex;
@@ -444,7 +465,7 @@ body.dark .progress {
   align-items: center;
 }
 .modal-header h4 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-main);
 }
@@ -452,7 +473,7 @@ body.dark .progress {
   background: none;
   border: none;
   color: var(--text-main);
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   transition: color 0.2s;
 }
@@ -461,7 +482,7 @@ body.dark .progress {
 }
 .modal-body {
   flex: 1;
-  background: #fff;
+  background: #ffffff;
 }
 .modal-body iframe {
   width: 100%;
@@ -469,11 +490,12 @@ body.dark .progress {
   border: none;
 }
 
-/* ===== SCROLL VISIBILITY STRUCT ===== */
+/* ===== GPU RENDERING ACCELERATION TRICK FOR VIEWPORTS ===== */
 .fade-section {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
 }
 .fade-section.show {
   opacity: 1;
@@ -482,15 +504,15 @@ body.dark .progress {
 
 /* ===== SYSTEMS FORM CONFIG ===== */
 .contact-form {
-  margin-top: 40px;
+  margin-top: 45px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  padding: 40px;
+  padding: 45px;
   border-radius: 20px;
   box-shadow: var(--shadow-sm);
 }
 .contact-form h3 {
-  margin-bottom: 24px;
+  margin-bottom: 26px;
   color: var(--text-main);
   font-size: 20px;
   font-weight: 600;
@@ -499,27 +521,27 @@ body.dark .progress {
 .contact-form textarea {
   width: 100%;
   box-sizing: border-box;
-  padding: 14px 18px;
-  margin-bottom: 20px;
+  padding: 15px 20px;
+  margin-bottom: 22px;
   border: 1px solid var(--card-border);
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.45);
   color: var(--text-main);
-  border-radius: 10px;
+  border-radius: 12px;
   outline: none;
   font-size: 14px;
-  transition: all 0.3s;
+  transition: all var(--transition-smooth);
 }
 body.dark .contact-form input,
 body.dark .contact-form textarea {
-  background: rgba(9, 13, 22, 0.4);
+  background: rgba(9, 13, 22, 0.45);
 }
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 0 4px var(--primary-glow);
 }
 .contact-form input {
-  height: 48px;
+  height: 50px;
 }
 .contact-form textarea {
   resize: none;
@@ -528,71 +550,72 @@ body.dark .contact-form textarea {
   background: var(--primary);
   color: white;
   border: none;
-  padding: 14px 32px;
+  padding: 15px 36px;
   border-radius: 30px;
   cursor: pointer;
   font-weight: 500;
   font-size: 14px;
-  transition: all 0.3s;
+  transition: all var(--transition-smooth);
 }
 .contact-form button:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--primary-glow);
 }
 
-/* ===== FOOTER ===== */
+/* ===== ENTERPRISE FOOTER SPECIFICATION ===== */
 .footer {
   text-align: center;
-  padding: 50px 20px;
-  background: #090d16;
+  padding: 55px 20px;
+  background: #060910;
   color: #94a3b8;
   font-size: 14px;
   border-top: 1px solid #1e293b;
 }
 .footer p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .footer strong {
   color: var(--primary);
 }
 
-/* ===== SYSTEM MOBILE OPTIMIZATION ===== */
+/* ===== ECOSYSTEM DEVICE VIEWPORT MEDIA CONTROLLERS ===== */
 @media(max-width: 1024px) {
   nav {
     flex-direction: column;
-    padding: 16px 5%;
-    gap: 14px;
+    padding: 18px 5%;
+    gap: 16px;
   }
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
   }
   .hero {
     height: auto;
-    padding: 160px 5% 80px 5%;
+    padding: 180px 5% 90px 5%;
   }
   .hero-content {
     flex-direction: column-reverse;
     text-align: center;
-    gap: 40px;
+    gap: 45px;
   }
   .hero-text h1 {
-    font-size: 40px;
+    font-size: 42px;
   }
   .hero-text p {
     font-size: 15px;
-    margin: 20px auto 0 auto;
+    margin: 24px auto 0 auto;
   }
   .buttons {
     justify-content: center;
   }
   .hero-img img {
-    width: 240px;
-    height: 240px;
+    width: 260px;
+    height: 260px;
   }
   section {
-    padding: 80px 5% 20px 5%;
+    padding: 90px 5% 20px 5%;
   }
   .grid {
     grid-template-columns: 1fr;
@@ -601,7 +624,8 @@ body.dark .contact-form textarea {
 </style>
 </head>
 
-<body class="dark"> <button id="topBtn">
+<body class="dark">
+<button id="topBtn" aria-label="Scroll to top">
 <i class="fa-solid fa-arrow-up"></i>
 </button>
 
@@ -612,7 +636,7 @@ body.dark .contact-form textarea {
   <div class="modal-window">
     <div class="modal-header">
       <h4 id="modalTitle">Certificate Document Viewer</h4>
-      <button class="modal-close" onclick="closeDocumentViewer()"><i class="fa-solid fa-xmark"></i></button>
+      <button class="modal-close" onclick="window.portfolioSystem.closeDocumentViewer()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="modal-body">
       <iframe src="" id="modalFrame"></iframe>
@@ -766,19 +790,19 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
         O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)
     </strong>
     <div class="button-group-layout">
-        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate1.pdf', 'Programming & Problem Solving through Python')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('OLevel_Certificate1.pdf', 'Programming & Problem Solving through Python')">
             <i class="fa-solid fa-file-pdf"></i> Programming & Problem Solving through Python
         </button>
-        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate2.pdf', 'Internet of Things and its Application')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('OLevel_Certificate2.pdf', 'Internet of Things and its Application')">
             <i class="fa-solid fa-file-pdf"></i> Internet of Things and its Application
         </button>
-        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate3.pdf', 'Web Designing & Publishing')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('OLevel_Certificate3.pdf', 'Web Designing & Publishing')">
             <i class="fa-solid fa-file-pdf"></i> Web Designing & Publishing
         </button>
-        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate4.pdf', 'IT Tools and Network Basics')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('OLevel_Certificate4.pdf', 'IT Tools and Network Basics')">
             <i class="fa-solid fa-file-pdf"></i> IT Tools and Network Basics
         </button>
-        <button class="btn outline" onclick="openDocumentViewer('OLevel_Certificate5.pdf', 'Course on Computer Concepts')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('OLevel_Certificate5.pdf', 'Course on Computer Concepts')">
             <i class="fa-solid fa-file-pdf"></i> Course on Computer Concepts
         </button>
     </div>
@@ -787,7 +811,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 <div class="card">
     <strong style="color: var(--text-main); display:block; margin-bottom:12px;">Ethical Hacking – IEEE Blended Learning Program</strong>
     <div class="button-group-layout">
-        <button class="btn outline" onclick="openDocumentViewer('IEEE.pdf', 'Ethical Hacking – IEEE Certificate')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('IEEE.pdf', 'Ethical Hacking – IEEE Certificate')">
             <i class="fa-solid fa-file-pdf"></i> View Certificate
         </button>
     </div>
@@ -796,7 +820,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 <div class="card">
     <strong style="color: var(--text-main); display:block; margin-bottom:12px;">Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</strong>
     <div class="button-group-layout">
-        <button class="btn outline" onclick="openDocumentViewer('nptel_science_communication_data_analytics_2024.pdf', 'Science Communication Data Analytics')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('nptel_science_communication_data_analytics_2024.pdf', 'Science Communication Data Analytics')">
             <i class="fa-solid fa-file-pdf"></i> View Certificate
         </button>
     </div>
@@ -805,7 +829,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 <div class="card">
     <strong style="color: var(--text-main); display:block; margin-bottom:12px;">Advanced R Programming for Data Analytics in Business – NPTEL</strong>
     <div class="button-group-layout">
-        <button class="btn outline" onclick="openDocumentViewer('advanced_r_programming_data_analytics_2024.pdf', 'Advanced R Programming')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('advanced_r_programming_data_analytics_2024.pdf', 'Advanced R Programming')">
             <i class="fa-solid fa-file-pdf"></i> View Certificate
         </button>
     </div>
@@ -821,7 +845,7 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 <div class="card">
     <strong style="color: var(--text-main); display:block; margin-bottom:12px;">Training Webinar: How to Navigate the New Emerald Insight Platform</strong>
     <div class="button-group-layout">
-        <button class="btn outline" onclick="openDocumentViewer('Training Webinar.pdf', 'Emerald Insight Webinar Certificate')">
+        <button class="btn outline" onclick="window.portfolioSystem.openDocumentViewer('Training Webinar.pdf', 'Emerald Insight Webinar Certificate')">
             <i class="fa-solid fa-file-pdf"></i> View Certificate
         </button>
     </div>
@@ -914,107 +938,127 @@ Dedicated Library & Information Science professional with expertise in Koha LMS,
 </footer>
 
 <script>
-document.getElementById("year").innerText = new Date().getFullYear();
+class PortfolioCoreSystem {
+  constructor() {
+    this.domElements = {
+      yearLabel: document.getElementById("year"),
+      preloader: document.getElementById("preloader"),
+      progressBar: document.getElementById("progressBar"),
+      topBtn: document.getElementById("topBtn"),
+      certModal: document.getElementById("certModal"),
+      modalFrame: document.getElementById("modalFrame"),
+      modalTitle: document.getElementById("modalTitle"),
+      sections: document.querySelectorAll("section"),
+      technicalBars: document.querySelectorAll(".progress-bar")
+    };
+    this.scrollThrottled = false;
+  }
 
-const preloader = document.getElementById("preloader");
-const progressBar = document.getElementById("progressBar");
-const topBtn = document.getElementById("topBtn");
-const certModal = document.getElementById("certModal");
-const modalFrame = document.getElementById("modalFrame");
-const modalTitle = document.getElementById("modalTitle");
+  initialize() {
+    this.domElements.yearLabel.innerText = new Date().getFullYear();
+    this.hookGlobalEvents();
+    this.setupViewIntersectionObservers();
+    this.executeTypingEngine();
+  }
 
-window.addEventListener("load", () => {
-  preloader.style.opacity = "0";
-  setTimeout(() => preloader.style.display = "none", 500);
-});
-
-// Structural Metric Scroll Logic
-let activeTick = false;
-window.addEventListener("scroll", () => {
-  if (!activeTick) {
-    window.requestAnimationFrame(() => {
-      let winScroll = document.documentElement.scrollTop;
-      let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      
-      progressBar.style.width = (winScroll / height) * 100 + "%";
-      
-      if (winScroll > 300) {
-        topBtn.classList.add("visible");
-      } else {
-        topBtn.classList.remove("visible");
-      }
-      activeTick = false;
+  hookGlobalEvents() {
+    window.addEventListener("load", () => {
+      this.domElements.preloader.style.opacity = "0";
+      setTimeout(() => this.domElements.preloader.style.display = "none", 400);
     });
-    activeTick = true;
+
+    window.addEventListener("scroll", () => {
+      if (!this.scrollThrottled) {
+        window.requestAnimationFrame(() => {
+          this.handleScrollPerformanceLoops();
+          this.scrollThrottled = false;
+        });
+        this.scrollThrottled = true;
+      }
+    });
+
+    this.domElements.topBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    this.domElements.certModal.addEventListener("click", (e) => {
+      if (e.target === this.domElements.certModal) this.closeDocumentViewer();
+    });
   }
-});
 
-topBtn.onclick = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+  handleScrollPerformanceLoops() {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    
+    this.domElements.progressBar.style.width = (scrollTop / scrollHeight) * 100 + "%";
 
-// Immersive Lightbox Controller Mechanics
-function openDocumentViewer(sourcePath, displayName) {
-  modalTitle.innerText = displayName;
-  modalFrame.src = sourcePath;
-  certModal.classList.add("active");
-  document.body.style.overflow = "hidden"; // Prevents background body tracking drift
-}
-
-function closeDocumentViewer() {
-  certModal.classList.remove("active");
-  modalFrame.src = "";
-  document.body.style.overflow = "auto";
-}
-
-// Close overlay if background clicked directly
-certModal.addEventListener("click", (e) => {
-  if(e.target === certModal) closeDocumentViewer();
-});
-
-// Intersection Viewport Trigger Logic
-const sections = document.querySelectorAll("section");
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
+    if (scrollTop > 300) {
+      this.domElements.topBtn.classList.add("visible");
+    } else {
+      this.domElements.topBtn.classList.remove("visible");
     }
-  });
-}, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
+  }
 
-sections.forEach(sec => {
-  sec.classList.add("fade-section");
-  revealObserver.observe(sec);
-});
+  openDocumentViewer(sourcePath, displayName) {
+    this.domElements.modalTitle.innerText = displayName;
+    this.domElements.modalFrame.src = sourcePath;
+    this.domElements.certModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
 
-// Typed Output Matrix Loop
-const txtContent = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-const typingTarget = document.querySelector(".hero-text p");
-typingTarget.innerHTML = "";
-let characterIdx = 0;
+  closeDocumentViewer() {
+    this.domElements.certModal.classList.remove("active");
+    this.domElements.modalFrame.src = "";
+    document.body.style.overflow = "auto";
+  }
 
-function runTypingSystem() {
-  if (characterIdx < txtContent.length) {
-    typingTarget.innerHTML += txtContent.charAt(characterIdx);
-    characterIdx++;
-    setTimeout(runTypingSystem, 18);
+  setupViewIntersectionObservers() {
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
+
+    this.domElements.sections.forEach(sec => {
+      sec.classList.add("fade-section");
+      revealObserver.observe(sec);
+    });
+
+    const metricObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.dataset.progress + "%";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    this.domElements.technicalBars.forEach(bar => metricObserver.observe(bar));
+  }
+
+  executeTypingEngine() {
+    const textStr = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+    const targetElement = document.querySelector(".hero-text p");
+    if (!targetElement) return;
+
+    targetElement.innerHTML = "";
+    let idx = 0;
+
+    const runType = () => {
+      if (idx < textStr.length) {
+        targetElement.innerHTML += textStr.charAt(idx);
+        idx++;
+        setTimeout(runType, 16);
+      }
+    };
+    setTimeout(runType, 550);
   }
 }
-setTimeout(runTypingSystem, 600);
 
-// Skills Progress Bar Automation
-const technicalBars = document.querySelectorAll(".progress-bar");
-const metricObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.width = entry.target.dataset.progress + "%";
-    }
-  });
-}, { threshold: 0.1 });
-technicalBars.forEach(bar => metricObserver.observe(bar));
+// Instantiate to Global Context Window Execution Layer
+window.portfolioSystem = new PortfolioCoreSystem();
+window.portfolioSystem.initialize();
 </script>
-
 </body>
 </html>
-
-```
