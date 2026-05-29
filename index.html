@@ -6,396 +6,538 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yashwanth K S | Professional Portfolio</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* ===== GLOBAL ===== */
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-        
-        body{
-            background:linear-gradient(135deg,#ecfdf5,#f0fdf4,#dcfce7);
-            color:#064e3b;
-            scroll-behavior:smooth;
-            overflow-x:hidden;
+        /* ===== MODERN LIGHT/DARK ENGINE ===== */
+        :root {
+            --bg-main: #f8fafc;
+            --bg-canvas: #ffffff;
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.2);
+            --primary-accent: #059669;
+            --surface: rgba(255, 255, 255, 0.75);
+            --border: rgba(241, 245, 249, 0.8);
+            --text-heading: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            --glass-blur: blur(16px);
+            --shadow-premium: 0 20px 40px -15px rgba(15, 23, 42, 0.05);
+            --radius-main: 24px;
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* ===== PRELOADER ===== */
-        #preloader{
-            position:fixed;
-            width:100%;
-            height:100vh;
-            background:#064e3b;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            z-index:9999;
+        body.dark {
+            --bg-main: #020617;
+            --bg-canvas: #090d1f;
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.25);
+            --primary-accent: #34d399;
+            --surface: rgba(15, 23, 42, 0.6);
+            --border: rgba(255, 255, 255, 0.04);
+            --text-heading: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #64748b;
+            --shadow-premium: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
         }
-        .loader{
-            width:60px;
-            height:60px;
-            border:6px solid #22c55e;
-            border-top:6px solid transparent;
-            border-radius:50%;
-            animation:spin 1s linear infinite;
-        }
-        @keyframes spin{100%{transform:rotate(360deg);}}
 
-        /* CERTIFICATE PREVIEW */
-        .preview-container{
+        /* ===== ARCHITECTURAL RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-body);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* ===== ASYNC PRELOADER ===== */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #020617;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .loader-ring {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* ===== REAL-TIME SCROLL MATRIX ===== */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary);
+            box-shadow: 0 0 12px var(--primary);
+            width: 0%;
+            z-index: 2000;
+        }
+
+        /* ===== LOW-LATENCY CURSOR GLOW ===== */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(16, 185, 129, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+            will-change: transform;
+        }
+
+        /* ===== FIXED HEADER NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 32px;
+            background: var(--surface);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            z-index: 1000;
+            box-shadow: var(--shadow-premium);
+        }
+        nav ul {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 14px;
+            font-family: var(--font-display);
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--text-heading);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .theme-toggle-btn:hover {
+            transform: rotate(15deg);
+        }
+
+        /* ===== PREMIUM IMMERSIVE HERO ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(var(--bg-main), 0.2) 0%, var(--bg-main) 100%),
+                        linear-gradient(90deg, var(--bg-main) 30%, rgba(2, 6, 23, 0.4) 100%);
+            z-index: -1;
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 60px;
+        }
+        .hero-text h1 {
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(90deg, var(--primary), #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-text p {
+            margin-top: 24px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-body);
+            max-width: 600px;
+            min-height: 54px;
+        }
+        .buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn.primary {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.4);
+        }
+        .btn.primary:hover {
+            background: var(--primary-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.6);
+        }
+        .btn.outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-heading);
+        }
+        .btn.outline:hover {
+            background: var(--surface);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .hero-img {
+            display: flex;
+            justify-content: center;
+        }
+        .hero-img img {
+            width: 320px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--radius-main);
+            box-shadow: var(--shadow-premium);
+            border: 1px solid var(--border);
+            transform: rotate(2deg);
+            transition: transform 0.5s ease;
+        }
+        .hero-img:hover img {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        /* ===== CONTAINER LAYOUTS ===== */
+        section {
+            padding: 120px 8% 40px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 48px;
+            letter-spacing: -1px;
+        }
+        .section-title::before {
+            content: "// ";
+            color: var(--primary);
+            font-family: var(--font-display);
+        }
+
+        /* ===== ADVANCED NEUMORPHIC CARDS ===== */
+        .card {
+            background: var(--surface);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: var(--radius-main);
+            box-shadow: var(--shadow-premium);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.1);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .timeline {
+            border-left: 2px solid var(--border);
+            padding-left: 32px;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 44px;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* ===== INTERACTIVE TRACK ENGINES ===== */
+        .skill { margin-bottom: 28px; }
+        .skill p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-family: var(--font-display);
+            color: var(--text-heading);
+        }
+        .skill p span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .skill i { color: var(--primary); }
+        .progress {
+            height: 6px;
+            background: var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), #34d399);
+            border-radius: 20px;
+            transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ===== DOWNLOAD ATTACHMENT PREVIEWS ===== */
+        .preview-container {
             position: relative;
             display: inline-block;
-            margin: 6px;
+            margin-right: 12px;
+            margin-bottom: 12px;
         }
-
-        .cert-preview{
+        .cert-preview {
             position: absolute;
-            top: 50px;
+            top: calc(100% + 12px);
             left: 0;
-            width: 240px;
-            height: 170px;
-            background: #fff;
-            border-radius: 10px;
+            width: 320px;
+            height: 220px;
+            background: var(--bg-canvas);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(8px);
-            transition: 0.3s ease;
-            z-index: 100;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 110;
         }
-
-        .cert-preview iframe{
+        .cert-preview iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-
-        .preview-container:hover .cert-preview{
+        .preview-container:hover .cert-preview {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
 
-        /* ===== SCROLL PROGRESS ===== */
-        #progressBar{
-            position:fixed;
-            top:0;
-            left:0;
-            height:4px;
-            background:linear-gradient(90deg,#16a34a,#22c55e);
-            width:0%;
-            z-index:2000;
+        /* ===== COMPONENT INTERSECTION ANIMATION ===== */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-section.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* ===== CURSOR GLOW ===== */
-        .cursor-glow{
-            position:fixed;
-            width:18px;
-            height:18px;
-            background:rgba(34,197,94,0.6);
-            border-radius:50%;
-            pointer-events:none;
-            transform:translate(-50%,-50%);
-            transition:0.04s ease-out;
-            z-index:3000;
-        }
-
-        /* ===== NAVIGATION ===== */
-        nav{
-            position:fixed;
-            width:100%;
-            top:0;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:15px 8%;
-            background:rgba(255,255,255,0.8);
-            backdrop-filter:blur(10px);
-            z-index:1000;
-        }
-        nav ul{display:flex;gap:25px;list-style:none;}
-        nav a{text-decoration:none;color:#065f46;font-weight:500;transition:0.3s;}
-        nav a:hover{color:#16a34a;}
-
-        /* ===== HERO ===== */
-        .hero{
-            position:relative;
-            height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            overflow:hidden;
-        }
-        .hero-slider{
-            position:absolute;
-            width:100%;
-            height:100%;
-            top:0;
-            left:0;
-        }
-        .hero-video{
-            position:absolute;
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            filter:brightness(1);
-        }
-        .overlay{
-            position:absolute;
-            width:100%;
-            height:100%;
-            background:linear-gradient(to right, rgba(0,0,0,0.55), rgba(0,0,0,0.2));
-        }
-        .hero-content{
-            position:relative;
-            z-index:2;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:0 8%;
-            color:white;
-            width:100%;
-        }
-        .hero-text h1{
-            font-size:42px;
-            line-height:1.2;
-        }
-        .hero-text span{color:#22c55e;}
-        .hero-text p{margin-top:15px;max-width:550px;color:#e5e7eb;min-height: 50px;}
-        .buttons{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap;}
-        .btn{
-            padding:10px 22px;
-            border-radius:30px;
-            cursor:pointer;
-            font-size:14px;
-            font-weight:500;
-            border:none;
-            transition:0.3s;
-        }
-        .primary{background:#16a34a;color:#fff;}
-        .primary:hover{background:#15803d;transform:translateY(-3px);}
-        .outline{background:#fff;border:2px solid #16a34a;color:#065f46;}
-        .outline:hover{background:#dcfce7;transform:translateY(-3px);}
-        .hero-img img{
-            width:260px;
-            border-radius:20px;
-            box-shadow:0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        /* ===== SECTIONS ===== */
-        section{padding:80px 8% 20px 8%;}
-        .section-title{font-size:28px;margin-bottom:29px;position:relative;}
-        .section-title::after{
-            content:"";
-            width:80px;
-            height:1px;
-            background:#16a34a;
-            position:absolute;
-            bottom:-1px;
-            left:0;
-        }
-
-        /* ===== CARDS ===== */
-        .card{
-            background:rgba(255,255,255,0.9);
-            padding:25px;
-            border-radius:18px;
-            box-shadow:0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom:15px;
-            transition:0.3s;
-        }
-        .card:hover{transform:translateY(-6px);}
-        .grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-            gap:20px;
-        }
-        .timeline{border-left:4px solid #16a34a;padding-left:20px;}
-
-        /* ===== SKILLS ===== */
-        .skill{margin-bottom:22px;}
-        .progress{height:10px;background:#e5e7eb;border-radius:20px;overflow:hidden;}
-        .progress-bar{
-            height:100%;
-            width:0;
-            background:linear-gradient(90deg,#16a34a,#22c55e);
-            transition:width 1.5s ease;
-        }
-        .fade-section{
-            opacity:0;
-            transform:translateY(40px);
-            transition:all 0.8s ease;
-        }
-        .fade-section.show{
-            opacity:1;
-            transform:translateY(0);
-        }
-
-        /* ===== CONTACT FORM ===== */
+        /* ===== PREMIUM COMMUNICATIONS GRID ===== */
         .contact-form {
-            margin-top: 30px;
-            background: #1e1e2f;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin-top: 48px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 48px;
+            border-radius: var(--radius-main);
+            box-shadow: var(--shadow-premium);
         }
         .contact-form h3 {
-            margin-bottom: 15px;
-            color: #fff;
+            font-family: var(--font-display);
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: var(--text-heading);
         }
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            box-sizing:border-box;
-            padding: 10px;
-            margin-bottom: 12px;
-            border: none;
-            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--bg-main);
+            color: var(--text-heading);
             outline: none;
-            font-size: 14px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
         }
-        .contact-form input {
-            height: 40px;
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
         }
-        .contact-form textarea {
-            resize: none;
-        }
+        .contact-form textarea { resize: none; }
         .contact-form button {
-            background: #6c63ff;
-            color: white;
+            background: var(--primary);
+            color: #ffffff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: var(--font-display);
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
         .contact-form button:hover {
-            background: #5548d9;
+            background: var(--primary-accent);
+            transform: translateY(-1px);
         }
 
-        /* ===== FOOTER ===== */
-        .footer{
-            text-align:center;
-            padding:25px 0;
-            background:#0f172a;
-            color:#e2e8f0;
-            font-size:14px;
-            letter-spacing:0.5px;
+        /* ===== PRODUCTION STANDARD FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 48px 20px;
+            background: var(--bg-canvas);
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid var(--border);
         }
-        .footer strong{
-            color:#22c55e;
-        }
-
-        /* ===== DARK MODE ===== */
-        body.dark{
-            background:#0f172a;
-            color:#e2e8f0;
-        }
-        body.dark section{
-            background:#0f172a;
-        }
-        body.dark .card{
-            background:#1e293b;
-            color:#fff;
-        }
-        body.dark nav{
-            background:rgba(15,23,42,0.8);
-        }
-        body.dark .section-title{
-            color:#22c55e;
-        }
-        body.dark .hero-text p{
-            color:#cbd5e1;
+        .footer strong { color: var(--text-heading); }
+        .footer p:last-child {
+            margin-top: 12px;
+            font-size: 13px;
+            font-family: var(--font-display);
         }
 
-        /* ===== RESPONSIVE MEDIA QUERIES ===== */
-        @media(max-width:900px){
-            nav{
-                flex-direction:column;
-                padding:12px 5%;
-            }
-            nav h2{
-                margin-top:10px;
-                font-size:24px;
-            }
-            nav ul{
-                flex-wrap:wrap;
-                justify-content:center;
-                gap:10px;
-                margin-top:12px;
-            }
-            nav ul li a{
-                font-size:13px;
-            }
-            .hero{
-                height:auto;
-                padding-top:180px;
-                padding-bottom:80px;
-            }
-            .hero-content{
-                flex-direction:column-reverse;
-                text-align:center;
-                gap:40px;
-                padding:0 5%;
-            }
-            .hero-text h1{
-                font-size:38px;
-                line-height:1.3;
-            }
-            .hero-text p{
-                font-size:15px;
-                line-height:1.8;
-                max-width:100%;
-            }
-            .buttons{
-                justify-content:center;
-            }
-            .btn{
-                font-size:13px;
-                padding:10px 18px;
-            }
-            .hero-img img{
-                width:220px;
-                max-width:90%;
-                border-radius:20px;
-            }
-            section{
-                padding:70px 5% 20px 5%;
-            }
-            .section-title{
-                font-size:24px;
-            }
-            .card{
-                padding:20px;
-                font-size:14px;
-            }
-            .grid{
-                grid-template-columns:1fr;
-            }
-            .contact-form{
-                padding:18px;
-            }
-            #topBtn{
-                bottom:20px;
-                right:20px;
-                padding:10px;
-            }
+        /* ===== SCROLL HOOK CONTROLS ===== */
+        #topBtn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: var(--surface);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            color: var(--text-heading);
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+            z-index: 2000;
+            box-shadow: var(--shadow-premium);
+            transition: all 0.3s ease;
+        }
+        #topBtn:hover {
+            color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        /* ===== RESPONSIVE AGNOSTICISM SYSTEM ===== */
+        @media(max-width:1024px){
+            nav { top: 12px; padding: 12px 24px; width: 95%; }
+            nav ul { display: none; } /* Adaptive toggle requirement placeholder minimalization */
+            .hero { height: auto; padding: 160px 5% 80px 5%; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-text h1 { font-size: 44px; }
+            .hero-text p { max-width: 100%; }
+            .buttons { justify-content: center; }
+            .hero-img img { width: 260px; height: 320px; }
+            section { padding: 80px 5% 40px 5%; }
+            .cursor-glow { display: none; }
         }
     </style>
 </head>
 
-<body>
-    <button id="topBtn" style="position:fixed;bottom:30px;right:30px;padding:12px;border:none;border-radius:50%;background:#16a34a;color:white;font-size:18px;cursor:pointer;display:none;z-index:2000;">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
-    
-    <div id="preloader"><div class="loader"></div></div>
+<body class="dark">
+    <button id="topBtn" aria-label="Return to top surface"><i class="fa-solid fa-arrow-up"></i></button>
+    <div id="preloader"><div class="loader-ring"></div></div>
     <div id="progressBar"></div>
     <div class="cursor-glow"></div>
 
     <nav>
-        <button onclick="document.body.classList.toggle('dark')" style="margin-left:20px;padding:6px 14px;border:none;border-radius:20px;background:#16a34a;color:white;cursor:pointer;">🌙</button>
+        <button class="theme-toggle-btn" onclick="document.body.classList.toggle('dark')" aria-label="Theme matrix switch">🌓</button>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
@@ -431,7 +573,7 @@
                 </div>
             </div>
             <div class="hero-img">
-                <img src="profile.jpg" alt="Yashwanth Profile">
+                <img src="profile.jpg" alt="Yashwanth Profile Matrix">
             </div>
         </div>
     </div>
@@ -446,8 +588,8 @@
     <section id="experience">
         <h2 class="section-title">Employment</h2>
         <div class="card timeline">
-            <strong>Assistant Librarian</strong><br>
-            K S School of Engineering & Management (2023 – Present)
+            <h3 style="font-family: var(--font-display); font-size: 22px; color: var(--text-heading);">Assistant Librarian</h3>
+            <p style="color: var(--primary); font-weight: 600; font-size: 14px; margin-bottom: 20px;">K S School of Engineering & Management (2023 – Present)</p>
             <ul>
                 <li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
                 <li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
@@ -460,38 +602,38 @@
     </section>
 
     <section id="skills">
-        <h2 class="section-title">💻 Technical Skills</h2>
+        <h2 class="section-title">Technical Skills</h2>
         <div class="card">
             <div class="skill">
-                <p><i class="fa-solid fa-database"></i> <strong>Library & Information Systems:</strong> Koha • Libsoft • NewGenLib</p>
+                <p><span><i class="fa-solid fa-database"></i> Library & Information Systems:</span> <span>90%</span></p>
                 <div class="progress"><div class="progress-bar" data-progress="90"></div></div>
             </div>
             <div class="skill">
-                <p><i class="fa-solid fa-cloud"></i> <strong>Digital Repository Management:</strong> DSpace • EPrints • Greenstone</p>
+                <p><span><i class="fa-solid fa-cloud"></i> Digital Repository Management:</span> <span>85%</span></p>
                 <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
             </div>
             <div class="skill">
-                <p><i class="fa-solid fa-code"></i> <strong>Web Development:</strong> HTML • CSS</p>
+                <p><span><i class="fa-solid fa-code"></i> Web Development:</span> <span>80%</span></p>
                 <div class="progress"><div class="progress-bar" data-progress="80"></div></div>
             </div>
             <div class="skill">
-                <p><i class="fa-solid fa-laptop-code"></i> <strong>Programming:</strong> Python • Java</p>
+                <p><span><i class="fa-solid fa-laptop-code"></i> Programming:</span> <span>75%</span></p>
                 <div class="progress"><div class="progress-bar" data-progress="75"></div></div>
             </div>
             <div class="skill">
-                <p><i class="fa-solid fa-chart-line"></i> <strong>Database & Reporting:</strong> SQL Queries • SQL Reporting • Usage Analytics</p>
+                <p><span><i class="fa-solid fa-chart-line"></i> Database & Reporting:</span> <span>88%</span></p>
                 <div class="progress"><div class="progress-bar" data-progress="88"></div></div>
             </div>
             <div class="skill">
-                <p><i class="fa-solid fa-globe"></i> <strong>Content Management Systems:</strong> Drupal • Joomla</p>
+                <p><span><i class="fa-solid fa-globe"></i> Content Management Systems:</span> <span>78%</span></p>
                 <div class="progress"><div class="progress-bar" data-progress="78"></div></div>
             </div>
             <div class="skill">
-                <p><i class="fa-solid fa-folder-open"></i> <strong>Collaboration & Documentation Tools:</strong> SharePoint • Digital Content Management</p>
+                <p><span><i class="fa-solid fa-folder-open"></i> Collaboration & Documentation Tools:</span> <span>85%</span></p>
                 <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
             </div>
             <div class="skill">
-                <p><i class="fa-solid fa-book"></i> <strong>Reference Management Tools:</strong> Zotero • Mendeley • EndNote</p>
+                <p><span><i class="fa-solid fa-book"></i> Reference Management Tools:</span> <span>92%</span></p>
                 <div class="progress"><div class="progress-bar" data-progress="92"></div></div>
             </div>
         </div>
@@ -500,67 +642,61 @@
     <section id="courses">
         <h2 class="section-title">Certifications & Courses</h2>
         
-        <div class="card">
-            <strong>O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</strong>
-            <br><br>
+        <div class="card" style="margin-bottom: 24px;">
+            <p style="font-family: var(--font-display); font-weight: 700; color: var(--text-heading); margin-bottom: 20px;">O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</p>
             <div class="preview-container">
-                <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-download"></i> Programming & Problem Solving through Python</button>
+                <button class="btn outline" onclick="window.open('OLevel_Certificate1.pdf')"><i class="fa-solid fa-download"></i> Python Programming</button>
                 <div class="cert-preview"><iframe src="OLevel_Certificate1.pdf"></iframe></div>
             </div>
             <div class="preview-container">
-                <button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-download"></i> Internet of Things and its Application</button>
+                <button class="btn outline" onclick="window.open('OLevel_Certificate2.pdf')"><i class="fa-solid fa-download"></i> Internet of Things</button>
                 <div class="cert-preview"><iframe src="OLevel_Certificate2.pdf"></iframe></div>
             </div>
             <div class="preview-container">
-                <button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-download"></i> Web Designing & Publishing</button>
+                <button class="btn outline" onclick="window.open('OLevel_Certificate3.pdf')"><i class="fa-solid fa-download"></i> Web Designing</button>
                 <div class="cert-preview"><iframe src="OLevel_Certificate3.pdf"></iframe></div>
             </div>
             <div class="preview-container">
-                <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-download"></i> IT Tools and Network Basics</button>
+                <button class="btn outline" onclick="window.open('OLevel_Certificate4.pdf')"><i class="fa-solid fa-download"></i> IT Tools & Basics</button>
                 <div class="cert-preview"><iframe src="OLevel_Certificate4.pdf"></iframe></div>
             </div>
             <div class="preview-container">
-                <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-download"></i> Course on Computer Concepts</button>
+                <button class="btn outline" onclick="window.open('OLevel_Certificate5.pdf')"><i class="fa-solid fa-download"></i> Computer Concepts</button>
                 <div class="cert-preview"><iframe src="OLevel_Certificate5.pdf"></iframe></div>
             </div>
         </div>
 
-        <div class="card">
-            <strong>Ethical Hacking – IEEE Blended Learning Program</strong>
-            <br><br>
+        <div class="card" style="margin-bottom: 24px;">
+            <p style="font-family: var(--font-display); font-weight: 700; color: var(--text-heading); margin-bottom: 20px;">Ethical Hacking – IEEE Blended Learning Program</p>
             <div class="preview-container">
                 <button class="btn outline" onclick="window.open('IEEE.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
                 <div class="cert-preview"><iframe src="IEEE.pdf"></iframe></div>
             </div>
         </div>
 
-        <div class="card">
-            <strong>Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</strong>
-            <br><br>
+        <div class="card" style="margin-bottom: 24px;">
+            <p style="font-family: var(--font-display); font-weight: 700; color: var(--text-heading); margin-bottom: 20px;">Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</p>
             <div class="preview-container">
                 <button class="btn outline" onclick="window.open('nptel_science_communication_data_analytics_2024.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
                 <div class="cert-preview"><iframe src="nptel_science_communication_data_analytics_2024.pdf"></iframe></div>
             </div>
         </div>
 
-        <div class="card">
-            <strong>Advanced R Programming for Data Analytics in Business – NPTEL</strong>
-            <br><br>
+        <div class="card" style="margin-bottom: 24px;">
+            <p style="font-family: var(--font-display); font-weight: 700; color: var(--text-heading); margin-bottom: 20px;">Advanced R Programming for Data Analytics in Business – NPTEL</p>
             <div class="preview-container">
                 <button class="btn outline" onclick="window.open('advanced_r_programming_data_analytics_2024.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
                 <div class="cert-preview"><iframe src="advanced_r_programming_data_analytics_2024.pdf"></iframe></div>
             </div>
         </div>
 
-        <div class="card">
-            <strong>IT Applications in Libraries – NPTEL</strong>
-            <br><br>
-            <span style="color:#4CAF50; font-weight:500;"><i class="fa-solid fa-circle-check"></i> Completed (Certificate not available)</span>
+        <div class="card" style="margin-bottom: 24px;">
+            <p style="font-family: var(--font-display); font-weight: 700; color: var(--text-heading); margin-bottom: 12px;">IT Applications in Libraries – NPTEL</p>
+            <span style="color:#10b981; font-weight:600; font-size:14px;"><i class="fa-solid fa-circle-check"></i> Completed (Certificate not available)</span>
         </div>
 
         <div class="card">
-            <strong>Training Webinar: How to Navigate the New Emerald Insight Platform</strong>
-            <br><br>
+            <p style="font-family: var(--font-display); font-weight: 700; color: var(--text-heading); margin-bottom: 20px;">Training Webinar: How to Navigate the New Emerald Insight Platform</p>
             <div class="preview-container">
                 <button class="btn outline" onclick="window.open('Training Webinar.pdf')"><i class="fa-solid fa-download"></i> View Certificate</button>
                 <div class="cert-preview"><iframe src="Training Webinar.pdf"></iframe></div>
@@ -571,11 +707,11 @@
     <section id="education">
         <h2 class="section-title">Education</h2>
         <div class="card">
-            <h3>Master of Library & Information Science (M.L.I.Sc)</h3>
-            <p>Bangalore University | 2022</p>
+            <h3 style="font-family: var(--font-display); font-size: 20px; color: var(--text-heading);">Master of Library & Information Science (M.L.I.Sc)</h3>
+            <p style="color: var(--primary); font-weight: 500; font-size: 14px;">Bangalore University | 2022</p>
             <br>
-            <h3>Bachelor of Arts (B.A.)</h3>
-            <p>Belture Government College | 2020</p>
+            <h3 style="font-family: var(--font-display); font-size: 20px; color: var(--text-heading);">Bachelor of Arts (B.A.)</h3>
+            <p style="color: var(--primary); font-weight: 500; font-size: 14px;">Belture Government College | 2020</p>
         </div>
     </section>
 
@@ -583,11 +719,11 @@
         <h2 class="section-title">Digital Initiatives & Projects</h2>
         <div class="card">
             <ul>
-                <li><strong>Koha Library Management System Implementation:</strong> Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.</li><br>
-                <li><strong>Library Automation & Workflow Optimization:</strong> Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.</li><br>
-                <li><strong>Institutional Repository Management:</strong> Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.</li><br>
-                <li><strong>SQL-Based Data Analytics & Reporting:</strong> Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.</li><br>
-                <li><strong>Digital Resource Integration:</strong> Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.</li><br>
+                <li><strong>Koha Library Management System Implementation:</strong> Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.</li>
+                <li><strong>Library Automation & Workflow Optimization:</strong> Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.</li>
+                <li><strong>Institutional Repository Management:</strong> Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.</li>
+                <li><strong>SQL-Based Data Analytics & Reporting:</strong> Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.</li>
+                <li><strong>Digital Resource Integration:</strong> Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.</li>
                 <li><strong>SharePoint & Digital Documentation Management:</strong> Handled structured document storage, internal resource sharing, and workflow documentation using Microsoft SharePoint.</li>
             </ul>
         </div>
@@ -597,10 +733,10 @@
         <h2 class="section-title">Key Achievements</h2>
         <div class="card">
             <ul>
-                <li><strong>Successfully Administered Koha & Libsoft LMS:</strong> Managed cataloging, circulation, user records, MARC customization, and troubleshooting to ensure smooth library automation.</li><br>
-                <li><strong>Generated SQL-Based Analytical Reports:</strong> Prepared circulation statistics, usage trends, and monthly/annual analytics reports for data-driven decision making.</li><br>
-                <li><strong>Maintained Digital Repository & E-Resources:</strong> Managed DSpace repository, DELNET services (ILL & document delivery), and digital resource access systems.</li><br>
-                <li><strong>Conducted Technical Training Sessions:</strong> Delivered orientation programs on OPAC, digital databases, citation management tools (Zotero, Mendeley, EndNote), and research support tools.</li><br>
+                <li><strong>Successfully Administered Koha & Libsoft LMS:</strong> Managed cataloging, circulation, user records, MARC customization, and troubleshooting to ensure smooth library automation.</li>
+                <li><strong>Generated SQL-Based Analytical Reports:</strong> Prepared circulation statistics, usage trends, and monthly/annual analytics reports for data-driven decision making.</li>
+                <li><strong>Maintained Digital Repository & E-Resources:</strong> Managed DSpace repository, DELNET services (ILL & document delivery), and digital resource access systems.</li>
+                <li><strong>Conducted Technical Training Sessions:</strong> Delivered orientation programs on OPAC, digital databases, citation management tools (Zotero, Mendeley, EndNote), and research support tools.</li>
                 <li><strong>Managed SharePoint Documentation:</strong> Handled structured document storage, internal resource sharing, and policy documentation using Microsoft SharePoint.</li>
             </ul>
         </div>
@@ -610,8 +746,8 @@
         <h2 class="section-title">Workshops & Professional Development</h2>
         <div class="card">
             <ul>
-                <li><strong>NPTEL Online Certifications:</strong> Completed professional courses in Science Communication & Data Analytics, Advanced R Programming, and IT Applications in Libraries.</li><br>
-                <li><strong>Library Automation & Digital Repository Training:</strong> Participated in webinars and technical sessions focused on Koha LMS, DSpace repositories, and digital library tools.</li><br>
+                <li><strong>NPTEL Online Certifications:</strong> Completed professional courses in Science Communication & Data Analytics, Advanced R Programming, and IT Applications in Libraries.</li>
+                <li><strong>Library Automation & Digital Repository Training:</strong> Participated in webinars and technical sessions focused on Koha LMS, DSpace repositories, and digital library tools.</li>
                 <li><strong>Research & Citation Tools Training:</strong> Engaged in training programs related to Zotero, Mendeley, EndNote, and academic productivity tools.</li>
             </ul>
         </div>
@@ -621,8 +757,8 @@
         <h2 class="section-title">Professional Memberships & Digital Networks</h2>
         <div class="card">
             <ul>
-                <li><strong>DELNET (Developing Library Network):</strong> Managed inter-library loan (ILL), document delivery, and academic resource access services.</li><br>
-                <li><strong>N-LIST / INFLIBNET Coordination Support:</strong> Supported access to e-resources and digital academic databases for institutional users.</li><br>
+                <li><strong>DELNET (Developing Library Network):</strong> Managed inter-library loan (ILL), document delivery, and academic resource access services.</li>
+                <li><strong>N-LIST / INFLIBNET Coordination Support:</strong> Supported access to e-resources and digital academic databases for institutional users.</li>
                 <li><strong>Academic & Digital Library Professional Engagement:</strong> Actively involved in institutional digital initiatives and academic resource management activities.</li>
             </ul>
         </div>
@@ -630,11 +766,11 @@
 
     <section id="contact">
         <h2 class="section-title">Contact</h2>
-        <div class="grid">
-            <div class="card"><i class="fa-solid fa-phone"></i> 7760144157</div>
-            <div class="card"><i class="fa-solid fa-envelope"></i> yashu2370@gmail.com</div>
-            <div class="card"><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
-            <div class="card"><i class="fa-solid fa-language"></i> English, Kannada, Hindi, Telugu</div>
+        <div class="grid" style="margin-bottom: 32px;">
+            <div class="card"><i class="fa-solid fa-phone" style="color:var(--primary); margin-right:10px;"></i> 7760144157</div>
+            <div class="card"><i class="fa-solid fa-envelope" style="color:var(--primary); margin-right:10px;"></i> yashu2370@gmail.com</div>
+            <div class="card"><i class="fa-solid fa-location-dot" style="color:var(--primary); margin-right:10px;"></i> Bengaluru, India</div>
+            <div class="card"><i class="fa-solid fa-language" style="color:var(--primary); margin-right:10px;"></i> English, Kannada, Hindi, Telugu</div>
         </div>
 
         <div class="contact-form">
@@ -659,35 +795,37 @@
         const preloader = document.getElementById("preloader");
         const progressBar = document.getElementById("progressBar");
         const topBtn = document.getElementById("topBtn");
-        const glow = document.querySelector(".cursor-glow");
+        const glowEngine = document.querySelector(".cursor-glow");
 
         window.addEventListener("load", () => { 
-            preloader.style.display = "none"; 
+            preloader.style.opacity = "0";
+            setTimeout(() => preloader.style.display = "none", 600);
         });
 
         window.addEventListener("scroll", () => {
-            let winScroll = document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             progressBar.style.width = (winScroll / height) * 100 + "%";
 
-            if (document.documentElement.scrollTop > 300) {
+            if (winScroll > 400) {
                 topBtn.style.display = "block";
             } else {
                 topBtn.style.display = "none";
             }
         });
 
-        // Fixed tracking math logic to avoid dynamic offset bugs during page scrolling
+        // GPU Native Hardware Acceleration Layer tracking mapping matrix logic loops
         document.addEventListener("mousemove", (e) => {
-            glow.style.left = e.clientX + "px";
-            glow.style.top = e.clientY + "px";
+            window.requestAnimationFrame(() => {
+                glowEngine.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+            });
         });
 
         topBtn.onclick = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
 
-        // Scroll Reveal Hook
+        // Mutation Observer Intersection Engine mapping
         const sections = document.querySelectorAll("section");
         const revealObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -695,39 +833,39 @@
                     entry.target.classList.add("show");
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.05 });
 
         sections.forEach(sec => {
             sec.classList.add("fade-section");
             revealObserver.observe(sec);
         });
 
-        // Safe Typist Execution
-        const text = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
-        const typing = document.querySelector(".hero-text p");
-        typing.innerHTML = "";
-        let i = 0;
+        // Fast Thread Character typist processor arrays 
+        const textStr = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+        const textBuffer = textStr.split("");
+        const typingBox = document.querySelector(".hero-text p");
+        typingBox.innerHTML = "";
+        let lineCursor = 0;
 
-        function type() {
-            if (i < text.length) {
-                typing.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, 20);
+        function runTypistLoop() {
+            if (lineCursor < textBuffer.length) {
+                typingBox.innerHTML += textBuffer[lineCursor];
+                lineCursor++;
+                setTimeout(runTypistLoop, 20);
             }
         }
-        // Small delay to ensure browser thread calculations are finalized
-        setTimeout(type, 400);
+        setTimeout(runTypistLoop, 800);
 
-        // Progress Bar Trigger logic
-        const bars = document.querySelectorAll(".progress-bar");
-        const observer = new IntersectionObserver(entries => {
+        // Progress Metric Node Tracker arrays mapping
+        const skillBars = document.querySelectorAll(".progress-bar");
+        const barObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.width = entry.target.dataset.progress + "%";
                 }
             });
-        });
-        bars.forEach(bar => observer.observe(bar));
+        }, { threshold: 0.05 });
+        skillBars.forEach(bar => barObserver.observe(bar));
     </script>
 </body>
 </html>
