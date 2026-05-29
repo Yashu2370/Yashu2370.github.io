@@ -471,11 +471,15 @@
     </nav>
 
     <div class="hero">
-        <div class="hero-slider">
-            <video class="hero-video" autoplay muted loop playsinline preload="auto">
-                <source src="1.mp4" type="video/mp4">
-            </video>
-        </div>
+       <div class="hero-slider">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="1.mp4" type="video/mp4">
+    </video>
+
+    <audio id="bgMusic" autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+</div>
         <div class="overlay"></div>
         <div class="hero-content">
             <div class="hero-text">
@@ -708,6 +712,14 @@
     </footer>
 
     <script>
+        const bgMusic = document.getElementById("bgMusic");
+bgMusic.volume = 0.2;
+
+// Browser autoplay support
+document.addEventListener("click", () => {
+    bgMusic.play();
+}, { once: true });
+        
         document.getElementById("year").innerText = new Date().getFullYear();
 
         const preloader = document.getElementById("preloader");
