@@ -1743,7 +1743,9 @@
             const progressBars = document.querySelectorAll(".progress-bar");
             const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-            yearEl.textContent = new Date().getFullYear();
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
 
             const preferredDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
             root.setAttribute("data-theme", preferredDark ? "dark" : "light");
