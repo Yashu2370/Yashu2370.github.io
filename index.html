@@ -1,286 +1,1907 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="wIn61JhAgK5yjdifmPMS9aO0FLIP_IijbvH-M6IGKUM" />[cite: 3]
-    <meta name="description" content="Professional portfolio of Yashwanth K S, Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation." />[cite: 3]
-    <title>Yashwanth K S | Professional Portfolio Data Sheet</title>
+    <meta name="google-site-verification" content="wIn61JhAgK5yjdifmPMS9aO0FLIP_IijbvH-M6IGKUM" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yashwanth K S | Professional Portfolio</title>
+    <meta name="description" content="Professional portfolio of Yashwanth K S, Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <style>
         :root {
             --primary: #16a34a;
+            --primary-hover: #15803d;
+            --primary-soft: rgba(22, 163, 74, 0.12);
+            --primary-border: rgba(22, 163, 74, 0.24);
+
             --bg: #f0fdf4;
-            --surface: #ffffff;
+            --bg-secondary: #ecfdf5;
+            --surface: rgba(255, 255, 255, 0.84);
+            --surface-strong: rgba(255, 255, 255, 0.94);
+            --surface-dark: #0b1c14;
+
             --text-main: #052e16;
             --text-muted: #14532d;
-            --border: rgba(5, 46, 22, 0.12);
+            --text-soft: #3f5f4d;
+            --text-white: #ffffff;
+
+            --border: rgba(5, 46, 22, 0.08);
+            --shadow-sm: 0 10px 30px rgba(4, 17, 10, 0.06);
+            --shadow-md: 0 18px 50px rgba(4, 17, 10, 0.10);
+            --shadow-lg: 0 24px 70px rgba(4, 17, 10, 0.16);
+
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 26px;
+            --radius-xl: 34px;
+            --radius-pill: 999px;
+
+            --container: 1240px;
+
+            --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+            --hero-overlay: linear-gradient(110deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.38));
+            --bg-gradient:
+                radial-gradient(circle at top left, rgba(34, 197, 94, 0.18), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(22, 163, 74, 0.12), transparent 30%),
+                linear-gradient(135deg, #f0fdf4, #ecfdf5, #dcfce7);
         }
+
+        html[data-theme="dark"] {
+            --primary: #22c55e;
+            --primary-hover: #4ade80;
+            --primary-soft: rgba(34, 197, 94, 0.14);
+            --primary-border: rgba(74, 222, 128, 0.24);
+
+            --bg: #07130d;
+            --bg-secondary: #0d1b14;
+            --surface: rgba(15, 23, 42, 0.72);
+            --surface-strong: rgba(15, 23, 42, 0.88);
+            --surface-dark: #020617;
+
+            --text-main: #f8fafc;
+            --text-muted: #d1fae5;
+            --text-soft: #9db8aa;
+            --text-white: #ffffff;
+
+            --border: rgba(255, 255, 255, 0.09);
+            --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.22);
+            --shadow-md: 0 18px 50px rgba(0, 0, 0, 0.32);
+            --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.42);
+
+            --hero-overlay: linear-gradient(110deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.48));
+            --bg-gradient:
+                radial-gradient(circle at top left, rgba(34, 197, 94, 0.10), transparent 26%),
+                radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.08), transparent 30%),
+                linear-gradient(135deg, #07130d, #0d1b14, #08120d);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background-color: var(--bg);
+            font-family: 'Poppins', sans-serif;
             color: var(--text-main);
+            background: var(--bg-gradient);
             line-height: 1.6;
-            padding: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
+            overflow-x: hidden;
+            transition: background var(--transition), color var(--transition);
         }
-        h1, h2, h3 {
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        img, video {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button, input, textarea {
+            font: inherit;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 16px;
+            top: -60px;
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 10px;
+            z-index: 3001;
+            transition: top var(--transition);
+        }
+
+        .skip-link:focus {
+            top: 16px;
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: #052e16;
+            display: grid;
+            place-items: center;
+            z-index: 4000;
+            transition: opacity .45s ease, visibility .45s ease;
+        }
+
+        .loader-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            color: #dcfce7;
+        }
+
+        .loader {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.16);
+            border-top-color: var(--primary);
+            animation: spin .9s linear infinite;
+        }
+
+        .loader-wrap span {
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        #progressBar {
+            position: fixed;
+            inset: 0 auto auto 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #4ade80);
+            z-index: 2500;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2600;
+            background: rgba(34, 197, 94, 0.18);
+            border: 1px solid rgba(34, 197, 94, 0.28);
+            box-shadow: 0 0 32px rgba(34, 197, 94, 0.28);
+            transform: translate(-50%, -50%);
+            transition: transform 0.08s ease-out;
+            mix-blend-mode: screen;
+        }
+
+        .site-shell {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .container {
+            width: min(100% - 32px, var(--container));
+            margin-inline: auto;
+        }
+
+        .site-header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(100% - 20px, 1320px);
+            z-index: 2200;
+        }
+
+        .nav-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            background: color-mix(in srgb, var(--surface-strong) 88%, transparent);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: max-content;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--primary), #22c55e);
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 10px 24px rgba(22, 163, 74, 0.25);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        .brand-text strong {
+            font-size: 15px;
             color: var(--text-main);
         }
-        h1 {
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+
+        .brand-text span {
+            font-size: 11px;
+            color: var(--text-soft);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex: 1;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .badge {
-            display: inline-block;
-            background: #dcfce7;
+
+        .desktop-nav a {
+            padding: 10px 14px;
+            border-radius: 999px;
+            color: var(--text-soft);
+            font-size: 13px;
+            font-weight: 500;
+            transition: background var(--transition), color var(--transition), transform var(--transition);
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            background: var(--primary-soft);
             color: var(--primary);
-            padding: 4px 12px;
+            transform: translateY(-1px);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-btn,
+        .menu-btn {
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: color-mix(in srgb, var(--surface) 92%, transparent);
+            color: var(--text-main);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .icon-btn:hover,
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-border);
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        .mobile-panel {
+            position: fixed;
+            inset: 86px 12px auto 12px;
+            background: color-mix(in srgb, var(--surface-strong) 94%, transparent);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            padding: 18px;
+            z-index: 2100;
+            display: grid;
+            gap: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-14px);
+            transition: var(--transition);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .mobile-panel.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-panel a {
+            padding: 12px 14px;
+            border-radius: 14px;
+            color: var(--text-muted);
+            background: transparent;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .mobile-panel a:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+        }
+
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: -3;
+        }
+
+        .hero-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--hero-overlay);
+            z-index: -2;
+        }
+
+        .hero-grid {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 56px;
+            padding-top: 120px;
+            padding-bottom: 72px;
+        }
+
+        .hero-copy {
+            color: #fff;
+            max-width: 760px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: var(--radius-pill);
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #dcfce7;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 4.5vw, 4.8rem);
+            line-height: 1.06;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            color: #4ade80;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 690px;
+            color: rgba(255,255,255,0.88);
+            min-height: 90px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 13px 22px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform var(--transition), background var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #22c55e);
+            color: #fff;
+            box-shadow: 0 16px 30px rgba(22, 163, 74, 0.22);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-hover), var(--primary));
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.10);
+            color: #fff;
+            border-color: rgba(255,255,255,0.16);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.16);
+        }
+
+        .hero-card {
+            position: relative;
+            justify-self: end;
+            width: min(100%, 390px);
+            border-radius: 32px;
+            padding: 16px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(12px);
+        }
+
+        .hero-photo {
+            overflow: hidden;
+            border-radius: 24px;
+            position: relative;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+        }
+
+        .hero-badge {
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            padding: 16px 18px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            background: rgba(5, 46, 22, 0.74);
+            border: 1px solid rgba(255,255,255,0.10);
+            color: #fff;
+            backdrop-filter: blur(12px);
+        }
+
+        .hero-badge strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .hero-badge span {
+            font-size: 13px;
+            color: #d1fae5;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            padding-bottom: 60px;
+        }
+
+        .section {
+            padding: 92px 0 0;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 2.6vw, 2.5rem);
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-main);
+        }
+
+        .section-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .section-kicker::before {
+            content: "";
+            width: 26px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--primary);
+        }
+
+        .section-subtext {
+            color: var(--text-soft);
+            font-size: 14px;
+            max-width: 560px;
+        }
+
+        .card {
+            background: color-mix(in srgb, var(--surface) 96%, transparent);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-border);
+        }
+
+        .content-card {
+            padding: 30px;
+        }
+
+        .objective-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .objective-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 5px;
+            background: linear-gradient(180deg, var(--primary), #22c55e);
+        }
+
+        .timeline-card {
+            position: relative;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        .timeline-card::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 32px;
+            bottom: 32px;
+            width: 3px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--primary), transparent);
+        }
+
+        .timeline-inner {
+            padding-left: 28px;
+        }
+
+        .job-title,
+        .edu-title,
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .card-meta {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        .rich-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .rich-list li {
+            position: relative;
+            padding-left: 28px;
+            color: var(--text-muted);
+        }
+
+        .rich-list li::before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 14px;
+        }
+
+        .skills-grid,
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .skill-card {
+            padding: 26px;
+        }
+
+        .skill-row {
+            margin-bottom: 22px;
+        }
+
+        .skill-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .skill-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        .skill-label i {
+            color: var(--primary);
+            width: 18px;
+        }
+
+        .skill-percent {
+            color: var(--text-soft);
+            font-size: 13px;
             font-weight: 600;
         }
-        table {
+
+        .progress {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+            height: 10px;
+            background: rgba(148, 163, 184, 0.18);
+            border-radius: 999px;
+            overflow: hidden;
         }
-        th, td {
-            border: 1px solid #e2e8f0;
-            padding: 12px;
-            text-align: left;
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--primary), #4ade80);
+            box-shadow: inset 0 0 12px rgba(255,255,255,0.18);
+            transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        th {
-            background-color: #ecfdf5;
-            color: #15803d;
+
+        .stack-grid {
+            display: grid;
+            gap: 24px;
         }
-        ul {
-            padding-left: 20px;
+
+        .course-card {
+            padding: 28px;
         }
-        li {
-            margin-bottom: 8px;
+
+        .course-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-main);
         }
-        .file-tag {
-            font-family: monospace;
-            background: #f1f5f9;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #0f172a;
+
+        .preview-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .preview-container {
+            position: relative;
+        }
+
+        .preview-btn {
+            min-height: 46px;
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 1px solid var(--primary-border);
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .preview-btn:hover {
+            transform: translateY(-2px);
+            background: color-mix(in srgb, var(--primary-soft) 70%, white);
+        }
+
+        .cert-preview {
+            position: absolute;
+            left: 0;
+            top: calc(100% + 12px);
+            width: 300px;
+            height: 210px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            background: #fff;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: var(--transition);
+            z-index: 40;
+        }
+
+        .cert-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .preview-container:hover .cert-preview {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 16px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            border: 1px solid var(--primary-border);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .simple-card {
+            padding: 30px;
+        }
+
+        .simple-card p {
+            color: var(--text-muted);
+        }
+
+        .projects-card,
+        .achievements-card,
+        .workshops-card,
+        .memberships-card {
+            padding: 30px;
+        }
+
+        .contact-card {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-height: 100px;
+        }
+
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            flex: 0 0 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .contact-content strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: var(--text-soft);
+        }
+
+        .contact-content span {
+            color: var(--text-main);
+            font-weight: 600;
+            word-break: break-word;
+        }
+
+        .contact-form-wrap {
+            margin-top: 28px;
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(145deg, #111827, #1f2937);
+            color: #fff;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contact-form-wrap::before {
+            content: "";
+            position: absolute;
+            inset: auto -80px -80px auto;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(34, 197, 94, 0.14);
+            filter: blur(10px);
+        }
+
+        .contact-form-wrap h3 {
+            position: relative;
+            z-index: 1;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-form-wrap p {
+            position: relative;
+            z-index: 1;
+            color: #cbd5e1;
+            margin-bottom: 24px;
+            max-width: 620px;
+        }
+
+        .contact-form {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .field label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            padding: 14px 16px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            border-color: rgba(34, 197, 94, 0.55);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .fade-section {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 0.85s ease, transform 0.85s ease;
+        }
+
+        .fade-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #topBtn {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 52px;
+            height: 52px;
+            border: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), #22c55e);
+            color: #fff;
+            cursor: pointer;
+            display: none;
+            z-index: 2300;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        #topBtn:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            margin-top: 90px;
+            padding: 36px 0 44px;
+            border-top: 1px solid var(--border);
+            background: color-mix(in srgb, var(--surface) 86%, transparent);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .footer p {
+            color: var(--text-soft);
+            font-size: 14px;
+        }
+
+        .footer strong {
+            color: var(--primary);
+        }
+
+        .glass-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 14px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            border: 1px solid var(--primary-border);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1180px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .menu-btn {
+                display: grid;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 34px;
+                text-align: center;
+            }
+
+            .hero-copy {
+                margin-inline: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-card {
+                justify-self: center;
+            }
+
+            .section-head {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .skills-grid,
+            .contact-grid,
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .site-header {
+                top: 10px;
+                width: calc(100% - 14px);
+            }
+
+            .nav-wrap {
+                padding: 12px 14px;
+            }
+
+            .brand-text span {
+                display: none;
+            }
+
+            .hero-grid {
+                padding-top: 120px;
+                padding-bottom: 50px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .hero p {
+                min-height: auto;
+                font-size: 0.98rem;
+            }
+
+            .section {
+                padding-top: 74px;
+            }
+
+            .content-card,
+            .timeline-card,
+            .skill-card,
+            .course-card,
+            .simple-card,
+            .projects-card,
+            .achievements-card,
+            .workshops-card,
+            .memberships-card,
+            .contact-form-wrap {
+                padding: 22px;
+            }
+
+            .timeline-card::before {
+                left: 22px;
+            }
+
+            .timeline-inner {
+                padding-left: 22px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-preview {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                width: min(100% - 20px, var(--container));
+            }
+
+            .hero-actions,
+            .preview-group {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn,
+            .preview-btn {
+                width: 100%;
+            }
+
+            .btn {
+                min-height: 50px;
+            }
+
+            .contact-card {
+                align-items: flex-start;
+            }
+
+            #topBtn {
+                right: 16px;
+                bottom: 16px;
+            }
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .cursor-glow {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .fade-section {
+                opacity: 1;
+                transform: none;
+            }
         }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <header class="card">
-        <h1>Yashwanth K S — Complete Data Profile</h1>[cite: 3]
-        <p><strong>Meta Description:</strong> Professional portfolio of Yashwanth K S, Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.[cite: 3]</p>
-        <p><strong>Google Site Verification Tag:</strong> <span class="file-tag">wIn61JhAgK5yjdifmPMS9aO0FLIP_IijbvH-M6IGKUM</span>[cite: 3]</p>
-        <p><strong>Brand Initials:</strong> YK[cite: 3]</p>
-        <p><strong>Hero Badge Title:</strong> Digital Learning Specialist[cite: 3]</p>
-        <p><strong>Navigation Menu Sections:</strong> About, Experience, Skills, Courses, Education, Projects, Achievements, Workshops, Memberships, Contact[cite: 3]</p>
-    </header>
+    <div id="preloader" aria-hidden="true">
+        <div class="loader-wrap">
+            <div class="loader"></div>
+            <span>Loading Portfolio</span>
+        </div>
+    </div>
 
-    <!-- Hero & Interactive Elements Data -->
-    <section class="card">
-        <h2>🎬 Hero Section & Media Assets</h2>
-        <ul>
-            <li><strong>Hero Greeting:</strong> Hello, I'm Yashwanth K S[cite: 3]</li>
-            <li><strong>Hero Typing Text:</strong> Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.[cite: 3]</li>
-            <li><strong>Background Video File:</strong> <span class="file-tag">1.mp4</span>[cite: 3]</li>
-            <li><strong>Profile Photo File:</strong> <span class="file-tag">profile.jpg</span>[cite: 3]</li>
-            <li><strong>Download CV Target File:</strong> <span class="file-tag">For IT.pdf</span>[cite: 3]</li>
-            <li><strong>Direct Mail Button Target:</strong> <span class="file-tag">mailto:ksyashwanth18@gmail.com</span>[cite: 3]</li>
-            <li><strong>Interactive UI Features Configured:</strong> Preloader spinner, scroll progress bar (#progressBar), top scroll button (#topBtn), animated cursor glow (.cursor-glow), light/dark mode switcher (#themeToggle).[cite: 3]</li>
-        </ul>
-    </section>
+    <div id="progressBar" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
 
-    <!-- Career Objective -->
-    <section class="card">
-        <h2>🎯 About / Career Objective</h2>
-        <span class="badge">Professional Focus</span>[cite: 3]
-        <p style="margin-top: 10px;">Dedicated Library & Information Science professional with expertise in Koha LMS, Libsoft, DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation.[cite: 3] Aspiring to transition into IT roles where I can apply database management, system administration, and analytical skills to build optimized digital systems and data-driven applications.[cite: 3]</p>
-    </section>
+    <button id="topBtn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
-    <!-- Work Experience -->
-    <section class="card">
-        <h2>💼 Employment / Work Experience</h2>
-        <h3>Assistant Librarian</h3>[cite: 3]
-        <p><strong>Organization & Tenure:</strong> K S School of Engineering & Management (2023 – Present)[cite: 3]</p>
-        <ul>
-            <li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control.[cite: 3]</li>
-            <li>Execute SQL queries to generate analytical reports for resource utilization and decision-making.[cite: 3]</li>
-            <li>Manage and optimize OPAC systems for efficient information retrieval.[cite: 3]</li>
-            <li>Maintain and support DELNET digital access systems and electronic resource integration.[cite: 3]</li>
-            <li>Conduct technical user training sessions on LMS, digital repositories, and information systems.[cite: 3]</li>
-            <li>Support data organization, documentation, and workflow optimization using digital tools.[cite: 3]</li>
-        </ul>
-    </section>
+    <div class="site-shell">
+        <header class="site-header">
+            <div class="nav-wrap">
+                <a href="#home" class="brand" aria-label="Yashwanth K S home">
+                    <div class="brand-mark">YK</div>
+                    <div class="brand-text">
+                        <strong>Yashwanth K S</strong>
+                        <span>Professional Portfolio</span>
+                    </div>
+                </a>
 
-    <!-- Technical Skills -->
-    <section class="card">
-        <h2>💻 Technical Skills</h2>
-        <p>Core competencies across library systems, repositories, development, analytics, and documentation tools.[cite: 3]</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Category & Tool Area</th>
-                    <th>Proficiency Rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Reference Management Tools (Zotero • Mendeley • EndNote)</td>
-                    <td><strong>92%</strong>[cite: 3]</td>
-                </tr>
-                <tr>
-                    <td>Library & Information Systems (Koha • Libsoft • NewGenLib)</td>
-                    <td><strong>90%</strong>[cite: 3]</td>
-                </tr>
-                <tr>
-                    <td>Database & Reporting (SQL Queries • SQL Reporting • Usage Analytics)</td>
-                    <td><strong>88%</strong>[cite: 3]</td>
-                </tr>
-                <tr>
-                    <td>Digital Repository Management (DSpace • EPrints • Greenstone)</td>
-                    <td><strong>85%</strong>[cite: 3]</td>
-                </tr>
-                <tr>
-                    <td>Collaboration & Documentation Tools (SharePoint • Digital Content Management)</td>
-                    <td><strong>85%</strong>[cite: 3]</td>
-                </tr>
-                <tr>
-                    <td>Web Development (HTML • CSS)</td>
-                    <td><strong>80%</strong>[cite: 3]</td>
-                </tr>
-                <tr>
-                    <td>Content Management Systems (Drupal • Joomla)</td>
-                    <td><strong>78%</strong>[cite: 3]</td>
-                </tr>
-                <tr>
-                    <td>Programming (Python • Java)</td>
-                    <td><strong>75%</strong>[cite: 3]</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+                <nav class="desktop-nav" aria-label="Primary navigation">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#courses">Courses</a>
+                    <a href="#education">Education</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#achievements">Achievements</a>
+                    <a href="#workshops">Workshops</a>
+                    <a href="#memberships">Memberships</a>
+                    <a href="#contact">Contact</a>
+                </nav>
 
-    <!-- Certifications & Courses -->
-    <section class="card">
-        <h2>📜 Certifications & Courses</h2>
-        <ul>
-            <li>
-                <strong>O'Level Computer Certification — National Institute of Electronics and Information Technology (NIELIT):</strong>[cite: 3]
-                <ul>
-                    <li>Python Programming — File: <span class="file-tag">OLevel_Certificate1.pdf</span>[cite: 3]</li>
-                    <li>Internet of Things — File: <span class="file-tag">OLevel_Certificate2.pdf</span>[cite: 3]</li>
-                    <li>Web Designing & Publishing — File: <span class="file-tag">OLevel_Certificate3.pdf</span>[cite: 3]</li>
-                    <li>IT Tools & Networks — File: <span class="file-tag">OLevel_Certificate4.pdf</span>[cite: 3]</li>
-                    <li>Computer Concepts — File: <span class="file-tag">OLevel_Certificate5.pdf</span>[cite: 3]</li>
-                </ul>
-            </li>
-            <li><strong>Ethical Hacking – IEEE Blended Learning Program:</strong> File: <span class="file-tag">IEEE.pdf</span>[cite: 3]</li>
-            <li><strong>Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL:</strong> File: <span class="file-tag">nptel_science_communication_data_analytics_2024.pdf</span>[cite: 3]</li>
-            <li><strong>Advanced R Programming for Data Analytics in Business – NPTEL:</strong> File: <span class="file-tag">advanced_r_programming_data_analytics_2024.pdf</span>[cite: 3]</li>
-            <li><strong>IT Applications in Libraries – NPTEL:</strong> Completed (Certificate not available)[cite: 3]</li>
-            <li><strong>Training Webinar: How to Navigate the New Emerald Insight Platform:</strong> File: <span class="file-tag">Training Webinar.pdf</span>[cite: 3]</li>
-        </ul>
-    </section>
+                <div class="nav-actions">
+                    <button class="icon-btn" id="themeToggle" aria-label="Switch theme" title="Toggle theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <button class="menu-btn" id="menuToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobilePanel">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
 
-    <!-- Education -->
-    <section class="card">
-        <h2>🎓 Education</h2>
-        <ul>
-            <li><strong>Master of Library & Information Science (M.L.I.Sc)</strong> — Bangalore University | 2022[cite: 3]</li>
-            <li><strong>Bachelor of Arts (B.A.)</strong> — Belture Government College | 2020[cite: 3]</li>
-        </ul>
-    </section>
+            <nav class="mobile-panel" id="mobilePanel" aria-label="Mobile navigation">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#courses">Courses</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#workshops">Workshops</a>
+                <a href="#memberships">Memberships</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
 
-    <!-- Digital Initiatives & Projects -->
-    <section class="card">
-        <h2>🚀 Digital Initiatives & Projects</h2>
-        <ul>
-            <li><strong>Koha Library Management System Implementation:</strong> Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.[cite: 3]</li>
-            <li><strong>Library Automation & Workflow Optimization:</strong> Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.[cite: 3]</li>
-            <li><strong>Institutional Repository Management:</strong> Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.[cite: 3]</li>
-            <li><strong>SQL-Based Data Analytics & Reporting:</strong> Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.[cite: 3]</li>
-            <li><strong>Digital Resource Integration:</strong> Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.[cite: 3]</li>
-            <li><strong>SharePoint & Digital Documentation Management:</strong> Handled structured document storage, internal resource sharing, and workflow documentation using Microsoft SharePoint.[cite: 3]</li>
-        </ul>
-    </section>
+        <section class="hero" id="home">
+            <div class="hero-media">
+                <video autoplay muted loop playsinline preload="auto" aria-label="Background video">
+                    <source src="1.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
 
-    <!-- Key Achievements -->
-    <section class="card">
-        <h2>🏆 Key Achievements</h2>
-        <ul>
-            <li><strong>Successfully Administered Koha & Libsoft LMS:</strong> Managed cataloging, circulation, user records, MARC customization, and troubleshooting to ensure smooth library automation.[cite: 3]</li>
-            <li><strong>Generated SQL-Based Analytical Reports:</strong> Prepared circulation statistics, usage trends, and monthly/annual analytics reports for data-driven decision making.[cite: 3]</li>
-            <li><strong>Maintained Digital Repository & E-Resources:</strong> Managed DSpace repository, DELNET services (ILL & document delivery), and digital resource access systems.[cite: 3]</li>
-            <li><strong>Conducted Technical Training Sessions:</strong> Delivered orientation programs on OPAC, digital databases, citation management tools (Zotero, Mendeley, EndNote), and research support tools.[cite: 3]</li>
-            <li><strong>Managed SharePoint Documentation:</strong> Handled structured document storage, internal resource sharing, and policy documentation using Microsoft SharePoint.[cite: 3]</li>
-        </ul>
-    </section>
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <div class="eyebrow">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Professional Portfolio
+                    </div>
 
-    <!-- Workshops & Professional Development -->
-    <section class="card">
-        <h2>🛠️ Workshops & Professional Development</h2>
-        <ul>
-            <li><strong>NPTEL Online Certifications:</strong> Completed professional courses in Science Communication & Data Analytics, Advanced R Programming, and IT Applications in Libraries.[cite: 3]</li>
-            <li><strong>Library Automation & Digital Repository Training:</strong> Participated in webinars and technical sessions focused on Koha LMS, DSpace repositories, and digital library tools.[cite: 3]</li>
-            <li><strong>Research & Citation Tools Training:</strong> Engaged in training programs related to Zotero, Mendeley, EndNote, and academic productivity tools.[cite: 3]</li>
-        </ul>
-    </section>
+                    <h1>Hello, I'm <span>Yashwanth K S</span></h1>
+                    <p id="typingText"></p>
 
-    <!-- Professional Memberships & Digital Networks -->
-    <section class="card">
-        <h2>🌐 Professional Memberships & Digital Networks</h2>
-        <ul>
-            <li><strong>DELNET (Developing Library Network):</strong> Managed inter-library loan (ILL), document delivery, and academic resource access services.[cite: 3]</li>
-            <li><strong>N-LIST / INFLIBNET Coordination Support:</strong> Supported access to e-resources and digital academic databases for institutional users.[cite: 3]</li>
-            <li><strong>Academic & Digital Library Professional Engagement:</strong> Actively involved in institutional digital initiatives and academic resource management activities.[cite: 3]</li>
-        </ul>
-    </section>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" id="downloadCvBtn">
+                            <i class="fa-solid fa-download"></i>
+                            Download CV
+                        </button>
+                        <button class="btn btn-secondary" data-scroll="#experience">
+                            <i class="fa-solid fa-briefcase"></i>
+                            Experience
+                        </button>
+                        <button class="btn btn-secondary" data-scroll="#contact">
+                            <i class="fa-solid fa-envelope"></i>
+                            Contact
+                        </button>
+                        <button class="btn btn-secondary" id="mailBtn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Get in Touch
+                        </button>
+                    </div>
+                </div>
 
-    <!-- Contact Section & Form -->
-    <section class="card">
-        <h2>📞 Contact Information & Message Form</h2>
-        <ul>
-            <li><strong>Phone:</strong> 7760144157[cite: 3]</li>
-            <li><strong>Email:</strong> ksyashwanth18@gmail.com[cite: 3]</li>
-            <li><strong>Location:</strong> Bengaluru, India[cite: 3]</li>
-            <li><strong>Languages:</strong> English, Kannada, Hindi, Telugu[cite: 3]</li>
-        </ul>
+                <div class="hero-card">
+                    <div class="hero-photo">
+                        <img src="profile.jpg" alt="Yashwanth K S Profile Layout" />
+                        <div class="hero-badge">
+                            <strong>Digital Learning Specialist</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <h3>Form Configuration</h3>
-        <ul>
-            <li><strong>Form Action URL:</strong> <span class="file-tag">https://formspree.io/f/mpqvodwv</span>[cite: 3]</li>
-            <li><strong>Method:</strong> POST[cite: 3]</li>
-            <li><strong>Form Input Fields:</strong>
-                <ul>
-                    <li>Name field (<span class="file-tag">id="name" name="name"</span>)[cite: 3]</li>
-                    <li>Email field (<span class="file-tag">id="email" name="email"</span>)[cite: 3]</li>
-                    <li>Message textarea (<span class="file-tag">id="message" name="message"</span>)[cite: 3]</li>
-                    <li>Submit Button: "Send Message"[cite: 3]</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
+        <main id="main-content">
+            <section id="about" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">About</div>
+                            <h2 class="section-title">Career Objective</h2>
+                        </div>
+                        <div class="glass-note">
+                            <i class="fa-solid fa-user-tie"></i>
+                            Professional Focus
+                        </div>
+                    </div>
 
-    <!-- Footer Information -->
-    <footer class="card">
-        <h2>📄 Footer Details</h2>
-        <p>© <strong>Yashwanth K S</strong>. All Rights Reserved.[cite: 3]</p>
-        <p><strong>Footer Subtitle:</strong> Library & Information Science Professional | Academic Digital Transformation Specialist[cite: 3]</p>
-        <p><strong>Note:</strong> Built as a single-file portfolio[cite: 3]</p>
-    </footer>
+                    <div class="card content-card objective-card">
+                        Dedicated Library & Information Science professional with expertise in Koha LMS, Libsoft, DSpace repositories, CMS platforms, SQL analytics, and SharePoint documentation. Aspiring to transition into IT roles where I can apply database management, system administration, and analytical skills to build optimized digital systems and data-driven applications.
+                    </div>
+                </div>
+            </section>
 
+            <section id="experience" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Experience</div>
+                            <h2 class="section-title">Employment</h2>
+                        </div>
+                    </div>
+
+                    <article class="card timeline-card">
+                        <div class="timeline-inner">
+                            <h3 class="job-title">Assistant Librarian</h3>
+                            <p class="card-meta">K S School of Engineering & Management (2023 – Present)</p>
+                            <ul class="rich-list">
+                                <li>Administer and manage Koha & Libsoft Library Management Systems (LMS) including system configuration, database maintenance, and user access control</li>
+                                <li>Execute SQL queries to generate analytical reports for resource utilization and decision-making</li>
+                                <li>Manage and optimize OPAC systems for efficient information retrieval</li>
+                                <li>Maintain and support DELNET digital access systems and electronic resource integration</li>
+                                <li>Conduct technical user training sessions on LMS, digital repositories, and information systems</li>
+                                <li>Support data organization, documentation, and workflow optimization using digital tools</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="skills" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Skills</div>
+                            <h2 class="section-title">💻 Technical Skills</h2>
+                            <p class="section-subtext">Core competencies across library systems, repositories, development, analytics, and documentation tools.</p>
+                        </div>
+                    </div>
+
+                    <div class="skills-grid">
+                        <div class="card skill-card">
+                            <div class="skill-row">
+                                <div class="skill-top">
+                                    <div class="skill-label"><i class="fa-solid fa-database"></i> Library & Information Systems: Koha • Libsoft • NewGenLib</div>
+                                    <div class="skill-percent">90%</div>
+                                </div>
+                                <div class="progress"><div class="progress-bar" data-progress="90"></div></div>
+                            </div>
+
+                            <div class="skill-row">
+                                <div class="skill-top">
+                                    <div class="skill-label"><i class="fa-solid fa-cloud"></i> Digital Repository Management: DSpace • EPrints • Greenstone</div>
+                                    <div class="skill-percent">85%</div>
+                                </div>
+                                <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
+                            </div>
+
+                            <div class="skill-row">
+                                <div class="skill-top">
+                                    <div class="skill-label"><i class="fa-solid fa-code"></i> Web Development: HTML • CSS</div>
+                                    <div class="skill-percent">80%</div>
+                                </div>
+                                <div class="progress"><div class="progress-bar" data-progress="80"></div></div>
+                            </div>
+
+                            <div class="skill-row">
+                                <div class="skill-top">
+                                    <div class="skill-label"><i class="fa-solid fa-laptop-code"></i> Programming: Python • Java</div>
+                                    <div class="skill-percent">75%</div>
+                                </div>
+                                <div class="progress"><div class="progress-bar" data-progress="75"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="card skill-card">
+                            <div class="skill-row">
+                                <div class="skill-top">
+                                    <div class="skill-label"><i class="fa-solid fa-chart-line"></i> Database & Reporting: SQL Queries • SQL Reporting • Usage Analytics</div>
+                                    <div class="skill-percent">88%</div>
+                                </div>
+                                <div class="progress"><div class="progress-bar" data-progress="88"></div></div>
+                            </div>
+
+                            <div class="skill-row">
+                                <div class="skill-top">
+                                    <div class="skill-label"><i class="fa-solid fa-globe"></i> Content Management Systems: Drupal • Joomla</div>
+                                    <div class="skill-percent">78%</div>
+                                </div>
+                                <div class="progress"><div class="progress-bar" data-progress="78"></div></div>
+                            </div>
+
+                            <div class="skill-row">
+                                <div class="skill-top">
+                                    <div class="skill-label"><i class="fa-solid fa-folder-open"></i> Collaboration & Documentation Tools: SharePoint • Digital Content Management</div>
+                                    <div class="skill-percent">85%</div>
+                                </div>
+                                <div class="progress"><div class="progress-bar" data-progress="85"></div></div>
+                            </div>
+
+                            <div class="skill-row">
+                                <div class="skill-top">
+                                    <div class="skill-label"><i class="fa-solid fa-book"></i> Reference Management Tools: Zotero • Mendeley • EndNote</div>
+                                    <div class="skill-percent">92%</div>
+                                </div>
+                                <div class="progress"><div class="progress-bar" data-progress="92"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="courses" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Courses</div>
+                            <h2 class="section-title">Certifications & Courses</h2>
+                        </div>
+                    </div>
+
+                    <div class="stack-grid">
+                        <div class="card course-card">
+                            <p class="course-title">O'Level Computer Certification - National Institute of Electronics and Information Technology (NIELIT)</p>
+                            <div class="preview-group">
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="OLevel_Certificate1.pdf"><i class="fa-solid fa-download"></i> Python Programming</button>
+                                    <div class="cert-preview"><iframe src="OLevel_Certificate1.pdf" title="Python Programming Certificate"></iframe></div>
+                                </div>
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="OLevel_Certificate2.pdf"><i class="fa-solid fa-download"></i> Internet of Things</button>
+                                    <div class="cert-preview"><iframe src="OLevel_Certificate2.pdf" title="Internet of Things Certificate"></iframe></div>
+                                </div>
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="OLevel_Certificate3.pdf"><i class="fa-solid fa-download"></i> Web Designing & Publishing</button>
+                                    <div class="cert-preview"><iframe src="OLevel_Certificate3.pdf" title="Web Designing & Publishing Certificate"></iframe></div>
+                                </div>
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="OLevel_Certificate4.pdf"><i class="fa-solid fa-download"></i> IT Tools & Networks</button>
+                                    <div class="cert-preview"><iframe src="OLevel_Certificate4.pdf" title="IT Tools & Networks Certificate"></iframe></div>
+                                </div>
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="OLevel_Certificate5.pdf"><i class="fa-solid fa-download"></i> Computer Concepts</button>
+                                    <div class="cert-preview"><iframe src="OLevel_Certificate5.pdf" title="Computer Concepts Certificate"></iframe></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card course-card">
+                            <p class="course-title">Ethical Hacking – IEEE Blended Learning Program</p>
+                            <div class="preview-group">
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="IEEE.pdf"><i class="fa-solid fa-download"></i> View Certificate</button>
+                                    <div class="cert-preview"><iframe src="IEEE.pdf" title="IEEE Certificate"></iframe></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card course-card">
+                            <p class="course-title">Science Communication: Research Productivity and Data Analytics using Open Source Software – NPTEL</p>
+                            <div class="preview-group">
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="nptel_science_communication_data_analytics_2024.pdf"><i class="fa-solid fa-download"></i> View Certificate</button>
+                                    <div class="cert-preview"><iframe src="nptel_science_communication_data_analytics_2024.pdf" title="Science Communication Certificate"></iframe></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card course-card">
+                            <p class="course-title">Advanced R Programming for Data Analytics in Business – NPTEL</p>
+                            <div class="preview-group">
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="advanced_r_programming_data_analytics_2024.pdf"><i class="fa-solid fa-download"></i> View Certificate</button>
+                                    <div class="cert-preview"><iframe src="advanced_r_programming_data_analytics_2024.pdf" title="Advanced R Programming Certificate"></iframe></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card course-card">
+                            <p class="course-title">IT Applications in Libraries – NPTEL</p>
+                            <div class="status-pill">
+                                <i class="fa-solid fa-circle-check"></i>
+                                Completed (Certificate not available)
+                            </div>
+                        </div>
+
+                        <div class="card course-card">
+                            <p class="course-title">Training Webinar: How to Navigate the New Emerald Insight Platform</p>
+                            <div class="preview-group">
+                                <div class="preview-container">
+                                    <button class="preview-btn" data-open="Training Webinar.pdf"><i class="fa-solid fa-download"></i> View Certificate</button>
+                                    <div class="cert-preview"><iframe src="Training Webinar.pdf" title="Training Webinar Certificate"></iframe></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Education</div>
+                            <h2 class="section-title">Education</h2>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="card simple-card">
+                            <h3 class="edu-title">Master of Library & Information Science (M.L.I.Sc)</h3>
+                            <p class="card-meta">Bangalore University | 2022</p>
+                        </div>
+
+                        <div class="card simple-card">
+                            <h3 class="edu-title">Bachelor of Arts (B.A.)</h3>
+                            <p class="card-meta">Belture Government College | 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Projects</div>
+                            <h2 class="section-title">Digital Initiatives & Projects</h2>
+                        </div>
+                    </div>
+
+                    <div class="card projects-card">
+                        <ul class="rich-list">
+                            <li><strong>Koha Library Management System Implementation:</strong> Administered Koha LMS including cataloging, circulation, user management, MARC customization, module configuration, and troubleshooting.</li>
+                            <li><strong>Library Automation & Workflow Optimization:</strong> Managed Libsoft LMS and automated circulation workflows to improve operational efficiency and reporting accuracy.</li>
+                            <li><strong>Institutional Repository Management:</strong> Maintained and supported DSpace repository for digital content organization, metadata management, and academic resource accessibility.</li>
+                            <li><strong>SQL-Based Data Analytics & Reporting:</strong> Generated SQL-driven analytics reports to monitor circulation trends, user activity, footfall data, and resource utilization statistics.</li>
+                            <li><strong>Digital Resource Integration:</strong> Managed DELNET services including inter-library loan (ILL), document delivery, and academic resource retrieval integration.</li>
+                            <li><strong>SharePoint & Digital Documentation Management:</strong> Handled structured document storage, internal resource sharing, and workflow documentation using Microsoft SharePoint.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="achievements" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Achievements</div>
+                            <h2 class="section-title">Key Achievements</h2>
+                        </div>
+                    </div>
+
+                    <div class="card achievements-card">
+                        <ul class="rich-list">
+                            <li><strong>Successfully Administered Koha & Libsoft LMS:</strong> Managed cataloging, circulation, user records, MARC customization, and troubleshooting to ensure smooth library automation.</li>
+                            <li><strong>Generated SQL-Based Analytical Reports:</strong> Prepared circulation statistics, usage trends, and monthly/annual analytics reports for data-driven decision making.</li>
+                            <li><strong>Maintained Digital Repository & E-Resources:</strong> Managed DSpace repository, DELNET services (ILL & document delivery), and digital resource access systems.</li>
+                            <li><strong>Conducted Technical Training Sessions:</strong> Delivered orientation programs on OPAC, digital databases, citation management tools (Zotero, Mendeley, EndNote), and research support tools.</li>
+                            <li><strong>Managed SharePoint Documentation:</strong> Handled structured document storage, internal resource sharing, and policy documentation using Microsoft SharePoint.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="workshops" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Development</div>
+                            <h2 class="section-title">Workshops & Professional Development</h2>
+                        </div>
+                    </div>
+
+                    <div class="card workshops-card">
+                        <ul class="rich-list">
+                            <li><strong>NPTEL Online Certifications:</strong> Completed professional courses in Science Communication & Data Analytics, Advanced R Programming, and IT Applications in Libraries.</li>
+                            <li><strong>Library Automation & Digital Repository Training:</strong> Participated in webinars and technical sessions focused on Koha LMS, DSpace repositories, and digital library tools.</li>
+                            <li><strong>Research & Citation Tools Training:</strong> Engaged in training programs related to Zotero, Mendeley, EndNote, and academic productivity tools.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="memberships" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Networks</div>
+                            <h2 class="section-title">Professional Memberships & Digital Networks</h2>
+                        </div>
+                    </div>
+
+                    <div class="card memberships-card">
+                        <ul class="rich-list">
+                            <li><strong>DELNET (Developing Library Network):</strong> Managed inter-library loan (ILL), document delivery, and academic resource access services.</li>
+                            <li><strong>N-LIST / INFLIBNET Coordination Support:</strong> Supported access to e-resources and digital academic databases for institutional users.</li>
+                            <li><strong>Academic & Digital Library Professional Engagement:</strong> Actively involved in institutional digital initiatives and academic resource management activities.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section fade-section">
+                <div class="container">
+                    <div class="section-head">
+                        <div>
+                            <div class="section-kicker">Contact</div>
+                            <h2 class="section-title">Contact</h2>
+                            <p class="section-subtext">Reach out for professional communication, opportunities, and collaboration.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="card contact-card">
+                            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="contact-content">
+                                <strong>Phone</strong>
+                                <span>7760144157</span>
+                            </div>
+                        </div>
+
+                        <div class="card contact-card">
+                            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="contact-content">
+                                <strong>Email</strong>
+                                <span>ksyashwanth18@gmail.com</span>
+                            </div>
+                        </div>
+
+                        <div class="card contact-card">
+                            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="contact-content">
+                                <strong>Location</strong>
+                                <span>Bengaluru, India</span>
+                            </div>
+                        </div>
+
+                        <div class="card contact-card">
+                            <div class="contact-icon"><i class="fa-solid fa-language"></i></div>
+                            <div class="contact-content">
+                                <strong>Languages</strong>
+                                <span>English, Kannada, Hindi, Telugu</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrap">
+                        <h3>Send me a message 💬</h3>
+                        <p>Use the form below to connect directly regarding professional opportunities and communication.</p>
+
+                        <form class="contact-form" action="https://formspree.io/f/mpqvodwv" method="POST">
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" placeholder="Your Name" required />
+                                </div>
+
+                                <div class="field">
+                                    <label for="email">Your Email</label>
+                                    <input type="email" id="email" name="email" placeholder="Your Email" required />
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Type your message..." required></textarea>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-inner">
+                <div>
+                    <p>© <span id="year"></span> <strong>Yashwanth K S</strong>. All Rights Reserved.</p>
+                    <p>Library & Information Science Professional | Academic Digital Transformation Specialist</p>
+                </div>
+                <div class="glass-note">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    Built as a single-file portfolio
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const body = document.body;
+            const preloader = document.getElementById("preloader");
+            const progressBar = document.getElementById("progressBar");
+            const topBtn = document.getElementById("topBtn");
+            const glow = document.querySelector(".cursor-glow");
+            const typingText = document.getElementById("typingText");
+            const themeToggle = document.getElementById("themeToggle");
+            const menuToggle = document.getElementById("menuToggle");
+            const mobilePanel = document.getElementById("mobilePanel");
+            const yearEl = document.getElementById("year");
+            const navLinks = document.querySelectorAll(".desktop-nav a, .mobile-panel a");
+            const desktopNavLinks = document.querySelectorAll(".desktop-nav a");
+            const sections = document.querySelectorAll("main section");
+            const progressBars = document.querySelectorAll(".progress-bar");
+            const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            yearEl.textContent = new Date().getFullYear();
+
+            const preferredDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            root.setAttribute("data-theme", preferredDark ? "dark" : "light");
+            updateThemeIcon();
+
+            function updateThemeIcon() {
+                const isDark = root.getAttribute("data-theme") === "dark";
+                themeToggle.innerHTML = isDark
+                    ? '<i class="fa-solid fa-sun"></i>'
+                    : '<i class="fa-solid fa-moon"></i>';
+                themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+            }
+
+            themeToggle.addEventListener("click", function () {
+                const current = root.getAttribute("data-theme");
+                root.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+                updateThemeIcon();
+            });
+
+            window.addEventListener("load", function () {
+                preloader.style.opacity = "0";
+                preloader.style.visibility = "hidden";
+                setTimeout(() => {
+                    preloader.style.display = "none";
+                }, 450);
+            });
+
+            function updateScrollProgress() {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                progressBar.style.width = progress + "%";
+                topBtn.style.display = scrollTop > 320 ? "grid" : "none";
+            }
+
+            updateScrollProgress();
+            window.addEventListener("scroll", updateScrollProgress);
+
+            topBtn.addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+            });
+
+            if (!reducedMotion && glow) {
+                window.addEventListener("mousemove", function (e) {
+                    window.requestAnimationFrame(() => {
+                        glow.style.left = e.clientX + "px";
+                        glow.style.top = e.clientY + "px";
+                    });
+                });
+            }
+
+            const heroText = "Library & Information Science Professional specializing in library automation, digital resource management, SQL-based analytics reporting, and academic digital transformation.";
+            if (reducedMotion) {
+                typingText.textContent = heroText;
+            } else {
+                let index = 0;
+                function typeLoop() {
+                    if (index < heroText.length) {
+                        typingText.textContent += heroText.charAt(index);
+                        index++;
+                        setTimeout(typeLoop, 24);
+                    }
+                }
+                setTimeout(typeLoop, 650);
+            }
+
+            document.querySelectorAll("[data-scroll]").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    const target = document.querySelector(this.dataset.scroll);
+                    if (target) {
+                        target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+                    }
+                });
+            });
+
+            document.getElementById("downloadCvBtn").addEventListener("click", function () {
+                window.open("For IT.pdf", "_blank");
+            });
+
+            document.getElementById("mailBtn").addEventListener("click", function () {
+                window.location.href = "mailto:ksyashwanth18@gmail.com";
+            });
+
+            document.querySelectorAll("[data-open]").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    window.open(this.dataset.open, "_blank");
+                });
+            });
+
+            menuToggle.addEventListener("click", function () {
+                const isOpen = mobilePanel.classList.toggle("show");
+                body.classList.toggle("menu-open", isOpen);
+                menuToggle.setAttribute("aria-expanded", String(isOpen));
+                menuToggle.innerHTML = isOpen
+                    ? '<i class="fa-solid fa-xmark"></i>'
+                    : '<i class="fa-solid fa-bars"></i>';
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function () {
+                    mobilePanel.classList.remove("show");
+                    body.classList.remove("menu-open");
+                    menuToggle.setAttribute("aria-expanded", "false");
+                    menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                });
+            });
+
+            document.addEventListener("click", function (e) {
+                const insideHeader = e.target.closest(".site-header");
+                if (!insideHeader && mobilePanel.classList.contains("show")) {
+                    mobilePanel.classList.remove("show");
+                    body.classList.remove("menu-open");
+                    menuToggle.setAttribute("aria-expanded", "false");
+                    menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                }
+            });
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll(".fade-section").forEach(section => {
+                revealObserver.observe(section);
+            });
+
+            const skillObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.width = entry.target.dataset.progress + "%";
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            progressBars.forEach(bar => {
+                skillObserver.observe(bar);
+            });
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute("id");
+                    if (entry.isIntersecting) {
+                        desktopNavLinks.forEach(link => {
+                            link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.35,
+                rootMargin: "-20% 0px -45% 0px"
+            });
+
+            sections.forEach(section => sectionObserver.observe(section));
+        })();
+    </script>
 </body>
 </html>
